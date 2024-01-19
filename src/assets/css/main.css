@@ -1,0 +1,33 @@
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&family=Open+Sans:wght@500&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+    .btn-primary {
+      @apply text-white bg-[#2873FF] capitalize hover:bg-blue-700 rounded-2xl  font-medium  text-[16px]  p-[16px]  text-center ;
+
+    }
+
+    .btn-border{
+      @apply text-[#2873FF] dark:bg-[#1B2537] dark:text-white dark:border-none  border capitalize border-[#2873FF]  rounded-2xl  font-medium  text-[16px]  p-[16px]  text-center;
+    }
+    .btn-border-primary{
+      @apply text-[#2873FF] dark:bg-transparent   border capitalize border-[#2873FF]  rounded-2xl  font-medium  text-[16px]  p-[16px]  text-center;
+    }
+
+    p{
+      @apply text-[#8E9BAE]  text-sm 
+    }
+    h1,h2,h3{
+      @apply text-[#10192D]  text-sm font-[400] dark:text-[#F8FAFC]
+    }
+    .input{
+      @apply  dark:bg-transparent dark:border-gray-700 dark:text-[#F8FAFC]
+    }
+  
+}
+

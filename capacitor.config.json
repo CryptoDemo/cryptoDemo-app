@@ -1,0 +1,15 @@
+{
+  "appId": "com.cryptogram.app",
+  "appName": "cryptogram-app",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "cordova": {
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  
+  }
+}
