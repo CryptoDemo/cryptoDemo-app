@@ -4,7 +4,7 @@
         v-for="i in length"
         :key="i"
         @keyup="(e) => handleEnter(e, i - 1)"
-        class="w-[56px] h-[56px] rounded-2xl text-center font-bold dark:bg-[#8E9BAE]"
+        class="w-[56px] h-[56px] rounded-2xl text-center font-bold dark:bg-transparent dark:text-[#E2E8F0]"
         v-model="otpArray[i - 1]"
         type="text"
         maxlength="1"

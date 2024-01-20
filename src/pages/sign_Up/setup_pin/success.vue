@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen  mx-auto dark:bg-[#10192D] transition ease-linear duration-300">
+    <div class="h-screen  overflow-y-auto dark:bg-[#10192D] transition ease-linear duration-300">
 
 
         <div class="my-4 mx-6">

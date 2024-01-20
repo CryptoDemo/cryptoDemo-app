@@ -1,7 +1,7 @@
 <template>
 
-    <div class="max-w-full mx-auto transition dark:bg-[#10192D] ease-linear duration-300">
-        <div class="px-4 pt-[15px] h-screen ">
+    <div class="max-w-full h-screen overflow-y-auto mx-auto transition dark:bg-[#10192D] ease-linear duration-300">
+        <div class="px-4 pt-[15px]  ">
             <div class="flex justify-between items-center mb-3">
     
                 <button type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
@@ -24,7 +24,7 @@
                        
                        <div class="relative">
                          
-                           <input v-model="password"
+                           <input v-model="newPassword"
                             :type="showPassword1 ? 'text' : 'password'"
                             id="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900
                            text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[16px] px-[17px]
@@ -32,7 +32,8 @@
                            dark:border-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
                            dark:focus:border-blue-500 dark:shadow-sm-light" :placeholder="showPassword1 ? 'password' : '*******'" required>
    
-                           <div @click="togglePassword1Visibility" class=" absolute end-2.5 bottom-4 dark:text-[#F8FAFC]">
+                           <div  
+                           @click="togglePassword1Visibility" class=" absolute end-2.5 bottom-4 dark:text-[#F8FAFC]">
                                <Icon v-if="showPassword1" name="material-symbols:visibility-outline-rounded" size="20" 
                                class="transition ease-in-out duration-300"/>
                                <Icon v-else name="material-symbols:visibility-off-outline-rounded" size="20"
@@ -85,6 +86,7 @@ export default {
   data() {
     return {
       password: '',
+      newPassword:'',
       showPassword1: false,
       showPassword2: false,
     };

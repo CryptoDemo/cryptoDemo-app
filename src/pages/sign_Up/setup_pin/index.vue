@@ -1,7 +1,7 @@
 <template>
 
-    <div class="max-w-full min-h-screen mx-auto dark:bg-[#10192D] transition ease-linear duration-300">
-        <div class="px-6 pt-[15px] h-screen ">
+    <div class="max-w-full h-screen overflow-y-auto  dark:bg-[#10192D] transition ease-linear duration-300">
+        <div class="px-6 pt-[15px] ">
             <div class="flex justify-between items-center mb-3">
     
                 <button @click.prevent="$router.go(-1)" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
@@ -14,7 +14,7 @@
             <div class=" my-4 p-4 text-center">
            
                   <h3 class="text-2xl font-bold text-[#10192D] ">Create New Pin</h3>
-                  <p class="text-sm text-[400] pt-4 text-[#8E9BAE]">This adds an extra layer of security to your account. Use pin to unlock app!</p>
+                  <p class="text-sm text-[400] pt-4 text-[#8E9BAE] dark:text-[#E2E8F0]">This adds an extra layer of security to your account. Use pin to unlock app!</p>
             </div>
     
     

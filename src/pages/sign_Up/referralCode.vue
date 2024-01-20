@@ -1,8 +1,8 @@
 <template>
-    <div class="px-[24px] pt-[15px] min-h-screen transition ease-linear duration-300 dark:bg-[#10192D]">
+    <div class="px-[24px] pt-[15px] h-screen overflow-y-auto transition ease-linear duration-300 dark:bg-[#10192D]">
             <div class="flex justify-between items-center">
                 <button @click.prevent="$router.go(-1)" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
-                items-center me-2  dark:bg-[#1B2537] dark:text-white">
+                items-center me-2  dark:bg-[#1B2537] dark:text-[#E2E8F0]">
                     <Icon name="mdi:arrow-left" size="24" />
                 </button>
 
@@ -13,7 +13,7 @@
             <div class="py-4">
 
                 <h3 class="text-2xl font-extrabold text-[#10192D]">Create account</h3>
-                <p class="text-sm text-[#64748B] font-[400] pt-4">It only takes a minute to create your account</p>
+                <p class="text-sm text-[#64748B] dark:text-[#E2E8F0] font-[400] pt-4">It only takes a minute to create your account</p>
                 
 
 
@@ -22,7 +22,7 @@
                         <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900
                         text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[16px] px-[17px]
                          dark:bg-transparent
-                        dark:border-gray-700 dark:placeholder-gray-400 dark:text-white" placeholder="Email Address" required>
+                        dark:border-gray-700 dark:placeholder-gray-400 dark:text-[#E2E8F0]" placeholder="Email Address" required>
                     </div>
 
                     <div class="mb-5">
@@ -38,7 +38,7 @@
                              id="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900
                             text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[16px] px-[17px]
                              dark:bg-transparent
-                            dark:border-gray-700 dark:placeholder-gray-400 dark:text-white" :placeholder="showPassword ? 'password' : '*******'" required>
+                            dark:border-gray-700 dark:placeholder-gray-400 dark:text-[#E2E8F0]" :placeholder="showPassword ? 'password' : '*******'" required>
     
                             <div @click="togglePasswordVisibility" class=" absolute end-2.5 bottom-4 dark:text-[#F8FAFC]">
                                 <Icon v-if="showPassword" name="material-symbols:visibility-outline-rounded" size="20" 
@@ -54,10 +54,10 @@
                     </div>
 
                     <div class="mb-5">
-                        <input type="text" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900
+                        <input type="text" id="referral" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900
                         text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[16px] px-[17px]
                          dark:bg-transparent
-                        dark:border-gray-700 dark:placeholder-gray-400 dark:text-white " 
+                        dark:border-gray-700 dark:placeholder-gray-400 dark:text-[#E2E8F0] " 
                         placeholder="Referal Code" >
                     </div>
 
@@ -83,7 +83,7 @@
 
 
                <div class="text-center mt-[40px] font-[400]  text-sm text-[#8E9BAE]">
-                   <span>Already registered? <a class="text-[#2873FF] font-bold"> Login</a></span>
+                   <span class="dark:text-[#8E9BAE]">Already registered? <a @click.prevent="navigateTo('/login')" class="text-[#2873FF] font-bold"> Login</a></span>
                </div>
 
             </div>

@@ -12,13 +12,14 @@
             <div class="py-4">
 
                 <h3 class="text-2xl font-extrabold text-[#10192D]">Create account</h3>
-                <p class="text-sm text-[#64748B] font-[400] pt-4">It only takes a minute to create your account</p>
+                <p class="text-sm text-[#64748B] dark:text-[#E2E8F0] font-[400] pt-4">It only takes a minute to create your account</p>
                 
 
 
                 <form class=" mt-[34px]">
                     <div class="mb-5">
                         <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900
+                        dark:text-[#E2E8F0]
                         text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[16px] px-[17px] dark:bg-transparent
                         dark:border-gray-700" placeholder="Email Address" required>
                     </div>
@@ -29,7 +30,8 @@
                           
                             <input v-model="password"
                              :type="showPassword ? 'text' : 'password'"
-                             id="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                             id="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900
+                             dark:text-[#E2E8F0]
                             text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[16px] px-[17px] dark:bg-transparent
                             dark:border-gray-700" 
                             :placeholder="showPassword ? 'password' : '*******'" required>
@@ -54,20 +56,21 @@
                         <input id="terms" type="checkbox" value="" class="w-6 h-6 border border-gray-300 rounded-lg bg-gray-50 
                         focus:ring-3 focus:ring-blue-300 " required>
                         </div>
-                        <label for="terms" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        <label for="terms" class="ms-2 text-sm font-medium text-gray-900 dark:text-[#E2E8F0]">
                             I agree with the 
-                            <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a> and
+                            <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a> 
+                            and
                             <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">privacy policy</a>
                         </label>
                     </div>
 
-                    <button @click.prevent="navigateTo('/sign_Up/successful')"  class=" btn-primary mb-5 w-full">create account</button>
+                    <button @click.prevent="navigateTo('/sign_Up/verification')"  class=" btn-primary mb-5 w-full ">create account</button>
                     <button @click.prevent="navigateTo('/sign_Up/create_with_phone')" class=" btn-border-primary  w-full">Create account with phone number</button>
                </form>
 
 
                <div class="text-center mt-[80px] font-[400]  text-sm text-[#8E9BAE]">
-                   <span>Already registered? <a   @click.prevent="navigateTo('/login')"  class="text-[#2873FF] font-bold"> Login</a></span>
+                   <span class="dark:text-[#8E9BAE]">Already registered? <a   @click.prevent="navigateTo('/login')"  class="text-[#2873FF] font-bold"> Login</a></span>
                </div>
 
             </div>
@@ -156,11 +159,6 @@ watch(()=>searchInput.value,(newv)=>{
     debounce(filterV,newv)
 })
 
-
-
-// watch(()=> searchInput,(newVal)=>{
-//     debounce(filteredItem,newVal)
-// })
 
 
 onMounted(()=>{

@@ -1,5 +1,5 @@
 <template>
-    <div class=" px-6 py-[6px] bg-[#ffff]   dark:bg-gray-900 min-h-screen">
+    <div class=" px-6 py-[15px] bg-[#ffff]   dark:bg-gray-900 h-screen overflow-y-auto">
 
             <div class="grid grid-cols-4 items-center">
                 <div>

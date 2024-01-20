@@ -1,6 +1,6 @@
 <template>
     
-    <div class="px-6 py-[6px] bg-[#ffff]   dark:bg-gray-900 min-h-screen">
+    <div class="px-6 py-[15px] bg-[#ffff]   dark:bg-gray-900 h-screen overflow-y-auto">
 
         <div class="grid grid-cols-4 items-center">
                 <div>
@@ -33,47 +33,49 @@
                 viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
                 </button>
 
+             <transition name="dropdown">
 
-                <div  v-show="usersToggle"       id="dropdown-phone"  class="z-20 
-                 absolute  top-14  w-full bg-white dark:bg-[#10192D]   rounded-lg  
-                    ">
-                        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                        <div class="relative" >
-                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                                </svg>
-                            </div>
-                            
-                            <input v-model.trim="searchInput" type="search" id="default-search" class="block w-full my-3  p-4 ps-10 text-sm focus:border-0 
-                                text-gray-900 border border-gray-300 rounded-2xl bg-gray-50 focus:outline-none   dark:bg-transparent  dark:border-gray-700" 
-                                placeholder="Search countries..." required>
-                        </div>
-
-
-
-
-                        <div class="h-[180px] border dark:border-gray-700  rounded-2xl overflow-y-scroll">
-
-                            <ul @click.prevent="showCountry()" v-for="i in filteredItem.length? filteredItem : phone_numbers1"  class="pb-2 text-sm text-gray-700
-                             dark:text-gray-200" aria-labelledby="dropdown-phone-button">
-                                <li >
-                                    <button @click="selectedNumber = i.code ;selectedIcon= i.icon ;open = false " type="button" 
-                                    class="inline-flex px-4 w-full  py-2 text-sm hover:rounded-2xl text-gray-700
-                                     hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-gray-200  dark:hover:text-white" role="menuitem">
-                                        <div class="flex  justify-between items-center w-full ">
-                                            <div class="gap-x-4 flex justify-between items-center">
-                                                <country-flag :country='i.icon' size='big' class="rounded"/>
-                                                <span class=""> {{ i.name }}</span> 
-                                            </div>
-                                            <span>{{ i.code }} </span>
-                                        </div>
-                                    </button>
-                                </li>
-                                
-                            </ul>
-                        </div>
-                </div>
+                 <div  v-show="usersToggle"  :class="usersToggle?'shutter-from-top':''"        id="dropdown-phone"  class="z-20 
+                  absolute  top-14  w-full bg-white dark:bg-[#10192D]   rounded-lg  
+                     ">
+                         <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                         <div class="relative" >
+                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                 </svg>
+                             </div>
+                             
+                             <input v-model.trim="searchInput" type="search" id="default-search" class="block w-full my-3  p-4 ps-10 text-sm focus:border-0 
+                                 text-gray-900 border border-gray-300 rounded-2xl bg-gray-50 focus:outline-none   dark:bg-transparent  dark:border-gray-700" 
+                                 placeholder="Search countries..." required>
+                         </div>
+ 
+ 
+ 
+ 
+                         <div class="h-[180px] border dark:border-gray-700  rounded-2xl overflow-y-scroll">
+ 
+                             <ul @click.prevent="showCountry()" v-for="i in filteredItem.length? filteredItem : phone_numbers1"  class="pb-2 text-sm text-gray-700
+                              dark:text-gray-200" aria-labelledby="dropdown-phone-button">
+                                 <li >
+                                     <button @click="selectedNumber = i.code ;selectedIcon= i.icon ;open = false " type="button" 
+                                     class="inline-flex px-4 w-full  py-2 text-sm hover:rounded-2xl text-gray-700
+                                      hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-gray-200  dark:hover:text-white" role="menuitem">
+                                         <div class="flex  justify-between items-center w-full ">
+                                             <div class="gap-x-4 flex justify-between items-center">
+                                                 <country-flag :country='i.icon' size='big' class="rounded"/>
+                                                 <span class=""> {{ i.name }}</span> 
+                                             </div>
+                                             <span>{{ i.code }} </span>
+                                         </div>
+                                     </button>
+                                 </li>
+                                 
+                             </ul>
+                         </div>
+                 </div>
+             </transition>
 
 
 
@@ -192,5 +194,9 @@ onMounted(()=>{
 
 .my-inset{
     inset: 0 auto auto  0 !important;
+
+
+
 }
+
 </style>

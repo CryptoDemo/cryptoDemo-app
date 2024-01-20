@@ -2,8 +2,8 @@
 
 <template>
 
-    <div class="max-w-full min-h-screen mx-auto bg-white dark:bg-[#10192D] transition ease-linear duration-300">
-        <div class="px-6 pt-2 h-screen ">
+    <div class="max-w-full h-screen overflow-y-auto  bg-white dark:bg-[#10192D] transition ease-linear duration-300">
+        <div class="px-6 pt-[15px]">
             <div class="flex justify-between items-center mb-3">
     
                 <button @click.prevent="navigateTo('/sign_Up')" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
@@ -38,47 +38,48 @@
                     </button>
 
 
-                    <div  v-show="usersToggle"       id="dropdown-phone"  class="z-20 
-                    absolute  top-14  w-full bg-white dark:bg-[#10192D]   rounded-lg  ">
-                            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                            <div class="relative" >
-                                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                                    </svg>
-                                </div>
-                                
-                                <input v-model.trim="searchInput" type="search" id="default-search" class="block w-full my-3  p-4 ps-10 text-sm focus:border-0 
-                                    text-gray-900 border border-gray-300 rounded-2xl bg-gray-50 focus:outline-none   dark:bg-transparent  dark:border-gray-700" 
-                                    placeholder="Search countries..." required>
-                            </div>
-
-
-
-
-                            <div class="h-[180px] border dark:border-gray-700  rounded-2xl overflow-y-scroll
-                            expandAccordion 
-                    transition ease-in-out duration-300">
-
-                                <ul @click.prevent="showCountry()" v-for="i in filteredItem.length? filteredItem : phone_numbers1"  class="pb-2 text-sm text-gray-700
-                                dark:text-gray-200" aria-labelledby="dropdown-phone-button">
-                                    <li >
-                                        <button @click="selectedNumber = i.code ;selectedIcon= i.icon ;open = false " type="button" 
-                                        class="inline-flex px-4 w-full  py-2 text-sm hover:rounded-2xl text-gray-700
-                                        hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-gray-200  dark:hover:text-white" role="menuitem">
-                                            <div class="flex  justify-between items-center w-full ">
-                                                <div class="gap-x-4 flex justify-between items-center">
-                                                    <country-flag :country='i.icon' size='big' class="rounded"/>
-                                                    <span class=""> {{ i.name }}</span> 
-                                                </div>
-                                                <span>{{ i.code }} </span>
-                                            </div>
-                                        </button>
-                                    </li>
+                    <transition name="dropdown">
+                        <div  v-show="usersToggle"       id="dropdown-phone" :class="usersToggle?'shutter-from-top':''"  
+                        class="z-20 absolute  top-14  w-full bg-white dark:bg-[#10192D]   rounded-lg  ">
+                                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                                <div class="relative" >
+                                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                        </svg>
+                                    </div>
                                     
-                                </ul>
-                            </div>
-                    </div>
+                                    <input v-model.trim="searchInput" type="search" id="default-search" class="block w-full my-3  p-4 ps-10 text-sm focus:border-0 
+                                        text-gray-900 border border-gray-300 rounded-2xl bg-gray-50 focus:outline-none  
+                                         dark:bg-transparent  dark:border-gray-700 dark:text-white" 
+                                        placeholder="Search countries..." required>
+                                </div>
+    
+    
+    
+    
+                                <div class="h-[180px] border dark:border-gray-700  rounded-2xl overflow-y-scroll ">
+    
+                                    <ul @click.prevent="showCountry()" v-for="i in filteredItem.length? filteredItem : phone_numbers1"  class="pb-2 text-sm text-gray-700
+                                    dark:text-gray-200" aria-labelledby="dropdown-phone-button">
+                                        <li >
+                                            <button @click="selectedNumber = i.code ;selectedIcon= i.icon ;open = false " type="button" 
+                                            class="inline-flex px-4 w-full  py-2 text-sm hover:rounded-2xl text-gray-700
+                                            hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-gray-200  dark:hover:text-white" role="menuitem">
+                                                <div class="flex  justify-between items-center w-full ">
+                                                    <div class="gap-x-4 flex justify-between items-center">
+                                                        <country-flag :country='i.icon' size='big' class="rounded"/>
+                                                        <span class=""> {{ i.name }}</span> 
+                                                    </div>
+                                                    <span>{{ i.code }} </span>
+                                                </div>
+                                            </button>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                        </div>
+                    </transition>
 
 
 
@@ -95,7 +96,7 @@
             </div>
     
            
-             <div class="mt-[140px] flex gap-5">
+             <div class="mt-[140px] flex gap-5 transition ease-in-out duration-500">
 
                  <button @click.prevent="navigateTo('/dashboard')" class="w-full btn-border-primary ">skip</button>
                  <button  @click.prevent="navigateTo('/sign_Up/add_phone_number/success')"   class="w-full btn-primary ">save</button>
@@ -140,6 +141,7 @@ const usersToggle = ref(false);
 
 const showCountry = () => {
     usersToggle.value = !usersToggle.value;
+    searchInput.value = ''
 };
 
 
@@ -181,18 +183,22 @@ const phone_numbers1 = [
     }
 
 const filterV =(n)=>{
+
         filteredItem.value = phone_numbers1.filter((i)=>{
+
             return  i.name.toLowerCase().includes(n.toLowerCase())
             
-           
-
         }) 
 
         console.log(filteredItem.value)
+
     }
 
+
 watch(()=>searchInput.value,(newv)=>{
+
     debounce(filterV,newv)
+
 })
 
 
@@ -214,55 +220,40 @@ onMounted(()=>{
 </script>
 
 <style scoped>
-.accordion .link {
-  cursor: pointer;
-  display: block;
-  
-  -webkit-transition: all 0.4s ease;
-  -o-transition: all 0.4s ease;
-  transition: all 0.4s ease;
+
+.shutter-from-top{
+    animation: shutter 0.5s ease-in-out ;
+}
+@keyframes shutter {
+    0%{
+        transform:rotateY(-100deg);
+        /* max-height: 0; */
+        transform-origin:top;
+        opacity:0;
+    }
+    100%{
+        transform:rotateY(0deg);
+        /* max-height: 100%; */
+        transform-origin:top;
+        opacity:1;
+    }
 }
 
-
-.accordion li i {
- 
-  color: #595959;
-  -webkit-transition: all 0.4s ease;
-  -o-transition: all 0.4s ease;
-  transition: all 0.4s ease;
+.shutter-from-bottom{
+    animation: shutterBack 0.9s ease-in-out ;
 }
+@keyframes shutterBack {
+    0%{ 
+        transform:rotateX(0deg);
+        transform-origin:top;
+        opacity:1;
+    }
 
-.accordion li i.fa-chevron-down {
-  right: 12px;
-  left: auto;
-  font-size: 16px;
+    100%{
+        transform:rotateX(70deg);
+        transform-origin:top;
+        opacity:0;
+    }
 }
-
-
-
-.accordion li.open i.fa-chevron-down {
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-
-/**
- * Submenu
- -----------------------------*/
-
-
-.submenu {
-  display: none;
-  background: #444359;
-}
-
-
-.submenu a {
-  -webkit-transition: all 0.25s ease;
-  -o-transition: all 0.25s ease;
-  transition: all 0.25s ease;
-}
-
 
 </style>

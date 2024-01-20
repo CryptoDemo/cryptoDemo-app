@@ -1,12 +1,15 @@
 <template>
     <div class="h-screen overflow-y-scroll bg-[#ffff]   dark:bg-gray-900">
+
+
         <KeepAlive>
-            <home v-if="useCurrentNavMenu.currentNavMenu==='home'"/>
-            <marketplace v-else-if="useCurrentNavMenu.currentNavMenu==='marketplace'"/>
-            <wallet v-else-if="useCurrentNavMenu.currentNavMenu==='wallet'"/>
-            <exchange v-else-if="useCurrentNavMenu.currentNavMenu==='exchange'"/>
-            <account v-else/>
+            <home v-if="useCurrentNavMenu.currentNavMenu === 'home'" />
+            <marketplace v-else-if ="useCurrentNavMenu.currentNavMenu === 'marketplace'" />
+            <wallet v-else-if ="useCurrentNavMenu.currentNavMenu === 'wallet' " />
+            <exchange v-else-if ="useCurrentNavMenu.currentNavMenu === 'exchange'" />
+            <account v-else />
         </KeepAlive>
+
 
         <div class="px-[30px] min-h-[56px] nav-shadow  z-40 text-gray-400 fixed bottom-0 left-0 w-full bg-[#f7f6f6] dark:bg-[#10192D] shadow-2xl">
             <div class="flex justify-between items-center  w-full  py-[15.87px] shadow-[#262c33]">
@@ -23,7 +26,7 @@
                
 
             </div>
-     </div>
+        </div>
            
     </div>
 

@@ -1,7 +1,7 @@
 <template>
 
-    <div class="max-w-full mx-auto dark:bg-[#10192D] transition ease-linear duration-300">
-        <div class="px-4 pt-[15px] h-screen ">
+    <div class="max-w-full  h-screen overflow-y-auto mx-auto dark:bg-[#10192D] transition ease-linear duration-300">
+        <div class=" px-4 pt-[15px] ">
             <div class="flex justify-between items-center mb-3">
     
                 <button type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 

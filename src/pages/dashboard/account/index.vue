@@ -1,8 +1,8 @@
 <template>
 
-    <div class="min-h-screen  w-full px-6">
+    <div class="h-screen overflow-y-scroll bg-[#ffff]   dark:bg-gray-900  w-full px-6">
 
-          <h2 class=" text-[20px] font-[800] py-[14px]">Account</h2>
+          <h2 class=" text-[20px] font-[800] py-[15px]">Account</h2>
 
 
           <!--start of general settings section -->

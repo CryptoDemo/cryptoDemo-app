@@ -1,6 +1,6 @@
 <template>
 
-    <div class="max-w-full min-h-screen mx-auto transition ease-linear duration-300">
+    <div class="max-w-full h-screen overflow-y-auto transition ease-linear duration-300 dark:bg-[#10192D]">
         <div class="px-6 pt-[15px] h-screen ">
             <div class="flex justify-between items-center mb-3">
     
@@ -28,7 +28,7 @@
     
             </div>
 
-            <button class="w-full btn-primary mt-[75px]">Verify</button>
+            <button @click.prevent="navigateTo('/sign_Up/successful')"  class="w-full btn-primary mt-[75px]">Verify</button>
         </div>
 
     </div>

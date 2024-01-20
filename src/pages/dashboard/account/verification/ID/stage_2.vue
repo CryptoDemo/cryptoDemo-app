@@ -1,6 +1,6 @@
 <template>
     
-    <div class="px-6 py-[6px] bg-[#ffff]   dark:bg-[#10192D]  min-h-screen">
+    <div class="px-6 py-[15px] h-screen overflow-y-auto bg-[#ffff]   dark:bg-[#10192D]  min-h-screen">
 
         <div class="grid grid-cols-4 items-center">
                 <div>

@@ -1,7 +1,7 @@
 <template>
 
-    <div class="max-w-full min-h-screen mx-auto bg-[#ffff]   dark:bg-[#10192D]  transition ease-linear duration-300">
-        <div class="px-6 pt-[15px] h-screen ">
+    <div class="max-w-full h-screen overflow-y-auto bg-[#ffff]   dark:bg-[#10192D]  transition ease-linear duration-300">
+        <div class="px-6 pt-[15px] ">
             <div class="grid grid-cols-4 items-center">
                 <div>
                     <button @click.prevent="navigateTo('/dashboard/account/verification')" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 

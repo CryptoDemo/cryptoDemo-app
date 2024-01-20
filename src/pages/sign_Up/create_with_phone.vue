@@ -12,7 +12,7 @@
             <div class="py-4">
 
                 <h3 class="text-2xl font-extrabold text-[#10192D]">Create account</h3>
-                <p class="text-sm text-[#64748B] font-[400] pt-4">It only takes a minute to create your account</p>
+                <p class="text-sm text-[#64748B] dark:text-[#E2E8F0] font-[400] pt-4">It only takes a minute to create your account</p>
                 
                 <form class=" mt-[34px]">
 
@@ -23,7 +23,7 @@
                             inline-flex  items-center py-[16px] px-[17px] text-sm font-medium text-center text-gray-900
                                 bg-gray-100  rounded-s-2xl hover:bg-gray-200
                                 focus:outline-none  dark:bg-transparent  z-20 border-s-0 border border-gray-300 
-                                dark:text-white dark:border-gray-700" 
+                                dark:text-[#E2E8F0] dark:border-gray-700" 
                                 
                                 type="button">
                                 <country-flag :country='selectedIcon' size='small' class="pr-2"/>
@@ -33,19 +33,23 @@
                             </button>
 
 
-                            <div  v-show="usersToggle"       id="dropdown-phone"  class="z-20 
+                            <div  v-show="usersToggle"  :class="usersToggle?'shutter-from-top':''"       id="dropdown-phone"  class="z-20 
                             absolute  top-14  w-full bg-white dark:bg-[#10192D]   rounded-lg  
                                 ">
-                                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-[#E2E8F0]">Search</label>
+                                    
                                     <div class="relative" >
                                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" 
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
+                                                stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                                             </svg>
                                         </div>
                                         
                                         <input v-model.trim="searchInput" type="search" id="default-search" class="block w-full my-3  p-4 ps-10 text-sm focus:border-0 
-                                            text-gray-900 border border-gray-300 rounded-2xl bg-gray-50 focus:outline-none   dark:bg-transparent  dark:border-gray-700" 
+                                            text-gray-900 border border-gray-300 rounded-2xl bg-gray-50 focus:outline-none
+                                               dark:bg-transparent  dark:border-gray-700 dark:text-[#E2E8F0]" 
                                             placeholder="Search countries..." required>
                                     </div>
 
@@ -54,7 +58,8 @@
 
                                     <div class="h-[180px] border dark:border-gray-700  rounded-2xl overflow-y-scroll">
 
-                                        <ul @click.prevent="showCountry()" v-for="i in filteredItem.length? filteredItem : phone_numbers1"  class="pb-2 text-sm text-gray-700
+                                        <ul @click.prevent="showCountry()" 
+                                        v-for="i in filteredItem.length? filteredItem : phone_numbers1"  class="pb-2 text-sm text-gray-700
                                         dark:text-gray-200" aria-labelledby="dropdown-phone-button">
                                             <li >
                                                 <button @click="selectedNumber = i.code ;selectedIcon= i.icon ;open = false " type="button" 
@@ -77,11 +82,12 @@
 
 
 
-                            <label for="phone-input" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Phone number:</label>
+                            <label for="phone-input" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-[#E2E8F0]">Phone number:</label>
                             <div class="relative w-full z-20">
                                 <input type="phone" id="phone-input" class="block py-[16px] px-[17px] w-full z-20 text-sm outline-none
                                     text-gray-900 bg-gray-50 rounded-e-2xl border-s-0 border border-gray-300  dark:bg-transparent
-                                    dark:border-s-gray-700  dark:border-gray-700 dark:placeholder-gray-400 dark:text-white
+                                    dark:border-s-gray-700  dark:border-gray-700 dark:placeholder-gray-400 dark:text-[#E2E8F0]
+
                                     " pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required>
                             </div>
                         </div>
@@ -130,7 +136,7 @@
 
 
                <div class="text-center mt-[80px] font-[400]  text-sm text-[#8E9BAE]">
-                   <span>Already registered? <a class="text-[#2873FF] font-bold"> Login</a></span>
+                   <span class="dark:text-[#8E9BAE]">Already registered? <a @click.prevent="navigateTo('/login')" class="text-[#2873FF] font-bold"> Login</a></span>
                </div>
 
             </div>
@@ -162,6 +168,7 @@ const usersToggle = ref(false);
 
 const showCountry = () => {
     usersToggle.value = !usersToggle.value;
+     searchInput.value = ''
 };
 
 

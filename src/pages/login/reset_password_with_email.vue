@@ -1,18 +1,25 @@
 <template>
 
-    <div class="w-full  fixed left-0 top-0  dark:bg-[#10192D] transition ease-linear duration-300">
-        <div class="px-6 pt-[15px] h-screen ">
-            <div class="flex justify-between items-center mb-3 ">
+    <div class="w-full h-screen overflow-y-auto  fixed left-0 top-0  dark:bg-[#10192D] transition ease-linear duration-300">
+
+        <div class=" px-6  pt-[15px]">
+
+            <div class="flex justify-between items-center mb-3">
     
-                <button type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
-                items-center me-2   text-black dark:bg-[#1B2537] dark:text-white">
+                <button type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center 
+                inline-flex  items-center me-2   text-black dark:bg-[#1B2537] dark:text-white ">
+
                     <Icon name="mdi:arrow-left" size="24" />
+
                 </button>
     
             </div>
 
+
             <div class=" py-4  relative">
-                  <IconsReset/>
+
+                <IconsReset/>
+
             </div>
             
             <div class=" my-4 py-4 text-center relative bottom-0 left-0 w-full mt-10">
@@ -34,7 +41,7 @@
             </div>
     
 
-            <div class=" w-full">
+            <div class="w-full">
                 <button @click.prevent="navigateTo('/login/verify_password_reset')"  class="w-full btn-primary 
                mt-[24px] ">continue</button>
             </div>

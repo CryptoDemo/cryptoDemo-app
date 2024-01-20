@@ -1,10 +1,11 @@
 <template>
 
     <div class="h-screen overflow-y-auto px-6  bg-[#ffff] pb-4  dark:bg-[#10192D]   w-full" >
-        <div class="pt-[6px] ">
+        <div class="pt-[15px] ">
             <div class="grid grid-cols-4 items-center">
                     <div>
-                        <button @click.prevent="navigateTo('/dashboard/account/verification')" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
+                        <button @click.prevent="navigateTo('/dashboard/account/verification')" type="button" class=" 
+                        bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
                         items-center me-2  text-black dark:bg-[#1B2537] dark:text-white">
                             <Icon name="mdi:arrow-left" size="24" />
                         </button>
@@ -35,10 +36,28 @@
 
                 <transition name="dropdown">
 
-                    <div class="bg-gray-50 dark:bg-[#1B2537] dark:text-[#8E9BAE] rounded-xl px-4 py-2 mt-2 z-20"  v-show="usersToggle">
+                    <div class="bg-gray-50 dark:bg-[#1B2537] dark:text-[#8E9BAE] h-[214px] overflow-y-scroll
+                     rounded-xl px-4 py-2 mt-2 z-20"  v-show="usersToggle">
+
+                                  <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-[#E2E8F0]">Search</label>
+                                    
+                                    <div class="relative" >
+                                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" 
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
+                                                stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                            </svg>
+                                        </div>
+                                        
+                                        <input v-model.trim="searchInput" type="search" id="default-search" class="block w-full my-3  p-4 ps-10 text-sm focus:border-0 
+                                            text-gray-900 border border-gray-300 rounded-2xl bg-gray-50 focus:outline-none
+                                               dark:bg-transparent  dark:border-gray-700 dark:text-[#E2E8F0]" 
+                                            placeholder="Search countries..." required>
+                                    </div>
         
                         <div
-                              v-for="i in countries"  @click="showUsers(); selectedName = i.name"
+                              v-for="i in filteredItem.length? filteredItem : countries"  @click="showUsers(); selectedName = i.name"
                             class="mt-4 w-full   pb-3"
                         >
                             <a href="#" class="flex items-center w-full rounded-xl bg- 
@@ -186,6 +205,8 @@ defineComponent ({
 const  selectedName = ref('Austrialia')
 const selectedIcon = ref('au')
 const usersToggle = ref(false);
+const filteredItem  = ref([])
+const searchInput = ref("")
 
 const showUsers = () => {
     usersToggle.value = !usersToggle.value;
@@ -220,6 +241,22 @@ const countries = [
         
     ]
 
+
+
+const filterV =(n)=>{
+        filteredItem.value = countries.filter((i)=>{
+            return  i.name.toLowerCase().includes(n.toLowerCase())
+            
+           
+
+        }) 
+
+        console.log(filteredItem.value)
+    }
+
+watch(()=>searchInput.value,(newv)=>{
+    debounce(filterV,newv)
+})
    
 </script>
 
