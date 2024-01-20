@@ -33,7 +33,6 @@
                 viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
                 </button>
 
-             <transition name="dropdown">
 
                  <div  v-show="usersToggle"  :class="usersToggle?'shutter-from-top':''"        id="dropdown-phone"  class="z-20 
                   absolute  top-14  w-full bg-white dark:bg-[#10192D]   rounded-lg  
@@ -47,7 +46,8 @@
                              </div>
                              
                              <input v-model.trim="searchInput" type="search" id="default-search" class="block w-full my-3  p-4 ps-10 text-sm focus:border-0 
-                                 text-gray-900 border border-gray-300 rounded-2xl bg-gray-50 focus:outline-none   dark:bg-transparent  dark:border-gray-700" 
+                                 text-gray-900 border border-gray-300 rounded-2xl bg-gray-50 focus:outline-none   
+                                 dark:bg-transparent  dark:border-gray-700 dark:text-white" 
                                  placeholder="Search countries..." required>
                          </div>
  
@@ -75,7 +75,6 @@
                              </ul>
                          </div>
                  </div>
-             </transition>
 
 
 

@@ -37,7 +37,7 @@
 
 
                 <div class="bg-transparent border dark:border-gray-800 h-[280px] overflow-y-auto dark:bg-[#1B2537] dark:text-[#8E9BAE] 
-                rounded-2xl px-4 pb-2 mt-2 z-20"  v-show="usersToggle">
+                rounded-2xl px-4 pb-2 mt-2 z-20"  v-show="usersToggle"   :class="usersToggle?'shutter-from-top':''">
                     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -47,7 +47,8 @@
                             </div>
                             
                             <input v-model.trim="searchInput" type="search" id="default-search" class="block w-full my-3  p-4 ps-10 text-sm focus:border-0 
-                                text-gray-900 border border-gray-300 rounded-2xl bg-gray-50 focus:outline-none   dark:bg-transparent  dark:border-gray-700" 
+                                text-gray-900 border border-gray-300 rounded-2xl bg-gray-50 focus:outline-none   
+                                dark:bg-transparent  dark:border-gray-700 dark:text-white" 
                                 placeholder="Search countries..." required>
                         </div>
                         <div
@@ -93,7 +94,7 @@
 
 
                 <div class="bg-transparent border dark:border-gray-800 overflow-y-auto dark:bg-[#1B2537] dark:text-[#8E9BAE] 
-                rounded-2xl px-4 pb-2 mt-2 z-20"  v-show="docToggle">
+                rounded-2xl px-4 pb-2 mt-2 z-20"  v-show="docToggle"   :class="docToggle?'shutter-from-top':''">
                    
 
                         <div
