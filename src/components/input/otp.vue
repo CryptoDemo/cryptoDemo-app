@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div ref="container" class="flex justify-between mx-4 w-full">
       <input
         v-for="i in length"
@@ -38,9 +38,7 @@
   
     if (i > 0 && (keypressed === 'Backspace' || keypressed === 'Delete')) {
       otpArray.value[i] = null;
-      setTimeout(() => {
         children[i - 1].focus();
-      }, 100);
     } else {
       const matched = keypressed.match(/^[0-9]$/);
       if (!matched) {
@@ -71,5 +69,80 @@
     }
     if (flag) emitOtp('entered', otpArray.value.join(''));
   }
+  </script> -->
+  
+
+  <template>
+    <div ref="container" class="flex justify-between mx-4 w-full">
+      <input
+        v-for="i in length"
+        :key="i"
+        @input="(e) => handleInput(e, i - 1)"
+        class="w-[56px] h-[56px] rounded-2xl text-[20px] text-center border-gray-200 dark:border-gray-800  font-extrabold dark:bg-transparent
+         dark:text-[#E2E8F0]"
+        v-model="otpArray[i - 1]"
+        type="text"
+        maxlength="1"
+      />
+    </div>
+  </template>
+  
+  <script setup>
+  import { ref, onMounted } from 'vue';
+  
+  const otpProps = defineProps({
+    length: {
+      type: Number,
+      default: 4,
+    },
+  });
+  
+  const otpArray = ref([]);
+  const container = ref();
+  const emitOtp = defineEmits('entered');
+  
+  onMounted(() => {
+    for (let i = 0; i < otpProps.length; i++) {
+      otpArray.value.push(null);
+    }
+  });
+  
+  function handleInput(event, i) {
+    const keypressed = event.data;
+  
+    if (event.inputType === 'deleteContentBackward' || event.inputType === 'deleteContentForward') {
+      // Handle deletion (Backspace or Delete key)
+      otpArray.value[i] = null;
+      if (i > 0) {
+        container.value.children[i - 1].focus();
+      }
+    } else if (keypressed && keypressed.match(/^[0-9]$/)) {
+      // Handle valid numeric input
+      otpArray.value[i] = keypressed;
+      if (i < otpProps.length - 1) {
+        container.value.children[i + 1].focus();
+      } else {
+        handleCheck();
+      }
+    }
+  }
+  
+  function handleCheck() {
+    let flag = true;
+    const children = container.value.children;
+    for (let i = 0; i < otpProps.length; i++) {
+      if (otpArray.value[i] === null) {
+        children[i].classList.add('border-red-500');
+        flag = false;
+      } else {
+        children[i].classList.remove('border-red-500');
+      }
+    }
+    if (flag) emitOtp('entered', otpArray.value.join(''));
+  }
   </script>
+  
+  
+  
+  
   

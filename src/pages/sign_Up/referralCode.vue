@@ -1,5 +1,5 @@
 <template>
-    <div class="px-[24px] pt-[15px] h-screen overflow-y-auto transition ease-linear duration-300 dark:bg-[#10192D]">
+    <div class="px-[24px] pt-[6px] h-screen overflow-y-auto transition ease-linear duration-300 dark:bg-[#10192D]">
             <div class="flex justify-between items-center">
                 <button @click.prevent="$router.go(-1)" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
                 items-center me-2  dark:bg-[#1B2537] dark:text-[#E2E8F0]">
@@ -19,7 +19,7 @@
 
                 <form class=" mt-[34px]">
                     <div class="mb-5">
-                        <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900
+                        <input type="email" id="email" class="shadow-sm bg-transparent border border-gray-200 text-gray-900
                         text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[16px] px-[17px]
                          dark:bg-transparent
                         dark:border-gray-700 dark:placeholder-gray-400 dark:text-[#E2E8F0]" placeholder="Email Address" required>
@@ -35,7 +35,7 @@
                             </div> -->
                             <input v-model="password"
                              :type="showPassword ? 'text' : 'password'"
-                             id="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900
+                             id="password" class="shadow-sm bg-transparent border border-gray-200 text-gray-900
                             text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[16px] px-[17px]
                              dark:bg-transparent
                             dark:border-gray-700 dark:placeholder-gray-400 dark:text-[#E2E8F0]" :placeholder="showPassword ? 'password' : '*******'" required>
@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="mb-5">
-                        <input type="text" id="referral" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900
+                        <input type="text" id="referral" class="shadow-sm bg-transparent border border-gray-200 text-gray-900
                         text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[16px] px-[17px]
                          dark:bg-transparent
                         dark:border-gray-700 dark:placeholder-gray-400 dark:text-[#E2E8F0] " 
@@ -66,8 +66,8 @@
                 
                     <div class="flex items-start mb-5">
                         <div class="flex items-center h-5">
-                        <input id="terms" type="checkbox" value="" class="w-6 h-6 border border-gray-300 rounded-lg bg-gray-50 
-                        focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600
+                        <input id="terms" type="checkbox" value="" class="w-6 h-6 border border-gray-200 rounded-lg bg-transparent 
+                        focus:ring-1 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600
                          dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required>
                         </div>
                         <label for="terms" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -82,7 +82,7 @@
                </form>
 
 
-               <div class="text-center mt-[40px] font-[400]  text-sm text-[#8E9BAE]">
+               <div class="text-center mt-[80px] py-[20px] font-[400]  text-sm text-[#8E9BAE]">
                    <span class="dark:text-[#8E9BAE]">Already registered? <a @click.prevent="navigateTo('/login')" class="text-[#2873FF] font-bold"> Login</a></span>
                </div>
 

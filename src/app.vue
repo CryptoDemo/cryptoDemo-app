@@ -59,6 +59,17 @@
   transform:rotateY(0deg);
 }
 
+
+
+/* btn scaling animation */
+.scaling-animation {
+  transition: transform 0.3s ease-in-out;
+}
+
+.scaling-animation:hover {
+  transform: scale(0.955);
+}
+
 </style>
 
 

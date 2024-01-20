@@ -1,25 +1,12 @@
 <template>
 
     <div class="h-screen overflow-y-auto px-6  bg-[#ffff] pb-4  dark:bg-[#10192D]   w-full" >
-        <div class="pt-[15px] ">
-            <div class="grid grid-cols-4 items-center">
-                    <div>
-                        <button @click.prevent="navigateTo('/dashboard/account/verification')" type="button" class=" 
-                        bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
-                        items-center me-2  text-black dark:bg-[#1B2537] dark:text-white">
-                            <Icon name="mdi:arrow-left" size="24" />
-                        </button>
-                    </div>
-    
-                    <span class=" col-span-2 dark:text-white font-bold text-center">ID Verification</span>
-    
-            </div>
+        <div class="pt-[6px] ">
+            <Appbar link="/dashboard/account/verification" title="ID Verification" />
     
             <div class=" mt-6">
-               
                <h3 class="text-2xl font-extrabold text-[#10192D] items-stretch">Let’s verify your identity</h3>
                <p class="text-sm text-[400] pt-4 text-[#8E9BAE]">This qualifies you to trade amounts larger than $1,000</p>
-    
             </div>
     
           
@@ -184,7 +171,7 @@
     
            <div class="mt-[40px] ">
                <button @click.prevent="navigateTo('/dashboard/account/verification/ID/stage_4')" 
-               class="btn-primary  w-full
+               class="btn-primary  w-full scaling-animation
                ">Continue</button>
            </div>
         </div>

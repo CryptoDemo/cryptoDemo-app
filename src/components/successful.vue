@@ -1,16 +1,19 @@
 <template>
-    <div class="h-screen  overflow-y-auto dark:bg-[#10192D] transition ease-linear duration-300">
+    <div class="h-screen  mx-auto dark:bg-[#10192D] transition ease-linear duration-300">
 
 
         <div class="my-4 mx-6">
             <div class=" h-[50vh] relative flex justify-center items-center">
                
-                <IconsSuccess/>
+                <IconsSuccess>
+                    <slot></slot>
+                </IconsSuccess>
+                    
 
             </div>
             <div class=" h-[25vh] text-center">
-                <h2 class="text-2xl text-[#10192D] font-extrabold">Successful</h2>
-                <p class="text-[#8E9BAE] mt-2">Your document has been successfully <br> uploaded and is under review!</p>
+                <h2 class="text-2xl text-[#10192D] font-extrabold">{{ props.title }}</h2>
+                <p class="text-[#8E9BAE] mt-2 px-10">{{ props.subtitle }}</p>
             </div>
             <!-- <div class=" h-[20vh] flex flex-col justify-center items-center gap-4">
                 <button @click.prevent="navigateTo('/dashboard')"  
@@ -21,12 +24,17 @@
     </div>
 </template>
 
-<script>
-export default {
-  methods: {
-    // navigateTo(path) {
-    //   // Add your navigation logic here
-    // }
-  }
-}
+<script setup>
+
+const props = defineProps({
+    title:{
+        type:String,
+    },
+
+    subtitle:{
+        type:String,
+    },
+
+})
+
 </script>

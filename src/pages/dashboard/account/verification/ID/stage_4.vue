@@ -1,70 +1,60 @@
 <template>
 
-    <div class="px-6 py-[15px] h-screen overflow-y-auto bg-[#fff] relative   dark:bg-[#10192D] ">
+    <div class="px-6 py-[6px] h-screen overflow-y-auto bg-[#fff] relative   dark:bg-[#10192D] ">
 
-        <div class="grid grid-cols-4 items-center relative">
-
-            <div>
-                <button @click.prevent="navigateTo('/dashboard/account/verification')" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
-                items-center me-2  text-black dark:bg-[#1B2537] dark:text-white">
-                    <Icon name="mdi:arrow-left" size="24" />
-                </button>
-            </div>
-
-            <span class=" col-span-2 dark:text-white font-bold text-center">ID Verification</span>
-
-
-        </div>
+        <Appbar link="/dashboard/account/verification" title="ID Verification" />
 
         <div class=" mt-6">
            
            <p class="text-sm text-[400] pt-4 text-[#8E9BAE]">Take a photo of front of your Identity Card</p>
         </div>
 
-      
-        <div class=" mt-[12vh] relative p-[14px] mx-[10vw]">
-            <svg class="absolute top-0 left-0 " xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M16.8171 1H6C3.23858 1 1 3.23858 1 6V16.8171" :stroke="!isDark? '#64748B' :'#F8FAFC'" stroke-linecap="round"/>
-            </svg>
-            <svg class="absolute top-0 right-0" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-               <path d="M17 16.8171L17 6C17 3.23858 14.7614 1 12 1L1.18288 0.999999"  :stroke="!isDark? '#64748B' :'#F8FAFC'" stroke-linecap="round"/>
-            </svg>
+      <div class="fixed bottom-[40vh] left-0 w-full flex justify-center items-center ">
 
-            <svg class="absolute bottom-0 left-0" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M0.999999 0.933856L1 11.751C1 14.5124 3.23858 16.751 6 16.751L16.8171 16.751"  :stroke="!isDark? '#64748B' :'#F8FAFC'" stroke-linecap="round"/>
-            </svg>
-
-            <svg class="absolute bottom-0 right-0" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M1.18288 16.751L12 16.751C14.7614 16.751 17 14.5124 17 11.751L17 0.933856"  :stroke="!isDark? '#64748B' :'#F8FAFC'" stroke-linecap="round"/>
-            </svg>
-
-            <div class="relative flex justify-center items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="244" height="158" viewBox="0 0 244 158" fill="none">
-                        <rect y="0.875" width="243.868" height="157" rx="15.9391" fill="#F8FAFC"/>
-                        <path d="M0 16.8141C0 8.01117 7.13617 0.875 15.9391 0.875H227.929C236.732 0.875 243.868 8.01118 243.868 16.8141V37.5349H0V16.8141Z" fill="#2873FF"/>
-                        <rect x="157" y="52.6768" width="69.335" height="79.6954" rx="8" fill="#DBE8FF"/>
-                        <rect x="16.5264" y="52.6768" width="124.325" height="14.3452" rx="4" fill="#E2E8F0"/>
-                        <rect x="29.2781" y="79.7744" width="80.4924" height="6.37564" rx="2" fill="#E2E8F0"/>
-                        <rect x="29.2781" y="98.9014" width="80.4924" height="6.37564" rx="2" fill="#E2E8F0"/>
-                        <rect x="29.2781" y="116.56" width="80.4924" height="6.37564" rx="2" fill="#E2E8F0"/>
-                        <mask id="mask0_562_6540" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="157" y="53" width="70" height="80">
-                            <rect x="157" y="53" width="69.335" height="79.6954" rx="8" fill="#CCCFDD"/>
-                        </mask>
-                        <g mask="url(#mask0_562_6540)">
-                            <path d="M179.358 109.837C182.754 107.651 184.691 100.5 185.235 97.1982H198.191C199.519 103.264 200.184 107.538 203.838 109.837C215.464 113.052 221.451 112.564 226 115.637V132.539H191.5H157V116.154C160.266 112.055 175.112 112.57 179.358 109.837Z" fill="#2873FF"/>
-                            <rect x="172" y="58.1982" width="38" height="46" rx="19" fill="#2873FF"/>
-                        </g>
-                </svg>
-            </div>
-
-           
-
-        </div>
+          <div class=" relative  p-[14px] mx-[10vw]">
+              <svg class="absolute top-0 left-0 " xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M16.8171 1H6C3.23858 1 1 3.23858 1 6V16.8171" :stroke="!isDark? '#64748B' :'#F8FAFC'" stroke-linecap="round"/>
+              </svg>
+              <svg class="absolute top-0 right-0" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                 <path d="M17 16.8171L17 6C17 3.23858 14.7614 1 12 1L1.18288 0.999999"  :stroke="!isDark? '#64748B' :'#F8FAFC'" stroke-linecap="round"/>
+              </svg>
+  
+              <svg class="absolute bottom-0 left-0" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M0.999999 0.933856L1 11.751C1 14.5124 3.23858 16.751 6 16.751L16.8171 16.751"  :stroke="!isDark? '#64748B' :'#F8FAFC'" stroke-linecap="round"/>
+              </svg>
+  
+              <svg class="absolute bottom-0 right-0" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M1.18288 16.751L12 16.751C14.7614 16.751 17 14.5124 17 11.751L17 0.933856"  :stroke="!isDark? '#64748B' :'#F8FAFC'" stroke-linecap="round"/>
+              </svg>
+  
+              <div class="relative flex justify-center items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="244" height="158" viewBox="0 0 244 158" fill="none">
+                          <rect y="0.875" width="243.868" height="157" rx="15.9391" fill="#F8FAFC"/>
+                          <path d="M0 16.8141C0 8.01117 7.13617 0.875 15.9391 0.875H227.929C236.732 0.875 243.868 8.01118 243.868 16.8141V37.5349H0V16.8141Z" fill="#2873FF"/>
+                          <rect x="157" y="52.6768" width="69.335" height="79.6954" rx="8" fill="#DBE8FF"/>
+                          <rect x="16.5264" y="52.6768" width="124.325" height="14.3452" rx="4" fill="#E2E8F0"/>
+                          <rect x="29.2781" y="79.7744" width="80.4924" height="6.37564" rx="2" fill="#E2E8F0"/>
+                          <rect x="29.2781" y="98.9014" width="80.4924" height="6.37564" rx="2" fill="#E2E8F0"/>
+                          <rect x="29.2781" y="116.56" width="80.4924" height="6.37564" rx="2" fill="#E2E8F0"/>
+                          <mask id="mask0_562_6540" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="157" y="53" width="70" height="80">
+                              <rect x="157" y="53" width="69.335" height="79.6954" rx="8" fill="#CCCFDD"/>
+                          </mask>
+                          <g mask="url(#mask0_562_6540)">
+                              <path d="M179.358 109.837C182.754 107.651 184.691 100.5 185.235 97.1982H198.191C199.519 103.264 200.184 107.538 203.838 109.837C215.464 113.052 221.451 112.564 226 115.637V132.539H191.5H157V116.154C160.266 112.055 175.112 112.57 179.358 109.837Z" fill="#2873FF"/>
+                              <rect x="172" y="58.1982" width="38" height="46" rx="19" fill="#2873FF"/>
+                          </g>
+                  </svg>
+              </div>
+  
+             
+  
+          </div>
+      </div>
 
 
          
-        <div class="fixed min-h-[194px] px-[48px] bg-white dark:bg-[#10192D]  flex justify-between items-center  
-          bottom-0 left-0 w-full
+        <div class="fixed min-h-[194px] px-[48px] bg-white dark:bg-[#10192D]   flex justify-between items-center  
+          bottom-0 left-0 w-full shadow-lg
          rounded-t-[32px]">
 
          <div class="absolute left-0  top-1 w-full flex justify-center">

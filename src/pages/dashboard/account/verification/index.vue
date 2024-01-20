@@ -1,24 +1,16 @@
 <template>
-    <div class=" px-6 py-[15px] bg-[#ffff]   dark:bg-gray-900 h-screen overflow-y-auto">
+    <div class=" px-6 py-[6px] bg-[#ffff]   dark:bg-gray-900 h-screen overflow-y-auto">
 
-            <div class="grid grid-cols-4 items-center">
-                <div>
-                    <button @click.prevent="navigateTo('/dashboard')" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
-                    items-center me-2  text-black dark:bg-[#1B2537] dark:text-white">
-                        <Icon name="mdi:arrow-left" size="24" />
-                    </button>
-                </div>
 
-                <span class=" col-span-2 dark:text-white font-bold text-center">Verification status</span>
+            <Appbar link="/dashboard" title="Verification status"/>
 
-            </div>
-
-            <p class="pt-6">Complete verification to unlock full access to all app features.</p>
+            <p class="pt-4 ">Complete verification to unlock full access to all app features.</p>
 
             <div class="my-4 ">
-                <div @click.prevent="navigateTo('/dashboard/account/verification/ID')" class="flex justify-between items-center pb-4 border-b border-gray-100 dark:border-gray-700">
+                <div @click.prevent="navigateTo('/dashboard/account/verification/ID')" class="flex justify-between items-center pb-[21px] font-semibold border-b border-gray-100 dark:border-gray-700">
                         <div class=" flex justify-between items-center">
-                            <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center rounded-full">
+                            <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center 
+                            rounded-full">
 
                                 <Icon  name="mdi:person" class="text-[#2873FF] dark:text-[#ffff] " size="20"/>
                             </span>
@@ -27,7 +19,7 @@
                         </div>
                         <Icon  class="text-[#8E9BAE]" name="solar:alt-arrow-right-linear" size="20"/>
                 </div>
-                <div @click.prevent="navigateTo('/dashboard/account/verification/address')" class="flex justify-between items-center py-4 border-b border-gray-100 dark:border-gray-700">
+                <div @click.prevent="navigateTo('/dashboard/account/verification/address')" class="flex justify-between items-center py-[21px] font-semibold border-b border-gray-100 dark:border-gray-700">
                         <div class=" flex justify-between items-center">
                             <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center rounded-full">
 
@@ -38,7 +30,7 @@
                         </div>
                         <Icon  class="text-[#8E9BAE]" name="solar:alt-arrow-right-linear" size="20"/>
                 </div>
-                <div @click.prevent="navigateTo('/dashboard/account/verification/why')" class="flex justify-between items-center py-4  dark:border-gray-700">
+                <div @click.prevent="navigateTo('/dashboard/account/verification/why')" class="flex justify-between items-center py-[21px] font-semibold  dark:border-gray-700">
                         <div class=" flex justify-between items-center">
                             <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center rounded-full">
 

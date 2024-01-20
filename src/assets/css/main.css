@@ -13,15 +13,16 @@
     }
 
     .btn-border{
-      @apply text-[#2873FF] dark:bg-[#1B2537] dark:text-white dark:border-none  border capitalize border-[#2873FF]  rounded-2xl  font-medium  text-[16px]  p-[16px]  text-center;
+      @apply text-[#2873FF] dark:bg-[#1B2537] dark:text-white dark:border-none   border capitalize border-[#2873FF]  rounded-2xl  font-medium  text-[16px]  p-[16px]  text-center;
     }
     .btn-border-primary{
       @apply text-[#2873FF] dark:bg-transparent   border capitalize border-[#2873FF]  rounded-2xl  font-medium  text-[16px]  p-[16px]  text-center;
     }
 
     p{
-      @apply text-[#8E9BAE]  text-sm 
+      @apply text-[#8E9BAE]  text-sm font-bold;
     }
+
     h1,h2,h3{
       @apply text-[#10192D]  text-sm font-[400] dark:text-[#F8FAFC]
     }

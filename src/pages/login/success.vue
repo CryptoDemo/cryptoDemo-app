@@ -2,7 +2,7 @@
     <div class="h-screen overflow-y-auto  dark:bg-[#10192D] transition ease-linear duration-300">
 
 
-        <div class=" py-[15px] px-6 ">
+        <div class=" py-[6px] px-6 ">
 
             <div class=" h-[50vh] relative flex justify-center items-center ">
                
@@ -14,12 +14,12 @@
             <div class=" h-[25vh] text-center">
 
                 <h2 class="text-2xl text-[#10192D] font-extrabold">Successful</h2>
-                <p class="text-[#8E9BAE] mt-2">Your password has been reset <br> successfully</p>
+                <p class="text-[#8E9BAE] font-[400] mt-2">Your password has been reset <br> successfully</p>
 
             </div>
 
 
-            <div class=" h-[20vh] flex flex-col justify-center items-center gap-4">
+            <div class=" fixed bottom-10 left-0 w-full px-6 flex flex-col justify-center items-center gap-4">
                 <button @click.prevent="navigateTo('/dashboard')"
                 class="btn-primary w-full">home</button>
                 <!-- <button class="btn-border w-full">skip</button> -->

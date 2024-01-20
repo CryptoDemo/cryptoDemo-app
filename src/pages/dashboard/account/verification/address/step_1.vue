@@ -2,23 +2,12 @@
 
     <div class="px-6 py-[6px] bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
 
-        <div class="grid grid-cols-4 items-center">
+        
+        <Appbar link="/dashboard/account/verification" title="Address verification" />
 
-            <div>
-                <button @click.prevent="navigateTo('/dashboard/account/verification')" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
-                items-center me-2  text-black dark:bg-[#1B2537] dark:text-white">
-                    <Icon name="mdi:arrow-left" size="24" />
-                </button>
-            </div>
-
-            <span class=" col-span-2 dark:text-white font-bold text-center">Address verification</span>
-
-
-        </div>
-
-        <div class=" mt-6">
+        <div class=" mt-[20px]">
            
-           <p class="text-sm text-[400] pt-4 text-[#8E9BAE]">Complete this form to increase your trading limit</p>
+           <p class="text-sm font-[700] text-[#8E9BAE]">Complete this form to increase your trading limit</p>
         </div>
 
         
@@ -27,8 +16,9 @@
     
                 <button
                         @click="showUsers"
-                        class="btn-border-primary border border-gray-300 text-center text-sm dark:bg-transparent text-[#8E9BAE]
-                         dark:border-gray-700  w-full flex justify-between"
+                        class="btn-border-primary border hover:border-blue-600 focus:ring-1 border-gray-300 text-center text-sm dark:bg-transparent
+                         text-[#10192D] dark:text-[#8E9BAE]  
+                         dark:border-gray-700  w-full flex justify-between "
                     >
                         <span>{{ selectedName || 'Country of residence' }}</span>
                         <Icon name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300"/>
@@ -36,9 +26,10 @@
                 </button>
 
 
-                <div class="bg-transparent border dark:border-gray-800 h-[280px] overflow-y-auto dark:bg-[#1B2537] dark:text-[#8E9BAE] 
-                rounded-2xl px-4 pb-2 mt-2 z-20"  v-show="usersToggle"   :class="usersToggle?'shutter-from-top':''">
-                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div class=" border-b dark:border-gray-800  w-full  dark:bg-[#1B2537] 
+                dark:text-[#8E9BAE] 
+                rounded-2xl pb-2 mt-1 z"  v-show="usersToggle"   >
+                       <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -48,19 +39,22 @@
                             
                             <input v-model.trim="searchInput" type="search" id="default-search" class="block w-full my-3  p-4 ps-10 text-sm focus:border-0 
                                 text-gray-900 border border-gray-300 rounded-2xl bg-gray-50 focus:outline-none   
-                                dark:bg-transparent  dark:border-gray-700 dark:text-white" 
+                                bg-transparent  dark:border-gray-700 dark:text-white" 
                                 placeholder="Search countries..." required>
                         </div>
+                   
+                    <div class="max-h-[215px] relative overflow-y-auto">
+
                         <div
-                        v-for="i in filteredItem.length? filteredItem : countries"  @click="showUsers(); selectedName = i.name"
-                        class="mt-4 w-full   pb-3"
-                    >
-                        <a href="#" class="flex items-center w-full rounded-xl bg- 
-                                        blue-100 ">
-                            
-                        <country-flag :country='i.icon' size='big' class=" rounded-xl"/>
-                        <span class="px-4 text-lg text-[#8E9BAE]">{{ i.name }}</span>
-                        </a>
+                            v-for="i in filteredItem.length? filteredItem : countries"  @click="showUsers(); selectedName = i.name"
+                            class="p-4 w-full"
+                        >
+                            <a href="#" class="flex items-center w-full rounded-xl  ">
+                                
+                            <country-flag :country='i.icon' size='big' class=" rounded-xl"/>
+                            <span class="px-4 text-lg text-[#10192D] dark:text-[#8E9BAE]">{{ i.name }}</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -69,14 +63,16 @@
              </div>
 
              <div class="mb-5">
-                <input type="text" id="state" class="shadow-sm bg-transparent border border-gray-300 text-gray-900
-                text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[17px] px-[17px] dark:bg-transparent
+                <input type="text" id="state" class="shadow-sm bg-transparent border border-gray-300 text-[#10192D] dark:text-[#8E9BAE] 
+                text-sm rounded-2xl  block w-full py-[17px] px-[17px] dark:bg-transparent
+                placeholder:text-[#10192D] font-['Open_Sans'] dark:placeholder:text-[#8E9BAE]
                 dark:border-gray-700" placeholder="Region/State" required>
             </div>
 
              <div class="mb-5">
-                <input type="text" id="state" class="shadow-sm bg-transparent border border-gray-300 text-gray-900
-                text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[17px] px-[17px] dark:bg-transparent
+                <input type="text" id="state" class="shadow-sm bg-transparent border border-gray-300 
+                text-[#10192D] dark:text-[#8E9BAE] placeholder:text-[#10192D] font-['open_sans'] dark:placeholder:text-[#8E9BAE]
+                text-sm rounded-2xl  block w-full py-[17px] px-[17px] dark:bg-transparent
                 dark:border-gray-700" placeholder="City" required>
             </div>
 
@@ -84,7 +80,8 @@
     
                 <button
                         @click="showDocs"
-                        class="btn-border-primary text-sm dark:bg-transparent text-[#8E9BAE] dark:border-gray-700
+                        class="btn-border-primary text-sm dark:bg-transparent hover:border-blue-600 focus:ring-1
+                        text-[#10192D] dark:text-[#8E9BAE] placeholder:text-[#10192D] font-['open_sans'] dark:placeholder:text-[#8E9BAE] dark:border-gray-700
                         border-gray-300 w-full flex justify-between"
                     >
                         <span>{{ selectedDocument || 'Document type' }}</span>
@@ -93,8 +90,8 @@
                 </button>
 
 
-                <div class="bg-transparent border dark:border-gray-800 overflow-y-auto dark:bg-[#1B2537] dark:text-[#8E9BAE] 
-                rounded-2xl px-4 pb-2 mt-2 z-20"  v-show="docToggle"   :class="docToggle?'shutter-from-top':''">
+                <div class="bg-transparent  dark:border-gray-800 overflow-y-auto dark:bg-[#1B2537] dark:text-[#8E9BAE] 
+                rounded-2xl px-4 pb-2 mt-2 z-20"  v-show="docToggle">
                    
 
                         <div
@@ -104,7 +101,7 @@
                         <a href="#" class="flex items-center w-full rounded-xl bg- 
                                         blue-100 ">
                             <img :src="i.img"/>
-                        <span class="px-4 text-lg text-[#8E9BAE]">{{ i.name }}</span>
+                        <span class="px-4 text-lg text-[#10192D] dark:text-[#8E9BAE]">{{ i.name }}</span>
                         </a>
                     </div>
                 </div>
@@ -112,21 +109,26 @@
 
 
             </div>
+
             <div class="mb-5">
-                <input type="text" id="address" class="shadow-sm bg-transparent border border-gray-300 text-gray-900
-                text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[17px] px-[17px] dark:bg-transparent
+                <input type="text" id="address" class="shadow-sm bg-transparent border border-gray-300 
+                text-[#10192D] dark:text-[#8E9BAE] placeholder:text-[#10192D] font-['open_sans'] 
+                dark:placeholder:text-[#8E9BAE]
+                text-sm rounded-2xl  block w-full py-[17px] px-[17px] dark:bg-transparent
                 dark:border-gray-700" placeholder="Address line " required>
             </div>
             <div class="mb-5 relative">
-                <input type="text" id="address" class="shadow-sm bg-transparent border border-gray-300 text-gray-900
-                text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[17px] px-[17px] 
+                <input type="text" id="address" class="shadow-sm bg-transparent border border-gray-300 
+                text-[#10192D] dark:text-[#8E9BAE] placeholder:text-[#10192D] font-['open_sans'] dark:placeholder:text-[#8E9BAE]
+                text-sm rounded-2xl  block w-full py-[17px] px-[17px] 
                 dark:bg-transparent
                 dark:border-gray-700" placeholder="Address line 2" >
                 <span class="absolute right-4 bottom-4 text-sm text-[#8E9BAE]">Optional</span>
             </div>
             <div class="mb-5">
-                <input type="text" id="postal code" class="shadow-sm bg-transparent border border-gray-300 text-gray-900
-                text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[17px] px-[17px] dark:bg-transparent
+                <input type="text" id="postal code" class="shadow-sm bg-transparent border border-gray-300 
+                text-[#10192D] dark:text-[#8E9BAE] placeholder:text-[#10192D] font-['open_sans'] dark:placeholder:text-[#8E9BAE]
+                text-sm rounded-2xl  block w-full py-[17px] px-[17px] dark:bg-transparent
                 dark:border-gray-700" placeholder="Postal code" required>
             </div>
              

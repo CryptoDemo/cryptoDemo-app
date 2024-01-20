@@ -1,26 +1,26 @@
 <template>
 
     <div class="max-w-full  h-screen overflow-y-auto mx-auto dark:bg-[#10192D] transition ease-linear duration-300">
-        <div class=" px-4 pt-[15px] ">
+        <div class=" px-6 pt-[6px] ">
             <div class="flex justify-between items-center mb-3">
     
-                <button type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
+                <button @click="$router.go(-1)" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
                 items-center me-2   text-black dark:bg-[#1B2537] dark:text-white">
                     <Icon name="mdi:arrow-left" size="24" />
                 </button>
     
             </div>
             
-            <div class=" my-4 p-4">
+            <div class=" my-4 ">
            
                   <h3 class="text-2xl font-bold text-[#10192D]">Enter Verification Code</h3>
-                  <p class="text-sm text-[400] pt-4 text-[#8E9BAE]">Enter the 4-digit code  we just send to your email 
+                  <p class="text-sm font-[400] pt-4 text-[#8E9BAE]">Enter the 4-digit code  we just send to your email 
                     <span class="text-[#10192D]">juliajames@gmail.com.</span></p>
             </div>
     
     
     
-            <div class="mt-[42px] px-5 flex flex-col justify-center items-center">
+            <div class="mt-[42px] px-[12px] flex flex-col justify-center items-center">
                    
                     <InputOtp :length="4" @entered=" v => otpvalue = v"/>  
                         

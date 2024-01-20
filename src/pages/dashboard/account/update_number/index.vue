@@ -1,6 +1,6 @@
 <template>
 
-    <div class="px-6 py-[15px] bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
+    <div class="px-6 py-[6px] bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
 
         <div class="grid grid-cols-5 items-center">
 
@@ -24,15 +24,30 @@
 
 
          <div class="my-5">
-                <input type="phone" id="phone" class="shadow-sm bg-transparent border border-gray-300 text-gray-900
+                <input type="text" id="question 1" class="shadow-sm bg-transparent border border-gray-200 text-gray-900 
                 text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[17px] px-[17px] dark:bg-transparent
-                dark:border-gray-700" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890">
+                dark:border-gray-700 dark:text-[#f8FAFC] "  placeholder="What is the name of your childhood best friend">
+         </div>
+         <div class="my-5">
+                <input type="text" id="answer 1" class="shadow-sm bg-transparent border border-gray-200 text-gray-900
+                text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[17px] px-[17px] dark:bg-transparent
+                dark:border-gray-700 dark:text-[#f8FAFC]"  placeholder="Enter your answer here">
+         </div>
+         <div class="my-5">
+                <input type="text" id="question 2" class="shadow-sm bg-transparent border border-gray-200 text-gray-900 
+                text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[17px] px-[17px] dark:bg-transparent
+                dark:border-gray-700 dark:text-[#f8FAFC] "  placeholder="What is the name of your first pet">
+         </div>
+         <div class="my-5">
+                <input type="text" id="answer 2" class="shadow-sm bg-transparent border border-gray-200 text-gray-900
+                text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[17px] px-[17px] dark:bg-transparent
+                dark:border-gray-700 dark:text-[#f8FAFC]"  placeholder="Enter your answer here">
          </div>
 
       
 
-         <button  @click.prevent="navigateTo('/dashboard/account/update_username/success')" 
-         class="btn-primary mt-[57px] w-full">Contact support team</button>
+         <button  @click.prevent="navigateTo('/dashboard/account/update_number/update')" 
+         class="btn-primary mt-[57px] w-full">Submit</button>
     </div>
 
 </template>

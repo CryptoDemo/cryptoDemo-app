@@ -1,7 +1,7 @@
 <template>
-    <div class="px-[24px] pt-[15px] h-screen overflow-y-auto dark:bg-[#10192D] transition ease-linear duration-300">
+    <div class="px-[24px] pt-[6px] h-screen overflow-y-auto dark:bg-[#10192D] transition ease-linear duration-300">
             <div class="flex justify-between items-center">
-                <button @click.prevent="$router.go(-1)" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
+                <button @click.prevent="navigateTo('/dashboard')" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
                 items-center me-2 text-black dark:bg-[#1B2537] dark:text-white">
                     <Icon name="mdi:arrow-left" size="24"/>
                 </button>
@@ -16,9 +16,9 @@
                 
 
 
-                <form class=" mt-[34px]">
+                <form class=" mt-[32px]">
                     <div class="mb-5">
-                        <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900
+                        <input type="email" id="email" class="shadow-sm bg-transparent border border-gray-200 text-gray-900
                         dark:text-[#E2E8F0]
                         text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[16px] px-[17px] dark:bg-transparent
                         dark:border-gray-700" placeholder="Email Address" required>
@@ -30,17 +30,17 @@
                           
                             <input v-model="password"
                              :type="showPassword ? 'text' : 'password'"
-                             id="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900
-                             dark:text-[#E2E8F0]
+                             id="password" class="shadow-sm bg-transparent border border-gray-200 text-[#10192D]
+                             dark:text-[#E2E8F0] 
                             text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[16px] px-[17px] dark:bg-transparent
                             dark:border-gray-700" 
                             :placeholder="showPassword ? 'password' : '*******'" required>
     
                             <div @click="togglePasswordVisibility" class=" absolute end-2.5 bottom-4 dark:text-[#F8FAFC]">
                                 <Icon v-if="showPassword" name="material-symbols:visibility-outline-rounded" size="20" 
-                                class="transition ease-in-out duration-300"/>
+                                class="transition ease-in-out duration-300 text-[#8E9BAE]"/>
                                 <Icon v-else name="material-symbols:visibility-off-outline-rounded" size="20"
-                                class="transition ease-in-out duration-300"/>
+                                class="transition ease-in-out duration-300 text-[#8E9BAE]"/>
                             </div>
                         </div>
 
@@ -53,8 +53,8 @@
                 
                     <div class="flex items-start mb-5">
                         <div class="flex items-center h-5">
-                        <input id="terms" type="checkbox" value="" class="w-6 h-6 border border-gray-300 rounded-lg bg-gray-50 
-                        focus:ring-3 focus:ring-blue-300 " required>
+                        <input id="terms" type="checkbox" value="" class="w-6 h-6 border border-gray-200 rounded-lg bg-transparent
+                        focus:ring-1 focus:ring-blue-300 " required>
                         </div>
                         <label for="terms" class="ms-2 text-sm font-medium text-gray-900 dark:text-[#E2E8F0]">
                             I agree with the 
@@ -64,13 +64,13 @@
                         </label>
                     </div>
 
-                    <button @click.prevent="navigateTo('/sign_Up/verification')"  class=" btn-primary mb-5 w-full ">create account</button>
+                    <button @click.prevent="navigateTo('/sign_Up/setup_pin')"  class=" btn-primary mb-5 w-full ">create account</button>
                     <button @click.prevent="navigateTo('/sign_Up/create_with_phone')" class=" btn-border-primary  w-full">Create account with phone number</button>
                </form>
 
 
-               <div class="text-center mt-[80px] font-[400]  text-sm text-[#8E9BAE]">
-                   <span class="dark:text-[#8E9BAE]">Already registered? <a   @click.prevent="navigateTo('/login')"  class="text-[#2873FF] font-bold"> Login</a></span>
+               <div class="text-center mt-[80px] py-[20px] font-[400]  text-sm text-[#8E9BAE]">
+                   <span class="dark:text-[#8E9BAE] font-[400]">Already registered? <a   @click.prevent="navigateTo('/login')"  class="text-[#2873FF] font-bold"> Login</a></span>
                </div>
 
             </div>
@@ -140,9 +140,9 @@ const phone_numbers1 = [
 
 
 
- const togglePasswordVisibility=() =>{
+const togglePasswordVisibility=() =>{
       showPassword.value = !showPassword.value;
-    }
+}
 
 const filterV =(n)=>{
         filteredItem.value = phone_numbers1.filter((i)=>{

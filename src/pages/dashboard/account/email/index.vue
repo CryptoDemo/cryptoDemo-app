@@ -1,6 +1,6 @@
 <template>
 
-    <div class="px-6 py-[15px] bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
+    <div class="px-6 py-[6px] bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
 
         <div class="grid grid-cols-4 items-center">
 
@@ -31,7 +31,7 @@
 
       
 
-         <button  @click.prevent="navigateTo('/dashboard/account/update_username/success')" 
+         <button  @click.prevent="navigateTo('/dashboard/')" 
          class="btn-primary mt-[57px] w-full">Contact support team</button>
     </div>
 

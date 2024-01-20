@@ -2,7 +2,7 @@
 
 <template>
 
-    <div class="px-[24px] pt-[15px] dark:bg-[#10192D] h-screen overflow-y-auto transition ease-linear duration-300">
+    <div class="px-[24px] pt-[6px] dark:bg-[#10192D] h-screen overflow-y-auto transition ease-linear duration-300">
 
             <div class="flex justify-between items-center">
 
@@ -24,7 +24,7 @@
 
                 <form class=" mt-[34px]">
                     <div class="mb-5">
-                        <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-[#10192D] font-[600] 
+                        <input type="email" id="email" class="shadow-sm bg-transparent border border-gray-200 text-[#10192D] font-[600] 
                         text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[16px] px-[17px] dark:bg-transparent
                         dark:border-gray-700 dark:placeholder-gray-400 dark:text-white " placeholder="Email Address" required>
                     </div>
@@ -36,7 +36,7 @@
 
                             <input v-model="password"
                              :type="showPassword ? 'text' : 'password'"
-                             id="password" class="shadow-sm bg-gray-50 border border-gray-300 text-[#10192D] font-[600] 
+                             id="password" class="shadow-sm bg-transparent border border-gray-200 text-[#10192D] font-[600] 
                             text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[16px] px-[17px] dark:bg-transparent
                             dark:border-gray-700 dark:placeholder-gray-400 dark:text-white " :placeholder="showPassword ? 'password' : '*******'" required>
     

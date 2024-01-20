@@ -1,6 +1,7 @@
 <template>
-    <div class="px-[24px] pt-[15px] h-screen overflow-y-auto transition ease-linear duration-300 dark:bg-[#10192D] ">
+    <div class="px-[24px] pt-[6px] h-screen overflow-y-auto transition ease-linear duration-300 dark:bg-[#10192D] ">
             <div class="flex justify-between items-center">
+                
                 <button @click.prevent="$router.go(-1)" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
                 items-center me-2 dark:bg-[#1B2537] dark:text-white">
                     <Icon name="mdi:arrow-left" size="24" />
@@ -16,83 +17,8 @@
                 
                 <form class=" mt-[34px]">
 
-                    <div class="mb-5 mt-4"   :class="usersToggle?'h-[180px]':''">
+                    <InputCountrySelector  :selectedNumber.sync="selectedNumber" :selectedIcon.sync="selectedIcon" :isdisabled="false" />
 
-                        <div  class="flex items-center  relative" >
-                            <button   @click.prevent="showCountry()"     class="flex-shrink-0  relative
-                            inline-flex  items-center py-[16px] px-[17px] text-sm font-medium text-center text-gray-900
-                                bg-gray-100  rounded-s-2xl hover:bg-gray-200
-                                focus:outline-none  dark:bg-transparent  z-20 border-s-0 border border-gray-300 
-                                dark:text-[#E2E8F0] dark:border-gray-700" 
-                                
-                                type="button">
-                                <country-flag :country='selectedIcon' size='small' class="pr-2"/>
-                                {{ selectedNumber }}
-                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" 
-                            viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
-                            </button>
-
-
-                            <div  v-show="usersToggle"  :class="usersToggle?'shutter-from-top':''"       id="dropdown-phone"  class="z-20 
-                            absolute  top-14  w-full bg-white dark:bg-[#10192D]   rounded-lg  
-                                ">
-                                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-[#E2E8F0]">Search</label>
-                                    
-                                    <div class="relative" >
-                                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" 
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
-                                                stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                                            </svg>
-                                        </div>
-                                        
-                                        <input v-model.trim="searchInput" type="search" id="default-search" class="block w-full my-3  p-4 ps-10 text-sm focus:border-0 
-                                            text-gray-900 border border-gray-300 rounded-2xl bg-gray-50 focus:outline-none
-                                               dark:bg-transparent  dark:border-gray-700 dark:text-[#E2E8F0]" 
-                                            placeholder="Search countries..." required>
-                                    </div>
-
-
-
-
-                                    <div class="h-[180px] border dark:border-gray-700  rounded-2xl overflow-y-scroll">
-
-                                        <ul @click.prevent="showCountry()" 
-                                        v-for="i in filteredItem.length? filteredItem : phone_numbers1"  class="pb-2 text-sm text-gray-700
-                                        dark:text-gray-200" aria-labelledby="dropdown-phone-button">
-                                            <li >
-                                                <button @click="selectedNumber = i.code ;selectedIcon= i.icon ;open = false " type="button" 
-                                                class="inline-flex px-4 w-full  py-2 text-sm hover:rounded-2xl text-gray-700
-                                                hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-gray-200  dark:hover:text-white" role="menuitem">
-                                                    <div class="flex  justify-between items-center w-full ">
-                                                        <div class="gap-x-4 flex justify-between items-center">
-                                                            <country-flag :country='i.icon' size='big' class="rounded"/>
-                                                            <span class=""> {{ i.name }}</span> 
-                                                        </div>
-                                                        <span>{{ i.code }} </span>
-                                                    </div>
-                                                </button>
-                                            </li>
-                                            
-                                        </ul>
-                                    </div>
-                            </div>
-
-
-
-
-                            <label for="phone-input" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-[#E2E8F0]">Phone number:</label>
-                            <div class="relative w-full z-20">
-                                <input type="phone" id="phone-input" class="block py-[16px] px-[17px] w-full z-20 text-sm outline-none
-                                    text-gray-900 bg-gray-50 rounded-e-2xl border-s-0 border border-gray-300  dark:bg-transparent
-                                    dark:border-s-gray-700  dark:border-gray-700 dark:placeholder-gray-400 dark:text-[#E2E8F0]
-
-                                    " pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required>
-                            </div>
-                        </div>
-
-                    </div>
 
                     <div class="mb-5">
                        
@@ -100,15 +26,15 @@
                           
                             <input v-model="password"
                              :type="showPassword ? 'text' : 'password'"
-                             id="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900
+                             id="password" class="shadow-sm bg-transparent border border-gray-200 text-gray-900
                             text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[16px] px-[17px] dark:bg-transparent
                             dark:border-gray-700 dark:placeholder-gray-400 dark:text-white " :placeholder="showPassword ? 'password' : '*******'" required>
     
                             <div @click="togglePasswordVisibility" class=" absolute end-2.5 bottom-4 dark:text-[#F8FAFC]">
                                 <Icon v-if="showPassword" name="material-symbols:visibility-outline-rounded" size="20" 
-                                class="transition ease-in-out duration-300"/>
+                                class="transition ease-in-out duration-300 text-[#8E9BAE]"/>
                                 <Icon v-else name="material-symbols:visibility-off-outline-rounded" size="20"
-                                class="transition ease-in-out duration-300"/>
+                                class="transition ease-in-out duration-300 text-[#8E9BAE]"/>
                             </div>
                         </div>
 
@@ -119,8 +45,8 @@
                 
                     <div class="flex items-start mb-5">
                         <div class="flex items-center h-5">
-                        <input id="terms" type="checkbox" value="" class="w-6 h-6 border border-gray-300 rounded-lg bg-gray-50 
-                        focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600
+                        <input id="terms" type="checkbox" value="" class="w-6 h-6 border border-gray-200 rounded-lg bg-transparent
+                        focus:ring-1 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600
                          dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required>
                         </div>
                         <label for="terms" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -135,7 +61,7 @@
                </form>
 
 
-               <div class="text-center mt-[80px] font-[400]  text-sm text-[#8E9BAE]">
+               <div class="text-center mt-[80px] py-[20px] font-[400]  text-sm text-[#8E9BAE]">
                    <span class="dark:text-[#8E9BAE]">Already registered? <a @click.prevent="navigateTo('/login')" class="text-[#2873FF] font-bold"> Login</a></span>
                </div>
 

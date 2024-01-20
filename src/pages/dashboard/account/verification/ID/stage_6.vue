@@ -1,6 +1,7 @@
 <template>
-
-    <div class="px-6 py-[15px] bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
+    
+    <Successful v-if="show_successful" title="sucessful" subtitle="`Your document has been successfully  uploaded and is under review!`"/>
+    <div v-else class="px-6 py-[6px] bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
 
         <div class="grid grid-cols-4 items-center">
 
@@ -37,7 +38,7 @@
                 </svg>
             </div>
 
-            <div class="relative flex justify-center items-center">
+            <div class="relative  min-h-[154px] flex justify-center items-center">
                 <!-- <svg xmlns="http://www.w3.org/2000/svg" width="154" height="154" viewBox="0 0 154 154" fill="none">
                 <circle opacity="0.1" cx="77" cy="77" r="77" fill="#F8FAFC"/>
                 </svg> -->
@@ -54,8 +55,8 @@
 
 
 
-         <button  @click.prevent="navigateTo('/dashboard/account/verification/ID/success')" 
-         class="btn-primary mt-[127px] w-full transition-all delay-75">Complete ID verification</button>
+         <button  @click.prevent="toggle_show_successful" 
+         class="btn-primary mt-[127px] w-full scaling-animation">Complete ID verification</button>
     </div>
 
 </template>
@@ -65,4 +66,13 @@
 import { useDark, useToggle } from '@vueuse/core'
 
 const isDark = useDark()
+
+const show_successful = ref(false)
+
+const toggle_show_successful = ()=>{
+    show_successful.value = true
+    setTimeout(() => {
+        navigateTo('/dashboard/account/verification')
+    }, 1000);
+}
 </script>

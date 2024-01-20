@@ -1,6 +1,9 @@
 <template>
 
-    <div class="px-6 py-[15px] bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
+<Successful v-if="show_successful" title="sucessful" subtitle="`You have successfully changed your  username permanently`"/>
+
+
+    <div v-else class="px-6 py-[6px] bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
 
         <div class="grid grid-cols-4 items-center">
 
@@ -31,8 +34,22 @@
 
       
 
-         <button  @click.prevent="navigateTo('/dashboard/account/update_username/success')" 
+         <button  @click.prevent="toggle_show_successful" 
          class="btn-primary mt-[57px] w-full">Save new username</button>
     </div>
 
 </template>
+
+
+<script setup>
+
+
+const show_successful = ref(false)
+
+const toggle_show_successful = ()=>{
+    show_successful.value = true
+    setTimeout(() => {
+        navigateTo('/dashboard')
+    }, 1000);
+}
+</script>

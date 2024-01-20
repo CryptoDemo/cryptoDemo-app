@@ -10,11 +10,14 @@
                 <slide  class="h-screen w-full absolute" >
                         <onboardingScreensOne  class="transition-all ease-in-out duration-300"/>
                 </slide>
-                <slide  class="h-screen w-full absolute">
+                <slide  class="h-screen w-full absolute" >
                         <onboardingScreensTwo  class="transition-all ease-in-out duration-300"/>
                 </slide>
+                <slide  class="h-screen w-full absolute">
+                        <onboardingScreensThird  class="transition-all ease-in-out duration-300"/>
+                </slide>
                 <slide   class="h-screen w-full absolute">
-                        <onboardingScreensThird   class="transition-all ease-in-out duration-300"/>
+                        <OnboardingScreensFourth class="transition-all ease-in-out duration-300"/>
                 </slide>
                 
             </carousel>
@@ -22,22 +25,24 @@
                 <div class=" fixed bottom-0 left-0 min-h-[20vh] w-full">
                            <div class=" mx-4 flex flex-col justify-center items-center h-full">
                                
-                               <div   :class="currentSlide === 2 ? 'hidden': 'flex'" class="text-center transition-all ease-in-out duration-300" >
+                               <div   :class="currentSlide === 3 ? 'hidden': 'flex'" class="text-center transition-all ease-in-out duration-300" >
             
                                  <div  :class="currentSlide === 0 ? 'bg-[#2873FF]': 'bg-[#E2E8F0] dark:bg-[#64748B]'"
                                  class="h-[10px]   w-[10px] mx-2 rounded-full transition-all ease-in-out duration-75"></div>
                                  <div  :class="currentSlide === 1 ? 'bg-[#2873FF]': 'bg-[#E2E8F0]  dark:bg-[#64748B]'"
                                  class="h-[10px]   w-[10px] mx-2 rounded-full transition-all ease-in-out duration-75"></div>
-                                  <div  :class="currentSlide === 2 ? 'bg-[#2873FF]': 'bg-[#E2E8F0]  dark:bg-[#64748B]'"
-                                  class="h-[10px] bg-[#E2E8F0]  w-[10px] mx-2 rounded-full transition-all ease-in-out duration-75"></div>
+                                  
+                                 <div  :class="currentSlide === 2 ? 'bg-[#2873FF]': 'bg-[#E2E8F0]  dark:bg-[#64748B]'"
+                                  class="h-[10px]   w-[10px] mx-2 rounded-full transition-all 
+                                  ease-in-out duration-75"></div>
                                       
             
                                </div>
                
                
                                <div class="grid grid-cols-2 gap-2.5 pt-10  w-full " >
-                                   <button  type="button"  @click.prevent="currentSlide  = 2"
-                                   :class="currentSlide === 2 ? 'hidden': 'flex'"
+                                   <button  type="button"  @click.prevent="currentSlide  = 3"
+                                   :class="currentSlide === 3 ? 'hidden': 'flex'"
                                    class="capitalize min-h-[56px] border
                                     border-[#2873FF] hover:bg-[#2873FF] hover:text-[white] text-[#2873FF] rounded-2xl
                                    text-[16px] p-[8px] text-center flex items-center justify-center 
@@ -46,7 +51,7 @@
                                    </button>
                
                                    <button  @click.prevent="next()" type="button" 
-                                   :class="currentSlide === 2 ? 'hidden': 'flex'"
+                                   :class="currentSlide === 3 ? 'hidden': 'flex'"
                                    class="text-white min-h-[56px] bg-[#2873FF] hover:bg-blue-800 rounded-2xl 
                                    text-[16px] p-[8px] text-center flex items-center justify-center capitalize
                                    transition-all ease-in-out duration-300">
@@ -58,7 +63,7 @@
             
             
                                    <button   @click.prevent="navigateTo('/sign_Up')"    
-                                    :class="currentSlide === 2 ? 'flex': 'hidden'"
+                                    :class="currentSlide === 3 ? 'flex': 'hidden'"
                                    type="button" class="text-white min-h-[56px] bg-[#2873FF] hover:bg-blue-800 rounded-2xl 
                                     text-[16px] p-[8px] text-center items-center capitalize justify-center col-span-2
                                     transition-all ease-in-out duration-300">
@@ -69,7 +74,7 @@
 
 
                                     <button @click.prevent="navigateTo('/login')" 
-                                    :class="currentSlide === 2 ? 'flex': 'hidden'"  
+                                    :class="currentSlide === 3 ? 'flex': 'hidden'"  
                                     type="button" class=" min-h-[56px] border border-[#2873FF] text-[#2873FF] rounded-2xl
                                     text-[16px] p-[8px] text-center  items-center capitalize justify-center col-span-2 mb-[40px]
                                     transition-all ease-in-out duration-300">
