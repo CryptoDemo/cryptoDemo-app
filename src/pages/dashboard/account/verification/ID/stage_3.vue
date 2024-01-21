@@ -23,8 +23,8 @@
 
                 <transition name="dropdown">
 
-                    <div class="bg-gray-50 dark:bg-[#1B2537] dark:text-[#8E9BAE] h-[214px] overflow-y-scroll
-                     rounded-xl px-4 py-2 mt-2 z-20"  v-show="usersToggle">
+                    <div class="bg-transparent dark:bg-transparent dark:text-[#8E9BAE]  overflow-y-scroll
+                     rounded-xl  pb-2  z-20"  v-show="usersToggle">
 
                                   <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-[#E2E8F0]">Search</label>
                                     
@@ -38,22 +38,24 @@
                                         </div>
                                         
                                         <input v-model.trim="searchInput" type="search" id="default-search" class="block w-full my-3  p-4 ps-10 text-sm focus:border-0 
-                                            text-gray-900 border border-gray-300 rounded-2xl bg-gray-50 focus:outline-none
+                                            text-gray-900 border border-gray-200 rounded-2xl bg-transparent focus:outline-none
                                                dark:bg-transparent  dark:border-gray-700 dark:text-[#E2E8F0]" 
                                             placeholder="Search countries..." required>
                                     </div>
-        
-                        <div
-                              v-for="i in filteredItem.length? filteredItem : countries"  @click="showUsers(); selectedName = i.name"
-                            class="mt-4 w-full   pb-3"
-                        >
-                            <a href="#" class="flex items-center w-full rounded-xl bg- 
-                                            blue-100 ">
-                                
-                            <country-flag :country='i.icon' size='big' class=" rounded-xl"/>
-                            <span class="px-4 text-lg">{{ i.name }}</span>
-                            </a>
-                        </div>
+                         <div class="max-h-[215px] relative overflow-y-auto px-4">
+
+                             <div
+                                   v-for="i in filteredItem.length? filteredItem : countries"  @click="showUsers(); selectedName = i.name"
+                                 class="mt-4 w-full   pb-3"
+                             >
+                                 <a href="#" class="flex items-center w-full rounded-xl bg- 
+                                                 blue-100 ">
+                                     
+                                 <country-flag :country='i.icon' size='big' class=" rounded-xl"/>
+                                 <span class="px-4 text-lg">{{ i.name }}</span>
+                                 </a>
+                             </div>
+                         </div>
                     </div>
                 </transition>
     

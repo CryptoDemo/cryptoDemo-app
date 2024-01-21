@@ -64,8 +64,8 @@
                         </label>
                     </div>
 
-                    <button @click.prevent="navigateTo('/sign_Up/setup_pin')"  class=" btn-primary mb-5 w-full ">create account</button>
-                    <button @click.prevent="navigateTo('/sign_Up/create_with_phone')" class=" btn-border-primary  w-full">Create account with phone number</button>
+                    <button @click.prevent="navigateTo('/sign_Up/setup_pin')"  class=" scaling-animation btn-primary mb-5 w-full ">create account</button>
+                    <button @click.prevent="navigateTo('/sign_Up/create_with_phone')" class="scaling-animation btn-border-primary  w-full">Create account with phone number</button>
                </form>
 
 

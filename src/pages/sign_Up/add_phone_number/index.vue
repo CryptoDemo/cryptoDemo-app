@@ -4,7 +4,7 @@
 
     <div class="max-w-full h-screen overflow-y-auto  bg-white dark:bg-[#10192D] transition ease-linear duration-300">
         <div class="px-6 pt-[6px]">
-            
+
             <div class="flex justify-between items-center mb-3">
     
                 <button @click.prevent="navigateTo('/sign_Up')" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
@@ -28,8 +28,8 @@
            
              <div class="mt-[140px] flex gap-5 transition ease-in-out duration-500">
 
-                 <button @click.prevent="navigateTo('/dashboard')" class="w-full btn-border-primary ">skip</button>
-                 <button  @click.prevent="navigateTo('/sign_Up/add_phone_number/success')"   class="w-full btn-primary ">save</button>
+                 <button @click.prevent="navigateTo('/dashboard')" class="w-full btn-border-primary scaling-animation ">skip</button>
+                 <button  @click.prevent="navigateTo('/sign_Up/add_phone_number/success')"   class="w-full btn-primary scaling-animation">save</button>
              </div>
         </div>
 

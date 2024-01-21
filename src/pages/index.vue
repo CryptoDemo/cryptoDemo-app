@@ -44,7 +44,7 @@
                                    <button  type="button"  @click.prevent="currentSlide  = 3"
                                    :class="currentSlide === 3 ? 'hidden': 'flex'"
                                    class="capitalize min-h-[56px] border
-                                    border-[#2873FF] hover:bg-[#2873FF] hover:text-[white] text-[#2873FF] rounded-2xl
+                                    border-[#2873FF] hover:bg-[#2873FF] scaling-animation hover:text-[white] text-[#2873FF] rounded-2xl
                                    text-[16px] p-[8px] text-center flex items-center justify-center 
                                    transition-all ease-in-out duration-300 ">
                                            skip
@@ -52,7 +52,7 @@
                
                                    <button  @click.prevent="next()" type="button" 
                                    :class="currentSlide === 3 ? 'hidden': 'flex'"
-                                   class="text-white min-h-[56px] bg-[#2873FF] hover:bg-blue-800 rounded-2xl 
+                                   class="text-white min-h-[56px] bg-[#2873FF] scaling-animation hover:bg-blue-800 rounded-2xl 
                                    text-[16px] p-[8px] text-center flex items-center justify-center capitalize
                                    transition-all ease-in-out duration-300">
                                            next
@@ -64,7 +64,7 @@
             
                                    <button   @click.prevent="navigateTo('/sign_Up')"    
                                     :class="currentSlide === 3 ? 'flex': 'hidden'"
-                                   type="button" class="text-white min-h-[56px] bg-[#2873FF] hover:bg-blue-800 rounded-2xl 
+                                   type="button" class="text-white min-h-[56px] scaling-animation  bg-[#2873FF] hover:bg-blue-800 rounded-2xl 
                                     text-[16px] p-[8px] text-center items-center capitalize justify-center col-span-2
                                     transition-all ease-in-out duration-300">
                                             
@@ -75,7 +75,7 @@
 
                                     <button @click.prevent="navigateTo('/login')" 
                                     :class="currentSlide === 3 ? 'flex': 'hidden'"  
-                                    type="button" class=" min-h-[56px] border border-[#2873FF] text-[#2873FF] rounded-2xl
+                                    type="button" class=" min-h-[56px] scaling-animation border border-[#2873FF] text-[#2873FF] rounded-2xl
                                     text-[16px] p-[8px] text-center  items-center capitalize justify-center col-span-2 mb-[40px]
                                     transition-all ease-in-out duration-300">
                                             login

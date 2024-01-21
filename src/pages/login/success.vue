@@ -21,7 +21,7 @@
 
             <div class=" fixed bottom-10 left-0 w-full px-6 flex flex-col justify-center items-center gap-4">
                 <button @click.prevent="navigateTo('/dashboard')"
-                class="btn-primary w-full">home</button>
+                class="btn-primary w-full scaling-animation">home</button>
                 <!-- <button class="btn-border w-full">skip</button> -->
             </div>
 

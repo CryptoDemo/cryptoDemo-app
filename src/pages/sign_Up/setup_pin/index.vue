@@ -26,7 +26,7 @@
     
             </div>
 
-            <button   @click.prevent="navigateTo('/sign_Up/setup_pin/success')" class="w-full btn-primary mt-[75px]">continue</button>
+            <button   @click.prevent="navigateTo('/sign_Up/setup_pin/success')" class="w-full btn-primary mt-[75px] scaling-animation">continue</button>
         </div>
 
     </div>

@@ -2,7 +2,7 @@
 <template>
 
     <div class="fixed w-full top-0 left-0 p-4 ">
-         <div class="flex justify-end">
+         <!-- <div class="flex justify-end">
  
              <onboardingIconsBigstar>
                   <slot></slot>
@@ -52,7 +52,13 @@
                      </OnboardingIconsShadow>
                  </div>
              </div>
-         </div>
+         </div> -->
+
+         <div class="flex justify-center items-center  min-h-[60vh]">
+        <div class="flex justify-center items-center ">
+             <img src="/onboarding/Image1.png"/>
+        </div>
+      </div>
  
  
          <div class="fixed bottom-0 left-0 h-[47vh] w-full">

@@ -64,7 +64,7 @@
                     
                     </div>
 
-                    <button @click.prevent="navigateTo('/dashboard')"  class=" btn-primary mt-[40px] mb-5 w-full">
+                    <button @click.prevent="navigateTo('/dashboard')"  class=" btn-primary mt-[40px] mb-5 w-full scaling-animation">
                         login
                     </button>
 

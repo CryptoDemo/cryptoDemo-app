@@ -5,19 +5,9 @@
 
     <div v-else class="px-6 py-[6px] bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
 
-        <div class="grid grid-cols-4 items-center">
-
-            <div>
-                <button @click.prevent="navigateTo('/dashboard/')" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
-                items-center me-2  text-black dark:bg-[#1B2537] dark:text-white">
-                    <Icon name="mdi:arrow-left" size="24" />
-                </button>
-            </div>
-
-            <span class=" col-span-2 dark:text-white font-bold text-center">Update username</span>
-
-
-        </div>
+       
+        <Appbar link="/dashboard" title="Update username" />
+        
 
         <div class=" mt-6">
            

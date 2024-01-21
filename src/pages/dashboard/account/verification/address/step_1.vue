@@ -16,7 +16,8 @@
     
                 <button
                         @click="showUsers"
-                        class="btn-border-primary border hover:border-blue-600 focus:ring-1 border-gray-300 text-center text-sm dark:bg-transparent
+                        class="btn-border-primary border hover:border-blue-600 focus:ring-1 border-gray-200 
+                        text-center text-sm dark:bg-transparent
                          text-[#10192D] dark:text-[#8E9BAE]  
                          dark:border-gray-700  w-full flex justify-between "
                     >
@@ -26,9 +27,9 @@
                 </button>
 
 
-                <div class=" border-b dark:border-gray-800  w-full  dark:bg-[#1B2537] 
+                <div class=" border-b dark:border-gray-800  w-full  dark:bg-transparent
                 dark:text-[#8E9BAE] 
-                rounded-2xl pb-2 mt-1 z"  v-show="usersToggle"   >
+                rounded-2xl pb-2 mt-1 z"  v-show="usersToggle" >
                        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -46,7 +47,8 @@
                     <div class="max-h-[215px] relative overflow-y-auto">
 
                         <div
-                            v-for="i in filteredItem.length? filteredItem : countries"  @click="showUsers(); selectedName = i.name"
+                            v-for="i in filteredItem.length? filteredItem : countries"  @click="showUsers(); 
+                            selectedName = i.name"
                             class="p-4 w-full"
                         >
                             <a href="#" class="flex items-center w-full rounded-xl  ">
@@ -90,7 +92,7 @@
                 </button>
 
 
-                <div class="bg-transparent  dark:border-gray-800 overflow-y-auto dark:bg-[#1B2537] dark:text-[#8E9BAE] 
+                <div class="bg-transparent  dark:border-gray-800 overflow-y-auto dark:bg-transparent dark:text-[#8E9BAE] 
                 rounded-2xl px-4 pb-2 mt-2 z-20"  v-show="docToggle">
                    
 

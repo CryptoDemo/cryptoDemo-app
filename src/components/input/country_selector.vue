@@ -33,7 +33,7 @@
               placeholder="Search countries..." required>
           </div>
   
-          <div class="h-[284px] border dark:border-gray-700  rounded-2xl overflow-y-scroll">
+          <div class="max-h-[284px] border dark:border-gray-700  rounded-2xl overflow-y-scroll">
             <ul  class="pb-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-phone-button">
               <li v-for="country in filteredPhoneNumbers.length ? filteredPhoneNumbers :  phoneNumbers" :key="country.code">
                 

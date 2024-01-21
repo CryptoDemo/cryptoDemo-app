@@ -14,7 +14,7 @@
             </div>
             <div class=" h-[20vh] flex flex-col justify-center items-center gap-4">
                 <button @click.prevent="navigateTo('/dashboard')"  
-                class="btn-primary w-full">done</button>
+                class="btn-primary w-full scaling-animation">done</button>
                 <!-- <button class="btn-border w-full">skip</button> -->
             </div>
         </div>

@@ -52,16 +52,7 @@
                             </div>
                             <Icon class="text-[#8E9BAE]" name="solar:alt-arrow-right-linear" size="20"/>
                         </div>
-                        <div class="flex justify-between items-center py-[21px] border-b border-gray-100 dark:border-gray-700">
-                            <div class=" flex justify-between items-center">
-                                <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center rounded-full">
-    
-                                    <Icon name="material-symbols:help-rounded" class="text-[#2873FF] dark:text-[#ffff]" size="20"/>
-                                </span>
-                                <span class="text-[#10192D]   dark:text-[#F8FAFC] ml-[22px] text-sm font-semibold capitalize">FAQ & Support</span>
-                            </div>
-                            <Icon class="text-[#8E9BAE]" name="solar:alt-arrow-right-linear" size="20"/>
-                        </div>
+                    
     
                 </div>
               <!--end of general settings section -->
@@ -70,7 +61,8 @@
               <!--start of preference settings section -->
                 <div class="mt-[32px] w-full">
                         <p class="pb-4 font-[700]">Preferences</p>
-                        <div class="flex justify-between items-center pb-[21px] border-b border-gray-100 dark:border-gray-700">
+
+                        <div @click.prevent="navigateTo('/dashboard/account/select_language')" class="flex justify-between items-center pb-[21px] border-b border-gray-100 dark:border-gray-700">
                             <div class=" flex justify-between items-center">
                                 <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center rounded-full">
     
@@ -219,6 +211,19 @@
                             </div>
                             <Icon class="text-[#8E9BAE]" name="solar:alt-arrow-right-linear" size="20"/>
                         </div>
+
+                        <div class="flex justify-between items-center py-[21px] border-b border-gray-100 dark:border-gray-700">
+                            <div class=" flex justify-between items-center">
+                                <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center rounded-full">
+    
+                                    <Icon name="material-symbols:help-rounded" class="text-[#2873FF] dark:text-[#ffff]" size="20"/>
+                                </span>
+                                <span class="text-[#10192D]   dark:text-[#F8FAFC] ml-[22px] text-sm font-semibold capitalize">FAQ & Support</span>
+                            </div>
+                            <Icon class="text-[#8E9BAE]" name="solar:alt-arrow-right-linear" size="20"/>
+                        </div>
+
+
                         <div class="flex justify-between items-center py-[21px] border-b border-gray-100 dark:border-gray-700">
                             <div class=" flex justify-between items-center">
                                 <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537]  inline-flex justify-center items-center rounded-full">

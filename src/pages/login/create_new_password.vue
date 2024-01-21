@@ -72,7 +72,7 @@
              </form>
            
 
-            <button @click.prevent="navigateTo('/login/success')"  class="w-full btn-primary mt-[40px]">create new password</button>
+            <button @click.prevent="navigateTo('/login/success')"  class="w-full btn-primary mt-[40px] scaling-animation">create new password</button>
         </div>
 
     </div>

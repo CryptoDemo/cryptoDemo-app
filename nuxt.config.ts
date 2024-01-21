@@ -32,7 +32,9 @@ export default defineNuxtConfig({
       },
       meta: [
         { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        // { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        {name:"viewport" ,content:"user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"},
+
         {
             hid: 'description',
             name: 'description',
@@ -41,7 +43,6 @@ export default defineNuxtConfig({
     ],
     },
   },
-
 
 
 

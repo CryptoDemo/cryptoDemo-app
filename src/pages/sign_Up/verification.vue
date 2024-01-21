@@ -28,7 +28,7 @@
     
             </div>
 
-            <button @click.prevent="navigateTo('/sign_Up/successful')"  class="w-full btn-primary mt-[75px]">Verify</button>
+            <button @click.prevent="navigateTo('/sign_Up/successful')"  class="w-full btn-primary mt-[75px] scaling-animation">Verify</button>
         </div>
 
     </div>

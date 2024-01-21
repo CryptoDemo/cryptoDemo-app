@@ -42,7 +42,7 @@
     
 
             <div class="fixed w-full left-0 bottom-10 px-6">
-                <button @click.prevent="navigateTo('/login/verify_password_reset')"  class="w-full btn-primary 
+                <button @click.prevent="navigateTo('/login/verify_password_reset')"  class="w-full btn-primary scaling-animation
                mt-[24px] ">continue</button>
             </div>
         </div>

@@ -28,7 +28,7 @@
     
             </div>
 
-            <button @click.prevent="navigateTo('/login/create_new_password')" class="w-full btn-primary mt-[75px]">Verify</button>
+            <button @click.prevent="navigateTo('/login/create_new_password')" class="w-full btn-primary mt-[75px] scaling-animation">Verify</button>
         </div>
 
     </div>

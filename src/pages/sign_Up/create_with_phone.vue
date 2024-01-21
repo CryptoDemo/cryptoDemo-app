@@ -1,7 +1,7 @@
 <template>
     <div class="px-[24px] pt-[6px] h-screen overflow-y-auto transition ease-linear duration-300 dark:bg-[#10192D] ">
             <div class="flex justify-between items-center">
-                
+
                 <button @click.prevent="$router.go(-1)" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
                 items-center me-2 dark:bg-[#1B2537] dark:text-white">
                     <Icon name="mdi:arrow-left" size="24" />
@@ -57,12 +57,14 @@
                     </div>
 
                     <button class=" btn-primary mb-5 w-full">create account</button>
-                    <button @click.prevent="navigateTo('/sign_Up')" class=" btn-border-primary  w-full">Create account with email</button>
+                    <button @click.prevent="navigateTo('/sign_Up')" 
+                    class=" btn-border-primary scaling-animation  w-full">Create account with email</button>
                </form>
 
 
                <div class="text-center mt-[80px] py-[20px] font-[400]  text-sm text-[#8E9BAE]">
-                   <span class="dark:text-[#8E9BAE]">Already registered? <a @click.prevent="navigateTo('/login')" class="text-[#2873FF] font-bold"> Login</a></span>
+                   <span class="dark:text-[#8E9BAE]">Already registered? <a @click.prevent="navigateTo('/login')" 
+                    class="text-[#2873FF] font-bold"> Login</a></span>
                </div>
 
             </div>
