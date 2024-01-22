@@ -1,70 +1,47 @@
 <template>
     <div class="px-[24px] pt-[6px] h-screen overflow-y-auto transition ease-linear duration-300 dark:bg-[#10192D] ">
-            <div class="flex justify-between items-center">
 
-                <button @click.prevent="$router.go(-1)" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
-                items-center me-2 dark:bg-[#1B2537] dark:text-white">
-                    <Icon name="mdi:arrow-left" size="24" />
-                </button>
-
-                <span @click.prevent="navigateTo('/sign_Up/referralCode')" class="text-[#2873FF] text-sm font-semibold leading-4">Apply referral code</span>
-            </div>
+        <SignupAppBar link="/dashboard" referral_link="/sign_Up/referralCode" referral=" Apply referral code"/>
 
             <div class="py-4">
 
-                <h3 class="text-2xl font-extrabold text-[#10192D]">Create account</h3>
-                <p class="text-sm text-[#64748B] dark:text-[#E2E8F0] font-[400] pt-4">It only takes a minute to create your account</p>
+                <Subappbar  heading="Create account" desc="It only takes a minute to create your account"/>
                 
-                <form class=" mt-[34px]">
+                <form class=" mt-[32px]">
 
                     <InputCountrySelector  :selectedNumber.sync="selectedNumber" :selectedIcon.sync="selectedIcon" :isdisabled="false" />
 
 
-                    <div class="mb-5">
+                    <div class="mb-4">
                        
-                        <div class="relative">
-                          
-                            <input v-model="password"
-                             :type="showPassword ? 'text' : 'password'"
-                             id="password" class="shadow-sm bg-transparent border border-gray-200 text-gray-900
-                            text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full py-[16px] px-[17px] dark:bg-transparent
-                            dark:border-gray-700 dark:placeholder-gray-400 dark:text-white " :placeholder="showPassword ? 'password' : '*******'" required>
-    
-                            <div @click="togglePasswordVisibility" class=" absolute end-2.5 bottom-4 dark:text-[#F8FAFC]">
-                                <Icon v-if="showPassword" name="material-symbols:visibility-outline-rounded" size="20" 
-                                class="transition ease-in-out duration-300 text-[#8E9BAE]"/>
-                                <Icon v-else name="material-symbols:visibility-off-outline-rounded" size="20"
-                                class="transition ease-in-out duration-300 text-[#8E9BAE]"/>
-                            </div>
-                        </div>
+                        <InputPassword/>
 
                     </div>
 
 
 
                 
-                    <div class="flex items-start mb-5">
-                        <div class="flex items-center h-5">
+                    <div class="flex items-center">
+                        <div class="flex items-center min-h-5">
                         <input id="terms" type="checkbox" value="" class="w-6 h-6 border border-gray-200 rounded-lg bg-transparent
-                        focus:ring-1 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600
-                         dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required>
+                        focus:ring-1 focus:ring-blue-300 " required>
                         </div>
-                        <label for="terms" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        <label for="terms" class="ms-2 mt-3 text-sm font-[400] text-[#8E9BAE] dark:text-[#E2E8F0]">
                             I agree with the 
-                            <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a> and
-                            <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">privacy policy</a>
+                            <a href="#" class="text-[#2873FF] font-[600] hover:underline dark:text-[#2873FF]">terms and conditions</a> 
+                            and
+                            <a href="#" class="text-[#2873FF] font-[600] hover:underline dark:text-[#2873FF]">privacy policy</a>
                         </label>
                     </div>
 
-                    <button class=" btn-primary mb-5 w-full">create account</button>
+                    <button class=" btn-primary mb-4  mt-[40px] w-full">create account</button>
                     <button @click.prevent="navigateTo('/sign_Up')" 
                     class=" btn-border-primary scaling-animation  w-full">Create account with email</button>
                </form>
 
 
-               <div class="text-center mt-[80px] py-[20px] font-[400]  text-sm text-[#8E9BAE]">
-                   <span class="dark:text-[#8E9BAE]">Already registered? <a @click.prevent="navigateTo('/login')" 
-                    class="text-[#2873FF] font-bold"> Login</a></span>
+               <div class="text-center mt-[80px] p-[20px] font-[400]  text-sm text-[#8E9BAE]">
+                   <span class="dark:text-[#8E9BAE] font-[400]">Already registered? <a   @click.prevent="navigateTo('/login')"  class="text-[#2873FF] font-bold"> Login</a></span>
                </div>
 
             </div>

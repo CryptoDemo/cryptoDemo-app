@@ -60,7 +60,7 @@
                 
                     <div class="flex justify-end w-full  mt-6">
                       
-                       <a @click.prevent="navigateTo('/login/reset_password_with_email')" href="#" class="text-blue-600 hover:underline dark:text-blue-500">Forgot Password?</a>
+                       <a @click.prevent="navigateTo('/login/reset_password_with_email')" href="#" class="text-blue-600 text-[14px] font-bold hover:underline dark:text-blue-500">Forgot Password?</a>
                     
                     </div>
 

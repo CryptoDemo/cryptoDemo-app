@@ -35,7 +35,7 @@
                 </div>
                 <div class="flex justify-end w-full  ">
                     <a @click.prevent="navigateTo('/login/reset_password_with_number')" href="#" 
-                    class="text-[#2873FF] hover:underline dark:text-[#2873FF] text-sm">Reset with phone number?</a>
+                    class="text-[#2873FF] hover:underline dark:text-[#2873FF] font-bold text-sm">Reset with phone number?</a>
                 </div>
 
             </div>

@@ -20,14 +20,15 @@
     }
 
     p{
-      @apply text-[#8E9BAE]  text-sm font-bold;
+      @apply text-[#8E9BAE] dark:text-[#E2E8F0]  font-[400]  text-sm self-stretch;
     }
 
     h1,h2,h3{
       @apply text-[#10192D]  text-sm font-[400] dark:text-[#F8FAFC]
     }
     .input{
-      @apply  dark:bg-transparent dark:border-gray-700 dark:text-[#F8FAFC]
+      @apply border-[#E2E8F0] border  p-[16px] outline-none  text-[#10192D] font-[600] text-sm  bg-transparent rounded-2xl  block w-full
+       dark:border-gray-800 dark:text-[#F8FAFC] focus:ring-1 focus:border-none placeholder:text-[#8E9BAE]
     }
   
 }

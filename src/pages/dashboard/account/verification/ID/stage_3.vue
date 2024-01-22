@@ -8,7 +8,6 @@
                <h3 class="text-2xl font-extrabold text-[#10192D] items-stretch">Let’s verify your identity</h3>
                <p class="text-sm text-[400] pt-4 text-[#8E9BAE]">This qualifies you to trade amounts larger than $1,000</p>
             </div>
-    
           
             <div class="my-6">
     
@@ -21,7 +20,6 @@
     
                 </button>
 
-                <transition name="dropdown">
 
                     <div class="bg-transparent dark:bg-transparent dark:text-[#8E9BAE]  overflow-y-scroll
                      rounded-xl  pb-2  z-20"  v-show="usersToggle">
@@ -57,7 +55,6 @@
                              </div>
                          </div>
                     </div>
-                </transition>
     
     
                     
@@ -304,25 +301,7 @@ background: #DBE8FF;
 }
 
 
-/* Add transition classes */
-/* Dropdown animation */
-.dropdown-enter-active,
-.dropdown-leave-active {
-  transition: opacity 0.3s, transform 0.3s;
-}
 
-.dropdown-enter, .dropdown-leave-to {
-  opacity: 0;
-  transform: translateY(-10px);
-}
 
-.dropdown-enter-active {
-  transition: opacity 0.3s, transform 0.3s;
-}
-
-.dropdown-enter {
-  opacity: 0;
-  transform: translateY(-10px);
-}
 
 </style>

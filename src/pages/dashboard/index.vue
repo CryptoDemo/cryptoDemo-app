@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen overflow-y-scroll bg-[#ffff]   dark:bg-gray-900">
+    <div class="h-screen overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]">
 
 
         <KeepAlive>
@@ -11,7 +11,8 @@
         </KeepAlive>
 
 
-        <div class="px-[30px] min-h-[56px] nav-shadow  z-40 text-gray-400 fixed bottom-0 left-0 w-full bg-[#f7f6f6] dark:bg-[#10192D] shadow-2xl">
+        <div class="px-[30px] min-h-[56px] nav-shadow  z-40 text-gray-400 fixed bottom-0 left-0 w-full
+         bg-[#f7f6f6] dark:bg-[#10192D] shadow-2xl">
             <div class="flex justify-between items-center  w-full  py-[15.87px] shadow-[#262c33]">
 
 

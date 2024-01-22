@@ -1,6 +1,6 @@
 <template>
 
-    <div class="h-screen overflow-y-scroll bg-[#ffff]   dark:bg-gray-900  w-full px-6">
+    <div class="h-screen overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full px-6">
 
           <h2 class=" text-[20px] font-[800] pt-[15px]">Account</h2>
 
@@ -83,7 +83,7 @@
                             <InputRadio :toggleValue="isDark" @toggleChanged="toggleDark"/>
                         </div>
     
-                        <div class="flex justify-between items-center py-[21px] border-b border-gray-100 dark:border-gray-700">
+                        <div @click.prevent="navigateTo('/dashboard/account/select_currency')" class="flex justify-between items-center py-[21px] border-b border-gray-100 dark:border-gray-700">
                             <div class=" flex justify-between items-center">
                                 <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center rounded-full">
     
@@ -93,7 +93,7 @@
                             </div>
                             <Icon class="text-[#8E9BAE]" name="solar:alt-arrow-right-linear" size="20"/>
                         </div>
-                        <div class="flex justify-between items-center py-[21px] border-b border-gray-100 dark:border-gray-700">
+                        <div  @click.prevent="navigateTo('/dashboard/account/notification_settings')" class="flex justify-between items-center py-[21px] border-b border-gray-100 dark:border-gray-700">
                             <div class=" flex justify-between items-center">
                                 <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center rounded-full">
     
@@ -112,7 +112,7 @@
               <!--start of security settings section -->
                 <div class="mt-[32px] w-full">
                         <p class="pb-4 font-[700]">Security</p>
-                        <div class="flex justify-between items-center pb-[21px] border-b border-gray-100 dark:border-gray-700">
+                        <div   @click.prevent="navigateTo('/dashboard/account/change_pin')" class="flex justify-between items-center pb-[21px] border-b border-gray-100 dark:border-gray-700">
                             <div class=" flex justify-between items-center">
                                 <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center rounded-full">
                                     <Icon name="tabler:shield-lock-filled" class="text-[#2873FF] dark:text-[#ffff]" size="20"/>
@@ -269,6 +269,7 @@ const toggleDark = useToggle(isDark)
 const toggleShowFingerprint =()=>{
     showFingerprint.value = !showFingerprint.value;
 }
+
 
 
 

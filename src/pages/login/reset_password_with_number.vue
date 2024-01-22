@@ -26,7 +26,7 @@
 
                 <div class=" w-full flex justify-end  ">
                     <a @click.prevent="navigateTo('/login/reset_password_with_email')" href="#" 
-                    class="text-[#2873FF] hover:underline dark:text-[#2873FF] text-sm">Reset with email?</a>
+                    class="text-[#2873FF] hover:underline dark:text-[#2873FF] font-bold text-sm">Reset with email?</a>
                 </div>
 
             </div>

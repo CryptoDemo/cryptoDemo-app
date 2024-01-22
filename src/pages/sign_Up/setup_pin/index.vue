@@ -14,7 +14,7 @@
             <div class=" my-6  text-center">
            
                   <h3 class="text-2xl font-bold text-[#10192D] ">Create New Pin</h3>
-                  <p class="text-sm text-[400] pt-4 text-[#8E9BAE] dark:text-[#E2E8F0]">This adds an extra layer of security to your account. Use pin to unlock app!</p>
+                  <p class="text-sm font-[400] pt-4 text-[#8E9BAE] dark:text-[#E2E8F0]">This adds an extra layer of security to your account. Use pin to unlock app!</p>
             </div>
     
     

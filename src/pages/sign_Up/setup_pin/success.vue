@@ -10,7 +10,7 @@
             </div>
             <div class=" h-[25vh] text-center">
                 <h2 class="text-2xl text-[#10192D] font-extrabold">Successful</h2>
-                <p class="text-[#8E9BAE] mt-2">Your pin has been set successfully!</p>
+                <p class="text-[#8E9BAE] mt-2 font-[400]">Your pin has been set successfully!</p>
             </div>
             <div class=" h-[20vh] flex flex-col justify-center items-center gap-4">
                 <button @click.prevent="navigateTo('/dashboard')"  

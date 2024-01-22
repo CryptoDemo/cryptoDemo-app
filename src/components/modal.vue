@@ -8,7 +8,7 @@
       <div class="bg-[#F1F5F9] rounded-lg px-5 py-6 w-96 fade z-50">
         <!-- Your modal content goes here -->
         <div>
-          <h2 class="text-xl font-bold mb-4 text-[#10192D] text-center">Confirm changes</h2>
+          <h2 class="text-xl font-bold mb-4 text-[#10192D] dark:text-[#10192D] text-center">Confirm changes</h2>
           <p class="text-sm text-[#8E9BAE] font-[400] text-center">To apply the language change, please restart the app.</p>
         </div>
   

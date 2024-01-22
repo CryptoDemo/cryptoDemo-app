@@ -78,7 +78,9 @@
         v-for="i in length"
         :key="i"
         @input="(e) => handleInput(e, i - 1)"
-        class="w-[56px] h-[56px] rounded-2xl text-[20px] text-center border-gray-200 dark:border-gray-800  font-extrabold dark:bg-transparent
+        class="w-[56px] h-[56px] rounded-2xl text-[20px] text-center focus:ring-1 hover:border-[#2873ff] 
+        focus:border-[#2873ff] border-gray-200 dark:border-gray-800 focus:border
+         font-extrabold dark:bg-transparent
          dark:text-[#E2E8F0]"
         v-model="otpArray[i - 1]"
         type="text"
@@ -110,7 +112,7 @@
   function handleInput(event, i) {
     const keypressed = event.data;
   
-    if (event.inputType === 'deleteContentBackward' || event.inputType === 'deleteContentForward') {
+    if (event.inputType === 'deleteContentBackward' || event.inputType === 'deleteContentForward' || event.inputType === 'Delete' ||  event.inputType === 'Backspace') {
       // Handle deletion (Backspace or Delete key)
       otpArray.value[i] = null;
       if (i > 0) {

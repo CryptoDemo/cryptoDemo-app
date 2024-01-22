@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-5 mt-4">
+    <div class="mb-4">
       <div class="flex items-center relative">
         <button
           @click.prevent="toggleCountrySelector"
@@ -27,9 +27,7 @@
               </svg>
             </div>
             
-            <input v-model.trim="searchInput" type="search" id="default-search" class="block w-full my-3  p-4 ps-10 text-sm focus:border-0 
-              text-gray-900 border border-gray-300 rounded-2xl bg-gray-50 focus:outline-none   
-              dark:bg-transparent  dark:border-gray-700 dark:text-white" 
+            <input v-model.trim="searchInput" type="search" id="default-search" class="input my-3  p-4 ps-10 " 
               placeholder="Search countries..." required>
           </div>
   
@@ -62,8 +60,7 @@
             :disabled="props.isdisabled"
               type="phone"
               id="phone-input"
-              class="block py-[16px] px-[17px] pl-[120px] w-full z-20 text-sm outline-none text-gray-900 bg-transparent 
-              rounded-2xl border border-gray-200 dark:bg-transparent dark:border-s-gray-700 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white"
+              class="input  pl-[120px] w-full z-20"
               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               placeholder="123-456-7890"
               required

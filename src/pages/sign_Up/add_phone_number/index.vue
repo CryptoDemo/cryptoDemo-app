@@ -71,39 +71,6 @@ onMounted(()=>{
 
 <style scoped>
 
-.shutter-from-top{
-    animation: shutter 0.5s ease-in-out ;
-}
-@keyframes shutter {
-    0%{
-        transform:rotateY(-100deg);
-        /* max-height: 0; */
-        transform-origin:top;
-        opacity:0;
-    }
-    100%{
-        transform:rotateY(0deg);
-        /* max-height: 100%; */
-        transform-origin:top;
-        opacity:1;
-    }
-}
 
-.shutter-from-bottom{
-    animation: shutterBack 0.9s ease-in-out ;
-}
-@keyframes shutterBack {
-    0%{ 
-        transform:rotateX(0deg);
-        transform-origin:top;
-        opacity:1;
-    }
-
-    100%{
-        transform:rotateX(70deg);
-        transform-origin:top;
-        opacity:0;
-    }
-}
 
 </style>

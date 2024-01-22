@@ -12,7 +12,7 @@
 
         
         <div>
-            <div class="my-5">
+            <div class="my-4">
     
                 <button
                         @click="showUsers"
@@ -64,21 +64,21 @@
         
              </div>
 
-             <div class="mb-5">
+             <div class="mb-4">
                 <input type="text" id="state" class="shadow-sm bg-transparent border border-gray-300 text-[#10192D] dark:text-[#8E9BAE] 
                 text-sm rounded-2xl  block w-full py-[17px] px-[17px] dark:bg-transparent
                 placeholder:text-[#10192D] font-['Open_Sans'] dark:placeholder:text-[#8E9BAE]
                 dark:border-gray-700" placeholder="Region/State" required>
             </div>
 
-             <div class="mb-5">
+             <div class="mb-4">
                 <input type="text" id="state" class="shadow-sm bg-transparent border border-gray-300 
                 text-[#10192D] dark:text-[#8E9BAE] placeholder:text-[#10192D] font-['open_sans'] dark:placeholder:text-[#8E9BAE]
                 text-sm rounded-2xl  block w-full py-[17px] px-[17px] dark:bg-transparent
                 dark:border-gray-700" placeholder="City" required>
             </div>
 
-            <div class="my-5">
+            <div class="my-4">
     
                 <button
                         @click="showDocs"
@@ -112,14 +112,14 @@
 
             </div>
 
-            <div class="mb-5">
+            <div class="mb-4">
                 <input type="text" id="address" class="shadow-sm bg-transparent border border-gray-300 
                 text-[#10192D] dark:text-[#8E9BAE] placeholder:text-[#10192D] font-['open_sans'] 
                 dark:placeholder:text-[#8E9BAE]
                 text-sm rounded-2xl  block w-full py-[17px] px-[17px] dark:bg-transparent
                 dark:border-gray-700" placeholder="Address line " required>
             </div>
-            <div class="mb-5 relative">
+            <div class="mb-4 relative">
                 <input type="text" id="address" class="shadow-sm bg-transparent border border-gray-300 
                 text-[#10192D] dark:text-[#8E9BAE] placeholder:text-[#10192D] font-['open_sans'] dark:placeholder:text-[#8E9BAE]
                 text-sm rounded-2xl  block w-full py-[17px] px-[17px] 
@@ -127,7 +127,7 @@
                 dark:border-gray-700" placeholder="Address line 2" >
                 <span class="absolute right-4 bottom-4 text-sm text-[#8E9BAE]">Optional</span>
             </div>
-            <div class="mb-5">
+            <div class="mb-4">
                 <input type="text" id="postal code" class="shadow-sm bg-transparent border border-gray-300 
                 text-[#10192D] dark:text-[#8E9BAE] placeholder:text-[#10192D] font-['open_sans'] dark:placeholder:text-[#8E9BAE]
                 text-sm rounded-2xl  block w-full py-[17px] px-[17px] dark:bg-transparent
