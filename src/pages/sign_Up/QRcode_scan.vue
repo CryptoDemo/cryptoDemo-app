@@ -1,20 +1,20 @@
 <template>
     <div class="px-[24px] pt-[6px] h-screen overflow-y-auto transition ease-linear duration-300 dark:bg-[#10192D]">
 
-        <!-- <div class="flex justify-between items-center">
+        <LoginAppBar link="/sign_Up/referralCode"/>
 
-            <button @click.prevent="$router.go(-1)" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
-            items-center me-2  text-black dark:bg-[#1B2537] dark:text-white">
-
-                <Icon name="mdi:arrow-left" size="24" />
-
-        </button> -->
-        <LoginAppBar link="$router.go(-1)"/>
-
-        <div>
-            <h1 class="">Scan QR code</h1>
+        <div class="pt-[72px] text-center">
+            <h1 class="font-extrabold text-[24px] text-[#10192D]">Scan QR code</h1>
         </div>
 
+        <div class="mt-[166px] relative flex items-center justify-center">
+
+            <img class="absolute" src="/qr_code/Select1.png"/>
+
+             <IconsBarCode />
+            <img class="absolute" src="/qr_code/Rectangle25.png"/>
+
+        </div>
 
     </div>
 </template>

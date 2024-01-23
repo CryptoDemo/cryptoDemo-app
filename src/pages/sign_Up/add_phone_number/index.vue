@@ -5,28 +5,17 @@
     <div class="max-w-full h-screen overflow-y-auto  bg-white dark:bg-[#10192D] transition ease-linear duration-300">
         <div class="px-6 pt-[6px]">
 
-            <div class="flex justify-between items-center mb-3">
-    
-                <button @click.prevent="navigateTo('/sign_Up')" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
-                items-center me-2  dark:bg-[#1B2537] dark:text-white">
-                    <Icon name="mdi:arrow-left" size="24" />
-                </button>
-    
-            </div>
+            <LoginAppBar link="/sign_Up"/>
 
             
-            <div class=" my-4">
-           
-                  <h3 class=" text-2xl font-bold text-[#10192D]">Add phone number</h3>
-                  <p class="text-sm text-[400] pt-4 text-[#8E9BAE]">
-                    It only takes a minute to do this for an extra layer of security to your account.
-                </p>
+            <div class="mb-[34px]">
+                <Subappbar  heading="Add phone number" desc=" It only takes a minute to do this for an extra layer of security to your account."/>
             </div>
     
             <InputCountrySelector  :selectedNumber.sync="selectedNumber" :selectedIcon.sync="selectedIcon" :isdisabled="false" />
     
            
-             <div class="mt-[140px] flex gap-5 transition ease-in-out duration-500">
+             <div class="fixed bottom-5 left-0 w-full px-6 flex gap-5 transition ease-in-out duration-500">
 
                  <button @click.prevent="navigateTo('/dashboard')" class="w-full btn-border-primary scaling-animation ">skip</button>
                  <button  @click.prevent="navigateTo('/sign_Up/add_phone_number/success')"   class="w-full btn-primary scaling-animation">save</button>
@@ -50,15 +39,18 @@
 <script setup>
   
 import { initFlowbite} from 'flowbite'
+import { showKeyboard } from '@/composables/capacitor_plugins'
+
 
 
 const  selectedNumber = ref('+1')
 const selectedIcon = ref('us')
 
-
+// const keyboard = await showKeyboard()
 
 
 onMounted(()=>{
+    // keyboard()
     initFlowbite();
 })
 

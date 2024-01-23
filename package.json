@@ -26,6 +26,7 @@
     "@capacitor/android": "^5.6.0",
     "@capacitor/core": "^5.6.0",
     "@capacitor/ios": "^5.6.0",
+    "@capacitor/keyboard": "^5.0.7",
     "@growthbunker/vueflags": "^0.1.14",
     "@pinia/nuxt": "^0.5.1",
     "flowbite": "^2.2.1",

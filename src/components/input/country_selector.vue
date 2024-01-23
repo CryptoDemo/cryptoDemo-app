@@ -18,16 +18,20 @@
            </svg>
         </button>
   
-            <div v-show="usersToggle" :class="{ 'shutter-from-top': usersToggle }" id="dropdown-phone" class="z-20 absolute top-14 w-full bg-white dark:bg-[#10192D] rounded-lg">
+          <div v-show="usersToggle" id="dropdown-phone" class="z-20 absolute top-14 w-full bg-white dark:bg-[#10192D] rounded-lg">
             <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
           <div class="relative">
+
             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-              <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-              </svg>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"  :stroke="isDark?'#8E9BAE':'#10192D'" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M22 22L20 20"  :stroke="isDark?'#8E9BAE':'#10192D'" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+
             </div>
             
-            <input v-model.trim="searchInput" type="search" id="default-search" class="input my-3  p-4 ps-10 " 
+            <input v-model.trim="searchInput" type="search" id="default-search" class="input my-3  p-4 ps-12 " 
               placeholder="Search countries..." required>
           </div>
   
@@ -39,8 +43,8 @@
                   hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-gray-200 dark:hover:text-white" role="menuitem">
                   <div class="flex justify-between items-center w-full">
                     <div class="gap-x-4 flex justify-between items-center">
-                      <country-flag :country="country.icon" size="big" class="rounded"/>
-                      <span>{{ country.name }}</span> 
+                      <country-flag :country="country.icon" size="normal" class="rounded"/>
+                      <span class="pt-2 dark:text-[#F8FAFC] text-[#10192D] text-[16px]">{{ country.name }}</span> 
                     </div>
                     <span>{{ country.code }} </span>
                   </div>
@@ -49,7 +53,7 @@
             </ul>
             <!-- <div v-else class="text-gray-700 dark:text-gray-200 py-2">No matching countries found</div> -->
           </div>
-        </div>
+          </div>
 
 
         <label for="phone-input" class=" text-sm font-medium text-gray-900 sr-only dark:text-white">

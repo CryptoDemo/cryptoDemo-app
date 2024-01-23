@@ -1,34 +1,42 @@
 <template>
 
     <div class="max-w-full  h-screen overflow-y-auto mx-auto dark:bg-[#10192D] transition ease-linear duration-300">
-        <div class=" px-6 pt-[6px] ">
-            <div class="flex justify-between items-center mb-3">
+        <div class=" px-6 ">
+           
+            <div class="dark:bg-[#10192D] bg-white fixed w-full top-0 left-0 px-6 py-[10px]">
     
-                <button @click="$router.go(-1)" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
-                items-center me-2   text-black dark:bg-[#1B2537] dark:text-white">
-                    <Icon name="mdi:arrow-left" size="24" />
-                </button>
-    
+                <div class="flex justify-between items-center dark:bg-[#10192D] w-full">
+                    <button  @click.prevent="$router.go(-1)" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
+                    items-center me-2 text-black dark:bg-[#1B2537] dark:text-white">
+                        <Icon name="mdi:arrow-left" size="24"/>
+                    </button>
+
+                
+                </div>
+
             </div>
             
-            <div class=" my-4 ">
-           
-                  <h3 class="text-2xl font-bold text-[#10192D]">Enter Verification Code</h3>
-                  <p class="text-sm font-[400] pt-4 text-[#8E9BAE]">Enter the 4-digit code  we just send to your email 
-                    <span class="text-[#10192D]">juliajames@gmail.com.</span></p>
+            <div class="pt-[8px] ">
+                
+                    <Subappbar  heading="Enter Verification Code" 
+                    desc=" Enter the 4-digit code  we just send to your email "
+                    span="juliajames@gmail.com."/>
+
             </div>
     
     
     
-            <div class="mt-[42px] px-[12px] flex flex-col justify-center items-center">
+            <div class="pt-[44px] px-[12px] text-center flex flex-col justify-center items-center">
                    
                     <InputOtp :length="4" @entered=" v => otpvalue = v"/>  
                         
-                      <p class="mt-[38px]">Resend code in <span class="text-[#2873FF]">29:58</span></p>  
+                      <p class="mt-[32px] text-sm text-[#10192D] dark:text-[#F8FAFC]">Resend code in <span class="text-[#2873FF]">29:58</span></p>  
     
             </div>
 
-            <button @click.prevent="navigateTo('/login/create_new_password')" class="w-full btn-primary mt-[75px] scaling-animation">Verify</button>
+            <div class="fixed bottom-5 left-0 w-full px-6">
+                <button @click.prevent="navigateTo('/login/create_new_password')" class="w-full btn-primary  scaling-animation">Verify</button>
+            </div>
         </div>
 
     </div>

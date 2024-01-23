@@ -12,7 +12,7 @@
                 <h2 class="text-2xl text-[#10192D] font-extrabold">Saved</h2>
                 <p class="text-[#8E9BAE] mt-2">Your phone number has been saved <br> successfully</p>
             </div>
-            <div class=" h-[20vh] flex flex-col justify-center items-center gap-4">
+            <div class="fixed bottom-5 left-0 px-6  w-full flex flex-col justify-center items-center gap-4">
                 <button @click.prevent="navigateTo('/sign_Up/setup_pin')"  
                 class="btn-primary w-full">done</button>
                 <!-- <button class="btn-border w-full">skip</button> -->
