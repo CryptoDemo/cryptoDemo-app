@@ -1,12 +1,12 @@
 <template>
 
-    <div class="px-6 py-[6px] bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
+    <div class="px-6  bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
 
         <Appbar link="/dashboard" title="Address verification" />
 
-        <div class=" mt-[20px]">
+        <div class=" pt-[72px]">
            
-           <p class="text-sm text-[400]  text-[#8E9BAE]">This can only be done after ID verification</p>
+           <p class="text-sm font-[400]  text-[#8E9BAE]">This can only be done after ID verification</p>
         </div>
 
       

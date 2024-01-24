@@ -2,12 +2,12 @@
 
 <template>
 
-    <div class="px-[24px] pt-[6px] dark:bg-[#10192D] h-screen overflow-y-auto transition ease-linear duration-300">
+    <div class="px-[24px]  dark:bg-[#10192D] h-screen overflow-y-auto transition ease-linear duration-300">
 
           
             <LoginAppBar link="/dashboard"/>
 
-            <div class="py-4">
+            <div class="">
 
                 <Subappbar  heading="Login" desc="You have been missed!"/>
 

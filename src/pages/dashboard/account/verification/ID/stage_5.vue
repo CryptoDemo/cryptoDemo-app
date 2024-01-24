@@ -1,16 +1,16 @@
 <template>
 
-    <div class="px-6 py-[6px] bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
+    <div class="px-6  bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
 
         <Appbar link="/dashboard/account/verification" title="ID Verification" />
 
-        <div class=" mt-6">
+        <div class="pt-[72px]">
            
-           <p class="text-sm text-[400] pt-4 text-[#8E9BAE]">Take a photo of front of your Identity Card</p>
+           <p class="text-sm font-[400] text-[#8E9BAE]">Take a photo of front of your Identity Card</p>
         </div>
 
       
-        <div class=" mt-[18vh] relative p-[14px] mx-[20vw]">
+        <div class=" mt-[15vh] relative p-[14px] mx-[20vw]">
            
             <!-- <svg class="absolute top-0 left-0 " xmlns="http://www.w3.org/2000/svg" width="39" height="36" viewBox="0 0 39 36" fill="none">
             <path d="M2 35.5V14C2 7.37258 7.37258 2 14 2H28H38.5"   :stroke="!isDark? '#8E9BAE' :'#F8FAFC'"  stroke-width="3"/>

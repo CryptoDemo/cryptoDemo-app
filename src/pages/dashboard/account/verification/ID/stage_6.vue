@@ -3,27 +3,16 @@
     <Successful v-if="show_successful" title="sucessful" subtitle="`Your document has been successfully  uploaded and is under review!`"/>
     <div v-else class="px-6 py-[6px] bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
 
-        <div class="grid grid-cols-4 items-center">
+     
+        <Appbar link="/dashboard/account/verification" title="ID Verification" />
 
-            <div>
-                <button @click.prevent="navigateTo('/dashboard/account/verification')" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
-                items-center me-2  text-black dark:bg-[#1B2537] dark:text-white">
-                    <Icon name="mdi:arrow-left" size="24" />
-                </button>
-            </div>
-
-            <span class=" col-span-2 dark:text-white font-bold text-center">ID Verification</span>
-
-
-        </div>
-
-        <div class=" mt-6">
+        <div class=" pt-[72px]">
            
-           <p class="text-sm text-[400] pt-4 text-[#8E9BAE]">Take a photo of front of your Identity Card</p>
+           <p class="text-sm font-[400]  text-[#8E9BAE]">Take a photo of front of your Identity Card</p>
         </div>
 
       
-        <div class=" mt-[130px] relative p-[14px]">
+        <div class=" mt-[15vh] relative p-[14px]">
            
             <!-- <svg class="absolute top-0 left-0 " xmlns="http://www.w3.org/2000/svg" width="39" height="36" viewBox="0 0 39 36" fill="none">
             <path d="M2 35.5V14C2 7.37258 7.37258 2 14 2H28H38.5"   :stroke="!isDark? '#8E9BAE' :'#F8FAFC'"  stroke-width="3"/>
