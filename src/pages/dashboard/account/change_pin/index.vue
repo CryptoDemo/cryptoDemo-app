@@ -1,28 +1,32 @@
 <template>
 
-<Successful v-if="show_successful" title="sucessful" subtitle="`You have successfully changed your  username permanently`"/>
+<Successful v-if="show_successful" title="sucessful" subtitle="You have successfully changed your  pin"/>
 
-    <div v-else class="max-w-full h-screen overflow-y-auto  dark:bg-[#10192D] transition ease-linear duration-300">
+    <div v-else class=" h-screen overflow-y-auto  dark:bg-[#10192D] transition ease-linear duration-300">
         <div class="px-6 pt-[6px] ">
             <Appbar link="/dashboard" title="Change pin" />
             
             <div  v-if="reveal === 0" class=" my-6  text-center">
            
-                  <h3 class="text-2xl font-bold text-[#10192D] ">Enter PIN</h3>
-                  <p class="text-sm text-[400] pt-4 text-[#8E9BAE] dark:text-[#E2E8F0]">
-                    Enter your current pin</p>
+                    <Subappbar heading="Enter PIN" 
+                    desc="Enter your current pin "
+                />
+    
             </div>
             <div  v-if="reveal === 1" class=" my-6  text-center">
            
-                  <h3 class="text-2xl font-bold text-[#10192D] ">Set new PIN</h3>
-                  <p class="text-sm text-[400] pt-4 text-[#8E9BAE] dark:text-[#E2E8F0]">
-                    Enter a new pin to secure your wallet</p>
+                 
+                    <Subappbar heading="Set new PIN" 
+                    desc=" Enter a new pin to secure your walletn "
+                />
+                    
             </div>
             <div  v-if="reveal === 2" class=" my-6  text-center">
            
-                  <h3 class="text-2xl font-bold text-[#10192D] ">Re-enter new PIN</h3>
-                  <p class="text-sm text-[400] pt-4 text-[#8E9BAE] dark:text-[#E2E8F0]">
-                    Re-enter new pin to secure your wallet</p>
+                
+                    <Subappbar heading="Re-enter new PIN" 
+                    desc=" Re-enter new pin to secure your wallet "
+                />
             </div>
     
     

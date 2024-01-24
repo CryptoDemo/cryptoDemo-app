@@ -15,19 +15,26 @@
     .btn-border{
       @apply text-[#2873FF] dark:bg-[#1B2537] dark:text-white dark:border-none   border capitalize border-[#2873FF]  rounded-2xl  font-medium  text-[16px]  p-[16px]  text-center;
     }
+
     .btn-border-primary{
       @apply text-[#2873FF] dark:bg-transparent   border capitalize border-[#2873FF]  rounded-2xl  font-medium  text-[16px]  p-[16px]  text-center;
     }
 
+
     p{
-      @apply text-[#8E9BAE] dark:text-[#E2E8F0]  font-[400]  text-sm self-stretch;
+      @apply text-[#8E9BAE]   font-[400]  text-sm self-stretch;
     }
 
+
     h1,h2,h3{
-      @apply text-[#10192D]  text-sm font-[400] dark:text-[#F8FAFC]
+      @apply text-[#10192D]  text-sm font-[400] dark:text-[#F8FAFC];
+
     }
+
+
     .input{
-      @apply border-[#E2E8F0] border  p-[16px] outline-none  text-[#10192D] font-[600] text-sm  bg-transparent rounded-2xl  block w-full
+      @apply border-[#E2E8F0] border  p-[16px] outline-none  text-[#10192D] font-[400] text-sm  bg-transparent rounded-2xl
+        block w-full
        dark:border-[#1B2537] dark:text-[#F8FAFC] focus:ring-1 focus:border-none placeholder:text-[#8E9BAE]
     }
   

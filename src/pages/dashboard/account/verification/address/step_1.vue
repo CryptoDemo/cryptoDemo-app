@@ -1,13 +1,13 @@
 <template>
 
-    <div class="px-6 py-[6px] bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
+    <div class="px-6 pb-4  bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
 
         
         <Appbar link="/dashboard/account/verification" title="Address verification" />
 
-        <div class=" mt-[20px]">
+        <div class=" pt-[72px]">
            
-           <p class="text-sm font-[700] text-[#8E9BAE]">Complete this form to increase your trading limit</p>
+           <p class="text-sm font-[400] text-[#8E9BAE]">Complete this form to increase your trading limit</p>
         </div>
 
         
@@ -16,25 +16,25 @@
     
                 <button
                         @click="showUsers"
-                        class="btn-border-primary border hover:border-blue-600 focus:ring-1 border-gray-200 
-                        text-center text-sm dark:bg-transparent
-                         text-[#10192D] dark:text-[#8E9BAE]  
-                         dark:border-gray-700  w-full flex justify-between "
+                        class="btn-border-primary dark:bg-transparent text-[#8E9BAE]  w-full flex text-sm
+                        justify-between items-center  border-[#E2E8F0] border dark:border-[#1B2537]"
                     >
                         <span>{{ selectedName || 'Country of residence' }}</span>
-                        <Icon name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300"/>
+                        <Icon name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
+                         dark:text-[#FFFFFF]"/>
 
                 </button>
 
 
-                <div class=" border-b dark:border-gray-800  w-full  dark:bg-transparent
+                <div class=" border-b dark:border-[#1B2537]  w-full  dark:bg-transparent
                 dark:text-[#8E9BAE] 
                 rounded-2xl pb-2 mt-1 z"  v-show="usersToggle" >
                        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"  :stroke="isDark?'#8E9BAE':'#8E9BAE'" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M22 22L20 20"  :stroke="isDark?'#8E9BAE':'#8E9BAE'" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
                             
@@ -54,7 +54,7 @@
                             <a href="#" class="flex items-center w-full rounded-xl  ">
                                 
                             <country-flag :country='i.icon' size='big' class=" rounded-xl"/>
-                            <span class="px-4 text-lg text-[#10192D] dark:text-[#8E9BAE]">{{ i.name }}</span>
+                            <span class="px-4 text-lg text-[#10192D] dark:text-[#F8FAFC]">{{ i.name }}</span>
                             </a>
                         </div>
                     </div>
@@ -65,34 +65,28 @@
              </div>
 
              <div class="mb-4">
-                <input type="text" id="state" class="shadow-sm bg-transparent border border-gray-300 text-[#10192D] dark:text-[#8E9BAE] 
-                text-sm rounded-2xl  block w-full py-[17px] px-[17px] dark:bg-transparent
-                placeholder:text-[#10192D] font-['Open_Sans'] dark:placeholder:text-[#8E9BAE]
-                dark:border-gray-700" placeholder="Region/State" required>
+                <input type="text" id="state" class="input" placeholder="Region/State" required>
             </div>
 
              <div class="mb-4">
-                <input type="text" id="state" class="shadow-sm bg-transparent border border-gray-300 
-                text-[#10192D] dark:text-[#8E9BAE] placeholder:text-[#10192D] font-['open_sans'] dark:placeholder:text-[#8E9BAE]
-                text-sm rounded-2xl  block w-full py-[17px] px-[17px] dark:bg-transparent
-                dark:border-gray-700" placeholder="City" required>
+                <input type="text" id="state" class="input" placeholder="City" required>
             </div>
 
-            <div class="my-4">
+            <div class="mb-4">
     
                 <button
                         @click="showDocs"
-                        class="btn-border-primary text-sm dark:bg-transparent hover:border-blue-600 focus:ring-1
-                        text-[#10192D] dark:text-[#8E9BAE] placeholder:text-[#10192D] font-['open_sans'] dark:placeholder:text-[#8E9BAE] dark:border-gray-700
-                        border-gray-300 w-full flex justify-between"
+                        class="btn-border-primary dark:bg-transparent text-[#8E9BAE]  w-full flex text-sm
+                        justify-between items-center  border-[#E2E8F0] border dark:border-[#1B2537]"
                     >
                         <span>{{ selectedDocument || 'Document type' }}</span>
-                        <Icon name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300"/>
+                        <Icon name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
+                         dark:text-[#FFFFFF]"/>
 
                 </button>
 
 
-                <div class="bg-transparent  dark:border-gray-800 overflow-y-auto dark:bg-transparent dark:text-[#8E9BAE] 
+                <div class="bg-transparent  dark:border-[#1B2537] overflow-y-auto dark:bg-transparent dark:text-[#8E9BAE] 
                 rounded-2xl px-4 pb-2 mt-2 z-20"  v-show="docToggle">
                    
 
@@ -103,7 +97,7 @@
                         <a href="#" class="flex items-center w-full rounded-xl bg- 
                                         blue-100 ">
                             <img :src="i.img"/>
-                        <span class="px-4 text-lg text-[#10192D] dark:text-[#8E9BAE]">{{ i.name }}</span>
+                        <span class="px-4 text-lg text-[#10192D] dark:text-[#F8FAFC]">{{ i.name }}</span>
                         </a>
                     </div>
                 </div>
@@ -113,25 +107,14 @@
             </div>
 
             <div class="mb-4">
-                <input type="text" id="address" class="shadow-sm bg-transparent border border-gray-300 
-                text-[#10192D] dark:text-[#8E9BAE] placeholder:text-[#10192D] font-['open_sans'] 
-                dark:placeholder:text-[#8E9BAE]
-                text-sm rounded-2xl  block w-full py-[17px] px-[17px] dark:bg-transparent
-                dark:border-gray-700" placeholder="Address line " required>
+                <input type="text" id="address" class="input" placeholder="Address line " required>
             </div>
             <div class="mb-4 relative">
-                <input type="text" id="address" class="shadow-sm bg-transparent border border-gray-300 
-                text-[#10192D] dark:text-[#8E9BAE] placeholder:text-[#10192D] font-['open_sans'] dark:placeholder:text-[#8E9BAE]
-                text-sm rounded-2xl  block w-full py-[17px] px-[17px] 
-                dark:bg-transparent
-                dark:border-gray-700" placeholder="Address line 2" >
+                <input type="text" id="address" class="input" placeholder="Address line 2" >
                 <span class="absolute right-4 bottom-4 text-sm text-[#8E9BAE]">Optional</span>
             </div>
             <div class="mb-4">
-                <input type="text" id="postal code" class="shadow-sm bg-transparent border border-gray-300 
-                text-[#10192D] dark:text-[#8E9BAE] placeholder:text-[#10192D] font-['open_sans'] dark:placeholder:text-[#8E9BAE]
-                text-sm rounded-2xl  block w-full py-[17px] px-[17px] dark:bg-transparent
-                dark:border-gray-700" placeholder="Postal code" required>
+                <input type="text" id="postal code" class="input" placeholder="Postal code" required>
             </div>
              
         
@@ -139,7 +122,7 @@
 
 
       
-
+         
          <button  @click.prevent="navigateTo('/dashboard/account/verification/address/upload_document')" 
          class="btn-primary mt-[20px] mb-4 w-full ">Start verification</button>
     </div>

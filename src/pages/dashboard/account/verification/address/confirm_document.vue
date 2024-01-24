@@ -1,18 +1,18 @@
 <template>
 <Successful v-if="show_successful" title="sucessful" subtitle="`Your document has been successfully  uploaded and is under review!`"/>
-    <div v-else class="px-6 py-[6px] bg-[#fff]   dark:bg-[#10192D] min-h-screen">
+    <div v-else class="px-6  bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
 
         <Appbar link="/dashboard/account/verification" title="Address verification" />
 
 
-        <div class=" mt-6">
+        <div class=" pt-[72px]">
            
-           <p class="text-sm   text-[#8E9BAE] text-[14px] font-bold">Confirm document and submit your application!</p>
+           <p class="text-sm font-[400]   text-[#8E9BAE] text-[14px] ">Confirm document and submit your application!</p>
         </div>
 
 
 
-        <ul class="mt-[20px] px-6 text-[#8E9BAE] text-[12px] list-disc ">
+        <ul class="mt-[20px] px-4 font-[400] text-[#8E9BAE] text-[12px] list-disc ">
             <li>Upload clear image of document</li>
             <li class="leading-6">Upload clear image of document</li>
             <li>Upload clear image of document</li>

@@ -5,21 +5,22 @@
       <div v-if="visible"  class="fixed inset-0 glass z-40" @click="visible = false"></div>
   
       <!-- Modal content -->
-      <div class="bg-[#F1F5F9] rounded-lg px-5 py-6 w-96 fade z-50">
+      <div class="bg-[#F1F5F9] dark:bg-[#1B2537] rounded-lg px-5 py-6 w-96 fade z-50">
         <!-- Your modal content goes here -->
         <div>
-          <h2 class="text-xl font-bold mb-4 text-[#10192D] dark:text-[#10192D] text-center">Confirm changes</h2>
-          <p class="text-sm text-[#8E9BAE] font-[400] text-center">To apply the language change, please restart the app.</p>
+          <h2 class="text-xl font-bold mb-4 text-[#10192D] dark:text-[#F8FAFC] text-center">Confirm changes</h2>
+          <p class="text-sm text-[#8E9BAE] dark:text-[#E2E8F0] font-[400] text-center">To apply the language change, please restart the app.</p>
         </div>
   
         <!-- Close button -->
         <div class="flex justify-end ">
 
-            <button @click="visible = false" class="mt-4 font-bold  capitalize bg-transparent text-[#64748B] py-2 px-4 rounded-md">
-              cancel
+            <button @click="visible = false" class="mt-4 font-bold  capitalize bg-transparent text-[#64748B] dark:text-[#64748B]
+             py-2 px-4 rounded-md">
+              {{ btn1 }}
             </button>
             <button @click="visible = false" class="mt-4 font-bold bg-transparent capitalize text-[#2873FF] py-2 px-4 rounded-md">
-                Restart
+                {{ btn2 }}
             </button>
 
         </div>
@@ -30,9 +31,11 @@
   <script setup>
   import { defineProps, defineEmits } from 'vue';
   
-  const { visible } = defineProps({
+  const { visible,btn1,btn2 } = defineProps({
     visible: Boolean,
-  });
+    btn1:String,
+    btn2:String,
+    });
   
   const emit = defineEmits('close');
   
