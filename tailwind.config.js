@@ -20,6 +20,9 @@ export default {
       xl: '1440px',
     },
     colors: {
+      'text-light':'#10192D',
+      'text-dark':'#F8FAFC',
+      'text-gray':'#8E9BAE',
       'blue': '#1fb6ff',
       'pink': '#ff49db',
       'orange': '#ff7849',

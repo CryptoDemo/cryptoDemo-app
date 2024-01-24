@@ -1,8 +1,9 @@
 <template>
-    <div class="grid grid-cols-4 items-center">
+    <div class=" fixed top-0 left-0 py-[10px] px-6 grid grid-cols-4 bg-[#ffff] w-full   dark:bg-[#10192D] items-center">
         <div>
-            <button @click.prevent="navigateTo(`${props.link}`)" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
-            items-center me-2  text-black dark:bg-[#1B2537] dark:text-white">
+            <button @click.prevent="navigateTo(`${props.link}`)" type="button" class=" bg-[#F8FAFC]  font-medium 
+            rounded-2xl text-sm p-[12px] text-center inline-flex 
+            items-center   text-black dark:bg-[#1B2537] dark:text-white">
                 <Icon name="mdi:arrow-left" size="24" />
             </button>
         </div>

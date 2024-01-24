@@ -4,11 +4,10 @@
         <div class="px-6 pt-[6px] ">
             <Appbar link="/dashboard/account/verification/ID" title="ID Verification" />
             
-            <div class=" py-4">
-           
-                  <h3 class="text-2xl font-bold text-[#10192D]">Enter Verification Code</h3>
-                  <p class="text-sm font-[400] pt-4 text-[#8E9BAE]">Enter the 4-digit code  we just send to your phone number +62 2344 451</p>
-            </div>
+
+            <Subappbar heading="Enter Verification Code" 
+            desc="Enter the 4-digit code  we just send to your phone number "
+            span="+62 2344 451"/>
     
     
     
@@ -16,11 +15,14 @@
                    
                     <InputOtp :length="4" @entered=" v => otpvalue = v"/>  
                         
-                      <p class="mt-[38px] font-[700]">Resend code in <span class="text-[#2873FF]">29:58</span></p>  
+                      <p class="mt-[38px] font-[700] text-center">Resend code in <span class="text-[#2873FF]">29:58</span></p>  
     
             </div>
 
-            <button @click.prevent="navigateTo('/dashboard/account/verification/ID/stage_2')" class="w-full scaling-animation btn-primary mt-[75px]">Verify</button>
+            <div class="fixed bottom-5 left-0 w-full px-6">
+
+                <button @click.prevent="navigateTo('/dashboard/account/verification/ID/stage_2')" class="w-full scaling-animation btn-primary mt-[75px]">Verify</button>
+            </div>
         </div>
 
     </div>

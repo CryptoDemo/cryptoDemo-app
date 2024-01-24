@@ -1,43 +1,45 @@
 <template>
 
-    <div class="h-screen overflow-y-auto px-6  bg-[#ffff] pb-4  dark:bg-[#10192D]   w-full" >
-        <div class="pt-[6px] ">
+    <div class="h-screen overflow-y-auto px-6   bg-[#ffff]  dark:bg-[#10192D]   w-full" >
+        <div class="pb-6 ">
             <Appbar link="/dashboard/account/verification" title="ID Verification" />
     
-            <div class=" mt-6">
-               <h3 class="text-2xl font-extrabold text-[#10192D] items-stretch">Let’s verify your identity</h3>
-               <p class="text-sm text-[400] pt-4 text-[#8E9BAE]">This qualifies you to trade amounts larger than $1,000</p>
-            </div>
+           
+            <Subappbar heading="Let’s verify your identity" 
+            desc="This qualifies you to trade amounts larger than $1,000 "
+            />
+    
           
             <div class="my-6">
     
                 <button
                         @click="showUsers"
-                        class="btn-border-primary dark:bg-transparent text-[#8E9BAE] border-[#8E9BAE] w-full flex justify-between"
+                        class="btn-border-primary dark:bg-transparent text-[#8E9BAE]  w-full flex text-sm
+                        justify-between items-center  border-[#E2E8F0] border dark:border-[#1B2537] "
                     >
-                        <span>{{ selectedName }}</span>
-                        <Icon name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300"/>
+                        <span>{{ selectedName || 'Issuing country' }}</span>
+                        <Icon name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300  text-[#8E9BAE]
+                         dark:text-[#FFFFFF]"/>
     
                 </button>
 
 
                     <div class="bg-transparent dark:bg-transparent dark:text-[#8E9BAE]  overflow-y-scroll
-                     rounded-xl  pb-2  z-20"  v-show="usersToggle">
+                     rounded-xl  pb-2  z-20 transition-transform ease-in-out duration-300 w-full"  v-show="usersToggle">
 
                                   <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-[#E2E8F0]">Search</label>
                                     
                                     <div class="relative" >
                                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" 
+                                            <svg class="w-4 h-4 text-gray-500 dark:text-[#FFFFFF]" aria-hidden="true" 
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
                                                 stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                                             </svg>
                                         </div>
                                         
-                                        <input v-model.trim="searchInput" type="search" id="default-search" class="block w-full my-3  p-4 ps-10 text-sm focus:border-0 
-                                            text-gray-900 border border-gray-200 rounded-2xl bg-transparent focus:outline-none
-                                               dark:bg-transparent  dark:border-gray-700 dark:text-[#E2E8F0]" 
+                                        <input v-model.trim="searchInput" type="search" id="default-search" class="block w-full my-3  p-4 ps-10 
+                                            input dark:text-[#E2E8F0] focus:ring-1 focus:ring-gray-200 dark:focus:ring-[#1B2537]" 
                                             placeholder="Search countries..." required>
                                     </div>
                          <div class="max-h-[215px] relative overflow-y-auto px-4">
@@ -50,7 +52,7 @@
                                                  blue-100 ">
                                      
                                  <country-flag :country='i.icon' size='big' class=" rounded-xl"/>
-                                 <span class="px-4 text-lg">{{ i.name }}</span>
+                                 <span class="px-4 text-[16px]">{{ i.name }}</span>
                                  </a>
                              </div>
                          </div>
@@ -62,7 +64,7 @@
     
             <div class="mt-6">
     
-                <p class="pb-4">METHOD OF VERIFICATION</p>
+                <p class="pb-4 font-[700] text-[12px]">METHOD OF VERIFICATION</p>
     
                 <div class="p-4   flex justify-between items-center hover:border hover:border-[#2873FF] bg-[#F8FAFC]
                  dark:bg-[#1B2537] rounded-2xl transition-all">
@@ -168,7 +170,7 @@
     
             </div>
     
-           <div class="mt-[40px] ">
+           <div class="fixed bottom-5 left-0 w-full px-6">
                <button @click.prevent="navigateTo('/dashboard/account/verification/ID/stage_4')" 
                class="btn-primary  w-full scaling-animation
                ">Continue</button>
@@ -181,14 +183,15 @@
 </template>
 
 <script setup>
+import { useDark, useToggle } from '@vueuse/core'
 import CountryFlag from 'vue-country-flag-next'
 
 defineComponent ({
         CountryFlag
  })
 
-
-const  selectedName = ref('Austrialia')
+ const isDark = useDark()
+const  selectedName = ref('')
 const selectedIcon = ref('au')
 const usersToggle = ref(false);
 const filteredItem  = ref([])

@@ -28,7 +28,7 @@
     }
     .input{
       @apply border-[#E2E8F0] border  p-[16px] outline-none  text-[#10192D] font-[600] text-sm  bg-transparent rounded-2xl  block w-full
-       dark:border-gray-800 dark:text-[#F8FAFC] focus:ring-1 focus:border-none placeholder:text-[#8E9BAE]
+       dark:border-[#1B2537] dark:text-[#F8FAFC] focus:ring-1 focus:border-none placeholder:text-[#8E9BAE]
     }
   
 }

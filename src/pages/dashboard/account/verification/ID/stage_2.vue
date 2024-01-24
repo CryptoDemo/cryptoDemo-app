@@ -1,19 +1,22 @@
 <template>
     
-    <div class="px-6 py-[6px] h-screen overflow-y-auto bg-[#ffff]   dark:bg-[#10192D]  min-h-screen">
+    <div class="px-6  h-screen overflow-y-auto bg-[#ffff]   dark:bg-[#10192D]  min-h-screen">
 
      
         <Appbar link="/dashboard/account/verification" title="ID Verification" />
             
 
-        <p class="pt-6 text-sm">Your phone number is verified.</p>
+        <p class="pt-[72px] pb-4 text-sm">Your phone number is verified.</p>
         
        
        
         <InputCountrySelector  :selectedNumber.sync="selectedNumber" :selectedIcon.sync="selectedIcon" :isdisabled="true" />
 
-        <button @click.prevent="navigateTo('/dashboard/account/verification/ID/stage_3')" class="btn-primary 
-        scaling-animation w-full mt-[77px]">Verify my ID</button>
+        <div class="fixed bottom-5 left-0 w-full px-6">
+
+            <button @click.prevent="navigateTo('/dashboard/account/verification/ID/stage_3')" class="btn-primary 
+            scaling-animation w-full mt-[77px]">Verify my ID</button>
+        </div>
 
     </div>
 
