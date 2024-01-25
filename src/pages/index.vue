@@ -5,7 +5,7 @@
 
     <div v-else  class="fixed w-full top-0 left-0 h-screen py-4  bg-white dark:bg-[#10192D]  font-['Manrope'] transition ease-linear duration-300">
 
-        <carousel ref="carousel" v-model="currentSlide" :items-to-show="1" class="relative" >
+        <carousel ref="carousel" v-model="currentSlide" :items-to-show="1" class="relative" :wrapAround="false">
 
                 <slide  class="h-screen w-full absolute" >
                         <onboardingScreensOne  class="transition-all ease-in-out duration-300"/>
@@ -16,11 +16,11 @@
                 <slide  class="h-screen w-full absolute">
                         <onboardingScreensThird  class="transition-all ease-in-out duration-300"/>
                 </slide>
-                <slide   class="h-screen w-full absolute">
+                
+                <slide class="h-screen w-full absolute">
                         <OnboardingScreensFourth class="transition-all ease-in-out duration-300"/>
                 </slide>
-                
-            </carousel>
+        </carousel>
             
                 <div class=" fixed bottom-0 left-0 min-h-[20vh] w-full">
                         <div class=" mx-4 flex flex-col justify-center items-center h-full">

@@ -3,7 +3,7 @@
 
     <div class="fixed w-full top-0 left-0 p-4 mt-5 ">
         
-        <div class="flex justify-center items-center  min-h-[50vh]">
+        <!-- <div class="flex justify-center items-center  min-h-[50vh]">
             <div class="mx-[13px] mt-[20px] w-full">
     
                   <div  class="flex justify-between items-center dark:bg-[#64748B]  p-[15px] box-shadow rounded">
@@ -83,9 +83,17 @@
                   </div> 
     
             </div>
+        </div> -->
+        <div class="flex justify-center items-center  min-h-[60vh]">
+
+            <div class="flex justify-center items-center ">
+                <!-- <img src="/onboarding/Components22.png"/> -->
+                <OnboardingIconsGroup/>
+            </div>
+
         </div>
  
-         <div class="fixed bottom-0 left-0 h-[47vh] w-full">
+         <div class="fixed bottom-0 left-0 h-[45vh] w-full">
                <div class=" m-4 h-full">
                  <h3 class=" text-center text-[24px] font-[800] leading-8">Free and Secure Wallet</h3>
                    <p class="text-center font-[400] pt-4 text-[#8E9BAE]">Save or spend using our secure and free wallet. </p>
