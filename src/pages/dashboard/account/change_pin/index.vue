@@ -3,7 +3,7 @@
 <Successful v-if="show_successful" title="sucessful" subtitle="You have successfully changed your  pin"/>
 
     <div v-else class=" h-screen overflow-y-auto  dark:bg-[#10192D] transition ease-linear duration-300">
-        <div class="px-6 pt-[6px] ">
+        <div class="px-6  ">
             <Appbar link="/dashboard" title="Change pin" />
             
             <div  v-if="reveal === 0" class=" my-6  text-center">
@@ -38,11 +38,14 @@
             </div>
 
 
+            <div class="fixed bottom-5 left-0 w-full px-6">
+
                 <button  @click.prevent="change_pin()"  class="w-full btn-primary mt-[75px] scaling-animation">
-                    <span v-if="reveal === 0" >Change pin</span>
-                    <span v-if="reveal === 1" >continue</span>
-                    <span v-if="reveal === 2" >save</span>
+                    <span class="transition ease-in-out duration-300" v-if="reveal === 0" >Change pin</span>
+                    <span  class="transition ease-in-out duration-300" v-if="reveal === 1" >continue</span>
+                    <span  class="transition ease-in-out duration-300" v-if="reveal === 2" >save</span>
                 </button>
+            </div>
         </div>
 
     </div>

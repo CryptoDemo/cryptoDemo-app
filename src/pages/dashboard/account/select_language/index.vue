@@ -64,7 +64,8 @@
           </div>
 
 
-          <Modal @open="visible"  :visible="visible" btn1="cancel" btn2="restart" />
+          <Modal @open="visible"  :visible="visible" btn1="cancel" btn2="restart" 
+          desc="To apply the language change, please restart the app."/>
 
 
     </div>

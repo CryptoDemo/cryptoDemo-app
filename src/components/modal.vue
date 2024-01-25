@@ -9,7 +9,9 @@
         <!-- Your modal content goes here -->
         <div>
           <h2 class="text-xl font-bold mb-4 text-[#10192D] dark:text-[#F8FAFC] text-center">Confirm changes</h2>
-          <p class="text-sm text-[#8E9BAE] dark:text-[#E2E8F0] font-[400] text-center">To apply the language change, please restart the app.</p>
+          <p class="text-sm text-[#8E9BAE] dark:text-[#E2E8F0] font-[400] text-center">
+              {{ desc }}
+          </p>
         </div>
   
         <!-- Close button -->
@@ -35,6 +37,7 @@
     visible: Boolean,
     btn1:String,
     btn2:String,
+    desc:String,
     });
   
   const emit = defineEmits('close');

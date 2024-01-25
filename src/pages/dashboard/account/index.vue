@@ -2,7 +2,7 @@
 
     <div class="h-screen overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full px-6">
 
-        <div class="fixed top-0 left-0 w-full bg-[#ffff]   dark:bg-[#10192D] px-6 py-[10px] z-50">
+        <div class="fixed top-0 left-0 w-full bg-[#ffff]   dark:bg-[#10192D] px-6 py-[15px] z-50">
             <h2 class=" text-[20px] dark:text-text-dark text-text-light font-[800]">Account</h2>
         </div>
 
@@ -161,7 +161,7 @@
                             <Icon class="text-[#8E9BAE]" name="solar:alt-arrow-right-linear" size="20"/>
                         </div>
     
-                        <div class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
+                        <div  @click.prevent="navigateTo('/dashboard/account/change_password')" class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
                             <div class=" flex justify-between items-center">
                                 <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center rounded-full">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -186,7 +186,7 @@
     
                             <InputRadio :toggleValue="showFingerprint" @toggleChanged="toggleShowFingerprint"/>
                         </div>
-                        <div class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
+                        <div @click.prevent="navigateTo('/dashboard/account/2FA_login')" class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
                             <div class=" flex justify-between items-center">
                                 <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537]  inline-flex justify-center items-center rounded-full">
     
@@ -200,7 +200,7 @@
                             </div>
                             <Icon class="text-[#8E9BAE]" name="solar:alt-arrow-right-linear" size="20"/>
                         </div>
-                        <div class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
+                        <div  class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
                             <div class=" flex justify-between items-center">
                                 <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537]  inline-flex justify-center items-center rounded-full">
                                     <svg class="text-[#2873FF] dark:text-[#ffff]" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -218,7 +218,7 @@
                             
                         </div>
                       
-                        <div class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
+                        <div @click.prevent="navigateTo('/dashboard/account/2F_currency_release')" class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
                             <div class=" flex justify-between items-center ">
                                 <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537]  inline-flex justify-center items-center rounded-full">
     
@@ -233,7 +233,7 @@
                             <Icon class="text-[#8E9BAE]" name="solar:alt-arrow-right-linear" size="20"/>
                         </div>
     
-                        <div class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
+                        <div @click.prevent="navigateTo('/dashboard/account/security_questions')" class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
                             <div class=" flex justify-between items-center">
                                 <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537]  inline-flex justify-center items-center rounded-full">
     
@@ -253,7 +253,7 @@
               <!--start of others settings section -->
                 <div class="mt-[32px] pb-[60px] w-full">
                         <p class=" font-[700]">Others</p>
-                        <div class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
+                        <div @click.prevent="navigateTo('/dashboard/account/activity')" class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
                             <div class=" flex justify-between items-center">
                                 <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537]  inline-flex justify-center items-center rounded-full">
     
