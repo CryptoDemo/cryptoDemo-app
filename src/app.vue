@@ -1,6 +1,6 @@
 <template>
 
-  <div >
+  <div class="font-['Poppins']">
     <NuxtPage/>
   </div>
   
@@ -8,6 +8,7 @@
 
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
   body {
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
