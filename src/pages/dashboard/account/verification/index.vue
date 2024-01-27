@@ -1,5 +1,5 @@
 <template>
-    <div class=" px-6 py-[6px] bg-[#ffff]   dark:bg-[#10192D] h-screen overflow-y-auto">
+    <div class=" px-6  bg-[#ffff]   dark:bg-[#10192D] h-screen overflow-y-auto">
 
 
             <Appbar link="/dashboard" title="Verification status"/>
