@@ -18,7 +18,8 @@
     
             <div v-if="reveal === 2" class="mt-[40px] px-5 flex flex-col justify-center items-center">
                        
-                <InputOtp :length="4" @entered=" v => my_pin = v"/> 
+                <InputOtp @focusin="isFocused=true" @focusout="isFocused=false"
+                 :length="4" @entered=" v => my_pin = v"/> 
             </div>
 
             <p v-if="reveal === 1" class="text-sm text-center mt-[40px]">Use <span class="text-[#2873FF] font-bold">Google Authenticator </span>or 
@@ -30,7 +31,7 @@
              <a v-if="reveal === 2" class="flex justify-center text-center mt-5 text-[#2873FF] font-[400] text-sm">Paste code</a>
     
     
-             <div class="fixed bottom-5 left-0 w-full px-6">
+             <div v-show="!isFocused" class="fixed bottom-5 left-0 w-full px-6">
                     <button  @click.prevent="authenticate" 
                     class="btn-primary mt-[57px] w-full">continue</button>
              </div>
@@ -40,7 +41,7 @@
     </template>
     
 <script setup>
-    
+    const isFocused = ref(false)
     const my_pin = ref(null)
     const reveal = ref(1)
     

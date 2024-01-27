@@ -20,12 +20,15 @@
 
       
 
-        <div class="flex gap-x-4 mt-[48px]">
+        <div class="fixed bottom-5 left-0 w-full px-6">
 
-            <button  @click.prevent="navigateTo('/dashboard/account/verification/address/upload_document')" 
-            class="btn-border-primary  w-full">back</button>
-            <button  @click.prevent="toggle_show_successful" 
-            class="btn-primary  w-full">Confirm</button>
+            <div class="flex gap-x-4 mt-[40px]">
+    
+                <button  @click.prevent="navigateTo('/dashboard/account/verification/address/upload_document')" 
+                class="btn-border-primary  w-full">back</button>
+                <button  @click.prevent="toggle_show_successful" 
+                class="btn-primary  w-full">Confirm</button>
+            </div>
         </div>
          <!-- <button  @click.prevent="navigateTo('/dashboard/account/verification/address/step_1')" 
          class="btn-primary mt-[40px] w-full">Complete ID verification</button> -->

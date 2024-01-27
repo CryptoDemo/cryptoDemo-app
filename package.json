@@ -29,9 +29,11 @@
     "@capacitor/keyboard": "^5.0.7",
     "@growthbunker/vueflags": "^0.1.14",
     "@pinia/nuxt": "^0.5.1",
+    "apexcharts": "^3.45.2",
     "flowbite": "^2.2.1",
     "pinia": "^2.1.7",
     "vue-country-flag-next": "^2.3.2",
+    "vue3-apexcharts": "^1.4.4",
     "vue3-carousel": "^0.3.1"
   }
 }

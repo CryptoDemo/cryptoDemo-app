@@ -9,7 +9,7 @@
         <!-- Your modal content goes here -->
         <div>
           <h2 class="text-xl font-bold mb-4 text-[#10192D] dark:text-[#F8FAFC] text-center">Confirm changes</h2>
-          <p class="text-sm text-[#8E9BAE] dark:text-[#E2E8F0] font-[400] text-center">
+          <p class="text-sm text-[#8E9BAE] dark:text-[#E2E8F0] font-[400] text-left">
               {{ desc }}
           </p>
         </div>

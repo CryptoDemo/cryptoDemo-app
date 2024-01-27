@@ -17,19 +17,19 @@
 
                 <div class="mb-4">
                     
-                    <InputPassword/>
+                    <InputPassword @focusin="isFocused=true" @focusout="isFocused=false"/>
                 </div>
 
                 <div class="">
                     
-                    <InputPassword/>
+                    <InputPassword @focusin="isFocused=true" @focusout="isFocused=false"/>
 
                 </div>
 
                 </form>
 
 
-                <div class="fixed bottom-5 left-0 w-full px-6">
+                <div v-show="!isFocused" class="fixed bottom-5 left-0 w-full px-6">
 
                     <button @click.prevent="toggle_show_successful"  class="w-full btn-primary  scaling-animation">
                         Change password</button>
@@ -47,6 +47,7 @@
 
 
 const show_successful = ref(false)
+const isFocused = ref(false)
 
 const toggle_show_successful = ()=>{
     show_successful.value = true

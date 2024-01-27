@@ -33,12 +33,13 @@
     
             <div class="mt-[42px] px-5 flex flex-col justify-center items-center">
                    
-                    <InputOtp :length="4" @entered=" v => new_pin = v"/> 
+                    <InputOtp @focusin="isFocused=true" @focusout="isFocused=false"
+                     :length="4" @entered=" v => new_pin = v"/> 
 
             </div>
 
 
-            <div class="fixed bottom-5 left-0 w-full px-6">
+            <div v-show="!isFocused" class="fixed bottom-5 left-0 w-full px-6">
 
                 <button  @click.prevent="change_pin()"  class="w-full btn-primary mt-[75px] scaling-animation">
                     <span class="transition ease-in-out duration-300" v-if="reveal === 0" >Change pin</span>
@@ -56,6 +57,8 @@
 </template>
 
 <script setup>
+
+const isFocused = ref(false)
 
 const reveal = ref(0)
 const show_successful = ref(false)

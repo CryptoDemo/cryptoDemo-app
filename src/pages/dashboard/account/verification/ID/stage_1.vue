@@ -13,15 +13,17 @@
     
             <div class="mt-[36px] px-5 flex flex-col justify-center items-center">
                    
-                    <InputOtp :length="4" @entered=" v => otpvalue = v"/>  
+                    <InputOtp @focusin="isFocused=true" @focusout="isFocused=false" :length="4" @entered=" v => otpvalue = v"/>  
                         
                       <p class="mt-[38px] font-[700] text-center">Resend code in <span class="text-[#2873FF]">29:58</span></p>  
     
             </div>
 
-            <div class="fixed bottom-5 left-0 w-full px-6">
+            <div v-show="!isFocused"  class="fixed bottom-5 left-0 w-full px-6 transition ease-out duration-300">
 
-                <button @click.prevent="navigateTo('/dashboard/account/verification/ID/stage_2')" class="w-full scaling-animation btn-primary mt-[75px]">Verify</button>
+                <button @click.prevent="navigateTo('/dashboard/account/verification/ID/stage_2')" 
+                class="w-full scaling-animation btn-primary mt-[75px]">Verify</button>
+                
             </div>
         </div>
 
@@ -39,6 +41,7 @@ export default {
     data(){
         return{
             otpvalue:'', //collecting th otp pin values
+            isFocused: false,
         }
     }
  

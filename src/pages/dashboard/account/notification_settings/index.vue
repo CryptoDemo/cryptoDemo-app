@@ -15,7 +15,7 @@
                            <div class="flex justify-between items-center">
                                <h4 class="text-[16px] font-[500] dark:text-[#F8FAFC]">{{ item.title }}</h4>
                                <span v-if="item.recommended" class="capitalize text-[#89B2FF] text-xs 
-                               font-bold relative left-5">recommended</span>
+                               font-bold relative left-2">recommended</span>
                            </div>
                            <p class="font-[400] text-[#8E9BAE] text-sm">{{ item.desc }} </p>
                     </div>

@@ -20,7 +20,8 @@
          </div>
 
          <div class="mb-4">
-                <input type="text" id="answer 1" class="input"  placeholder="Enter your answer here">
+                <input  @focusin="isFocused=true" @focusout="isFocused=false"
+                type="text" id="answer 1" class="input"  placeholder="Enter your answer here">
          </div>
          <div class="mb-4">
 
@@ -29,15 +30,19 @@
 
          </div>
          <div class="mb-4">
-                <input type="text" id="answer 2" class="input"  placeholder="Enter your answer here">
+                <input  @focusin="isFocused=true" @focusout="isFocused=false" 
+                type="text" id="answer 2" class="input"  placeholder="Enter your answer here">
          </div>
 
       
 
-         <div class="fixed bottom-5 left-0 w-full px-6">
+         <div v-show="!isFocused" class="fixed bottom-5 left-0 w-full px-6">
                 <button  @click.prevent="navigateTo('/dashboard/account/update_number/update')" 
                 class="btn-primary mt-[57px] w-full">Submit</button>
          </div>
     </div>
 
 </template>
+<script setup>
+const isFocused = ref(false)
+</script>

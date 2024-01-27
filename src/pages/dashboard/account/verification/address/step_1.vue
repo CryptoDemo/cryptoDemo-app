@@ -27,8 +27,8 @@
 
 
                 <div class=" border-b dark:border-[#1B2537]  w-full  dark:bg-transparent
-                dark:text-[#8E9BAE] 
-                rounded-2xl pb-2 mt-1 z"  v-show="usersToggle" >
+                dark:text-[#8E9BAE]  rounded-2xl pb-2 mt-1 z"    
+                :class="usersToggle ?' block h-auto':'h-0 hidden'">
                        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -38,13 +38,15 @@
                                 </svg>
                             </div>
                             
-                            <input v-model.trim="searchInput" type="search" id="default-search" class="block w-full my-3  p-4 ps-10 text-sm focus:border-0 
+                            <input  @focusin="isFocused=true" @focusout="isFocused=false"
+                            v-model.trim="searchInput" type="search" id="default-search" class="block w-full my-3  p-4 ps-10 text-sm focus:border-0 
                                 text-gray-900 border border-gray-300 rounded-2xl bg-gray-50 focus:outline-none   
                                 bg-transparent  dark:border-gray-700 dark:text-white" 
                                 placeholder="Search countries..." required>
                         </div>
                    
-                    <div class="max-h-[215px] relative overflow-y-auto">
+                    <div class=" relative overflow-y-auto transition ease-out duration-300 max-h-[215px]"
+                   >
 
                         <div
                             v-for="i in filteredItem.length? filteredItem : countries"  @click="showUsers(); 
@@ -65,11 +67,13 @@
              </div>
 
              <div class="mb-4">
-                <input type="text" id="state" class="input" placeholder="Region/State" required>
+                <input  @focusin="isFocused=true" @focusout="isFocused=false"
+                 type="text" id="state" class="input" placeholder="Region/State" required>
             </div>
 
              <div class="mb-4">
-                <input type="text" id="state" class="input" placeholder="City" required>
+                <input  @focusin="isFocused=true" @focusout="isFocused=false"
+                type="text" id="state" class="input" placeholder="City" required>
             </div>
 
             <div class="mb-4">
@@ -107,14 +111,17 @@
             </div>
 
             <div class="mb-4">
-                <input type="text" id="address" class="input" placeholder="Address line " required>
+                <input  @focusin="isFocused=true" @focusout="isFocused=false"
+                type="text" id="address" class="input" placeholder="Address line " required>
             </div>
             <div class="mb-4 relative">
-                <input type="text" id="address" class="input" placeholder="Address line 2" >
+                <input  @focusin="isFocused=true" @focusout="isFocused=false"
+                type="text" id="address" class="input" placeholder="Address line 2" >
                 <span class="absolute right-4 bottom-4 text-sm text-[#8E9BAE]">Optional</span>
             </div>
             <div class="mb-4">
-                <input type="text" id="postal code" class="input" placeholder="Postal code" required>
+                <input  @focusin="isFocused=true" @focusout="isFocused=false"
+                 type="text" id="postal code" class="input" placeholder="Postal code" required>
             </div>
              
         
@@ -122,9 +129,10 @@
 
 
       
-         
-         <button  @click.prevent="navigateTo('/dashboard/account/verification/address/upload_document')" 
-         class="btn-primary mt-[20px] mb-4 w-full ">Start verification</button>
+         <div  v-show="!isFocused" class="fixed bottom-5 left-0 w-full px-6">
+             <button  @click.prevent="navigateTo('/dashboard/account/verification/address/upload_document')" 
+             class="btn-primary mt-[20px] w-full ">Start verification</button>
+         </div>
     </div>
 
 </template>
@@ -138,6 +146,8 @@ defineComponent ({
         CountryFlag
  })
 
+
+ const isFocused = ref(false)
 
 const  selectedName = ref('')
 const  selectedDocument = ref('')
@@ -205,3 +215,41 @@ watch(()=>searchInput.value,(newv)=>{
     debounce(filterV,newv)
 })
 </script>
+
+
+<style scoped>
+
+.slidedown{
+    animation: rotateMenu  300ms ease forwards;
+    transform-origin: top center
+}
+.slideup{
+    animation: rotateMenuback  200ms ease forwards;
+    transform-origin: bottom center
+}
+
+@keyframes rotateMenu {
+    0% {
+      transform: rotateX(-90deg)
+    }
+    70% {
+      transform: rotateX(20deg)
+    }
+    100% {
+      transform: rotateX(0deg)
+    }
+}
+@keyframes rotateMenuback {
+    0% {
+      transform: rotateX(0deg)
+    }
+    70% {
+      transform: rotateX(20deg)
+    }
+    100% {
+      transform: rotateX(-90deg)
+    }
+}
+
+</style>
+

@@ -18,8 +18,11 @@
 
       
 
-         <button  @click.prevent="navigateTo('/dashboard/')" 
-         class="btn-primary mt-[40px] w-full">Contact support team</button>
+         <div class="fixed bottom-5 left-0 w-full px-6">
+
+             <button  @click.prevent="navigateTo('/dashboard/')" 
+             class="btn-primary mt-[40px] w-full">Contact support team</button>
+         </div>
     </div>
 
 </template>

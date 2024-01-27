@@ -38,7 +38,8 @@
                                             </svg>
                                         </div>
                                         
-                                        <input v-model.trim="searchInput" type="search" id="default-search" class="block w-full my-3  p-4 ps-10 
+                                        <input @focusin="isFocused=true" @focusout="isFocused=false"
+                                        v-model.trim="searchInput" type="search" id="default-search" class="block w-full my-3  p-4 ps-10 
                                             input dark:text-[#E2E8F0] focus:ring-1 focus:ring-gray-200 dark:focus:ring-[#1B2537]" 
                                             placeholder="Search countries..." required>
                                     </div>
@@ -170,7 +171,7 @@
     
             </div>
     
-           <div class="fixed bottom-5 left-0 w-full px-6">
+           <div v-show="!isFocused" class="fixed bottom-5 left-0 w-full px-6">
                <button @click.prevent="navigateTo('/dashboard/account/verification/ID/stage_4')" 
                class="btn-primary  w-full scaling-animation
                ">Continue</button>
@@ -196,6 +197,8 @@ const selectedIcon = ref('au')
 const usersToggle = ref(false);
 const filteredItem  = ref([])
 const searchInput = ref("")
+
+const isFocused = ref(false)
 
 const showUsers = () => {
     usersToggle.value = !usersToggle.value;

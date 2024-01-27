@@ -22,8 +22,12 @@
 
       
 
-         <button  @click.prevent="toggle_show_successful" 
-         class="btn-primary mt-[40px] w-full">Save new username</button>
+
+         <div class="fixed bottom-5 left-0 w-full px-6">
+
+             <button  @click.prevent="toggle_show_successful" 
+             class="btn-primary mt-[40px] w-full">Save new username</button>
+         </div>
     </div>
 
 </template>

@@ -3,10 +3,10 @@
 <Successful v-if="show_successful" title="sucessful" subtitle="You have successfully set your security questions "/>
 
 
-    <div class="px-6 pb-5  bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
+    <div class="px-6 pb-24  bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
 
         
-        <Appbar link="/dashboard/account/verification" title="Address verification" />
+        <Appbar link="/dashboard/" title="Address verification" />
 
         <div class=" pt-[72px]">
            
@@ -56,7 +56,8 @@
              </div>
 
              <div class="mb-4">
-                <input type="text" id="state" class="input" placeholder="Enter answer here" required>
+                <input  @focusin="isFocused=true" @focusout="isFocused=false"
+                 type="text" id="state" class="input" placeholder="Enter answer here" required>
             </div>
 
             <div class="mb-4">
@@ -99,7 +100,8 @@
              </div>
 
              <div class="mb-4">
-                <input type="text" id="state" class="input" placeholder="Enter answer here" required>
+                <input  @focusin="isFocused=true" @focusout="isFocused=false"
+                 type="text" id="state" class="input" placeholder="Enter answer here" required>
             </div>
             <div class="mb-4">
     
@@ -141,7 +143,8 @@
              </div>
 
              <div class="">
-                <input type="text" id="state" class="input" placeholder="Enter answer here" required>
+                <input  @focusin="isFocused=true" @focusout="isFocused=false"
+                 type="text" id="state" class="input" placeholder="Enter answer here" required>
             </div>
 
             
@@ -151,9 +154,10 @@
 
 
       
-         
-         <button  @click.prevent="toggle_show_successful" 
-         class="btn-primary mt-[40px] w-full ">Start verification</button>
+         <div  v-show="!isFocused"  class="fixed bottom-5 left-0 w-full px-6">
+             <button  @click.prevent="toggle_show_successful" 
+             class="btn-primary mt-[40px] w-full ">Start verification</button>
+         </div>
     </div>
 
 </template>
@@ -167,7 +171,7 @@ defineComponent ({
         CountryFlag
  })
 
-
+ const isFocused = ref(false)
 const  selectedQuestion1 = ref('')
 const  selectedQuestion2 = ref('')
 const  selectedQuestion3 = ref('')

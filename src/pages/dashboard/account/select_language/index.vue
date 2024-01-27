@@ -14,7 +14,8 @@
 
           </div>
             
-          <input v-model.trim="searchInput" type="search" id="default-search" class="input ps-10" 
+          <input @focusin="isFocused=true" @focusout="isFocused=false"
+          v-model.trim="searchInput" type="search" id="default-search" class="input ps-10" 
               placeholder="Search..." required>
 
         </div>
@@ -59,7 +60,8 @@
 
 
 
-          <div @click="openModal" class="fixed left-0 bottom-5 w-full px-6 z-10">
+          <div v-show="!isFocused"
+           @click="openModal" class="fixed left-0 bottom-5 w-full px-6 z-10">
              <button class="btn-primary w-full">Save Changes</button>
           </div>
 
@@ -79,6 +81,7 @@ import countryFlag from 'vue-country-flag-next';
 import { useDark, useToggle } from '@vueuse/core'
 
 const visible = ref(false);
+const isFocused = ref(false)
 
 const openModal = () => {
   visible.value = !visible.value;

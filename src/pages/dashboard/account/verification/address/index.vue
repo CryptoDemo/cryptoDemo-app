@@ -11,8 +11,11 @@
 
       
 
-         <button  @click.prevent="navigateTo('/dashboard/account/verification/address/step_1')" 
-         class="btn-primary mt-[40px] w-full scaling-animation">Complete ID verification</button>
+        <div class="fixed bottom-5 left-0 w-full px-6">
+
+            <button  @click.prevent="navigateTo('/dashboard/account/verification/address/step_1')" 
+            class="btn-primary mt-[40px] w-full scaling-animation">Complete ID verification</button>
+        </div>
     </div>
 
 </template>

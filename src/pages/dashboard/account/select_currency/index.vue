@@ -13,7 +13,8 @@
 
           </div>
                       
-            <input v-model.trim="searchInput" type="search" id="default-search" class="input ps-10" 
+            <input @focusin="isFocused=true" @focusout="isFocused=false"
+            v-model.trim="searchInput" type="search" id="default-search" class="input ps-10" 
               placeholder="Search ..." required>
         </div>
 
@@ -54,7 +55,7 @@
 
 
 
-          <div  class="fixed left-0 bottom-5 w-full px-6 z-10">
+          <div v-show="!isFocused"  class="fixed left-0 bottom-5 w-full px-6 z-10">
              <button @click.prevent="navigateTo('/dashboard')" class="btn-primary w-full">Save Changes</button>
           </div>
 
@@ -75,6 +76,7 @@ import { useDark, useToggle } from '@vueuse/core'
 
 
  const isDark = useDark()
+ const isFocused = ref(false)
 
 const selectedNumber = ref('+1');
 const selectedCountryid = ref(1);
