@@ -14,7 +14,7 @@
             <div class=" h-[20vh] flex flex-col justify-center items-center gap-4">
                 <button @click.prevent="navigateTo('/sign_Up/add_phone_number')"  
                 class="btn-primary w-full">Add phone number</button>
-                <button  @click.prevent="navigateTo('/dashboard')" class="btn-border-primary w-full scaling-animation">skip</button>
+                <button  @click.prevent="navigateTo('/dashboard')" class="btn-border w-full scaling-animation">Skip</button>
             </div>
         </div>
 

@@ -34,16 +34,10 @@
 
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 
-export default {
-    data(){
-        return{
-            otpvalue:'', //collecting th otp pin values
-            isFocused: false,
-        }
-    }
- 
-};
+const  otpvalue = ref('')
+const isFocused = ref(false)
+
 </script>

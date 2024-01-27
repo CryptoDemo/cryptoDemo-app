@@ -17,8 +17,8 @@
            
              <div class="fixed bottom-5 left-0 w-full px-6 flex gap-5 transition ease-in-out duration-500">
 
-                 <button @click.prevent="navigateTo('/dashboard')" class="w-full btn-border-primary scaling-animation ">skip</button>
-                 <button  @click.prevent="navigateTo('/sign_Up/add_phone_number/success')"   class="w-full btn-primary scaling-animation">save</button>
+                 <button @click.prevent="navigateTo('/dashboard')" class="w-full btn-border scaling-animation ">Skip</button>
+                 <button  @click.prevent="navigateTo('/sign_Up/add_phone_number/success')"   class="w-full btn-primary scaling-animation">Save</button>
              </div>
         </div>
 

@@ -24,13 +24,15 @@
             <ul  class="pb-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-phone-button">
               <li v-for="(country,index) in filteredPhoneNumbers.length ? filteredPhoneNumbers :  phoneNumbers" :key="country.code">
                 
-                <button @click="selectCountry(country.name);" type="button" class="inline-flex  w-full py-4 text-sm hover:rounded-2xl text-gray-700
-                   dark:text-gray-200 dark:hover:text-white" role="menuitem">
+                <button @click="selectCountry(country.name);" type="button" class="inline-flex  w-full py-[12px] text-sm 
+                hover:rounded-2xl text-gray-700
+                   dark:text-gray-200 dark:hover:text-white border-b border-[#F1F5F9] dark:border-[#2A3340]" role="menuitem">
                   <div class="flex justify-between items-center w-full">
                     <div class="gap-x-4 flex justify-between items-center">
-                        
-                      <country-flag :country="country.icon" size="big"  class="rounded-full"/>
-                      <span class="text-[16px] text-[#10192D]font-[500]">{{ country.name }}</span> 
+                        <div class=" country-flag">
+                          <country-flag :country="country.icon" size="normal"  />
+                        </div>
+                      <span class="text-[16px] text-[#10192D] dark:text-[#F8FAFC] mt-1 font-[500]">{{ country.name }}</span> 
                     </div>
                     <div v-if="selectedCountryName === country.name" class="transition ease-in-out duration-300">
                         <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -135,6 +137,12 @@ watch(()=>searchInput.value,(newv)=>{
 </script>
 
 <style>
+
+.country-flag > .flag{
+  height: 50px !important;
+  width: 50px !important;
+  border-radius: 99999px !important;
+}
     #checkmark {
         animation: drawCheckmark 1s ease-in-out forwards;
     }
@@ -144,5 +152,7 @@ watch(()=>searchInput.value,(newv)=>{
             stroke-dashoffset: 0;
         }
     }
+
+
 </style>
 

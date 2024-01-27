@@ -53,10 +53,11 @@
                             selectedName = i.name"
                             class="p-4 w-full"
                         >
-                            <a href="#" class="flex items-center w-full rounded-xl  ">
-                                
-                            <country-flag :country='i.icon' size='big' class=" rounded-xl"/>
-                            <span class="px-4 text-lg text-[#10192D] dark:text-[#F8FAFC]">{{ i.name }}</span>
+                            <a href="#" class="flex  items-center w-full rounded-xl  ">
+                            <div class="country-flag inline-flex justify-center items-center">
+                                <country-flag :country='i.icon' size='big' class=" rounded-full"/>
+                            </div>
+                            <span class="px-4 text-[16px] font-[500] text-[#10192D] dark:text-[#F8FAFC]">{{ i.name }}</span>
                             </a>
                         </div>
                     </div>
@@ -219,6 +220,10 @@ watch(()=>searchInput.value,(newv)=>{
 
 <style scoped>
 
+.country-flag > .flag{
+    width: 40px !important;
+    height: 40px !important
+}
 .slidedown{
     animation: rotateMenu  300ms ease forwards;
     transform-origin: top center

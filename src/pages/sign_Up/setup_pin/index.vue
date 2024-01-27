@@ -14,14 +14,15 @@
     
             <div class="mt-[42px] px-5 flex flex-col justify-center items-center">
                    
-                    <InputOtp :length="4" @entered=" v => otpvalue = v"/>  
+                    <InputOtp    @focusin="isFocused=true" @focusout="isFocused=false"
+                     :length="4" @entered=" v => otpvalue = v"/>  
                         
     
             </div>
 
-            <div class="fixed bottom-5 left-0 w-full px-6">
+            <div  v-show="!isFocused"  class="fixed bottom-5 left-0 w-full px-6">
 
-                <button   @click.prevent="navigateTo('/sign_Up/setup_pin/success')" class="w-full btn-primary mt-[75px] scaling-animation">continue</button>
+                <button   @click.prevent="navigateTo('/sign_Up/setup_pin/success')" class="w-full btn-primary mt-[75px] scaling-animation">Continue</button>
             </div>
         </div>
 
@@ -32,15 +33,10 @@
 
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 
-export default {
-    data(){
-        return{
-            otpvalue:'', //collecting th otp pin values
-        }
-    }
- 
-};
+const  otpvalue = ref('')
+const isFocused = ref(false)
+
 </script>

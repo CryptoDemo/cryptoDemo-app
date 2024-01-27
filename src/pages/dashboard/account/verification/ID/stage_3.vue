@@ -52,7 +52,9 @@
                                  <a href="#" class="flex items-center w-full rounded-xl bg- 
                                                  blue-100 ">
                                      
-                                 <country-flag :country='i.icon' size='big' class=" rounded-xl"/>
+                                        <div class="country-flag inline-flex justify-center items-center">
+                                                <country-flag :country='i.icon' size='big' class=" rounded-full"/>
+                                        </div>
                                  <span class="px-4 text-[16px]">{{ i.name }}</span>
                                  </a>
                              </div>
@@ -255,6 +257,10 @@ watch(()=>searchInput.value,(newv)=>{
 
 <style scoped>
 
+.country-flag > .flag{
+    width: 40px !important;
+    height: 40px !important
+}
 .frame{
     width: 40px;
     height: 40px;  

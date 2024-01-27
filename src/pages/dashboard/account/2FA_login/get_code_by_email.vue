@@ -21,7 +21,7 @@
 
          <div  v-show="!isFocused" class="fixed bottom-5 left-0 w-full px-6">
                 <button  @click.prevent="toggle_show_successful" 
-                class="btn-primary mt-[57px] w-full">continue</button>
+                class="btn-primary mt-[57px] w-full">Continue</button>
          </div>
 
 

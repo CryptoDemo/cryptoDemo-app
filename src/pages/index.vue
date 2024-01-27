@@ -44,22 +44,14 @@
                                 <div class="grid grid-cols-2 gap-2.5">
                                         <button  type="button"  @click.prevent="currentSlide  = 3"
                                         :class="currentSlide === 3 ? 'hidden': 'flex'"
-                                        class="capitalize  border
-                                                border-[#2873FF] dark:border-transparent dark:bg-[#1B2537] dark:text-white 
-                                                hover:bg-[#2873FF] scaling-animation font-bold
-                                                hover:text-[white] text-[#2873FF] rounded-2xl
-                                        text-[16px] p-[16px] text-center flex items-center justify-center 
-                                        transition-all ease-in-out duration-300 ">
-                                                skip
+                                        class=" scaling-animation btn-border ">
+                                                Skip
                                         </button>
                         
                                         <button  @click.prevent="next()" type="button" 
                                         :class="currentSlide === 3 ? 'hidden': 'flex'"
-                                        class="text-white  bg-[#2873FF] scaling-animation hover:bg-blue-800 
-                                        rounded-2xl font-bold
-                                        text-[16px] p-[16px] text-center flex items-center justify-center capitalize
-                                        transition-all ease-in-out duration-300">
-                                                next
+                                        class="  scaling-animation btn-primary" >
+                                                Next
                                                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                                                 </svg>
@@ -71,22 +63,17 @@
 
                                         <button   @click.prevent="navigateTo('/sign_Up')"    
                                         :class="currentSlide === 3 ? 'flex': 'hidden'"
-                                        type="button" class="text-white  scaling-animation  bg-[#2873FF] hover:bg-blue-800 rounded-2xl 
-                                        text-[16px] p-[16px] text-center items-center capitalize justify-center  font-bold w-full
-                                        transition-all ease-in-out duration-300 mb-[10px]">
+                                        type="button" class="text-white  scaling-animation btn-primary mb-4">
                                                 
-                                                create  account
+                                                Create  account
                                                 
                                         </button>
 
 
                                         <button @click.prevent="navigateTo('/login') " 
                                         :class="currentSlide === 3 ? 'flex': 'hidden'"  
-                                        type="button" class="  scaling-animation border border-[#2873FF] text-[#2873FF] 
-                                        rounded-2xl dark:border-transparent dark:bg-[#1B2537] dark:text-white font-bold
-                                        text-[16px] p-[16px] text-center  items-center capitalize justify-center  w-full
-                                        transition-all ease-in-out duration-300">
-                                                login
+                                        type="button" class="  scaling-animation btn-border">
+                                                Login
                                         </button>
                                 </div>
                         </div>

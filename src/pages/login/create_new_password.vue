@@ -25,19 +25,19 @@
 
                 <div class="mb-4">
                        
-                      <InputPassword/>
+                      <InputPassword    @focusin="isFocused=true" @focusout="isFocused=false"/>
                 </div>
 
                 <div class="">
                        
-                       <InputPassword/>
+                       <InputPassword    @focusin="isFocused=true" @focusout="isFocused=false"/>
 
                 </div>
 
               </form>
            
-             <div class="fixed bottom-5 left-0 w-full px-6">
-               <button @click.prevent="navigateTo('/login/success')"  class="w-full btn-primary mt-[40px] scaling-animation">create new password</button>
+             <div v-show="!isFocused"     class="fixed bottom-5 left-0 w-full px-6">
+               <button @click.prevent="navigateTo('/login/success')"  class="w-full btn-primary mt-[40px] scaling-animation">Create new password</button>
              </div>
         </div>
 
@@ -55,6 +55,7 @@ export default {
       newPassword:'',
       showPassword1: false,
       showPassword2: false,
+      isFocused:false,
     };
   },
   methods: {

@@ -34,9 +34,9 @@
                         </label>
                     </div>
 
-                    <button class=" btn-primary mb-4  mt-[40px] w-full">create account</button>
+                    <button class=" btn-primary mb-4  mt-[40px] w-full">Create account</button>
                     <button @click.prevent="navigateTo('/sign_Up')" 
-                    class=" btn-border-primary scaling-animation  w-full">Create account with email</button>
+                    class=" btn-border scaling-animation  w-full">Create account with email</button>
                </form>
 
 

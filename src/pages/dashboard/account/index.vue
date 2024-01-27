@@ -296,7 +296,8 @@
                             <Icon class="text-[#8E9BAE]" name="solar:alt-arrow-right-linear" size="20"/>
                         </div>
 
-                        <div  @click.prevent="navigateTo('/login')" class="flex justify-between items-center py-4  dark:border-[#2A3340]">
+                        <div  @click.prevent="navigateTo('/login')" class="flex justify-between items-center py-4 
+                         dark:border-[#2A3340]">
                             <div class=" flex justify-between items-center">
                                 <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center rounded-full">
     

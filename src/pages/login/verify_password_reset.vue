@@ -28,14 +28,16 @@
     
             <div class="pt-[44px] px-[12px] text-center flex flex-col justify-center items-center">
                    
-                    <InputOtp :length="4" @entered=" v => otpvalue = v"/>  
+                    <InputOtp   @focusin="isFocused=true" @focusout="isFocused=false"
+                     :length="4" @entered=" v => otpvalue = v"/>  
                         
                       <p class="mt-[32px] text-sm text-[#10192D] dark:text-[#F8FAFC]">Resend code in <span class="text-[#2873FF]">29:58</span></p>  
     
             </div>
 
-            <div class="fixed bottom-5 left-0 w-full px-6">
-                <button @click.prevent="navigateTo('/login/create_new_password')" class="w-full btn-primary  scaling-animation">Verify</button>
+            <div v-show="!isFocused"     class="fixed bottom-5 left-0 w-full px-6">
+                <button @click.prevent="navigateTo('/login/create_new_password')" class="w-full btn-primary  
+                scaling-animation">Verify</button>
             </div>
         </div>
 
@@ -46,15 +48,10 @@
 
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 
-export default {
-    data(){
-        return{
-            otpvalue:'', //collecting th otp pin values
-        }
-    }
- 
-};
+const  otpvalue = ref('')
+const isFocused = ref(false)
+
 </script>

@@ -15,10 +15,13 @@
             <div class="my-4 py-4  text-center  ">
            
                   <h3 class="text-2xl font-bold text-[#10192D]">Reset password</h3>
-                  <p class="text-sm  pt-4 px-4 pb-6 text-[#8E9BAE] font-[400]">Enter the email address linked to your account</p>
+                  <p class="text-sm  pt-4 px-4 pb-6 text-[#8E9BAE] font-[400]">
+                    Enter the phone number linked to your account
+                </p>
 
 
-                  <InputCountrySelector   :selectedNumber.sync="selectedNumber" :selectedIcon.sync="selectedIcon" :isdisabled="false" />
+                  <InputCountrySelector   @focusin="isFocused=true" @focusout="isFocused=false"
+                     :selectedNumber.sync="selectedNumber" :selectedIcon.sync="selectedIcon" :isdisabled="false" />
 
 
                 <div class="pt-1 w-full flex justify-end  ">
@@ -34,8 +37,8 @@
 
             <div class="fixed w-full left-0 bottom-10 px-6">
 
-                <button  @click.prevent="navigateTo('/login/verify_password_reset')" 
-                class="w-full btn-primary scaling-animation">continue</button>
+                <button v-show="!isFocused"    @click.prevent="navigateTo('/login/verify_password_reset')" 
+                class="w-full btn-primary scaling-animation">Continue</button>
             </div>
         </div>
 
@@ -49,7 +52,7 @@
 <script setup>
 import { initFlowbite,Dropdown } from 'flowbite'
   
-
+const isFocused = ref(false)
 
 
 onMounted(()=>{

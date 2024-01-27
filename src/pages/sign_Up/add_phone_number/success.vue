@@ -14,7 +14,7 @@
             </div>
             <div class="fixed bottom-5 left-0 px-6  w-full flex flex-col justify-center items-center gap-4">
                 <button @click.prevent="navigateTo('/sign_Up/setup_pin')"  
-                class="btn-primary w-full">done</button>
+                class="btn-primary w-full">Done</button>
                 <!-- <button class="btn-border w-full">skip</button> -->
             </div>
         </div>

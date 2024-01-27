@@ -16,8 +16,8 @@
            
              <div class="fixed bottom-5 left-0 w-full px-6 flex gap-5 transition ease-in-out duration-500">
 
-                 <button @click.prevent="navigateTo('/dashboard')" class="w-full btn-border-primary ">skip</button>
-                 <button  @click.prevent="toggle_show_successful"   class="w-full btn-primary ">save</button>
+                 <button @click.prevent="navigateTo('/dashboard')" class="w-full btn-border-primary ">Skip</button>
+                 <button  @click.prevent="toggle_show_successful"   class="w-full btn-primary ">Save</button>
              </div>
         </div>
 

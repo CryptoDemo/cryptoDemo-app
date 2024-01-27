@@ -41,8 +41,9 @@
                         </label>
                     </div>
 
-                    <button @click.prevent="navigateTo('/sign_Up/successful')" class="scaling-animation btn-primary mt-[40px] mb-4 w-full">create account</button>
-                    <button @click.prevent="navigateTo('/sign_Up/create_with_phone')" class="scaling-animation btn-border-primary  w-full">Create account with phone number</button>
+                    <button @click.prevent="navigateTo('/sign_Up/successful')" class="scaling-animation btn-primary mt-[40px] mb-4 w-full">Create account</button>
+                    <button @click.prevent="navigateTo('/sign_Up/create_with_phone')" 
+                    class="scaling-animation btn-border  w-full">Create account with phone number</button>
                </form>
 
 

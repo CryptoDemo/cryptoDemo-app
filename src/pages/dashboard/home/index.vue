@@ -17,21 +17,21 @@
 
                 <div class="flex items-center">
 
-                    <span class=" h-[40px] w-[40px] bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center rounded-full">
+                    <span @click.prevent="navigateTo('/dashboard/home/search')" class=" h-[40px] w-[40px]  dark:bg-[#1B2537] bg-[#F5F9FF] inline-flex justify-center items-center rounded-full">
     
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path d="M9.58317 17.4993C13.9554 17.4993 17.4998 13.9549 17.4998 9.58268C17.4998 5.21043 13.9554 1.66602 9.58317 1.66602C5.21092 1.66602 1.6665 5.21043 1.6665 9.58268C1.6665 13.9549 5.21092 17.4993 9.58317 17.4993Z" :stroke="!isDark ?'#10192D':'white'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M18.3332 18.3327L16.6665 16.666" :stroke="!isDark ?'#10192D':'white'"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </span>
-                    <span class=" h-[40px] w-[40px] mx-4 bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center rounded-full">
+                    <span class=" h-[40px] w-[40px] mx-4  dark:bg-[#1B2537] bg-[#F5F9FF] inline-flex justify-center items-center rounded-full">
     
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M19.3399 14.49L18.3399 12.83C18.1299 12.46 17.9399 11.76 17.9399 11.35V8.82C17.9399 6.47 16.5599 4.44 14.5699 3.49C14.0499 2.57 13.0899 2 11.9899 2C10.8999 2 9.91994 2.59 9.39994 3.52C7.44994 4.49 6.09994 6.5 6.09994 8.82V11.35C6.09994 11.76 5.90994 12.46 5.69994 12.82L4.68994 14.49C4.28994 15.16 4.19994 15.9 4.44994 16.58C4.68994 17.25 5.25994 17.77 5.99994 18.02C7.93994 18.68 9.97994 19 12.0199 19C14.0599 19 16.0999 18.68 18.0399 18.03C18.7399 17.8 19.2799 17.27 19.5399 16.58C19.7999 15.89 19.7299 15.13 19.3399 14.49Z" :fill="!isDark ?'#10192D':'white'"/>
                         <path d="M14.8302 20.01C14.4102 21.17 13.3002 22 12.0002 22C11.2102 22 10.4302 21.68 9.88018 21.11C9.56018 20.81 9.32018 20.41 9.18018 20C9.31018 20.02 9.44018 20.03 9.58018 20.05C9.81018 20.08 10.0502 20.11 10.2902 20.13C10.8602 20.18 11.4402 20.21 12.0202 20.21C12.5902 20.21 13.1602 20.18 13.7202 20.13C13.9302 20.11 14.1402 20.1 14.3402 20.07C14.5002 20.05 14.6602 20.03 14.8302 20.01Z" :fill="!isDark ?'#10192D':'white'"/>
                         </svg>
                     </span>
-                    <span class=" h-[40px] w-[40px] bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center rounded-full">
+                    <span class=" h-[40px] w-[40px]  dark:bg-[#1B2537] bg-[#F5F9FF] inline-flex justify-center items-center rounded-full">
     
                         <img src="/home/icon22.png"/>
                     </span>
@@ -50,17 +50,40 @@
                     <div class="flex justify-between items-center">
                         <div class="flex items-center">
                             <span class="mr-[10px] capitalize font-[400] text-sm text-[#FFF] opacity-60">balance</span>
-                            <svg class="opacity-60" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M12.9833 10.0009C12.9833 11.6509 11.6499 12.9842 9.99993 12.9842C8.34993 12.9842 7.0166 11.6509 7.0166 10.0009C7.0166 8.35091 8.34993 7.01758 9.99993 7.01758C11.6499 7.01758 12.9833 8.35091 12.9833 10.0009Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M9.99987 16.8913C12.9415 16.8913 15.6832 15.1579 17.5915 12.1579C18.3415 10.9829 18.3415 9.00794 17.5915 7.83294C15.6832 4.83294 12.9415 3.09961 9.99987 3.09961C7.0582 3.09961 4.31654 4.83294 2.4082 7.83294C1.6582 9.00794 1.6582 10.9829 2.4082 12.1579C4.31654 15.1579 7.0582 16.8913 9.99987 16.8913Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+
+                            <div @click.prevent=" toggle_visibility ">
+                                
+                                <svg v-if="!isvisible" class="opacity-60" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M12.9833 10.0009C12.9833 11.6509 11.6499 12.9842 9.99993 12.9842C8.34993 12.9842 7.0166 11.6509 7.0166 10.0009C7.0166 8.35091 8.34993 7.01758 9.99993 7.01758C11.6499 7.01758 12.9833 8.35091 12.9833 10.0009Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.99987 16.8913C12.9415 16.8913 15.6832 15.1579 17.5915 12.1579C18.3415 10.9829 18.3415 9.00794 17.5915 7.83294C15.6832 4.83294 12.9415 3.09961 9.99987 3.09961C7.0582 3.09961 4.31654 4.83294 2.4082 7.83294C1.6582 9.00794 1.6582 10.9829 2.4082 12.1579C4.31654 15.1579 7.0582 16.8913 9.99987 16.8913Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <svg  v-else  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M14.5299 9.47004L9.46992 14.53C8.81992 13.88 8.41992 12.99 8.41992 12C8.41992 10.02 10.0199 8.42004 11.9999 8.42004C12.9899 8.42004 13.8799 8.82004 14.5299 9.47004Z" stroke="#8E9BAE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M17.8201 5.76998C16.0701 4.44998 14.0701 3.72998 12.0001 3.72998C8.47009 3.72998 5.18009 5.80998 2.89009 9.40998C1.99009 10.82 1.99009 13.19 2.89009 14.6C3.68009 15.84 4.60009 16.91 5.60009 17.77" stroke="#8E9BAE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.41992 19.5301C9.55992 20.0101 10.7699 20.2701 11.9999 20.2701C15.5299 20.2701 18.8199 18.1901 21.1099 14.5901C22.0099 13.1801 22.0099 10.8101 21.1099 9.40005C20.7799 8.88005 20.4199 8.39005 20.0499 7.93005" stroke="#8E9BAE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.5099 12.7C15.2499 14.11 14.0999 15.26 12.6899 15.52" stroke="#8E9BAE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.47 14.53L2 22" stroke="#8E9BAE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M22 2L14.53 9.47" stroke="#8E9BAE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                
+                                </svg>
+
+                            </div>
                         </div>
 
-                        <div class="flex items-center relative">
-                            <span class="text-sm font-[400] text-[#fff] opacity-60">USD</span>
+                        <div @click.prevent="toggle_account_types" class="flex items-center relative">
+                            <span class="text-sm font-[400] text-[#fff] opacity-60">{{ selected_account_type }}</span>
                             <svg class="ml-[5px]" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
                                 <path d="M11.6199 5.2207L7.81655 9.02404C7.36738 9.4732 6.63238 9.4732 6.18322 9.02404L2.37988 5.2207" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
+
+                            <div v-show="show_account_types" 
+                            class="absolute top-6 bg-[#F5F9FF] px-4  rounded z-50">
+                                 <ul  v-for="i in account_types" :key="i"
+                                 @click.prevent="selected_account_type = i; !show_account_types">
+
+                                     <li  class="py-1">{{ i }}</li>
+                                 </ul>
+                            </div>
 
                             <!-- <div class="absolute">
                               <span>ETH</span>
@@ -71,7 +94,7 @@
 
                     </div>
 
-                    <h1 class="text-[32px] py-[8px] font-[800] text-[#fff]">$590,987</h1>
+                    <h1 class="text-[32px] py-[12px] font-[800] text-[#fff]">$590,987</h1>
 
                     <div class="flex items-center">
                     <span class="text-[16px] font-[500] text-[#fff] opacity-60">$5,987</span>
@@ -114,7 +137,7 @@
             </div>
 
 
-            <div class="box-shadow2 mt-[53px] py-[12px] px-[8px] bg-[#F5F9FF] dark:bg-[#1B2537] rounded-[12px] flex justify-between
+            <div v-if="show_create_account" class="box-shadow2 mt-[53px] py-[12px] px-[8px]  dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] flex justify-between
              items-center">
                   
                 <div>
@@ -146,6 +169,14 @@
                     </button>
 
                 </div>
+
+            </div>
+
+            <div v-else class="mt-[53px]">
+
+                <p class="mb-4">Create an account to have access to all of our features</p>
+                <button class="btn-primary w-full mb-4 scaling-animation">Create account</button>
+                <button class="btn-border w-full scaling-animation">Login</button>
 
             </div>
 
@@ -200,7 +231,7 @@
                 <div class="my-[16px]">
 
                     <div class="grid grid-cols-2 gap-x-[16px]">
-                        <div  class="min-h-[141px]   rounded-[20px] py-[14px] px-[16px] bg-[#F8FAFC] dark:bg-[#1B2537]">
+                        <div  class="min-h-[141px]   rounded-[20px] py-[14px] px-[16px]  dark:bg-[#1B2537] bg-[#F5F9FF]">
 
                             <div class="h-[40px] w-[40px] rounded-full bg-[#EDF2F7] dark:bg-[#10192D]
                             inline-flex justify-center items-center">
@@ -221,7 +252,7 @@
 
                         </div>
 
-                        <div  class="min-h-[141px]   rounded-[20px] py-[14px] px-[16px] bg-[#F8FAFC] dark:bg-[#1B2537]">
+                        <div  class="min-h-[141px]   rounded-[20px] py-[14px] px-[16px]  dark:bg-[#1B2537] bg-[#F5F9FF]">
 
                             <div class="h-[40px] w-[40px] rounded-full bg-[#EDF2F7]  dark:bg-[#10192D]
                             inline-flex justify-center items-center">
@@ -271,7 +302,7 @@
 
                 <div class="mt-[16px]">
 
-                    <div class="p-[8px] mb-[16px] border border-[#F1F5F9] dark:border-[#2A3340] rounded-[12px] ">
+                    <div class="p-[8px] mb-[16px]   dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] ">
 
                         <div class="flex justify-between items-start">
                             <div class="flex flex-col">
@@ -296,7 +327,7 @@
 
 
                     </div>
-                    <div class="p-[8px]  mb-[16px] border border-[#F1F5F9] dark:border-[#2A3340] rounded-[12px]">
+                    <div class="p-[8px]  mb-[16px] dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px]">
 
                         <div class="flex justify-between items-start">
                             <div class="flex flex-col">
@@ -321,7 +352,7 @@
 
 
                     </div>
-                    <div class="p-[8px]  mb-[16px] border border-[#F1F5F9] dark:border-[#2A3340] rounded-[12px]">
+                    <div class="p-[8px]  mb-[16px] dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px]">
 
                         <div class="flex justify-between items-start ">
                             <div class="flex flex-col">
@@ -366,7 +397,7 @@
 
                 <div class="mt-[16px]">
 
-                    <div class="p-[8px] mb-[16px] border border-[#F1F5F9] dark:border-[#2A3340] rounded-[12px] ">
+                    <div class="p-[8px] mb-[16px] dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] ">
 
                         <div class="flex justify-between items-start">
                             <div class="flex flex-col">
@@ -392,7 +423,7 @@
 
                     </div>
 
-                    <div class="p-[8px]  mb-[16px] border border-[#F1F5F9] dark:border-[#2A3340] rounded-[12px] ">
+                    <div class="p-[8px]  mb-[16px] dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] ">
 
                         <div class="flex justify-between items-start">
                             <div class="flex flex-col">
@@ -417,7 +448,7 @@
 
 
                     </div>
-                    <div class="p-[8px]  mb-[16px] border border-[#F1F5F9] dark:border-[#2A3340] rounded-[12px] ">
+                    <div class="p-[8px]  mb-[16px] dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] ">
 
                         <div class="flex justify-between items-start">
                             <div class="flex flex-col">
@@ -460,6 +491,20 @@
 import { useDark, useToggle } from '@vueuse/core'
 
 const isDark = useDark()
+
+const show_create_account = ref(false)
+const isvisible = ref(false)
+const show_account_types = ref(false)
+const selected_account_type = ref('USD')
+const account_types = ['USD','ETH','BTC']
+const toggle_account_types =()=>{
+    show_account_types.value = !show_account_types.value
+}
+
+const toggle_visibility = ()=>{
+    isvisible.value = !isvisible.value
+}
+
 </script>
 
 <style scoped>

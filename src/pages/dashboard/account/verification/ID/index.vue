@@ -5,11 +5,12 @@
   
       <p class="pt-[72px] pb-4 text-[#8E9BAE]">Complete verification to unlock full access to all app features.</p>
   
-        <InputCountrySelector  :selectedNumber.sync="selectedNumber" :selectedIcon.sync="selectedIcon" :isdisabled="false" />
+        <InputCountrySelector  @focusin="isFocused=true" @focusout="isFocused=false"
+          :selectedNumber.sync="selectedNumber" :selectedIcon.sync="selectedIcon" :isdisabled="false" />
       
          
   
-        <div class="fixed bottom-5 left-0 w-full px-6">
+        <div v-show="!isFocused" class="fixed bottom-5 left-0 w-full px-6">
 
           <button @click.prevent="navigateTo('/dashboard/account/verification/ID/stage_1')" class="btn-primary scaling-animation w-full mt-[150px]">
             Add phone number
@@ -19,7 +20,7 @@
   </template>
   
   <script setup>
-  
+   const isFocused = ref(false)
   const selectedNumber = ref('+1');
   const selectedIcon = ref('us');
   </script>

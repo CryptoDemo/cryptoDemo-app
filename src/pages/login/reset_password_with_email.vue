@@ -19,7 +19,8 @@
                   <p class="text-sm text-[#64748B]  pt-4 px-4">Enter the email address linked to your account</p>
 
                 <div class="my-6">
-                        <input type="email" id="email" class="input " placeholder="Email Address" required>
+                        <input  @focusin="isFocused=true" @focusout="isFocused=false"
+                         type="email" id="email" class="input " placeholder="Email Address" required>
                         
                 </div>
                 <div class="flex justify-end w-full  ">
@@ -30,9 +31,9 @@
             </div>
     
 
-            <div class="absolute w-full left-0 bottom-5 px-6">
+            <div v-show="!isFocused"  class="fixed w-full left-0 bottom-5 px-6">
                 <button @click.prevent="navigateTo('/login/verify_password_reset')"  class="w-full btn-primary scaling-animation
-               mt-[24px] ">continue</button>
+               mt-[24px] ">Continue</button>
             </div>
         </div>
 
@@ -43,15 +44,10 @@
 
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 
-export default {
-    data(){
-        return{
-            otpvalue:'', //collecting th otp pin values
-        }
-    }
- 
-};
+const  otpvalue = ref('')
+const isFocused = ref(false)
+
 </script>

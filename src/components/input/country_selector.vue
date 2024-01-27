@@ -35,7 +35,7 @@
               placeholder="Search countries..." required>
           </div>
   
-          <div class="max-h-[284px] border dark:border-gray-700  rounded-2xl overflow-y-scroll">
+          <div class="max-h-[284px] border dark:border-[#1B2537] rounded-2xl overflow-y-scroll">
             <ul  class="pb-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-phone-button">
               <li v-for="country in filteredPhoneNumbers.length ? filteredPhoneNumbers :  phoneNumbers" :key="country.code">
                 
@@ -43,8 +43,10 @@
                   hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-gray-200 dark:hover:text-white" role="menuitem">
                   <div class="flex justify-between items-center w-full">
                     <div class="gap-x-4 flex justify-between items-center">
-                      <country-flag :country="country.icon" size="normal" class="rounded"/>
-                      <span class="pt-2 dark:text-[#F8FAFC] text-[#10192D] text-[16px]">{{ country.name }}</span> 
+                      <div class="country-flag inline-flex justify-center items-center">
+                                <country-flag :country='country.icon' size='big' class=" rounded-full"/>
+                        </div>
+                      <span class=" dark:text-[#F8FAFC] text-[#10192D] text-[16px]">{{ country.name }}</span> 
                     </div>
                     <span>{{ country.code }} </span>
                   </div>
@@ -129,3 +131,10 @@ watch(()=>searchInput.value,(newv)=>{
 })
   </script>
   
+
+  <style scoped>
+  .country-flag > .flag{
+    width: 40px !important;
+    height: 40px !important
+}
+</style>
