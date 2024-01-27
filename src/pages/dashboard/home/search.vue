@@ -1,8 +1,8 @@
 <template>
 
-    <div class="h-screen pb-20 overflow-y-scroll bg-[#ffff] font-['Poppins']   dark:bg-[#10192D]  w-full px-6">
+    <div class=" h-screen pb-20 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full px-6 ">
 
-        <Appbar link="/dashboard" title="Search coin" />
+        <Appbar link="/dashboard" title="Search coin"/>
 
         <div class="relative pt-[72px]">
           <div class="absolute bottom-4 flex items-center ps-3 pointer-events-none">

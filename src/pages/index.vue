@@ -3,7 +3,7 @@
 
     <SplashScreen v-if="showSplashScreen"/>
 
-    <div v-else  class="fixed w-full top-0 left-0 h-screen py-4 font-['Poppins']   bg-white dark:bg-[#10192D]   transition ease-linear duration-300">
+    <div v-else  class="fixed w-full top-0 left-0 h-screen py-4   bg-white dark:bg-[#10192D]   transition ease-linear duration-300">
 
         <carousel ref="carousel" v-model="currentSlide" :items-to-show="1" class="relative" :wrapAround="false">
 

@@ -1,6 +1,6 @@
 <template>
 
-  <div class="font-['Poppins']">
+  <div class="font-['Manrope']">
     <NuxtPage/>
   </div>
   
@@ -8,13 +8,14 @@
 
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&display=swap'); */
+
   
   body {
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
   }
-
 
 ::-webkit-scrollbar {
   display: none;
