@@ -25,8 +25,9 @@
               <li v-for="(country,index) in filteredPhoneNumbers.length ? filteredPhoneNumbers :  phoneNumbers" :key="country.code">
                 
                 <button @click="selectCountry(country.name);" type="button" class="inline-flex  w-full py-[12px] text-sm 
-                hover:rounded-2xl text-gray-700
-                   dark:text-gray-200 dark:hover:text-white border-b border-[#F1F5F9] dark:border-[#2A3340]" role="menuitem">
+               text-gray-700
+                   dark:text-gray-200 dark:hover:text-white border-b border-[#F1F5F9] dark:border-[#2A3340]" 
+                   role="menuitem">
                   <div class="flex justify-between items-center w-full">
                     <div class="gap-x-4 flex justify-between items-center">
                         <div class=" country-flag">

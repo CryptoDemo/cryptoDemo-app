@@ -1,6 +1,6 @@
 <template>
 
-    <div class="px-6 pb-4  bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
+    <div class="px-6 pb-24  bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
 
         
         <Appbar link="/dashboard/account/verification" title="Address verification" />
@@ -26,7 +26,7 @@
                 </button>
 
 
-                <div class=" border-b dark:border-[#1B2537]  w-full  dark:bg-transparent
+                <div class=" dark:border-[#1B2537]  w-full  dark:bg-transparent
                 dark:text-[#8E9BAE]  rounded-2xl pb-2 mt-1 z"    
                 :class="usersToggle ?' block h-auto':'h-0 hidden'">
                        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>

@@ -1,7 +1,7 @@
 <template>
 
     <div class="h-screen overflow-y-auto px-6   bg-[#ffff]  dark:bg-[#10192D]   w-full" >
-        <div class="pb-6 ">
+        <div class="pb-24 ">
             <Appbar link="/dashboard/account/verification" title="ID Verification" />
     
            

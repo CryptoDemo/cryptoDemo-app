@@ -30,7 +30,7 @@
                 </button>
 
 
-                <div class=" border-b dark:border-[#1B2537]  w-full  dark:bg-transparent
+                <div class="  dark:border-[#1B2537]  w-full  dark:bg-transparent
                 dark:text-[#8E9BAE] 
                 rounded-2xl pb-2 mt-1 z transition-all ease-out duration-300"  v-show="question_1Toggle" >
                      
@@ -74,7 +74,7 @@
                 </button>
 
 
-                <div class=" border-b dark:border-[#1B2537]  w-full  dark:bg-transparent
+                <div class="  dark:border-[#1B2537]  w-full  dark:bg-transparent
                 dark:text-[#8E9BAE] transition-all ease-out duration-300
                 rounded-2xl pb-2 mt-1 z "  v-show="question_2Toggle" >
                      
@@ -117,7 +117,7 @@
                 </button>
 
 
-                <div class=" border-b dark:border-[#1B2537]  w-full  dark:bg-transparent
+                <div class=" dark:border-[#1B2537]  w-full  dark:bg-transparent
                 dark:text-[#8E9BAE] transition-all ease-out duration-300
                 rounded-2xl pb-2 mt-1 z"  v-show="question_3Toggle" >
                      

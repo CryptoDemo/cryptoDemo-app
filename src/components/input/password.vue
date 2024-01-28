@@ -5,7 +5,7 @@
         :type="showPassword ? 'text' : 'password'"
         id="password"
         class="input"
-        :placeholder="showPassword ? 'password' : '*******'"
+        placeholder="password"
         required
       />
       <div @click="togglePasswordVisibility" class="absolute end-2.5 bottom-4 dark:text-[#F8FAFC]">

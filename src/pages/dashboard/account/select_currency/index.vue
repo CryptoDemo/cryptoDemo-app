@@ -22,8 +22,8 @@
             <ul  class="pb-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-phone-button">
               <li v-for="(country,index) in filteredPhoneNumbers.length ? filteredPhoneNumbers :  phoneNumbers" :key="country.code">
                 
-                <button @click="selectCountry(country.id);" type="button" class="inline-flex  w-full  text-sm hover:rounded-2xl text-gray-700
-                   dark:text-gray-200 dark:hover:text-white" role="menuitem">
+                <button @click="selectCountry(country.id);" type="button" class="inline-flex  w-full  text-sm text-gray-700
+                   dark:text-gray-200 " role="menuitem">
                   <div class="flex justify-between items-center w-full py-6 border-b border-gray-200 dark:border-gray-800">
                       <div class=" flex justify-between items-center">
                           
