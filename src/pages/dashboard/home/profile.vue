@@ -1,12 +1,12 @@
 <template>
 
-    <div class=" h-screen pb-14 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full px-6 ">
+    <div class=" h-screen pb-14 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full  ">
 
         <Appbar link="/dashboard" title="Profile"/>
 
         <div class="mt-[80px]">
 
-            <div class="flex justify-center items-center">
+            <div class="flex justify-center items-center mx-6">
                 <div class="relative h-[102px] w-[102px] border border-[#F1F5F9] dark:border-[#1B2537]  p-[7px] rounded-full">
                     <img class=" rounded-full" src="/home/profile.png" alt="">
                     <span class="bottom-1 right-0 absolute  w-[28px] h-[28px] bg-[#2873FF] border-2
@@ -20,7 +20,7 @@
 
 
 
-            <div  class="box-shadow2 mt-[24px] p-[12px]   dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] 
+            <div  class="box-shadow2 mx-6 mt-[24px] p-[12px]   dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] 
             flex justify-between
              items-center">
                   
@@ -60,7 +60,7 @@
             </div>
 
 
-            <div class="mt-[24px]">
+            <div class="mt-[24px] mx-6">
 
                 <h3 class="text-[#10192D] font-[700] text-[16px]">Contact info</h3>
 
@@ -84,7 +84,7 @@
 
             </div>
 
-            <div class="mt-[24px]">
+            <div class="mt-[24px] mx-6">
 
                  <h3 class="text-[#10192D] mb-[4px] font-[700] text-[16px]">My Trades</h3>
 
@@ -136,7 +136,11 @@
 
             <CardsMyCoins/>
 
-            <CardsReferrals/>
+            <div class="mx-6">
+
+                <CardsReferrals/>
+            </div>
+
 
 
 

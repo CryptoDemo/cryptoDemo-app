@@ -1,6 +1,6 @@
 <template>
 
-    <div class="h-screen pb-24 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full px-6">
+    <div class="h-screen pb-24 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full ">
 
         <div class="fixed top-0 py-[11px] z-50 left-0 w-full px-6 bg-[#ffff]   dark:bg-[#10192D]">
             <div class="flex justify-between items-center">
@@ -44,7 +44,7 @@
 
         <div class="pt-[88px] ">
 
-            <div class=" min-h-[144px] bg-gradient-to-r from-[#2873FF] to-[#38BDF8] relative rounded-[20px]">
+            <div class="mx-6 min-h-[144px] bg-gradient-to-r from-[#2873FF] to-[#38BDF8] relative rounded-[20px]">
 
                 <div class="p-6  flex flex-col justify-between ">
                     <div class="flex justify-between items-center">
@@ -147,7 +147,8 @@
             </div>
 
 
-            <div v-if="show_create_account" class="box-shadow2 mt-[53px] py-[12px] px-[8px]  dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] flex justify-between
+            
+            <div v-if="show_create_account" class="box-shadow2 mx-6  mt-[53px] py-[12px] px-[8px]  dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] flex justify-between
              items-center">
                   
                 <div>
@@ -182,7 +183,7 @@
 
             </div>
 
-            <div v-else class="mt-[53px]">
+            <div v-else class="mt-[53px] mx-6">
 
                 <p class="mb-4">Create an account to have access to all of our features</p>
                 <button class="btn-primary w-full mb-4 scaling-animation">Create account</button>
@@ -190,9 +191,10 @@
 
             </div>
 
-            <CardsMyCoins/>
 
-            <div class="mt-[24px]">
+                <CardsMyCoins/>
+
+            <div class="mt-[24px] mx-6">
 
                 <h3 class="text-[#10192D] mb-[28px] font-[700] text-[16px] capitalize">Trending</h3>
 
@@ -232,7 +234,7 @@
             </div>
 
 
-            <div class="mt-[9px]">
+            <div class="mt-[9px] mx-6">
 
                 <h1 class="text-[#10192D] text-[16px] mb-[4px] font-[700]">Trading Threshold</h1>
                 <p class="text-[#8E9BAE] font-[400] text-[14px]">
@@ -295,7 +297,7 @@
 
             </div>
 
-            <div class="mt-[24px]">
+            <div class="mt-[24px] mx-6">
 
                 <div class="leading-6">
                     <div class="grid grid-cols-6 items-start">
@@ -390,7 +392,7 @@
 
             </div>
 
-            <div class="mt-[24px]">
+            <div class="mt-[24px] mx-6">
 
                 <div class="">
                     <div class="grid grid-cols-6 items-start">
@@ -488,7 +490,10 @@
 
            
 
-            <cardsReferrals />
+            <div class="mx-6">
+
+                <cardsReferrals />
+            </div>
 
 
         </div>

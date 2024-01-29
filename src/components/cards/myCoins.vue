@@ -1,8 +1,8 @@
 <template>
     <div class="mt-[24px]">
-                <h2 class="font-[700] mb-[16px] text-[16px] text-[#10192D] capitalize">My Coins</h2>
+                <h2 class="font-[700] px-6 mb-[16px] text-[16px] text-[#10192D] capitalize">My Coins</h2>
 
-                <div class="flex gap-x-[16px] overflow-x-scroll" >
+                <div class="flex gap-x-[16px] overflow-x-scroll px-6" >
 
                     <div  v-for="i in coinsCard" :key="i.id">
 
