@@ -47,7 +47,7 @@
 
                 <div class="w-full">
 
-                    <button class="bg-[#E0ECFF] py-[11px] px-[14px] text-[#2873FF] rounded-[12px] font-[600]
+                    <button class="bg-[#E0ECFF] dark:bg-[#1E2A3E] py-[11px] px-[14px] text-[#2873FF] rounded-[12px] font-[600]
                     text-[12px] w-full flex justify-center items-center">
                             <span class="font-[600] text-[12px] mr-[2px]">Verified</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">

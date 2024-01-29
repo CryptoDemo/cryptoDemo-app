@@ -69,7 +69,7 @@ definePageMeta({
         {
             id:1,
             title:"home",
-            icon:'solar:home-angle-2-linear'
+            icon:'solar:home-angle-2-bold'
 
         },
         {

@@ -1,6 +1,6 @@
 <template>
 
-    <div class="h-screen pb-14 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full px-6">
+    <div class="h-screen pb-24 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full px-6">
 
         <div class="fixed top-0 py-[11px] z-50 left-0 w-full px-6 bg-[#ffff]   dark:bg-[#10192D]">
             <div class="flex justify-between items-center">
@@ -44,9 +44,9 @@
 
         <div class="pt-[88px] ">
 
-            <div class=" min-h-[144px] bg-gradient relative rounded-[30px]">
+            <div class=" min-h-[144px] bg-gradient-to-r from-[#2873FF] to-[#38BDF8] relative rounded-[20px]">
 
-                <div class="p-6  flex flex-col justify-between">
+                <div class="p-6  flex flex-col justify-between ">
                     <div class="flex justify-between items-center">
                         <div class="flex items-center">
                             <span class="mr-[10px] capitalize font-[400] text-sm text-[#FFF] opacity-60">balance</span>
@@ -94,7 +94,7 @@
 
                     </div>
 
-                    <h1 class="text-[32px] py-[12px] font-[800] text-[#fff]">$590,987</h1>
+                    <h1 class="text-[32px] pt-[15px] pb-[12px] font-[800] text-[#fff]">$590,987</h1>
 
                     <div class="flex items-center">
                     <span class="text-[16px] font-[500] text-[#fff] opacity-60">$5,987</span>
@@ -109,9 +109,9 @@
                     </div>
 
                 </div>
-                <div class="absolute -bottom-7 gap-[8px] px-6 w-full  flex justify-between items-center">
+                <div class="absolute -bottom-8 gap-[10px] px-6 w-full  flex justify-between items-center">
 
-                    <button class="py-[12px] px-[16px] min-h-[48px] box-shadow capitalize rounded-2xl bg-[white] text-[#10192D] flex items-center justify-center 
+                    <button class="py-[12px] px-[16px] min-h-[51px] box-shadow capitalize rounded-2xl bg-[white] text-[#10192D] flex items-center justify-center 
                     gap-x-[8px] w-full font-[700] ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 21 20" fill="none">
                         <path d="M4.0835 14.168V15.8346C4.0835 16.2767 4.25909 16.7006 4.57165 17.0131C4.88421 17.3257 5.30814 17.5013 5.75016 17.5013H15.7502C16.1922 17.5013 16.6161 17.3257 16.9287 17.0131C17.2412 16.7006 17.4168 16.2767 17.4168 15.8346V14.168" stroke="#10192D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -120,7 +120,7 @@
                         </svg>
                         <span class="text-sm">Buy</span>
                     </button>
-                    <button class="py-[12px] min-h-[48px] px-[16px] capitalize box-shadow rounded-2xl bg-[white]
+                    <button class="py-[12px] min-h-[51px] px-[16px] capitalize box-shadow rounded-2xl bg-[white]
                      text-[#10192D] flex items-center justify-center 
                     gap-x-[8px] w-full font-[700]">
                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 21 20" fill="none">
@@ -302,7 +302,7 @@
 
                 <div class="mt-[16px]">
 
-                    <div class="p-[8px] mb-[16px]   dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] ">
+                    <div class="py-[8px] px-[12px] mb-[16px]   dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] ">
 
                         <div class="flex justify-between items-start">
                             <div class="flex flex-col">
@@ -327,7 +327,7 @@
 
 
                     </div>
-                    <div class="p-[8px]  mb-[16px] dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px]">
+                    <div class="p-[8px] px-[12px]  mb-[16px] dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px]">
 
                         <div class="flex justify-between items-start">
                             <div class="flex flex-col">
@@ -352,7 +352,7 @@
 
 
                     </div>
-                    <div class="p-[8px]  mb-[16px] dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px]">
+                    <div class="p-[8px] px-[12px]  mb-[16px] dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px]">
 
                         <div class="flex justify-between items-start ">
                             <div class="flex flex-col">
@@ -397,7 +397,7 @@
 
                 <div class="mt-[16px]">
 
-                    <div class="p-[8px] mb-[16px] dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] ">
+                    <div class="p-[8px] px-[12px] mb-[16px] dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] ">
 
                         <div class="flex justify-between items-start">
                             <div class="flex flex-col">
@@ -423,7 +423,7 @@
 
                     </div>
 
-                    <div class="p-[8px]  mb-[16px] dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] ">
+                    <div class="p-[8px] px-[12px]  mb-[16px] dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] ">
 
                         <div class="flex justify-between items-start">
                             <div class="flex flex-col">
@@ -448,7 +448,7 @@
 
 
                     </div>
-                    <div class="p-[8px]  mb-[16px] dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] ">
+                    <div class="p-[8px] px-[12px]  mb-[16px] dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] ">
 
                         <div class="flex justify-between items-start">
                             <div class="flex flex-col">
@@ -509,7 +509,7 @@ const toggle_visibility = ()=>{
 
 <style scoped>
 .bg-gradient{
-    background: linear-gradient(270deg, #38BDF8 -11.75%, #2873FF 119.96%);
+    background: linear-gradient(270deg, #38BDF8 -60.75%, #2873FF 119.96%);
     /* box-shadow: 0px 27px 20px rgba(0, 0, 0, 0.02); */
 }
 .bg-gradient2{
