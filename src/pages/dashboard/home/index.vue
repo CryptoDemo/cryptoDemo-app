@@ -53,12 +53,12 @@
 
                             <div @click.prevent=" toggle_visibility ">
                                 
-                                <svg v-if="!isvisible" class="opacity-60" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <svg v-if="!isvisible" class="opacity-60 transition ease-in-out duration-300" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                     <path d="M12.9833 10.0009C12.9833 11.6509 11.6499 12.9842 9.99993 12.9842C8.34993 12.9842 7.0166 11.6509 7.0166 10.0009C7.0166 8.35091 8.34993 7.01758 9.99993 7.01758C11.6499 7.01758 12.9833 8.35091 12.9833 10.0009Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     <path d="M9.99987 16.8913C12.9415 16.8913 15.6832 15.1579 17.5915 12.1579C18.3415 10.9829 18.3415 9.00794 17.5915 7.83294C15.6832 4.83294 12.9415 3.09961 9.99987 3.09961C7.0582 3.09961 4.31654 4.83294 2.4082 7.83294C1.6582 9.00794 1.6582 10.9829 2.4082 12.1579C4.31654 15.1579 7.0582 16.8913 9.99987 16.8913Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                                 
-                                <svg v-else class="opacity-60"  xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <svg v-else class="opacity-60 transition ease-in-out duration-300"  xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <path d="M12.1083 7.89258L7.8916 12.1092C7.34994 11.5676 7.0166 10.8259 7.0166 10.0009C7.0166 8.35091 8.34993 7.01758 9.99993 7.01758C10.8249 7.01758 11.5666 7.35091 12.1083 7.89258Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M14.8499 4.80742C13.3915 3.70742 11.7249 3.10742 9.99987 3.10742C7.0582 3.10742 4.31654 4.84076 2.4082 7.84075C1.6582 9.01575 1.6582 10.9908 2.4082 12.1658C3.06654 13.1991 3.8332 14.0908 4.66654 14.8074" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M7.0166 16.2741C7.9666 16.6741 8.97493 16.8908 9.99993 16.8908C12.9416 16.8908 15.6833 15.1574 17.5916 12.1574C18.3416 10.9824 18.3416 9.00742 17.5916 7.83242C17.3166 7.39909 17.0166 6.99076 16.7083 6.60742" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -94,10 +94,20 @@
 
                     </div>
 
-                    <h1 class="text-[32px] pt-[15px] pb-[12px] font-[800] text-[#fff]">$590,987</h1>
+                    <div class="pt-[15px] pb-[12px] min-h-[47px] flex  items-center">
+                        <h1 v-if="!isvisible" class="text-[32px] transition ease-in-out duration-300  font-[800] text-[#fff]">$590,987</h1>
+                        <div v-else  class="flex  items-center">
+    
+                            <div v-for="i in 6" class="mr-2 transition ease-in-out duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                                    <circle cx="4" cy="4" r="4" fill="#D9D9D9"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="flex items-center">
-                    <span class="text-[16px] font-[500] text-[#fff] opacity-60">$5,987</span>
+                    <span  class="text-[16px] font-[500] text-[#fff] opacity-60">$5,987</span>
                     <div class="ml-[30px] flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
                         <path d="M3.88749 7.50065H6.11249C7.49582 7.50065 8.05832 6.52148 7.37082 5.32565L7.06249 4.79232C6.98749 4.66315 6.84999 4.58398 6.69999 4.58398H3.29999C3.14999 4.58398 3.01249 4.66315 2.93749 4.79232L2.62916 5.32565C1.94166 6.52148 2.50416 7.50065 3.88749 7.50065Z" fill="white"/>

@@ -75,7 +75,7 @@ definePageMeta({
         {
             id:2,
             title:"marketplace",
-            icon:'solar:wallet-money-line-duotone'
+            icon:'solar:wallet-money-bold'
         },
         {
             id:3,
