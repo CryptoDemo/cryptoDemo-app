@@ -20,10 +20,11 @@
 
 
 
-            <div  class="box-shadow2 mt-[24px] py-[12px] px-[8px]  dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] flex justify-between
+            <div  class="box-shadow2 mt-[24px] py-[12px] px-[8px]  dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] 
+            flex justify-between
              items-center">
                   
-                <div>
+                <div class="w-full">
                     <span class="font-[600] text-sm text-[#64748B] capitalize">Userglory12345</span>
                     <div class="flex items-center mt-[12px] pl-1">
                         <div class="flex justify-between items-center">
@@ -44,7 +45,7 @@
                     </div>
                 </div>
 
-                <div class="w-full ml-[46px]">
+                <div class="w-full">
 
                     <button class="bg-[#E0ECFF] py-[11px] px-[14px] text-[#2873FF] rounded-[12px] font-[600]
                     text-[12px] w-full flex justify-center items-center">
@@ -64,6 +65,8 @@
                 <h3 class="text-[#10192D] font-[700] text-[16px]">Contact info</h3>
 
                 <div class="mt-[16px] bg-[#F5F9FF]">
+
+
 
                 </div>
 
