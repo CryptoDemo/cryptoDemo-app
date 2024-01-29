@@ -64,17 +64,17 @@
 
                 <h3 class="text-[#10192D] font-[700] text-[16px]">Contact info</h3>
 
-                <div class="mt-[16px] bg-[#F5F9FF] py-[10px] px-[12px] rounded-[12px]">
+                <div class="mt-[16px] bg-[#F5F9FF] dark:bg-[#1B2537] py-[10px] px-[12px] rounded-[12px]">
 
                     <div class="border-b  border-[#F1F5F9] dark:border-[#1B2537] pb-[8px]">
 
-                        <h4 class="text-sm text-[#10192D] font-[700] mb-[4px]">Email</h4>
+                        <h3 class="text-sm text-[#10192D] font-[700] mb-[4px]">Email</h3>
     
                         <p>wonderfulwonder99@gmail.com</p>
                     </div>
                     <div class=" pt-[8px]">
 
-                        <h4 class="text-sm text-[#10192D] font-[700] mb-[4px]">Phone number</h4>
+                        <h3 class="text-sm text-[#10192D] font-[700] mb-[4px]">Phone number</h3>
     
                         <p>+234 768 7688 899</p>
                     </div>
