@@ -5,7 +5,7 @@
         :type="showPassword ? 'text' : 'password'"
         id="password"
         class="input"
-        placeholder="password"
+        :placeholder="props.placeholder"
         required
       />
       <div @click="togglePasswordVisibility" class="absolute end-2.5 bottom-4 dark:text-[#F8FAFC]">
@@ -31,6 +31,14 @@
   <script setup>
   const password = ref('');
   const showPassword = ref(false);
+  
+
+  const props = defineProps({
+    placeholder:{
+      type: String,
+      default: 'Password'
+    }
+  })
   
   const togglePasswordVisibility = () => {
     showPassword.value = !showPassword.value;

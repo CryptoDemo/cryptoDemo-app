@@ -17,12 +17,14 @@
 
                 <div class="mb-4">
                     
-                    <InputPassword @focusin="isFocused=true" @focusout="isFocused=false"/>
+                    <InputPassword  placeholder="Current password"
+                     @focusin="isFocused=true" @focusout="isFocused=false"/>
                 </div>
 
                 <div class="">
                     
-                    <InputPassword @focusin="isFocused=true" @focusout="isFocused=false"/>
+                    <InputPassword  placeholder="New password"
+                    @focusin="isFocused=true" @focusout="isFocused=false"/>
 
                 </div>
 
