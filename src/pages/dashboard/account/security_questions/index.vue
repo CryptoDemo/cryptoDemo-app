@@ -24,7 +24,8 @@
                         justify-between items-center  border-[#E2E8F0] border dark:border-[#1B2537]"
                     >
                         <span>{{ selectedQuestion1 || 'Question 1' }}</span>
-                        <Icon name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
+                        <Icon  :class="{'rotate-up':question_1Toggle}"  
+                        name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
                          dark:text-[#FFFFFF]"/>
 
                 </button>
@@ -40,10 +41,10 @@
                         <div
                             v-for="i in questions_1"  @click="showQuestion_1Toggle();  
                             selectedQuestion1 = i.text" :key='i.id'
-                            class=" px-2.5 py-1.5 w-full leading-tight"
+                            class="px-[20px] py-[16px] w-full leading-tight"
                         >
                             <ul class="flex items-center w-full rounded-xl  ">
-                                <li class=" text-lg text-[#10192D] dark:text-[#F8FAFC]">
+                                <li class="font-[700] text-[16px] text-[#10192D] dark:text-[#F8FAFC]">
                                     {{ i.text }}
                                 </li>
                             </ul>
@@ -68,7 +69,8 @@
                         justify-between items-center  border-[#E2E8F0] border dark:border-[#1B2537]"
                     >
                         <span>{{ selectedQuestion2 || 'Question 2' }}</span>
-                        <Icon name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
+                        <Icon   :class="{'rotate-up':question_2Toggle}"  
+                        name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
                          dark:text-[#FFFFFF]"/>
 
                 </button>
@@ -84,10 +86,10 @@
                         <div
                             v-for="i in questions_1"  @click="showQuestion_2Toggle();  
                             selectedQuestion2 = i.text" :key='i.id'
-                            class=" px-2.5 py-1.5 w-full leading-tight"
+                            class=" px-[20px] py-[16px] w-full leading-tight"
                         >
                             <ul class="flex items-center w-full rounded-xl  ">
-                                <li class=" text-lg text-[#10192D] dark:text-[#F8FAFC]">
+                                <li class=" text-[16px] font-[700] text-[#10192D] dark:text-[#F8FAFC]">
                                     {{ i.text }}
                                 </li>
                             </ul>
@@ -111,7 +113,8 @@
                         justify-between items-center  border-[#E2E8F0] border dark:border-[#1B2537]"
                     >
                         <span>{{ selectedQuestion3 || 'Question 3' }}</span>
-                        <Icon name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
+                        <Icon  :class="{'rotate-up':question_3Toggle}"  
+                        name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
                          dark:text-[#FFFFFF]"/>
 
                 </button>
@@ -127,10 +130,10 @@
                         <div
                             v-for="i in questions_1"  @click="showQuestion_3Toggle();  
                             selectedQuestion3 = i.text" :key='i.id'
-                            class=" px-2.5 py-1.5 w-full leading-tight"
+                            class=" px-[20px] py-[16px] w-full leading-tight"
                         >
                             <ul class="flex items-center w-full rounded-xl  ">
-                                <li class=" text-lg text-[#10192D] dark:text-[#F8FAFC]">
+                                <li class="font-[700] text-[16px] text-[#10192D] dark:text-[#F8FAFC]">
                                     {{ i.text }}
                                 </li>
                             </ul>
@@ -259,3 +262,9 @@ const questions_3 = [
    
 
 </script>
+
+<style scoped>
+.rotate-up {
+  transform: rotate(180deg);
+}
+</style>

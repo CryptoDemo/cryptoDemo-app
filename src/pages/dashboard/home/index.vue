@@ -176,7 +176,7 @@
 
                 <p class="mb-4">Create an account to have access to all of our features</p>
                 <button class="btn-primary w-full mb-4 scaling-animation">Create account</button>
-                <button class="btn-border w-full scaling-animation">Login</button>
+                <button class="btn-border w-full scaling-animation ">Login</button>
 
             </div>
 

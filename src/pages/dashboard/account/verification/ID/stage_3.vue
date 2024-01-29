@@ -18,7 +18,8 @@
                         justify-between items-center  border-[#E2E8F0] border dark:border-[#1B2537] "
                     >
                         <span>{{ selectedName || 'Issuing country' }}</span>
-                        <Icon name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300  text-[#8E9BAE]
+                        <Icon :class="{'rotate-up': usersToggle }" 
+                        name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300  text-[#8E9BAE]
                          dark:text-[#FFFFFF]"/>
     
                 </button>
@@ -256,6 +257,10 @@ watch(()=>searchInput.value,(newv)=>{
 
 
 <style scoped>
+
+.rotate-up {
+  transform: rotate(180deg);
+}
 
 .country-flag > .flag{
     width: 40px !important;

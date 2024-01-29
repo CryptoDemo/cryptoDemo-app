@@ -1,10 +1,10 @@
 <template>
-    <div class="px-[24px] pt-[6px] h-screen overflow-y-auto transition ease-linear duration-300 dark:bg-[#10192D]">
+    <div class="px-[24px] pb-14 h-screen overflow-y-auto transition ease-linear duration-300 dark:bg-[#10192D]">
          
             <SignupAppBar link="/dashboard" referral_link="/sign_Up/QRcode_scan" referral=" Scan referral code"/>
 
 
-            <div class="py-4">
+            <div>
 
                 <Subappbar  heading="Create account" desc="It only takes a minute to create your account"/>
 

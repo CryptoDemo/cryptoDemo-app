@@ -20,7 +20,8 @@
                         justify-between items-center  border-[#E2E8F0] border dark:border-[#1B2537]"
                     >
                         <span>{{ selectedName || 'Country of residence' }}</span>
-                        <Icon name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
+                        <Icon :class="{'rotate-up': usersToggle }"  
+                        name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
                          dark:text-[#FFFFFF]"/>
 
                 </button>
@@ -85,7 +86,8 @@
                         justify-between items-center  border-[#E2E8F0] border dark:border-[#1B2537]"
                     >
                         <span>{{ selectedDocument || 'Document type' }}</span>
-                        <Icon name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
+                        <Icon  :class="{'rotate-up': docToggle }" 
+                         name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
                          dark:text-[#FFFFFF]"/>
 
                 </button>
@@ -96,17 +98,19 @@
                    
 
                         <div
-                        v-for="i in document_type" :key="i.name" @click="showDocs(); selectedDocument = i.name"
+                        v-for="(i,index) in document_type" :key="i.name" @click="showDocs(); selectedDocument = i.name"
                         class="mt-4 w-full   pb-3"
                     >
                         <a href="#" class="flex items-center w-full rounded-xl bg- 
                                         blue-100 ">
-                            <img :src="i.img"/>
+                                        <div class="h-[40px] w-[40px]">
+                                            <img class="max-w-[40px]" :src="i.img"/>
+                                        </div>
+                            
                         <span class="px-4 text-lg text-[#10192D] dark:text-[#F8FAFC]">{{ i.name }}</span>
                         </a>
                     </div>
                 </div>
-
 
 
             </div>
@@ -196,9 +200,9 @@ const countries = [
 
 
 const document_type = [
-    {name:'Bank/credit card bill',img:'/imgdoc1.png'},
-    {name:'Phone bill',img:'/imgdoc2.png'},
-    {name:'Home/utility bill',img:'/imgdoc3.png'},
+    {name:'Bank/credit card bill',img:'/bbill.png'},
+    {name:'Phone bill',img:'/pbill.png'},
+    {name:'Home/utility bill',img:'/hbill.png'},
 ]
    
 const filterV =(n)=>{
@@ -219,6 +223,10 @@ watch(()=>searchInput.value,(newv)=>{
 
 
 <style scoped>
+
+.rotate-up {
+  transform: rotate(180deg);
+}
 
 .country-flag > .flag{
     width: 40px !important;
