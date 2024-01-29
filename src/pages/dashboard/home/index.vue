@@ -1,6 +1,6 @@
 <template>
 
-    <div class="h-screen pb-20 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full px-6">
+    <div class="h-screen pb-14 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full px-6">
 
         <div class="fixed top-0 py-[11px] z-50 left-0 w-full px-6 bg-[#ffff]   dark:bg-[#10192D]">
             <div class="flex justify-between items-center">

@@ -1,6 +1,6 @@
 <template>
 
-    <div class=" h-screen pb-24 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full px-6 ">
+    <div class=" h-screen pb-14 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full px-6 ">
 
         <Appbar link="/dashboard" title="Profile"/>
 
@@ -64,13 +64,80 @@
 
                 <h3 class="text-[#10192D] font-[700] text-[16px]">Contact info</h3>
 
-                <div class="mt-[16px] bg-[#F5F9FF]">
+                <div class="mt-[16px] bg-[#F5F9FF] py-[10px] px-[12px] rounded-[12px]">
 
+                    <div class="border-b  border-[#F1F5F9] dark:border-[#1B2537] pb-[8px]">
+
+                        <h4 class="text-sm text-[#10192D] font-[700] mb-[4px]">Email</h4>
+    
+                        <p>wonderfulwonder99@gmail.com</p>
+                    </div>
+                    <div class=" pt-[8px]">
+
+                        <h4 class="text-sm text-[#10192D] font-[700] mb-[4px]">Phone number</h4>
+    
+                        <p>+234 768 7688 899</p>
+                    </div>
 
 
                 </div>
 
             </div>
+
+            <div class="mt-[24px]">
+
+                 <h3 class="text-[#10192D] mb-[4px] font-[700] text-[16px]">My Trades</h3>
+
+
+                <div class="mt-[16px]">
+
+                    <div class="py-[8px] px-[12px] mb-[16px] dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] ">
+
+                        <div class="flex justify-between items-start">
+                            <div class="flex flex-col">
+                                <h3 class="text-[#10192D] mb-[4px] font-[700] text-[14px]">Bought coins</h3>
+                                <p class="text-[14px] font-[400]">0</p>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M12.9902 10.2645C12.4469 7.64725 10.3632 5.56238 7.73436 5.01319C8.29494 3.40592 9.82347 2.25 11.6251 2.25C13.9033 2.25 15.7501 4.09671 15.7501 6.375C15.7501 8.17534 14.5957 9.703 12.9902 10.2645Z" fill="#2873FF" stroke="#2873FF" stroke-width="1.5"/>
+                            <path d="M7.58808 12.8381L8.608 12.284L9.82124 11.625L8.608 10.966L7.58808 10.4119L7.03404 9.392L6.375 8.17876L5.71596 9.392L5.16193 10.4119L4.142 10.966L2.92876 11.625L4.142 12.284L5.16193 12.8381L5.71596 13.858L6.375 15.0712L7.03404 13.858L7.58808 12.8381ZM6.71322 7.51325C8.7173 7.67483 10.3252 9.28271 10.4867 11.2868C10.4941 11.413 10.5 11.5246 10.5 11.625C10.5 13.9033 8.65329 15.75 6.375 15.75C4.09671 15.75 2.25 13.9033 2.25 11.625C2.25 9.34671 4.09671 7.5 6.375 7.5C6.47538 7.5 6.58705 7.50586 6.71322 7.51325Z" fill="#2873FF" stroke="#2873FF" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                    
+
+
+                    </div>
+
+                    <div class="py-[8px] px-[12px]  mb-[16px] dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] ">
+
+                        <div class="flex justify-between items-start">
+                            <div class="flex flex-col">
+                                <h3 class="text-[#10192D] mb-[4px] font-[700] text-[14px]">Sold  coins</h3>
+                                <p class="text-[14px] font-[400]">0</p>
+                            </div>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                <path d="M10.5 11.625C10.5 13.9033 8.65329 15.75 6.375 15.75C4.09671 15.75 2.25 13.9033 2.25 11.625C2.25 9.34671 4.09671 7.5 6.375 7.5C6.47538 7.5 6.58705 7.50586 6.71322 7.51325C8.7173 7.67483 10.3252 9.28271 10.4867 11.2868C10.4941 11.413 10.5 11.5246 10.5 11.625Z" fill="#2873FF" stroke="#2873FF" stroke-width="1.5"/>
+                                <path d="M12.9902 10.2645C12.4469 7.64725 10.3632 5.56238 7.73436 5.01319C8.29494 3.40592 9.82347 2.25 11.6251 2.25C13.9033 2.25 15.7501 4.09671 15.7501 6.375C15.7501 8.17534 14.5957 9.703 12.9902 10.2645Z" fill="#2873FF" stroke="#2873FF" stroke-width="1.5"/>
+                                <path d="M4.1925 1.5H2.25C1.8375 1.5 1.5 1.8375 1.5 2.25V4.1925C1.5 4.86 2.31 5.1975 2.7825 4.725L4.725 2.7825C5.19 2.31 4.86 1.5 4.1925 1.5Z" fill="#2873FF"/>
+                                <path d="M13.8073 16.5002H15.7498C16.1623 16.5002 16.4998 16.1627 16.4998 15.7502V13.8077C16.4998 13.1402 15.6898 12.8027 15.2173 13.2752L13.2748 15.2177C12.8098 15.6902 13.1398 16.5002 13.8073 16.5002Z" fill="#2873FF"/>
+                            </svg>
+
+                        </div>
+                        
+
+
+                    </div>
+                   
+
+                </div>
+
+            </div>
+
+            <CardsMyCoins/>
+
+            <CardsReferrals/>
+
 
 
         </div>
