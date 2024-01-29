@@ -25,7 +25,7 @@
             <div class="flex gap-x-4 mt-[40px]">
     
                 <button  @click.prevent="navigateTo('/dashboard/account/verification/address/upload_document')" 
-                class="btn-border-primary  w-full">back</button>
+                class="btn-border  w-full">back</button>
                 <button  @click.prevent="toggle_show_successful" 
                 class="btn-primary  w-full">Confirm</button>
             </div>

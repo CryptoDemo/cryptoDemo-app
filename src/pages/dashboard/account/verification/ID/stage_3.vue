@@ -1,7 +1,7 @@
 <template>
 
     <div class="h-screen overflow-y-auto px-6   bg-[#ffff]  dark:bg-[#10192D]   w-full" >
-        <div class="pb-24 ">
+        <div class="pb-28 ">
             <Appbar link="/dashboard/account/verification" title="ID Verification" />
     
            
@@ -14,12 +14,12 @@
     
                 <button
                         @click="showUsers"
-                        class="btn-border-primary dark:bg-transparent text-[#8E9BAE]  w-full flex text-sm
+                        class="btn-border-primary dark:bg-transparent text-[#8E9BAE] font-[400]  w-full flex text-sm
                         justify-between items-center  border-[#E2E8F0] border dark:border-[#1B2537] "
                     >
                         <span>{{ selectedName || 'Issuing country' }}</span>
                         <Icon :class="{'rotate-up': usersToggle }" 
-                        name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300  text-[#8E9BAE]
+                        name="solar:alt-arrow-down-bold" size="16" class="transition-all ease-in-out duration-300  text-[#8E9BAE]
                          dark:text-[#FFFFFF]"/>
     
                 </button>

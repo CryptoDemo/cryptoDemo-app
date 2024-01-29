@@ -20,7 +20,7 @@
 
 
 
-            <div  class="box-shadow2 mt-[24px] py-[12px] px-[8px]  dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] 
+            <div  class="box-shadow2 mt-[24px] p-[12px]   dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] 
             flex justify-between
              items-center">
                   
@@ -66,7 +66,7 @@
 
                 <div class="mt-[16px] bg-[#F5F9FF] dark:bg-[#1B2537] py-[10px] px-[12px] rounded-[12px]">
 
-                    <div class="border-b  border-[#F1F5F9] dark:border-[#1B2537] pb-[8px]">
+                    <div class="border-b  border-[#8E9BAE] dark:border-[#2A3340] pb-[8px]">
 
                         <h3 class="text-sm text-[#10192D] font-[700] mb-[4px]">Email</h3>
     

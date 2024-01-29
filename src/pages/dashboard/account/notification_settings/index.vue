@@ -1,7 +1,7 @@
 <template>
 
     
-        <div  class="px-6  bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
+        <div  class="px-6 pb-24  bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
     
            
             <Appbar link="/dashboard" title="Notification Setting"  />

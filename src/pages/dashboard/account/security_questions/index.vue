@@ -20,12 +20,12 @@
     
                 <button
                         @click="showQuestion_1Toggle"
-                        class="btn-border-primary dark:bg-transparent text-[#8E9BAE]  w-full flex text-sm
+                        class="btn-border-primary dark:bg-transparent text-[#8E9BAE] font-[400] w-full flex text-sm
                         justify-between items-center  border-[#E2E8F0] border dark:border-[#1B2537]"
                     >
                         <span>{{ selectedQuestion1 || 'Question 1' }}</span>
                         <Icon  :class="{'rotate-up':question_1Toggle}"  
-                        name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
+                        name="solar:alt-arrow-down-bold" size="16" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
                          dark:text-[#FFFFFF]"/>
 
                 </button>
@@ -65,12 +65,12 @@
     
                 <button
                         @click="showQuestion_2Toggle"
-                        class="btn-border-primary dark:bg-transparent text-[#8E9BAE]  w-full flex text-sm
+                        class="btn-border-primary dark:bg-transparent text-[#8E9BAE] font-[400]  w-full flex text-sm
                         justify-between items-center  border-[#E2E8F0] border dark:border-[#1B2537]"
                     >
                         <span>{{ selectedQuestion2 || 'Question 2' }}</span>
                         <Icon   :class="{'rotate-up':question_2Toggle}"  
-                        name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
+                        name="solar:alt-arrow-down-bold" size="16" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
                          dark:text-[#FFFFFF]"/>
 
                 </button>
@@ -109,12 +109,12 @@
     
                 <button
                         @click="showQuestion_3Toggle"
-                        class="btn-border-primary dark:bg-transparent text-[#8E9BAE]  w-full flex text-sm
+                        class="btn-border-primary dark:bg-transparent text-[#8E9BAE] font-[400]  w-full flex text-sm
                         justify-between items-center  border-[#E2E8F0] border dark:border-[#1B2537]"
                     >
                         <span>{{ selectedQuestion3 || 'Question 3' }}</span>
                         <Icon  :class="{'rotate-up':question_3Toggle}"  
-                        name="solar:alt-arrow-down-bold" size="24" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
+                        name="solar:alt-arrow-down-bold" size="16" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
                          dark:text-[#FFFFFF]"/>
 
                 </button>
