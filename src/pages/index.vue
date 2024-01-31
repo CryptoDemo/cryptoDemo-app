@@ -10,9 +10,11 @@
                 <slide  class="h-screen w-full absolute" >
                         <onboardingScreensOne  class="transition-all ease-in-out duration-300"/>
                 </slide>
+
                 <slide  class="h-screen w-full absolute" >
                         <onboardingScreensTwo  class="transition-all ease-in-out duration-300"/>
                 </slide>
+
                 <slide  class="h-screen w-full absolute">
                         <onboardingScreensThird  class="transition-all ease-in-out duration-300"/>
                 </slide>
@@ -20,6 +22,7 @@
                 <slide class="h-screen w-full absolute">
                         <OnboardingScreensFourth class="transition-all ease-in-out duration-300"/>
                 </slide>
+
         </carousel>
             
                 <div class=" fixed bottom-0 left-0 min-h-[20vh] w-full">

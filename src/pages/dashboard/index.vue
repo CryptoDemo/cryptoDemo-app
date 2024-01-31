@@ -4,8 +4,8 @@
 
         <KeepAlive>
             <home v-if="useCurrentNavMenu.currentNavMenu === 'home'" />
-            <marketplace v-else-if ="useCurrentNavMenu.currentNavMenu === 'marketplace'" />
             <wallet v-else-if ="useCurrentNavMenu.currentNavMenu === 'wallet' " />
+            <marketplace v-else-if="useCurrentNavMenu.currentNavMenu === 'marketplace'" />
             <exchange v-else-if ="useCurrentNavMenu.currentNavMenu === 'exchange'" />
             <account v-else />
         </KeepAlive>
@@ -74,12 +74,12 @@ definePageMeta({
         },
         {
             id:2,
-            title:"marketplace",
+            title:"wallet",
             icon:'solar:wallet-money-bold'
         },
         {
             id:3,
-            title:"wallet",
+            title:"marketplace",
             icon:'solar:shop-outline'
         },
         {

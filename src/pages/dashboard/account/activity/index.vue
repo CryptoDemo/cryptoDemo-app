@@ -6,7 +6,7 @@
         <div class="mt-[80px]">
 
             <div v-for="i in 3" class="py-[12px] border-b border-[#F1F5F9] dark:border-[#2A3340]">
-                <div class="border-b border-[#F1F5F9] dark:border-[#2A3340]">
+                <div class=" border-[#F1F5F9] dark:border-[#2A3340]">
                     <h3 class="text-[#10192D] dark:text-[#F8FAFC]  text-sm font-[600]">Security questions set</h3>
                     <div class="text-[#8E9BAE] text-sm font-[600]">
                         <span>Jan 20, 24</span>

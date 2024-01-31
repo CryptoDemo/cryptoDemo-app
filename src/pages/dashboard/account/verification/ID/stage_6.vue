@@ -1,6 +1,6 @@
 <template>
     
-    <Successful v-if="show_successful" title="sucessful" subtitle="`Your document has been successfully  uploaded and is under review!`"/>
+    <Successful v-if="show_successful" title="sucessful" subtitle="Your document has been successfully  uploaded and is under review!"/>
     <div v-else class="px-6 py-[6px] bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
 
      
