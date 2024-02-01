@@ -102,7 +102,8 @@
         
             
         </div>
-        <div v-else class="absolute -bottom-8 gap-[8px] px-2.5  w-full  flex justify-between items-center">
+
+        <div v-else class="absolute -bottom-8 gap-[8px] px-2.5   w-full  flex justify-between items-center">
 
             <button @click.prevent="navigateTo('/dashboard/wallet/send')" class="py-[12px] px-[16px] min-h-[51px]  box-shadow capitalize rounded-2xl bg-[white] text-[#10192D] flex items-center justify-center 
             gap-x-[8px] w-full font-[700] ">
@@ -178,3 +179,24 @@ const toggle_visibility = ()=>{
 }
 
 </script>
+
+
+<style scoped>
+.bg-gradient{
+    background: linear-gradient(270deg, #38BDF8 -60.75%, #2873FF 119.96%);
+    /* box-shadow: 0px 27px 20px rgba(0, 0, 0, 0.02); */
+}
+.bg-gradient2{
+    background: linear-gradient(270deg, #38BDF8 -11.75%, #2873FF 119.96%);
+    box-shadow: 0px -1px 2px 0px rgba(42, 51, 64, 0.04), 0px 1px 2px 0px rgba(42, 51, 64, 0.04);
+}
+.box-shadow{
+    box-shadow: 0px 10px 25px 0px rgba(27, 37, 55, 0.05);
+}
+.box-shadow2{
+    box-shadow: 0px -1px 2px 0px rgba(42, 51, 64, 0.04), 0px 1px 2px 0px rgba(42, 51, 64, 0.04);
+}
+.card-box-shadow{
+    box-shadow: 0px 27px 20px 0px rgba(0, 0, 0, 0.02);
+}
+</style>

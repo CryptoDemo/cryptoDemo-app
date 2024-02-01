@@ -47,8 +47,8 @@
                     <div class="relative">
                         <input class="input py-[18px]  focus:ring-1 focus:ring-gray-800" placeholder="Amount to swap"/>
                         <button @click.prevent="toggle_wallet_list1" class="min-w-[82px] min-h-[48px] absolute right-1 bottom-1.5
-                        rounded-[15px]
-                        bg-[#131D35] inline-flex justify-center items-center">
+                        rounded-[15px] bg-[#F5F9FF]
+                        dark:bg-[#131D35] inline-flex justify-center items-center">
                             <div class="w-[24px] h-[24px]">
                                 <img class="max-w-[24px]" :src="selected_wallet_for_swap"/>
                             </div>
@@ -58,7 +58,8 @@
                         </button>
 
 
-                        <div v-show="show_wallet_list1" class="absolute right-0 flex w-full z-50 flex-col dark:bg-[#10192D]  
+                        <div v-show="show_wallet_list1" class="absolute right-0 flex w-full z-50 flex-col bg-[#fff]
+                        dark:bg-[#10192D]  
                         px-4 max-h-[auto] overflow-y-auto  rounded-[20px]">
                             <div @click.prevent="selected_wallet_for_swap = i.img;selected_wallet_for_send = i.title
                             ;show_wallet_list1 = false"
@@ -87,8 +88,8 @@
                     <div class="relative">
                         <input class="input py-[18px]  focus:ring-1 focus:ring-gray-800" placeholder="Amount to swap"/>
                         <button @click.prevent="" class="min-w-[63px] min-h-[48px] absolute right-1 bottom-1.5
-                        rounded-[15px]
-                        bg-[#131D35] inline-flex justify-center items-center">
+                        rounded-[15px] bg-[#F5F9FF]
+                        dark:bg-[#131D35] inline-flex justify-center items-center">
 
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M2 9V6.5C2 4.01 4.01 2 6.5 2H9" stroke="#2873FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -132,7 +133,7 @@
             </div>
 
             <div v-for="i in 3" :key="i">
-                <div class="mt-[16px] flex justify-between items-center p-[12px] bg-[#1B2537] rounded-[12px]">
+                <div class="mt-[16px] flex justify-between items-center p-[12px] bg-[#F5F9FF] dark:bg-[#1B2537] rounded-[12px]">
                     <span class="text-[14px] font-[400] text-[#8E9BAE]">Ethereum (ERC 20)</span>
                     <span class="text-[14px] font-[400] text-[#8E9BAE]">Fee (2.6 USD)</span>
                 </div>

@@ -11,7 +11,7 @@
 
             <div class="mt-[56px] mx-6">
 
-                <div v-for="i in 3" class="mb-[12px] p-[12px] dark:bg-[#1B2537] rounded-[12px]">
+                <div v-for="i in 3" class="mb-[12px] p-[12px] dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px]">
 
                     <div class="flex justify-between items-center">
                         <div class="flex">
@@ -44,7 +44,7 @@
 
                     <div class="grid grid-cols-3 gap-x-[8px] mt-[14px]">
 
-                        <button  class="bg-[#10192D] btn-shadow min-h-[48px] px-[16px] py-[12px] text-[14px] font-[700] text-[#2873FF] inline-flex justify-center
+                        <button  class="bg-[#fff] dark:bg-[#10192D] btn-shadow min-h-[48px] px-[16px] py-[12px] text-[14px] font-[700] text-[#2873FF] inline-flex justify-center
                         items-center rounded-[16px]">
                             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
                                 <path d="M3.83301 14.168V15.8346C3.83301 16.2767 4.0086 16.7006 4.32116 17.0131C4.63372 17.3257 5.05765 17.5013 5.49967 17.5013H15.4997C15.9417 17.5013 16.3656 17.3257 16.6782 17.0131C16.9907 16.7006 17.1663 16.2767 17.1663 15.8346V14.168" stroke="#2873FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -53,7 +53,7 @@
                             </svg>
                             <span class="ml-[8px]">Buy</span>
                         </button>
-                        <button  class="bg-[#10192D] btn-shadow min-h-[48px] px-[16px] py-[12px] text-[14px] font-[700] text-[#2873FF] inline-flex justify-center
+                        <button  class="bg-[#fff] dark:bg-[#10192D] btn-shadow min-h-[48px] px-[16px] py-[12px] text-[14px] font-[700] text-[#2873FF] inline-flex justify-center
                         items-center rounded-[16px]">
                             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
                                 <path d="M3.83301 5.83203V4.16536C3.83301 3.72334 4.0086 3.29941 4.32116 2.98685C4.63372 2.67429 5.05765 2.4987 5.49967 2.4987H15.4997C15.9417 2.4987 16.3656 2.67429 16.6782 2.98685C16.9907 3.29941 17.1663 3.72334 17.1663 4.16536V5.83203" stroke="#2873FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -62,7 +62,7 @@
                             </svg>
                             <span class="ml-[8px]">Sell</span>
                         </button>
-                        <button  class="bg-[#10192D] btn-shadow min-h-[48px] px-[16px] py-[12px] text-[14px] font-[700] text-[#2873FF] inline-flex justify-center
+                        <button  class="bg-[#fff] dark:bg-[#10192D] btn-shadow min-h-[48px] px-[16px] py-[12px] text-[14px] font-[700] text-[#2873FF] inline-flex justify-center
                         items-center rounded-[16px]">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <path d="M7.50853 17.0832L3.3252 12.9082" stroke="#2873FF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -82,15 +82,15 @@
 
             <div class="mt-[12px] mx-6">
 
-                <div v-for="i in 2" class=" p-[12px] bg-[#1B2537] rounded-[12px] mb-[12px]">
+                <div v-for="i in 2" class=" p-[12px] bg-[#F5F9FF] dark:bg-[#1B2537] rounded-[12px] mb-[12px]">
 
-                    <h3 class="text-[#F8FAFC]  font-[700] text-[14px] ">January 20, 2024</h3>
+                    <h3 class="dark:text-[#F8FAFC] text-[#10192D] font-[700] text-[14px] ">January 20, 2024</h3>
 
                     <div v-for="i in transaction_lists">
                         <div class="py-[8px] dark:border-[#2A3340]" 
                         :class="i.id === transaction_lists.length ?'border-none':'border-b'">
                             <div class="flex justify-between items-center">
-                                <span class="text-[#F8FAFC] font-[600] text-[14px] capitalize">{{ i.status }} </span>
+                                <span class="dark:text-[#F8FAFC] text-[#10192D] font-[600] text-[14px] capitalize">{{ i.status }} </span>
                                 <span class="time-color text-[rgba(142, 155, 174, 0.45)]">13:53</span>
                             </div>
         

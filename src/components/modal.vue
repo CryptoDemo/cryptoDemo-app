@@ -10,8 +10,8 @@
         <div>
           <h2 class="text-xl font-bold mb-4 text-[#10192D] dark:text-[#F8FAFC] text-center">Confirm changes</h2>
           <p class="text-sm text-[#8E9BAE] dark:text-[#E2E8F0] font-[400] text-left">
-              {{ desc }} <span class="font-[600] text-[white]">{{ amount }}</span><span v-if="to"> to</span><span 
-              class="font-[600] text-[white]"><br>{{ walletAddress }}</span>
+              {{ desc }} <span class="font-[600] text-[#10192D]  dark:text-[white]">{{ amount }}</span><span v-if="to"> to</span><span 
+              class="font-[600] text-[#10192D]  dark:text-[white]"><br>{{ walletAddress }}</span>
           </p>
         </div>
   

@@ -10,7 +10,7 @@
         <div v-show="reveal === 1" >
 
             <div v-for="i in 3">
-                <div class="flex justify-between hover:border hover:border-[#2873FF] dark:bg-[#1B2537] rounded-[12px] mb-[16px] p-[12px]">
+                <div class="flex justify-between hover:border hover:border-[#2873FF] bg-[#F5F9FF] dark:bg-[#1B2537] rounded-[12px] mb-[16px] p-[12px]">
     
                     <div class="flex items-center">
                         <div class="w-[24px] h-[24px] mr-[3px]">

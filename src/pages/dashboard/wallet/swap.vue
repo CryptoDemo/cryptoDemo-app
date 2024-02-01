@@ -10,7 +10,7 @@
         <h3 class="mt-[16px] text-[16px] font-[700] dark:text-[#F8FAFC]">Market price</h3>
         
 
-        <div class="mt-[12px] p-[12px] bg-[#1B2537] rounded-[12px]">
+        <div class="mt-[12px] p-[12px] dark:bg-[#1B2537] bg-[#fff] rounded-[12px] border border-[#E2E8F0] dark:border-none">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
                     <div class="w-[18px] h-[18px]">
@@ -103,8 +103,8 @@
                 <div class="relative">
                     <input class="input py-[18px]" placeholder="Amount to swap"/>
                     <button @click.prevent="toggle_wallet_list1" class="min-w-[82px] min-h-[48px] absolute right-1 bottom-1.5
-                     rounded-[15px]
-                    bg-[#131D35] inline-flex justify-center items-center">
+                     rounded-[15px] bg-[#F5F9FF]
+                    dark:bg-[#131D35] inline-flex justify-center items-center">
                         <div class="w-[24px] h-[24px]">
                             <img class="max-w-[24px]" :src="selected_wallet_for_swap"/>
                         </div>
@@ -114,7 +114,8 @@
                     </button>
 
 
-                    <div v-show="show_wallet_list1" class="absolute w-full right-0 flex z-50 flex-col dark:bg-[#10192D]   
+                    <div v-show="show_wallet_list1" class="absolute w-full right-0 flex z-50 flex-col bg-[#fff]
+                     dark:bg-[#10192D]   
                     px-4 max-h-[auto] overflow-y-auto  rounded-[20px]">
                         <div @click.prevent="selected_wallet_for_swap = i.img;show_wallet_list1 = false"
                         v-for="i in wallet_lists" :key="i.id" class="flex py-3">
@@ -143,7 +144,7 @@
                 <div class="relative">
                     <input class="input py-[18px]" placeholder="Amount to recieve"/>
                     <button @click.prevent="toggle_wallet_list2" class="min-w-[82px] min-h-[48px] absolute right-1 bottom-1.5 rounded-[15px]
-                    bg-[#131D35] inline-flex justify-center items-center">
+                         bg-[#F5F9FF]  dark:bg-[#131D35] inline-flex justify-center items-center">
                         <div class="w-[24px] h-[24px]">
                             <img class="max-w-[24px]" :src=" selected_wallet_to_swap_for "/>
                         </div>
@@ -153,7 +154,8 @@
                     </button>
 
 
-                    <div v-show="show_wallet_list2" class="absolute right-0 flex z-40 flex-col dark:bg-[#10192D]  
+                    <div v-show="show_wallet_list2" class="absolute right-0 flex z-40 flex-col  bg-[#fff]
+                    dark:bg-[#10192D]  
                      px-4 max-h-[auto] overflow-y-auto w-full  rounded-[20px]">
                         <div @click.prevent="selected_wallet_to_swap_for  = i.img;show_wallet_list2 = false"
                         v-for="i in wallet_lists" :key="i.id" class="flex py-3">
