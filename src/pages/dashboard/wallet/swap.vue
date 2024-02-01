@@ -115,9 +115,9 @@
 
 
                     <div v-show="show_wallet_list1" class="absolute w-full right-0 flex z-50 flex-col dark:bg-[#10192D]   
-                    px-4 max-h-[120px] overflow-y-auto  rounded-[20px]">
+                    px-4 max-h-[auto] overflow-y-auto  rounded-[20px]">
                         <div @click.prevent="selected_wallet_for_swap = i.img;show_wallet_list1 = false"
-                        v-for="i in wallet_lists" :key="i.id" class="flex py-2">
+                        v-for="i in wallet_lists" :key="i.id" class="flex py-3">
                             <div class="w-[24px] h-[24px] mr-[8px]">
                                 <img class="max-w-[24px]" :src="i.img"/>
                             </div>
@@ -154,9 +154,9 @@
 
 
                     <div v-show="show_wallet_list2" class="absolute right-0 flex z-40 flex-col dark:bg-[#10192D]  
-                     px-4 max-h-[120px] overflow-y-auto w-full  rounded-[20px]">
+                     px-4 max-h-[auto] overflow-y-auto w-full  rounded-[20px]">
                         <div @click.prevent="selected_wallet_to_swap_for  = i.img;show_wallet_list2 = false"
-                        v-for="i in wallet_lists" :key="i.id" class="flex py-2">
+                        v-for="i in wallet_lists" :key="i.id" class="flex py-3">
                             <div class="w-[24px] h-[24px] mr-[8px]">
                                 <img class="max-w-[24px]" :src="i.img"/>
                             </div>

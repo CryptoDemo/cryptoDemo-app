@@ -1,6 +1,7 @@
 <template>
 
 <div class="fixed top-0 py-[11px] z-50 left-0 w-full px-6 bg-[#ffff]   dark:bg-[#10192D]">
+    
             <div class="flex justify-between items-center">
 
                 <div  class="flex items-center">

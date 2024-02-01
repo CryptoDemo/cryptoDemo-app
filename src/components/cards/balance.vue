@@ -102,9 +102,9 @@
         
             
         </div>
-        <div v-else class="absolute -bottom-8 gap-[10px] px-6 w-full  flex justify-between items-center">
+        <div v-else class="absolute -bottom-8 gap-[8px] px-2.5  w-full  flex justify-between items-center">
 
-            <button @click.prevent="navigateTo('/dashboard/wallet/send')" class="py-[12px] px-[16px] min-h-[51px] box-shadow capitalize rounded-2xl bg-[white] text-[#10192D] flex items-center justify-center 
+            <button @click.prevent="navigateTo('/dashboard/wallet/send')" class="py-[12px] px-[16px] min-h-[51px]  box-shadow capitalize rounded-2xl bg-[white] text-[#10192D] flex items-center justify-center 
             gap-x-[8px] w-full font-[700] ">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 21 20" fill="none">
                 <path d="M4.0835 14.168V15.8346C4.0835 16.2767 4.25909 16.7006 4.57165 17.0131C4.88421 17.3257 5.30814 17.5013 5.75016 17.5013H15.7502C16.1922 17.5013 16.6161 17.3257 16.9287 17.0131C17.2412 16.7006 17.4168 16.2767 17.4168 15.8346V14.168" stroke="#10192D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -113,7 +113,7 @@
                 </svg>
                 <span class="text-sm">Send</span>
             </button>
-            <button class="py-[12px] min-h-[51px] px-[16px] capitalize box-shadow rounded-2xl bg-[white]
+            <button @click.prevent="navigateTo('/dashboard/wallet/get')" class="py-[12px] min-h-[51px] px-[16px] capitalize box-shadow rounded-2xl bg-[white]
             text-[#10192D] flex items-center justify-center 
             gap-x-[8px] w-full font-[700]">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 21 20" fill="none">
