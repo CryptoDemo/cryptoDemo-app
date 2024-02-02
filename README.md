@@ -1,3 +1,11 @@
+# Android Signing Config
+Alias ===> oncall-alias
+password for both alias and keys ===> 123456
+The signing keys file is located in the android folder as **/android/oncall-signing-keys**
+
+# e.g Generating SHA-1 keys
+keytool -list -v -keystore crypto-demo-signing-keys -storepass 123456
+
 # Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.

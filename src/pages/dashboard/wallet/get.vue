@@ -33,12 +33,17 @@
 
             <p class="mt-[24px]">Bitcoin address</p>
 
-            <input type="text" class="input mt-[8px] text-[#E2E8F0]" v-model="selected_wallet_address"/>
+            <input type="text" class="input mt-[8px] text-[#8E9BAE]" v-model="selected_wallet_address"/>
 
             <div class="flex justify-center items-center mt-[48px]">
-                <div class="w-[191px]">
+                <div v-if="isDark" class="w-[191px]">
 
                     <img class="max-w-[191px]" src="/home/Qrcode123.png"/>
+
+                </div>
+                <div v-else class="w-[191px]">
+
+                    <img class="max-w-[191px]" src="/home/Qrcode-light.png"/>
 
                 </div>
 
@@ -56,8 +61,11 @@
 
         <div v-show="reveal === 2"  class="fixed bottom-5 left-0 w-full px-6">
 
-        <button @click.prevent="reveal++" class="btn-primary w-full scaling-animation">Copy</button>
-        <button @click.prevent="reveal++" class="btn-border w-full scaling-animation mt-[16px]">Share</button>
+        <button @click.prevent="copy(selected_wallet_address)" class="btn-primary w-full scaling-animation">
+            <span v-if="!copied">Copy</span>
+            <span v-else>Copied!</span>
+        </button>
+        <button @click.prevent="startShare" class="btn-border w-full scaling-animation mt-[16px]">Share</button>
 
         </div>
 
@@ -65,9 +73,25 @@
 </template>
 
 <script setup>
+import { useDark, useToggle ,useShare,useClipboard} from '@vueuse/core'
+
+const { share, isSupported } = useShare()
+
+
+
+
+const isDark = useDark()
 
 const reveal = ref(1)
 const selected_wallet_address = ref('WYTIDNBYG65ghht3867hja7890makgmKL998')
+const { text, copy, copied } = useClipboard({ selected_wallet_address })
 
+const  startShare =() =>{
+  share({
+    title: 'Wallet Address',
+    text: selected_wallet_address.value ,
+    url: location.href,
+  })
+}
 
 </script>

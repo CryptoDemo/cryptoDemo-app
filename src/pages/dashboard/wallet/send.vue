@@ -18,15 +18,15 @@
             <div  class="flex gap-[12px] items-center overflow-x-auto px-6">
                 <div v-for="i in coin_lists">
                     <button @click="selected_wallet_for_send = i.title; selected_wallet_for_swap = i.img" 
-                    class="py-[10px] px-[12px] bg-gradient rounded-[20px] flex items-center transition ease-in-out duration-300"
-                    :class="selected_wallet_for_send === i.title ?'bg-gradient ':'bg-gradient-not-selected opacity-[0.45]'">
+                    class="py-[10px] px-[12px]    rounded-[20px] flex items-center transition ease-in-out duration-300"
+                    :class="selected_wallet_for_send === i.title ?'bg-[#2873FF] dark:bg-gradient ':'bg-gradient-not-selected opacity-[0.45]'">
                         <div class="w-[20px] h-[20px] mr-[3px]">
                             <img class="max-w-[20px]" :src="i.img"/>
                         </div>
                         <span class="text-[#8E9BAE] text-[14px] font-[400] mr-[12px]">{{ i.title }}</span>
                         <svg v-if="selected_wallet_for_send === i.title" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <circle cx="9.83301" cy="9.83398" r="4" fill="#2873FF"/>
-                            <circle cx="10" cy="10" r="9.58333" stroke="#2873FF" stroke-width="0.833333"/>
+                            <circle cx="9.83301" cy="9.83398" r="4" :fill="isDark?'#2873FF':'white'"/>
+                            <circle cx="10" cy="10" r="9.58333" :stroke="isDark?'#2873FF':'white'" stroke-width="0.833333"/>
                         </svg>
                         <svg v-else xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <g opacity="0.5">
@@ -63,7 +63,7 @@
                         px-4 max-h-[auto] overflow-y-auto  rounded-[20px]">
                             <div @click.prevent="selected_wallet_for_swap = i.img;selected_wallet_for_send = i.title
                             ;show_wallet_list1 = false"
-                            v-for="i in coin_lists" :key="i.id" class="flex py-3">
+                            v-for="i in coin_lists" :key="i.id" class="flex py-4">
                                 <div class="w-[24px] h-[24px] mr-[8px]">
                                     <img class="max-w-[24px]" :src="i.img"/>
                                 </div>
@@ -87,7 +87,7 @@
 
                     <div class="relative">
                         <input class="input py-[18px]  focus:ring-1 focus:ring-gray-800" placeholder="Amount to swap"/>
-                        <button @click.prevent="" class="min-w-[63px] min-h-[48px] absolute right-1 bottom-1.5
+                        <button  @click.prevent="navigateTo('/dashboard/wallet/wallet_scan')" class="min-w-[63px] min-h-[48px] absolute right-1 bottom-1.5
                         rounded-[15px] bg-[#F5F9FF]
                         dark:bg-[#131D35] inline-flex justify-center items-center">
 
@@ -167,6 +167,9 @@
 const selected_wallet_for_send = ref('BTC')
 const selected_wallet_for_swap = ref('/home/btc2.png')
 const show_wallet_list1 = ref(false)
+import { useDark, useToggle } from '@vueuse/core'
+
+const isDark = useDark()
 
 const visible = ref(false);
 
