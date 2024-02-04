@@ -19,7 +19,7 @@
                 <div v-for="i in coin_lists">
                     <button @click="selected_wallet_for_send = i.title; selected_wallet_for_swap = i.img" 
                     class="py-[10px] px-[12px]    rounded-[20px] flex items-center transition ease-in-out duration-300"
-                    :class="selected_wallet_for_send === i.title ?'bg-[#2873FF] dark:bg-gradient ':'bg-gradient-not-selected opacity-[0.45]'">
+                    :class="selected_wallet_for_send === i.title ?' bg-[#2873FF] dark:bg-[#2873ff40]  ':'bg-gradient-not-selected opacity-[0.45]'">
                         <div class="w-[20px] h-[20px] mr-[3px]">
                             <img class="max-w-[20px]" :src="i.img"/>
                         </div>
@@ -207,6 +207,9 @@ const toggle_wallet_list1 = ()=>{
 
 .bg-gradient{
     background: rgba(40, 115, 255, 0.25);
+}
+.bg-gradient-light{
+    background: #2873FF;
 }
 
 .bg-gradient-not-selected{

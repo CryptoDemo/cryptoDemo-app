@@ -6,7 +6,7 @@
 
         <div class="flex justify-between gap-x-[12px] mt-[70px] w-full relative">
 
-            <div  class="bg-[#1B2537] rounded-[20px] p-[4px] ">
+            <div  class="dark:bg-[#1B2537] bg-[#F8FAFC] rounded-[20px] p-[4px] ">
 
                 <button @click=" selectedbtn = true"  class="font-[600] text-sm capitalize  transition ease-linear duration-300" 
                    :class="selectedbtn?'bg-[#2873FF] text-white rounded-[20px] py-[6px] px-[22px]':'pr-[8px] pl-[17px] text-[#B9D1FF]'">
@@ -46,8 +46,8 @@
                             </div>
             </div>
 
-            <button class="bg-[#1B2537] rounded-[20px] px-[20px] flex justify-center items-center">
-                <span class="text-sm font-[600] text-white mr-[8px]">Filter</span>
+            <button class="dark:bg-[#1B2537] bg-[#F8FAFC] rounded-[20px] px-[20px] flex justify-center items-center">
+                <span class="text-sm font-[600] dark:text-white text-[#10192D] mr-[8px]">Filter</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                     <path d="M3.59993 1.90039H12.3999C13.1333 1.90039 13.7333 2.50039 13.7333 3.23372V4.70039C13.7333 5.23372 13.3999 5.90039 13.0666 6.23372L10.1999 8.76706C9.79993 9.10039 9.53327 9.76706 9.53327 10.3004V13.1671C9.53327 13.5671 9.2666 14.1004 8.93327 14.3004L7.99994 14.9004C7.13327 15.4337 5.93327 14.8337 5.93327 13.7671V10.2337C5.93327 9.76706 5.6666 9.16706 5.39994 8.83372L2.8666 6.16706C2.53327 5.83372 2.2666 5.23372 2.2666 4.83372V3.30039C2.2666 2.50039 2.8666 1.90039 3.59993 1.90039Z" fill="white" stroke="#1B2537" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M7.28667 1.90039L4 7.16706" stroke="#1B2537" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -60,16 +60,17 @@
         </div>
 
 
-        <div v-for="i in filtered_marketplace" class="mt-[25px]">
+        <div @click.prevent="navigateTo(`/dashboard/marketplace/${i.id}`)"
+        v-for="i in filtered_marketplace" class="mt-[25px]">
 
-            <div class="bg-[#1B2537] p-[12px] rounded-[20px] transition ease-in-out duration-300">
+            <div class="dark:bg-[#1B2537] bg-[#F5F9FF] p-[12px] rounded-[20px] transition ease-in-out duration-300">
 
                 <div class="flex justify-between items-center">
                     <div class="flex items-center">
                         <div class="w-[20px]">
                             <img class="max-w-[20px] " src="/home/profile.png"/>
                         </div>
-                        <span class="text-[14px] font-[600] ml-[8px] text-[#F8FAFC]">Giftedoriocream567</span>
+                        <span class="text-[14px] font-[600] ml-[8px] text-[#10192D] dark:text-[#F8FAFC]">Giftedoriocream567</span>
                     </div>
 
                     <span v-if="i.status" class="text-[#2873FF] background-verified rounded-[20px] text-[12px] px-[8px] py-[2px]">Verified</span>
@@ -115,7 +116,7 @@
                         <span class="text-[#22C36B] text-[12px] font-[400]">-10%</span>
                     </div>
 
-                    <span class="text-[12px] font-[600] text-white">62,797,850.5NGN</span>
+                    <span class="text-[12px] font-[600] text-[#10192D] dark:text-white">62,797,850.5NGN</span>
 
                 </div>
 
@@ -134,8 +135,8 @@
 
                 </div>
 
-                <div class="bg-[#10192D] px-[12px] py-[8px] rounded-[8px] mt-[10px]">
-                    <span class="text-white text-[14px] font-[400]">Condition</span>
+                <div class="dark:bg-[#10192D] bg-[#fff] px-[12px] py-[8px] rounded-[8px] mt-[10px]">
+                    <span class="dark:text-white text-[#10192D] text-[14px] font-[400]">Condition</span>
                     <div class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                             <path d="M16.3199 11.94L11.5199 3.3C10.8749 2.1375 9.98236 1.5 8.99986 1.5C8.01736 1.5 7.12486 2.1375 6.47986 3.3L1.67986 11.94C1.07236 13.0425 1.00486 14.1 1.49236 14.9325C1.97986 15.765 2.93986 16.2225 4.19986 16.2225H13.7999C15.0599 16.2225 16.0199 15.765 16.5074 14.9325C16.9949 14.1 16.9274 13.035 16.3199 11.94ZM8.43736 6.75C8.43736 6.4425 8.69236 6.1875 8.99986 6.1875C9.30736 6.1875 9.56236 6.4425 9.56236 6.75V10.5C9.56236 10.8075 9.30736 11.0625 8.99986 11.0625C8.69236 11.0625 8.43736 10.8075 8.43736 10.5V6.75ZM9.53236 13.2825C9.49486 13.3125 9.45736 13.3425 9.41986 13.3725C9.37486 13.4025 9.32986 13.425 9.28486 13.44C9.23986 13.4625 9.19486 13.4775 9.14236 13.485C9.09736 13.4925 9.04486 13.5 8.99986 13.5C8.95486 13.5 8.90236 13.4925 8.84986 13.485C8.80486 13.4775 8.75986 13.4625 8.71486 13.44C8.66986 13.425 8.62486 13.4025 8.57986 13.3725C8.54236 13.3425 8.50486 13.3125 8.46736 13.2825C8.33236 13.14 8.24986 12.945 8.24986 12.75C8.24986 12.555 8.33236 12.36 8.46736 12.2175C8.50486 12.1875 8.54236 12.1575 8.57986 12.1275C8.62486 12.0975 8.66986 12.075 8.71486 12.06C8.75986 12.0375 8.80486 12.0225 8.84986 12.015C8.94736 11.9925 9.05236 11.9925 9.14236 12.015C9.19486 12.0225 9.23986 12.0375 9.28486 12.06C9.32986 12.075 9.37486 12.0975 9.41986 12.1275C9.45736 12.1575 9.49486 12.1875 9.53236 12.2175C9.66736 12.36 9.74986 12.555 9.74986 12.75C9.74986 12.945 9.66736 13.14 9.53236 13.2825Z" fill="#FACC15"/>

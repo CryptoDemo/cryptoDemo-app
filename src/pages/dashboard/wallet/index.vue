@@ -19,12 +19,12 @@
                                 <img class="max-w-[24px]" src="/home/eth2.png"/>
                             </div>
                             <div class="ml-[8px]">
-                                <span class="text-[#F8FAFC] text-[16px] font-[600]">ETH</span>
+                                <span class="dark:text-[#F8FAFC] text-[#10192D] text-[16px] font-[600]">ETH</span>
                                 <span class="text-[#8E9BAE] text-[16px] font-[400]">/USD</span>
                             </div>
                         </div>
                         <div>
-                            <span class="text-[#F8FAFC] text-[16px] font-[600]">3 BTC</span>
+                            <span class="dark:text-[#F8FAFC] text-[#10192D] text-[16px] font-[600]">3 BTC</span>
                             <span class="text-[#8E9BAE] text-[16px] font-[400]">/$19,654</span>
                         </div>
                     </div>
@@ -89,8 +89,8 @@
                     <div v-for="i in transaction_lists">
                         <div class="py-[8px] dark:border-[#2A3340]" 
                         :class="i.id === transaction_lists.length ?'border-none':'border-b'">
-                            <div class="flex justify-between items-center">
-                                <span class="dark:text-[#F8FAFC] text-[#10192D] font-[600] text-[14px] capitalize">{{ i.status }} </span>
+                            <div class="flex justify-between items-center text-[#8E9BAE]">
+                                <span class="dark:text-[#F8FAFC]  text-[#10192D] font-[600] text-[14px] capitalize">{{ i.status }} </span>
                                 <span class="time-color text-[rgba(142, 155, 174, 0.45)]">13:53</span>
                             </div>
         
@@ -99,9 +99,9 @@
                                     <div class="h-[18px] w-[18px]">
                                         <img class="max-w-[18px]" :src="i.img"/>
                                     </div>
-                                    <span class="font-[400] text-[14px] text-[#8E9BAE] ml-1">{{i.coin_name}}/USD</span>
+                                    <span class="font-[400] text-[14px] text-[#8E9BAE] ml-1 ">{{i.coin_name}}/USD</span>
                                 </div>
-                                <span class="font-[400] text-[14px] text-[#fff]">2.8{{i.coin_name}}/$2.8</span>
+                                <span class="font-[400] text-[14px] dark:text-[#fff] text-[#8E9BAE]">2.8{{i.coin_name}}/$2.8</span>
                             </div>
                         </div>
                     </div>
