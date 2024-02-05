@@ -17,13 +17,21 @@
 
                 <div class="flex items-center">
 
-                    <span @click.prevent="navigateTo('/dashboard/home/search')" class=" h-[40px] w-[40px]  dark:bg-[#1B2537] bg-[#F5F9FF] inline-flex justify-center items-center rounded-full">
+                    <span v-if="props.search" @click.prevent="navigateTo('/dashboard/home/search')" class=" h-[40px] w-[40px]  dark:bg-[#1B2537] bg-[#F5F9FF] inline-flex justify-center items-center rounded-full">
     
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path d="M9.58317 17.4993C13.9554 17.4993 17.4998 13.9549 17.4998 9.58268C17.4998 5.21043 13.9554 1.66602 9.58317 1.66602C5.21092 1.66602 1.6665 5.21043 1.6665 9.58268C1.6665 13.9549 5.21092 17.4993 9.58317 17.4993Z" :stroke="!isDark ?'#10192D':'white'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M18.3332 18.3327L16.6665 16.666" :stroke="!isDark ?'#10192D':'white'"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </span>
+                    <span v-else @click.prevent="navigateTo('/dashboard/marketplace/create_offer')" class=" h-[40px] w-[40px]  dark:bg-[#1B2537] bg-[#F5F9FF] inline-flex justify-center items-center rounded-full">
+    
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M5 10H15" stroke-width="1.5"  :stroke="!isDark ?'#10192D':'#F8FAFC'"  stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 15V5"  stroke-width="1.5"  :stroke="!isDark ?'#10192D':'#F8FAFC'"  stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+
                     <span  @click.prevent="navigateTo('/dashboard/home/notification')" class=" h-[40px] w-[40px] mx-4  dark:bg-[#1B2537] bg-[#F5F9FF] inline-flex justify-center items-center rounded-full">
     
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -63,7 +71,12 @@ const props= defineProps({
     image:{
         type: Boolean,
         default:false,
-    }
+    },
+
+    search:{
+        type: Boolean,
+        default:true,
+    },
 
 })
 

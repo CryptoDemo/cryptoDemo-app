@@ -29,9 +29,9 @@
         </div>
       </div>
     </div>
-  </template>
+</template>
   
-  <script setup>
+<script setup>
   import { defineProps, defineEmits } from 'vue';
   
   const { visible,btn1,btn2,amount,walletAddress,to } = defineProps({

@@ -1,16 +1,18 @@
 <template>
 
-    <div class=" h-screen pb-14 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full px-6 ">
+    <div class=" h-screen pb-40 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full px-6 ">
 
         <Appbar link="/dashboard" title="View offer"/>
 
         <p class="mt-[80px]">By continuing, you will be buying cryptocurrency from this seller</p>
 
-        <h3 class="text-[#10192D] text-[16px] font-[700] mt-[16px]">What quantity would you like to purchase?</h3>
+        <h3 class="text-[#10192D] dark:text-[#F8FAFC] text-[16px] font-[700] mt-[16px]">
+            What quantity would you like to purchase?</h3>
 
         <div class="mt-[16px] relative">
             <input class="input" placeholder="Amount to pay"/>
-            <div class="absolute bottom-1 right-1 max-w-[64px] px-[20px] py-[12px] inline-flex justify-center items-center bg-[#F8FAFC] 
+            <div class="absolute bottom-1 right-1 max-w-[64px] px-[20px] py-[12px] inline-flex justify-center items-center
+             bg-[#F8FAFC] dark:bg-[#131D35]
             rounded-[15px]">
                  <img class="w-[24px]" src="/home/icon.png"/>
             </div>
@@ -18,7 +20,8 @@
         <p class="mt-[8px] px-[16px]">This gives you 12000NGN worth of BTC </p>
         <div class="mt-[16px] relative">
             <input class="input" placeholder="Amount to pay"/>
-            <div class="absolute bottom-1 right-1 max-w-[64px] px-[20px] py-[12px] inline-flex justify-center items-center bg-[#F8FAFC] 
+            <div class="absolute bottom-1 right-1 max-w-[64px] px-[20px] py-[12px] inline-flex justify-center items-center
+             bg-[#F8FAFC] dark:bg-[#131D35]
             rounded-[15px]">
                  <img class="w-[24px]" src="/home/btc2.png"/>
             </div>
@@ -65,6 +68,179 @@
 
         </div>
 
+        <div class="mt-[16px] p-[12px] dark:bg-[#1B2537] bg-[#F8FAFC] rounded-[12px]">
+            <div class="flex justify-between items-center">
+                <h3 class="text-[#10192D] text-[16px] font-[700]">Offer detail</h3>
+
+                 <p>Demo fee - 0%</p>
+
+            </div>
+            <p class="mt-[8px]">
+                This offer detail should help you make informed decision about this transaction.</p>
+
+            <div class="mt-[8px] relative">
+                <input class="input bg-white dark:bg-[#10192D]" placeholder="76789087.89"/>
+                <div class="absolute bottom-1 right-1 max-w-[64px] px-[20px] py-[12px] inline-flex justify-center 
+                items-center bg-[#F8FAFC] dark:bg-[#131D35]
+                rounded-[15px]">
+                    <img class="w-[24px]" src="/home/icon.png"/>
+                </div>
+            </div>
+             <p class="mt-[8px] px-1">Seller’s rate </p>
+
+             <div class="grid grid-cols-2 gap-[24px] mt-[8px]">
+                <div>
+                    <input class="input bg-white dark:bg-[#10192D]" placeholder="30 min"/>
+                    <p class="pl-1 mt-[8px]">Trade time limit</p>
+                </div>
+                <div>
+                    <input class="input bg-white dark:bg-[#10192D]" placeholder="60 secs"/>
+                    <p class=" mt-[8px]">Estimated trade speed</p>
+                </div>
+             </div>
+
+
+             <div class="grid grid-cols-2 gap-[24px] mt-[8px]">
+                <div>
+                    <input class="input bg-white dark:bg-[#10192D] pr-1" placeholder="12,000 - 1,000,000"/>
+                    <p class="pl-1 mt-[8px]">Buy limit (NGN)</p>
+                </div>
+                <div>
+                    <div class="relative">
+                        <input class="input bg-white dark:bg-[#10192D]" placeholder="Kilahdbsurke"/>
+                        <svg class="absolute bottom-[17px] right-4" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M8.325 16.5765H5.175C3.76944 16.5765 2.86291 16.2625 2.30019 15.6998C1.73746 15.1371 1.42346 14.2306 1.42346 12.825L1.42346 9.675C1.42346 8.26944 1.73746 7.36291 2.30019 6.80019C2.86291 6.23746 3.76944 5.92346 5.175 5.92346H8.325C9.73056 5.92346 10.6371 6.23746 11.1998 6.80019C11.7625 7.36291 12.0765 8.26944 12.0765 9.675V12.825C12.0765 14.2306 11.7625 15.1371 11.1998 15.6998C10.6371 16.2625 9.73056 16.5765 8.325 16.5765ZM5.175 6.07654C3.98378 6.07654 3.03419 6.27231 2.40325 6.90325C1.77231 7.53419 1.57654 8.48378 1.57654 9.675L1.57654 12.825C1.57654 14.0162 1.77231 14.9658 2.40325 15.5967C3.03419 16.2277 3.98378 16.4235 5.175 16.4235H8.325C9.51622 16.4235 10.4658 16.2277 11.0967 15.5967C11.7277 14.9658 11.9235 14.0162 11.9235 12.825V9.675C11.9235 8.48378 11.7277 7.53419 11.0967 6.90325C10.4658 6.27231 9.51622 6.07654 8.325 6.07654H5.175Z" fill="#2873FF" stroke="#2873FF" stroke-width="0.971917"/>
+                            <path d="M12.0765 11.4375V11.9235H12.5625H12.825C14.0162 11.9235 14.9658 11.7277 15.5967 11.0967C16.2277 10.4658 16.4235 9.51622 16.4235 8.325V5.175C16.4235 3.98378 16.2277 3.03419 15.5967 2.40325C14.9658 1.77231 14.0162 1.57654 12.825 1.57654L9.675 1.57654C8.48378 1.57654 7.53419 1.77231 6.90325 2.40325C6.27231 3.03419 6.07654 3.98378 6.07654 5.175V5.4375V5.92346H6.5625H8.325C9.73056 5.92346 10.6371 6.23746 11.1998 6.80019C11.7625 7.36291 12.0765 8.26944 12.0765 9.675V11.4375ZM12.825 12.0765H12C11.983 12.0765 11.9638 12.0697 11.9471 12.0529C11.9303 12.0362 11.9235 12.017 11.9235 12V9.675C11.9235 8.48378 11.7277 7.53419 11.0967 6.90325C10.4658 6.27231 9.51622 6.07654 8.325 6.07654H6C5.98298 6.07654 5.96382 6.0697 5.94706 6.05294C5.9303 6.03618 5.92346 6.01701 5.92346 6V5.175C5.92346 3.76944 6.23746 2.86291 6.80019 2.30019C7.36291 1.73746 8.26944 1.42346 9.675 1.42346L12.825 1.42346C14.2306 1.42346 15.1371 1.73746 15.6998 2.30019C16.2625 2.86291 16.5765 3.76944 16.5765 5.175V8.325C16.5765 9.73056 16.2625 10.6371 15.6998 11.1998C15.1371 11.7625 14.2306 12.0765 12.825 12.0765Z" fill="#2873FF" stroke="#2873FF" stroke-width="0.971917"/>
+                        </svg>
+                    </div>
+                    <p class=" mt-[8px]">Offer ID</p>
+                </div>
+             </div>
+
+             
+            </div>
+
+            <div class="p-[12px] mt-[16px] rounded-[20px] dark:bg-[#1B2537] bg-[#F8FAFC]">
+                <h3 class="text-[#10192D] text-[16px] font-[700]">About seller</h3>
+                <p class="mt-[10px]">
+                    All you need to know about this seller</p>
+
+                <div class="flex justify-between items-start mt-[10px]">
+                    <div class="flex">
+                        <div class="w-[20px] mt-[2.5px]">
+                            <img class="max-w-[20px] " src="/home/profile.png"/>
+                        </div>
+                        <div class="flex flex-col ml-[8px] ">
+                            <span class="text-[14px] font-[600] text-[#10192D] dark:text-[#F8FAFC]">Giftedoriocream567</span>
+                             <span class="text-[#8E9BAE] font-[400] text-[14px]">Last seen - 2 mins ago</span>
+                        </div>
+                    </div>
+
+                    <span  class="text-[#2873FF] background-verified rounded-[20px] text-[12px] px-[8px] py-[2px]">Verified</span>
+                    <!-- <span v-else class="text-[#E33E38] background rounded-[20px] text-[12px] px-[8px] py-[2px]">Unverified</span> -->
+
+                </div>
+
+
+                <div class="flex justify-between items-center mt-[10px]">
+                    <div class="flex items-center">
+                        
+                        <div class="flex items-center ">
+                        <div class="flex justify-between items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M17.1999 12.4004C14.5499 12.4004 12.3999 14.5504 12.3999 17.2004C12.3999 18.1004 12.6499 18.9504 13.0999 19.6704C13.9299 21.0604 15.4499 22.0004 17.1999 22.0004C18.9499 22.0004 20.4799 21.0604 21.2999 19.6704C21.7399 18.9504 21.9999 18.1004 21.9999 17.2004C21.9999 14.5504 19.8499 12.4004 17.1999 12.4004ZM19.5799 16.5704L17.0199 18.9304C16.8799 19.0604 16.6899 19.1304 16.5099 19.1304C16.3199 19.1304 16.1299 19.0604 15.9799 18.9104L14.7999 17.7304C14.5099 17.4404 14.5099 16.9604 14.7999 16.6704C15.0899 16.3804 15.5699 16.3804 15.8599 16.6704L16.5299 17.3404L18.5599 15.4604C18.8599 15.1804 19.3399 15.2004 19.6199 15.5004C19.8999 15.8104 19.8799 16.2904 19.5799 16.5704Z" fill="#2873FF"/>
+                                <path d="M22 8.73062C22 9.92062 21.81 11.0206 21.48 12.0406C21.42 12.2506 21.17 12.3106 20.99 12.1806C19.9 11.3706 18.57 10.9406 17.2 10.9406C13.73 10.9406 10.9 13.7706 10.9 17.2406C10.9 18.3206 11.18 19.3806 11.71 20.3206C11.87 20.6006 11.68 20.9606 11.38 20.8506C8.97 20.0306 4.1 17.0406 2.52 12.0406C2.19 11.0206 2 9.92062 2 8.73062C2 5.64062 4.49 3.14063 7.56 3.14063C9.37 3.14063 10.99 4.02062 12 5.37062C13.01 4.02062 14.63 3.14063 16.44 3.14063C19.51 3.14062 22 5.64062 22 8.73062Z" fill="#2873FF"/>
+                            </svg>
+                            <span class="text-[10px] ml-[8px] font-[400] text-[#64748B]">2,050</span>
+                        </div>
+                        <div class="flex justify-between ml-[4.5px] items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M20.6899 13.9204C20.6799 13.9204 20.6799 13.9104 20.6799 13.9104V13.9004C19.7999 12.9804 18.5699 12.4004 17.1999 12.4004C14.5499 12.4004 12.3999 14.5504 12.3999 17.2004C12.3999 18.4304 12.8699 19.5504 13.6299 20.4004C14.5099 21.3804 15.7799 22.0004 17.1999 22.0004C19.8499 22.0004 21.9999 19.8504 21.9999 17.2004C21.9999 15.9304 21.4999 14.7804 20.6899 13.9204ZM19.0099 19.0704C18.8699 19.2104 18.6699 19.2904 18.4799 19.2904C18.2899 19.2904 18.0999 19.2104 17.9499 19.0704L17.2099 18.3304L16.4499 19.1004C16.2999 19.2404 16.1099 19.3204 15.9199 19.3204C15.8199 19.3204 15.7299 19.3004 15.6399 19.2604C15.5499 19.2304 15.4599 19.1704 15.3899 19.1004C15.0899 18.8004 15.0899 18.3304 15.3899 18.0404L16.1499 17.2704L15.4199 16.5304C15.1199 16.2404 15.1199 15.7604 15.4199 15.4704C15.7099 15.1804 16.1799 15.1804 16.4799 15.4704L17.2099 16.2104L17.9199 15.5004C18.2199 15.2104 18.6899 15.2104 18.9799 15.5004C19.1499 15.6704 19.2199 15.8904 19.1899 16.1104C19.1799 16.2804 19.1099 16.4404 18.9799 16.5604L18.2699 17.2704L19.0099 18.0104C19.3099 18.3004 19.3099 18.7704 19.0099 19.0704Z" fill="#E33E38"/>
+                                <path d="M22 8.73062C22 9.92062 21.81 11.0206 21.48 12.0406C21.42 12.2506 21.17 12.3106 20.99 12.1806C19.9 11.3706 18.57 10.9406 17.2 10.9406C13.73 10.9406 10.9 13.7706 10.9 17.2406C10.9 18.3206 11.18 19.3806 11.71 20.3206C11.87 20.6006 11.68 20.9606 11.38 20.8506C8.97 20.0306 4.1 17.0406 2.52 12.0406C2.19 11.0206 2 9.92062 2 8.73062C2 5.64062 4.49 3.14063 7.56 3.14063C9.37 3.14063 10.99 4.02062 12 5.37062C13.01 4.02062 14.63 3.14063 16.44 3.14063C19.51 3.14062 22 5.64062 22 8.73062Z" fill="#E33E38"/>
+                            </svg>
+                            <span class="text-[10px] ml-[8px] font-[400] text-[#64748B]">559</span>
+                        </div>
+
+                        </div>
+                    
+                    </div>
+                    <span class="text-[#8E9BAE] text-[12px] font-[400]">Limit 15,000 - 100,000 NGN</span>
+
+                </div>
+
+                <div class="flex flex-wrap items-center gap-[4px] mt-[8px]">
+                    <span class="px-[8px] py-[2px] bg-[#0ea5e940] rounded-[20px] text-[#0EA5E9] text-[12px] font-[400] 
+                    inline-flex justify-center items-center">Email verified</span>
+                    <span class="px-[8px] py-[2px]  bg-[#0ea5e940] rounded-[20px] text-[#0EA5E9] text-[12px] font-[400] 
+                    inline-flex justify-center items-center">Phone verified</span>
+                    <span class="px-[8px] py-[2px]  bg-[#0ea5e940] rounded-[20px] text-[#0EA5E9] text-[12px] font-[400]
+                     inline-flex justify-center items-center">Id verified</span>
+                    <span class="px-[8px] py-[2px]  bg-[#e33e3840] rounded-[20px] text-[#E33E38] text-[12px] font-[400]
+                     inline-flex justify-center items-center">Proof of address not verified</span>
+
+                </div>
+
+                
+                
+            </div>
+
+            <div  class="mt-[16px] p-[12px] rounded-[20px] dark:bg-[#1B2537] bg-[#F8FAFC]">
+                <h3 class="text-[#10192D] text-[16px] font-[700]">Feedback from clients</h3>
+                <p class="mt-[10px]">
+                    People who have traded with this user has this to say.</p>
+
+
+                <div v-for="i in 3" class="bg-[#fff] dark:bg-[#10192D] rounded-[12px] p-[12px] mt-[10px]">
+                    <div class="flex justify-between items-start  ">
+                        <div class="flex">
+                            <div class="w-[20px] mt-[2.5px]">
+                                <img class="max-w-[20px] " src="/home/profile.png"/>
+                            </div>
+                            <div class="flex flex-col ml-[8px] ">
+                                <span class="text-[14px] font-[600] text-[#10192D] dark:text-[#F8FAFC]">Giftedoriocream567</span>
+                                 <span class="text-[#8E9BAE] font-[400] text-[14px]">Jan 25, 2024</span>
+                            </div>
+                        </div>
+    
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                            <path d="M11.4666 9.20703C9.69994 9.20703 8.2666 10.6404 8.2666 12.407C8.2666 13.007 8.43327 13.5737 8.73327 14.0537C9.2866 14.9804 10.2999 15.607 11.4666 15.607C12.6333 15.607 13.6533 14.9804 14.1999 14.0537C14.4933 13.5737 14.6666 13.007 14.6666 12.407C14.6666 10.6404 13.2333 9.20703 11.4666 9.20703ZM13.0533 11.987L11.3466 13.5604C11.2533 13.647 11.1266 13.6937 11.0066 13.6937C10.8799 13.6937 10.7533 13.647 10.6533 13.547L9.8666 12.7604C9.67327 12.567 9.67327 12.247 9.8666 12.0537C10.0599 11.8604 10.3799 11.8604 10.5733 12.0537L11.0199 12.5004L12.3733 11.247C12.5733 11.0604 12.8933 11.0737 13.0799 11.2737C13.2666 11.4804 13.2533 11.8004 13.0533 11.987Z" fill="#2873FF"/>
+                            <path d="M14.6663 6.75987C14.6663 7.5532 14.5397 8.28654 14.3197 8.96654C14.2797 9.10654 14.113 9.14654 13.993 9.05987C13.2663 8.51987 12.3797 8.2332 11.4663 8.2332C9.15301 8.2332 7.26634 10.1199 7.26634 12.4332C7.26634 13.1532 7.45301 13.8599 7.80634 14.4865C7.91301 14.6732 7.78634 14.9132 7.58634 14.8399C5.97967 14.2932 2.73301 12.2999 1.67967 8.96654C1.45967 8.28654 1.33301 7.5532 1.33301 6.75987C1.33301 4.69987 2.99301 3.0332 5.03967 3.0332C6.24634 3.0332 7.32634 3.61987 7.99967 4.51987C8.67301 3.61987 9.75301 3.0332 10.9597 3.0332C13.0063 3.0332 14.6663 4.69987 14.6663 6.75987Z" fill="#2873FF"/>
+                        </svg>
+                    </div>
+                    <p class="mt-[8px]">I love how fast this trader is, I highly recommend buying from them.</p>
+                    <span class="text-[14px] mt-[10px] font-[400] text-[#10192D]">No. of times traded - 5</span>
+                </div> 
+
+
+                <p class="mt-[10px] items-stretch ">
+                    The services offered by Demo on demo.io (and elsewhere) may not be affiliated, associated with, 
+                    endorsed, or sponsored by your chosen payment method.
+                </p>   
+                
+                
+
+            </div>
+
+            <div  class="fixed bottom-5 left-0 w-full px-6">
+
+                <button  class="btn-primary bg-[#E33E38] hover:bg-[#E33E38] w-full scaling-animation">
+                    Report a problem
+                </button>
+                <button class="btn-primary w-full scaling-animation mt-[16px]">Buy coin</button>
+
+            </div>
+
     </div>
 
 </template>
+
+
+
+<style scoped>
+.background-verified{
+    background: rgba(40, 115, 255, 0.25);
+}
+.background2{
+    background: rgba(14, 165, 233, 0.25);
+}
+</style>

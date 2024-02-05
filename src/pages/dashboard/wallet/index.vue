@@ -101,7 +101,7 @@
                                     </div>
                                     <span class="font-[400] text-[14px] text-[#8E9BAE] ml-1 ">{{i.coin_name}}/USD</span>
                                 </div>
-                                <span class="font-[400] text-[14px] dark:text-[#fff] text-[#8E9BAE]">2.8{{i.coin_name}}/$2.8</span>
+                                <span class="font-[400] text-[14px]  dark:text-[#fff] text-[#8E9BAE]">2.8{{i.coin_name}}/$2.8</span>
                             </div>
                         </div>
                     </div>

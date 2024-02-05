@@ -19,11 +19,12 @@
                 <div v-for="i in coin_lists">
                     <button @click="selected_wallet_for_send = i.title; selected_wallet_for_swap = i.img" 
                     class="py-[10px] px-[12px]    rounded-[20px] flex items-center transition ease-in-out duration-300"
-                    :class="selected_wallet_for_send === i.title ?' bg-[#2873FF] dark:bg-[#2873ff40]  ':'bg-gradient-not-selected opacity-[0.45]'">
+                    :class="selected_wallet_for_send === i.title ?' bg-[#2873FF] dark:bg-[#2873ff40]   ':'bg-gradient-not-selected opacity-[0.45]'">
                         <div class="w-[20px] h-[20px] mr-[3px]">
                             <img class="max-w-[20px]" :src="i.img"/>
                         </div>
-                        <span class="text-[#8E9BAE] text-[14px] font-[400] mr-[12px]">{{ i.title }}</span>
+                        <span  :class="selected_wallet_for_send === i.title ?' text-[#F5F9FF] dark:text-[#8E9BAE]':''" 
+                        class="text-[#8E9BAE] text-[14px] font-[400] mr-[12px]">{{ i.title }}</span>
                         <svg v-if="selected_wallet_for_send === i.title" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <circle cx="9.83301" cy="9.83398" r="4" :fill="isDark?'#2873FF':'white'"/>
                             <circle cx="10" cy="10" r="9.58333" :stroke="isDark?'#2873FF':'white'" stroke-width="0.833333"/>
@@ -133,7 +134,8 @@
             </div>
 
             <div v-for="i in 3" :key="i">
-                <div class="mt-[16px] flex justify-between items-center p-[12px] bg-[#F5F9FF] dark:bg-[#1B2537] rounded-[12px]">
+                <div class="mt-[16px] flex justify-between items-center p-[12px] bg-[#F5F9FF] 
+                dark:bg-[#1B2537] rounded-[12px]">
                     <span class="text-[14px] font-[400] text-[#8E9BAE]">Ethereum (ERC 20)</span>
                     <span class="text-[14px] font-[400] text-[#8E9BAE]">Fee (2.6 USD)</span>
                 </div>
@@ -163,11 +165,11 @@
 
 <script setup>
 
+import { useDark, useToggle } from '@vueuse/core'
 
 const selected_wallet_for_send = ref('BTC')
 const selected_wallet_for_swap = ref('/home/btc2.png')
 const show_wallet_list1 = ref(false)
-import { useDark, useToggle } from '@vueuse/core'
 
 const isDark = useDark()
 

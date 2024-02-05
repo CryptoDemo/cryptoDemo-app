@@ -2,7 +2,7 @@
 
     <div class="h-screen pb-24 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full px-6">
 
-        <HomeBar  title="Market"/>
+        <HomeBar  title="Market" :search="false"/>
 
         <div class="flex justify-between gap-x-[12px] mt-[70px] w-full relative">
 
@@ -46,7 +46,7 @@
                             </div>
             </div>
 
-            <button class="dark:bg-[#1B2537] bg-[#F8FAFC] rounded-[20px] px-[20px] flex justify-center items-center">
+            <button  @click.prevent="openModal"  class="dark:bg-[#1B2537] bg-[#F8FAFC] rounded-[20px] px-[20px] flex justify-center items-center">
                 <span class="text-sm font-[600] dark:text-white text-[#10192D] mr-[8px]">Filter</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                     <path d="M3.59993 1.90039H12.3999C13.1333 1.90039 13.7333 2.50039 13.7333 3.23372V4.70039C13.7333 5.23372 13.3999 5.90039 13.0666 6.23372L10.1999 8.76706C9.79993 9.10039 9.53327 9.76706 9.53327 10.3004V13.1671C9.53327 13.5671 9.2666 14.1004 8.93327 14.3004L7.99994 14.9004C7.13327 15.4337 5.93327 14.8337 5.93327 13.7671V10.2337C5.93327 9.76706 5.6666 9.16706 5.39994 8.83372L2.8666 6.16706C2.53327 5.83372 2.2666 5.23372 2.2666 4.83372V3.30039C2.2666 2.50039 2.8666 1.90039 3.59993 1.90039Z" fill="white" stroke="#1B2537" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -155,6 +155,13 @@
 
         </div>
 
+        <div class="">
+
+            <FilterModal @close="openModal(v)"  :visible="visible" btn1="cancel" btn2="confirm" 
+            desc="By clicking the confirm button you will be sending worth of"  amount="200USDT" to="true"
+            walletAddress="1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"/>
+        </div>
+
     </div>
 </template>
 
@@ -165,6 +172,14 @@ const selected_wallet_for_swap = ref('/home/btc2.png')
 const show_wallet_list1 = ref(false)
 const selected_market_coin = ref('BTC')
 const filtered_marketplace = ref([])
+
+const visible = ref(false);
+
+const isFocused = ref(false)
+
+const openModal = (v) => {
+  visible.value = v;
+};
 
 const togglebtn = (v)=>{
     selectedbtn.value = v
