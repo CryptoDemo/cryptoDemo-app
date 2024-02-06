@@ -149,8 +149,8 @@
             <div v-else class="mt-[53px] mx-6">
 
                 <p class="mb-4">Create an account to have access to all of our features</p>
-                <button class="btn-primary w-full mb-4 scaling-animation">Create account</button>
-                <button class="btn-border w-full scaling-animation ">Login</button>
+                <button @click.prevent="navigateTo('/sign_Up')" class="btn-primary w-full mb-4 scaling-animation">Create account</button>
+                <button @click.prevent="navigateTo('/login')"  class="btn-border w-full scaling-animation ">Login</button>
 
             </div>
 
