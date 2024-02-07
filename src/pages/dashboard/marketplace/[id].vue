@@ -11,7 +11,7 @@
 
         <div class="mt-[16px] relative">
             <input class="input" placeholder="Amount to pay"/>
-            <div class="absolute bottom-1 right-1 max-w-[64px] px-[20px] py-[12px] inline-flex justify-center items-center
+            <div class="absolute bottom-[5px] right-1 max-w-[64px] px-[20px] py-[12px] inline-flex justify-center items-center
              bg-[#F8FAFC] dark:bg-[#131D35]
             rounded-[15px]">
                  <img class="w-[24px]" src="/home/icon.png"/>
@@ -20,7 +20,7 @@
         <p class="mt-[8px] px-[16px]">This gives you 12000NGN worth of BTC </p>
         <div class="mt-[16px] relative">
             <input class="input" placeholder="Amount to pay"/>
-            <div class="absolute bottom-1 right-1 max-w-[64px] px-[20px] py-[12px] inline-flex justify-center items-center
+            <div class="absolute bottom-[5px] right-1 max-w-[64px] px-[20px] py-[12px] inline-flex justify-center items-center
              bg-[#F8FAFC] dark:bg-[#131D35]
             rounded-[15px]">
                  <img class="w-[24px]" src="/home/btc2.png"/>

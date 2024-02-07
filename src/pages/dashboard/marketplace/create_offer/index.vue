@@ -11,8 +11,8 @@
                 <div class="w-6 h-6 bg-[#ffffff1a] rounded-full  text-sm inline-flex justify-center items-center 
                 text-[#64748B]
                 ">{{ index + 1 }}</div>
-                <div  class="h-1 w-[101px] ml-3.5" :class="{'hidden': index === 2}">
-                    <div class="min-h-1 max-w-[110px] bg-[#ffffff1a]"></div>
+                <div  class="h-[1.011px] w-[101px] ml-3.5" :class="{'hidden': index === 2}">
+                    <div class="min-h-[1.011px] max-w-[110px] bg-[#ffffff1a]"></div>
                 </div>
             </div>
 
@@ -62,7 +62,7 @@
 
         <div class="relative mt-[8px]">
                         <input class="input py-[18px]  focus:ring-1 focus:ring-gray-800" :placeholder="selected_wallet_for_send"/>
-                        <button @click.prevent="toggle_wallet_list1" class="min-w-[82px] min-h-[48px] absolute right-1 bottom-1.5
+                        <button @click.prevent="toggle_wallet_list1" class="min-w-[82px] min-h-[48px] absolute right-1 bottom-[5px]
                         rounded-[15px] bg-[#F5F9FF]
                         dark:bg-[#131D35] inline-flex justify-center items-center">
                             <div class="w-[24px] h-[24px]">
@@ -94,7 +94,7 @@
 
         <div class="relative mt-[8px]">
                         <input class="input py-[18px]  focus:ring-1 focus:ring-gray-800" :placeholder="selected_bank_name"/>
-                        <button @click.prevent="toggle_show_bank_method" class="min-w-[82px] min-h-[48px] absolute right-1 bottom-1.5
+                        <button @click.prevent="toggle_show_bank_method" class="min-w-[82px] min-h-[48px] absolute right-1 bottom-[5px]
                         rounded-[15px] bg-[#F5F9FF]
                         dark:bg-[#131D35] inline-flex justify-center items-center">
                             <div class="w-[24px] h-[24px]">
@@ -247,7 +247,7 @@
         
         <div  v-show="!isFocused" class="fixed bottom-5 left-0 w-full px-6">
 
-            <button @click.prevent="" class="btn-primary w-full scaling-animation">Continue</button>
+            <button @click.prevent="navigateTo('/dashboard/marketplace/create_offer/stage1')" class="btn-primary w-full scaling-animation">Continue</button>
 
         </div>
        

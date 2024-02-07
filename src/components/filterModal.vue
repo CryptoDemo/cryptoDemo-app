@@ -7,11 +7,11 @@
       <div class="bg-[#F1F5F9] dark:bg-[#10192D] overflow-y-auto rounded-lg px-6 py-[65px] w-96 fade z-40">
         <!-- Your modal content goes here -->
         <div>
-            <div class="fixed top-0 left-0 w-full p-6 bg-[#F1F5F9] dark:bg-[#10192D] z-50">
+            <div class="fixed top-0 left-0 w-full px-6 py-5 bg-[#F1F5F9] dark:bg-[#10192D] z-50">
                 <h3 class="text-[#10192D] mb-[16px] text-[18px] font-[700]">Filter selection</h3>
             </div>
 
-            <div class="mb-4">
+            <div class="my-4">
     
                 <button
                         @click="toggle_show_payment"
