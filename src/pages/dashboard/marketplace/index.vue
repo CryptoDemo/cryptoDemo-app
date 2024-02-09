@@ -59,6 +59,8 @@
 
         </div>
 
+        <button @click.prevent="navigateTo('/dashboard/marketplace/create_offer')" class="btn-primary w-full mt-[24px]">Create offer</button>
+
 
         <div @click.prevent="navigateTo(`/dashboard/marketplace/${i.id}`)"
         v-for="i in filtered_marketplace" class="mt-[25px]">

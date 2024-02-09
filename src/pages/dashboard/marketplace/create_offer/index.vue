@@ -247,7 +247,9 @@
         
         <div  v-show="!isFocused" class="fixed bottom-5 left-0 w-full px-6">
 
-            <button @click.prevent="navigateTo('/dashboard/marketplace/create_offer/stage1')" class="btn-primary w-full scaling-animation">Continue</button>
+            <button v-show="selected_offer === 'Buy'" @click.prevent="navigateTo('/dashboard/marketplace/create_offer/stage1')" class="btn-primary w-full scaling-animation">Continue</button>
+            <button v-show="selected_offer === 'Sell'" @click.prevent="navigateTo('/dashboard/marketplace/create_offer/sell')" 
+            class="btn-primary w-full scaling-animation">Continue</button>
 
         </div>
        

@@ -17,6 +17,7 @@
                  <img class="w-[24px]" src="/home/icon.png"/>
             </div>
         </div>
+
         <p class="mt-[8px] px-[16px]">This gives you 12000NGN worth of BTC </p>
         <div class="mt-[16px] relative">
             <input class="input" placeholder="Amount to pay"/>
@@ -223,10 +224,10 @@
 
             <div  class="fixed bottom-5 left-0 w-full px-6">
 
-                <button  class="btn-primary bg-[#E33E38] hover:bg-[#E33E38] w-full scaling-animation">
+                <button @click.prevent="navigateTo('/dashboard/marketplace/report_problem')"  class="btn-primary bg-[#E33E38] hover:bg-[#E33E38] w-full scaling-animation">
                     Report a problem
                 </button>
-                <button class="btn-primary w-full scaling-animation mt-[16px]">Buy coin</button>
+                <button @click.prevent="navigateTo('/dashboard/marketplace/market_buy')" class="btn-primary w-full scaling-animation mt-[16px]">Buy coin</button>
 
             </div>
 

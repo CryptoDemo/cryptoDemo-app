@@ -6,7 +6,7 @@
             <home v-if="useCurrentNavMenu.currentNavMenu === 'home'" />
             <wallet v-else-if ="useCurrentNavMenu.currentNavMenu === 'wallet' " />
             <marketplace v-else-if="useCurrentNavMenu.currentNavMenu === 'marketplace'" />
-            <exchange v-else-if ="useCurrentNavMenu.currentNavMenu === 'exchange'" />
+            <exchange v-else-if ="useCurrentNavMenu.currentNavMenu === 'trade'" />
             <account v-else />
         </KeepAlive>
 
@@ -39,7 +39,7 @@
 import home from "@/pages/dashboard/home/index.vue";
 import marketplace from "@/pages/dashboard/marketplace/index.vue";
 import wallet from "@/pages/dashboard/wallet/index.vue";
-import exchange from "@/pages/dashboard/exchange/index.vue";
+import exchange from "@/pages/dashboard/trade/index.vue";
 import account from "@/pages/dashboard/account/index.vue";
 
 import { useStore } from "@/stores/index"
@@ -84,7 +84,7 @@ definePageMeta({
         },
         {
             id:4,
-            title:"exchange",
+            title:"trade",
             icon:'tabler:arrows-right-left'
         },
         {

@@ -206,7 +206,8 @@
                     Choose your desired source and time frame  below.
                 </p>
 
-                <P>Source</P>
+
+                <P class="mt-[16px]">Source</P>
 
                 <div class=" mt-[8px] relative">
     
@@ -232,7 +233,7 @@
                             <div
                                 v-for="i in source_lists"  @click="toggle_show_source();  
                                 selected_source = i" :key='i'
-                                class="px-[20px] py-[16px] w-full leading-tight"
+                                class="px-[20px] py-[14px] w-full leading-tight"
                             >
                                 <ul class="flex items-center w-full rounded-xl  ">
                                     <li class="font-[700] text-[16px] text-[#10192D] dark:text-[#F8FAFC]">
@@ -245,13 +246,113 @@
 
                 </div>
 
+                <P class="mt-[16px]">Price Time frame</P>
+
+                <div class=" mt-[8px] relative">
+    
+                    <button
+                            @click="toggle_show_price"
+                            class="btn-border-primary dark:bg-transparent text-[#8E9BAE] font-[400] w-full flex text-sm
+                            justify-between items-center  border-[#E2E8F0] border dark:border-[#1B2537]"
+                        >
+                            <span>{{ selected_price || 'current price' }}</span>
+                            <Icon  :class="{'rotate-up':show_price}"  
+                            name="solar:alt-arrow-down-bold" size="16" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
+                            dark:text-[#FFFFFF]"/>
+
+                    </button>
+
+                    <div class=" absolute top-full left-0 dark:border-[#1B2537]  w-full  
+                    dark:text-[#8E9BAE] bg-[#ffff]   dark:bg-[#10192D] z-40
+                    rounded-2xl pb-2 mt-1 z transition-all ease-out duration-300"  v-show="show_price" >
+                        
+                    
+                        <div class=" relative overflow-y-auto">
+
+                            <div
+                                v-for="i in price_lists"  @click="toggle_show_price();  
+                                selected_price = i" :key='i'
+                                class="px-[20px] py-[14px] w-full leading-tight"
+                            >
+                                <ul class="flex items-center w-full rounded-xl  ">
+                                    <li class="font-[700] text-[16px] text-[#10192D] dark:text-[#F8FAFC]">
+                                        {{ i }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <p class="mt-[16px]">What profit target do you have for each trade? (%)</p>
+
+
+                <div class="min-h-[56px] mt-[8px] bg-[] flex justify-between items-center border
+                rounded-[15px] dark:border-[#1B2537] border-[#E2E8F0] px-[2px]">
+
+                    <button @click.prevent="numberV2--" class="h-[48px]  text-[#8E9BAE] w-[53px] bg-[#131D35] rounded-[15px]">
+                        -
+                    </button>
+
+                    <span class="text-sm text-[#8E9BAE]">{{ numberV2 }}</span>
+
+                    <button  @click.prevent="numberV2++" class="h-[48px]  text-[#8E9BAE] w-[53px] bg-[#131D35] rounded-[15px]">
+                        +
+                    </button>
+
+                </div>
+
+                <p class="mt-[16px]">Bitcoin Market Price: ₦61,160,488.67 <br> Receive 95% of the Bank Transfer value via Demo at the 
+                    current price time frame. <br>Save ₦3,054,184.04 per Bitcoin
+                     compared to the market price. With a minimum trade of ₦14,200.00, 
+                     get ₦14,910.00 worth of Bitcoin in return.
+                </p>
+
             </div>
 
         </div>
 
 
+        <div class="mt-[24px]">
+            <h3 class="text-[16px]  font-[600] dark:text-[#F8FAFC] text-[#10192D]">Offer Time Limit</h3>
+            <p class="mt-[16px]">Set your offer time limit here (Minutes)</p>
+
+            <div class="min-h-[56px] mt-[8px] bg-[] flex justify-between items-center border
+                rounded-[15px] dark:border-[#1B2537] border-[#E2E8F0] px-[2px]">
+
+                    <button @click.prevent="(time > 1 )?time-- :''" class="h-[48px]  text-[#8E9BAE] w-[53px] bg-[#131D35] rounded-[15px]">
+                        -
+                    </button>
+
+                    <span class="text-sm text-[#8E9BAE]">{{ time }}</span>
+
+                    <button  @click.prevent="time++" class="h-[48px]  text-[#8E9BAE] w-[53px] bg-[#131D35] rounded-[15px]">
+                        +
+                    </button>
+
+            </div>
+
+            <p class="mt-[16px]">Bitcoin Market Price: ₦61,160,488.67 
+                Save ₦3,058,024.43 per Bitcoin at your selected margin. 
+                With a minimum trade of ₦14,200.00, get ₦14,910.00 worth of Bitcoin in return.
+            </p>
 
 
+
+        </div>
+
+
+
+          <div class="fixed bottom-5 left-0 w-full px-6 ">
+            <div class="flex w-full gap-[21px]">
+                <button  @click.prevent="navigateTo('/dashboard/marketplace/create_offer')" class="btn-border w-full">Back</button>
+                <button  @click.prevent="navigateTo('/dashboard/marketplace/create_offer/stage2')" 
+                class="btn-primary w-full">Continue</button>
+            </div>
+
+          </div>
 
 
 
@@ -260,22 +361,27 @@
     </div>
 
 </template>
+
 <script setup>
 
 const numberV = ref(0)
+const numberV2 = ref(0)
+const time = ref(0)
 
 const offer_trade_limit = ref(true)
 const offer_margin = ref(true)
 
 const selected_source = ref("Demo")
-const show_source = ref(true)
+const show_source = ref(false)
+
+const selected_price = ref("")
+const show_price = ref(false)
 
 
 const show_offer = ref(false)
 const selected_offer = ref([
-    {id:1,amount:25},
+    {id:1,amount:250},
     {id:2,amount:1250},
-    {id:3,amount:12000},
 ])
 const inputV = ref(null)
 
@@ -287,12 +393,26 @@ const toggle_show_source =()=>{
     show_source.value = !show_source.value
 }
 
+const toggle_show_price =()=>{
+    show_source.value = !show_source.value
+}
+
 const offer_lists = [
     10000,
     15000,
     20000,
     25000
 ]
+const source_lists = [
+    'demo',
+    'not demo',
+]
+const price_lists = [
+    30000,
+    40000,
+]
+
+
 
 watch(()=>selected_offer.value,(newval)=>{
     selected_offer.value = newval
