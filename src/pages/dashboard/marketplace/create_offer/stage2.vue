@@ -10,11 +10,11 @@
                 <div v-if="index < 2" class="w-6 h-6 bg-[#2873FF] text-white rounded-full  text-sm inline-flex justify-center items-center 
                 
                 ">{{ index + 1 }}</div>
-                <div v-else  class="w-6 h-6 bg-[#ffffff1a] rounded-full  text-sm inline-flex justify-center items-center 
+                <div v-else  class="w-6 h-6 bg-[#E2E8F0] dark:bg-[#ffffff1a] rounded-full  text-sm inline-flex justify-center items-center 
                 text-[#64748B]
                 ">{{ index + 1 }}</div>
 
-                <div v-if="index === 1" class="meter overflow-hidden bg-[#ffffff1a] h-[1.011px] w-[101px] ml-3.5" >
+                <div v-if="index === 1" class="meter overflow-hidden bg-[#E2E8F0] dark:bg-[#ffffff1a] h-[1.011px] w-[101px] ml-3.5" >
                     <span style="width:100%;"><span class="progress"></span></span>
                 </div>
                 <div v-else class="h-[1.011px] w-[101px] ml-3.5" :class="{'hidden': index === 2}">

@@ -8,11 +8,11 @@
         <div class="mt-[80px] flex justify-between items-center">
 
             <div v-for="(i,index) in 3" class="flex justify-between items-center">
-                <div class="w-6 h-6 bg-[#ffffff1a] rounded-full  text-sm inline-flex justify-center items-center 
+                <div class="w-6 h-6 bg-[#E2E8F0] dark:bg-[#ffffff1a] rounded-full  text-sm inline-flex justify-center items-center 
                 text-[#64748B]
                 ">{{ index + 1 }}</div>
                 <div  class="h-[1.011px] w-[101px] ml-3.5" :class="{'hidden': index === 2}">
-                    <div class="min-h-[1.011px] max-w-[110px] bg-[#ffffff1a]"></div>
+                    <div class="min-h-[1.011px] max-w-[110px] bg-[#E2E8F0] dark:bg-[#ffffff1a]"></div>
                 </div>
             </div>
 

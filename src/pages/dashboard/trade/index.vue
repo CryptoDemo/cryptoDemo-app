@@ -29,13 +29,13 @@
             <span @click.prevent="trade_active = true"
             class="inline-flex justify-center items-center border-b-2 p-[10px] text-[16px] font-[700] 
             transition ease-in-out duration-300"
-            :class="trade_active?'text-[#2873FF] border-[#2873FF]':'text-[#8E9BAE]'">Active</span>
+            :class="trade_active?'text-[#2873FF] border-[#2873FF]':'text-[#8E9BAE] border-[#E2E8F0] dark:border-[#1B2537]'">Active</span>
 
 
             <span @click.prevent="trade_active = false"
             class="inline-flex justify-center items-center p-[10px] border-b-2 text-[16px] font-[700]
             transition ease-in-out duration-300" 
-            :class="!trade_active?'text-[#2873FF] border-[#2873FF]':'text-[#8E9BAE]'">Close</span>
+            :class="!trade_active?'text-[#2873FF] border-[#2873FF]':'text-[#8E9BAE] border-[#E2E8F0] dark:border-[#1B2537]'">Close</span>
 
         </div>
 
@@ -88,7 +88,7 @@
                             <span class="text-[12px] font-[400] text-[#8E9BAE]">Bank Transfer</span>
                         </div>
             
-                        <div class="input bg-[#10192D] mt-[4px] flex justify-between items-center">
+                        <div class="input bg-[#fff] dark:bg-[#10192D] mt-[4px] flex justify-between items-center">
             
                             <span class="text-[12px] font-[400] text-[#8E9BAE]">Order ID </span>
                             
@@ -158,7 +158,7 @@
                             <span class="text-[12px] font-[400] text-[#8E9BAE]">3</span>
                         </div>
             
-                        <div class="input bg-[#10192D] mt-[4px] flex justify-between items-center" disabled>
+                        <div class="input bg-[#fff] dark:bg-[#10192D] mt-[4px] flex justify-between items-center" disabled>
             
                             <span class="text-[12px] font-[400] text-[#8E9BAE]">Order ID </span>
                             

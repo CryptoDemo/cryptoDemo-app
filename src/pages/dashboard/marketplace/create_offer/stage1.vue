@@ -11,14 +11,14 @@
                 <div v-if="index === 0" class="w-6 h-6 bg-[#2873FF] text-white rounded-full  text-sm inline-flex justify-center items-center 
                 
                 ">{{ index + 1 }}</div>
-                <div v-else  class="w-6 h-6 bg-[#ffffff1a] rounded-full  text-sm inline-flex justify-center items-center 
+                <div v-else  class="w-6 h-6 bg-[#E2E8F0] dark:bg-[#ffffff1a] rounded-full  text-sm inline-flex justify-center items-center 
                 text-[#64748B]
                 ">{{ index + 1 }}</div>
-                <div v-if="index === 0" class="meter overflow-hidden bg-[#ffffff1a] h-[1.011px] w-[101px] ml-3.5" >
+                <div v-if="index === 0" class="meter overflow-hidden bg-[#E2E8F0] dark:bg-[#ffffff1a] h-[1.011px] w-[101px] ml-3.5" >
                     <span style="width:100%;"><span class="progress"></span></span>
                 </div>
                 <div v-else class="h-[1.011px] w-[101px] ml-3.5" :class="{'hidden': index === 2}">
-                    <div class="min-h-[1px] max-w-[110px] bg-[#ffffff1a]"></div>
+                    <div class="min-h-[1px] max-w-[110px] bg-[#E2E8F0] dark:bg-[#ffffff1a]"></div>
                 </div>
             </div>
 
@@ -180,13 +180,13 @@
                 <div class="min-h-[56px] mt-[8px] bg-[] flex justify-between items-center border
                 rounded-[15px] dark:border-[#1B2537] border-[#E2E8F0] px-[2px]">
 
-                    <button @click.prevent="numberV--" class="h-[48px]  text-[#8E9BAE] w-[53px] bg-[#131D35] rounded-[15px]">
+                    <button @click.prevent="numberV--" class="h-[48px]  text-[#8E9BAE] w-[53px] bg-[#F5F9FF] dark:bg-[#131D35] rounded-[15px]">
                         -
                     </button>
 
                     <span class="text-sm text-[#8E9BAE]">{{ numberV }}</span>
 
-                    <button  @click.prevent="numberV++" class="h-[48px]  text-[#8E9BAE] w-[53px] bg-[#131D35] rounded-[15px]">
+                    <button  @click.prevent="numberV++" class="h-[48px]  text-[#8E9BAE] w-[53px] bg-[#F5F9FF] dark:bg-[#131D35] rounded-[15px]">
                         +
                     </button>
 
@@ -292,13 +292,13 @@
                 <div class="min-h-[56px] mt-[8px] bg-[] flex justify-between items-center border
                 rounded-[15px] dark:border-[#1B2537] border-[#E2E8F0] px-[2px]">
 
-                    <button @click.prevent="numberV2--" class="h-[48px]  text-[#8E9BAE] w-[53px] bg-[#131D35] rounded-[15px]">
+                    <button @click.prevent="numberV2--" class="h-[48px]  text-[#8E9BAE] w-[53px] bg-[#F5F9FF] dark:bg-[#131D35] rounded-[15px]">
                         -
                     </button>
 
                     <span class="text-sm text-[#8E9BAE]">{{ numberV2 }}</span>
 
-                    <button  @click.prevent="numberV2++" class="h-[48px]  text-[#8E9BAE] w-[53px] bg-[#131D35] rounded-[15px]">
+                    <button  @click.prevent="numberV2++" class="h-[48px]  text-[#8E9BAE] w-[53px] bg-[#F5F9FF] dark:bg-[#131D35] rounded-[15px]">
                         +
                     </button>
 
@@ -322,13 +322,14 @@
             <div class="min-h-[56px] mt-[8px] bg-[] flex justify-between items-center border
                 rounded-[15px] dark:border-[#1B2537] border-[#E2E8F0] px-[2px]">
 
-                    <button @click.prevent="(time > 1 )?time-- :''" class="h-[48px]  text-[#8E9BAE] w-[53px] bg-[#131D35] rounded-[15px]">
+                    <button @click.prevent="(time > 1 )?time-- :''" class="h-[48px]  text-[#8E9BAE] w-[53px] bg-[#F5F9FF]
+                        dark:bg-[#131D35] rounded-[15px]">
                         -
                     </button>
 
                     <span class="text-sm text-[#8E9BAE]">{{ time }}</span>
 
-                    <button  @click.prevent="time++" class="h-[48px]  text-[#8E9BAE] w-[53px] bg-[#131D35] rounded-[15px]">
+                    <button  @click.prevent="time++" class="h-[48px]  text-[#8E9BAE] w-[53px] bg-[#F5F9FF] dark:bg-[#131D35] rounded-[15px]">
                         +
                     </button>
 

@@ -23,9 +23,9 @@
         <div class="mt-[37px]">
             <div v-for="i in chat_messages">
 
-                <div  v-if="i.status === 'admin'">
+                <div  v-if="i.status === 'admin'" class="mb-[4px]">
     
-                    <div class="bg-[#1B2537] rounded-e-[8px] rounded-bl-[8px] px-[12px] py-[8px] text-[#8E9BAE] text-[14px] max-w-[260px]">
+                    <div class="dark:bg-[#1B2537] bg-[#F5F9FF] rounded-e-[8px] rounded-bl-[8px] px-[12px] py-[8px] text-[#8E9BAE] text-[14px] max-w-[260px]">
                         Trade instruction from seller appear here
                     </div>
     
@@ -109,7 +109,7 @@
 
 <script setup>
 
-const reveal = ref(3)
+const reveal = ref(1)
 
 const chat_messages  = [
     {status:'admin',text:'Trade instruction from seller appear here'},
