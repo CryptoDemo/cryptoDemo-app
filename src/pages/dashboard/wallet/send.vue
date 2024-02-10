@@ -2,7 +2,7 @@
     <Successful v-if="show_successful" title="sucessful" subtitle="By clicking the confirm button you will be sending worth of"
     amount="200USDT" to="true" walletAddress="1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"/>
 
-    <div v-else class=" h-screen pb-24 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full  ">
+    <div v-else class=" h-screen pb-52 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full  ">
 
         <Appbar link="/dashboard" title="Send Coin"/>
 

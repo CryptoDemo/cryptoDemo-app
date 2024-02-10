@@ -1,6 +1,6 @@
 <template>
 
-    <div class="h-screen pb-24 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full">
+    <div class="h-screen pb-52 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full">
 
         <HomeBar  title="Wallet"/>
 
@@ -80,7 +80,11 @@
             </div>
 
 
-            <div class="mt-[12px] mx-6">
+            <h3 class="text-[16px] mt-[24px] px-6 font-[700] dark:text-[#F8FAFC] text-[#10192D]">Transaction history</h3>
+
+            <div class="mt-[16px] mx-6">
+
+
 
                 <div v-for="i in 2" class=" p-[12px] bg-[#F5F9FF] dark:bg-[#1B2537] rounded-[12px] mb-[12px]">
 

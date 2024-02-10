@@ -1,7 +1,7 @@
 <template>
         <Successful v-if="show_successful" title="sucessful" subtitle="Your coin has been successfully swapped!"/>
 
-    <div v-else class=" h-screen pb-14 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full px-6 ">
+    <div v-else class=" h-screen pb-44 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full px-6 ">
 
         <Appbar link="/dashboard" title="Swap Coin"/>
 

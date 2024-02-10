@@ -1,5 +1,5 @@
 <template>
-    <div class=" h-screen pb-44 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full  px-6">
+    <div class=" h-screen pb-52 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full  px-6">
         <Appbar link="/dashboard" title="Get Coin"/>
 
         <p v-show="reveal === 1"  class="mt-[80px] mb-[16px]">Select the cryptocurrency you would like to get and click continue</p>

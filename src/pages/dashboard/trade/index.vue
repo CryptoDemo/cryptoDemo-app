@@ -43,6 +43,7 @@
 
             <div v-for="(m,index) in trade_lists" :key="index">
 
+               
                 <div v-for="i in m.trade" :key="i.id">
 
                     <div v-if="trade_active === i.active"  class="rounded-[20px] mb-[16px] dark:bg-[#1B2537] bg-[#F5F9FF] 
@@ -197,6 +198,16 @@
 
 
 <script setup>
+import 'vue3-carousel/dist/carousel.css'
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+
+defineComponent({
+    Carousel,
+    Slide,
+    Pagination,
+    Navigation,
+
+})
 
 const offer_trade_limit = ref(true)
 
