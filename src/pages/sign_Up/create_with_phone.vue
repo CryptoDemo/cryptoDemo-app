@@ -1,5 +1,5 @@
 <template>
-    <div class="px-[24px] pb-14 h-screen overflow-y-auto transition ease-linear duration-300 dark:bg-[#10192D] ">
+    <div class="px-[24px] pb-44 h-screen overflow-y-auto transition ease-linear duration-300 dark:bg-[#10192D] ">
 
         <SignupAppBar link="/dashboard" referral_link="/sign_Up/referralCode" referral=" Apply referral code"/>
 

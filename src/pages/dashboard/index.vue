@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]">
+    <div class="h-screen pb-52 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]">
 
 
         <KeepAlive>

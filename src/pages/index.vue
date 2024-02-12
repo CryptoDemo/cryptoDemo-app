@@ -24,22 +24,19 @@
                 </slide>
 
         </carousel>
-            
+        
                 <div class=" fixed bottom-0 left-0 min-h-[20vh] w-full">
                         <div class=" mx-4 flex flex-col justify-center items-center h-full">
-                        
                         <div   :class="currentSlide === 3 ? 'hidden': 'flex'" class="text-center transition-all ease-in-out duration-300" >
         
                                 <div  :class="currentSlide === 0 ? 'bg-[#2873FF]': 'bg-[#E2E8F0] dark:bg-[#64748B]'"
-                                class="h-[10px]   w-[10px] mx-2 rounded-full transition-all ease-in-out duration-75"></div>
+                                class="h-[10px]   w-[10px] mx-2 rounded-full transition-all ease-in-out duration-300"></div>
                                 <div  :class="currentSlide === 1 ? 'bg-[#2873FF]': 'bg-[#E2E8F0]  dark:bg-[#64748B]'"
-                                class="h-[10px]   w-[10px] mx-2 rounded-full transition-all ease-in-out duration-75"></div>
+                                class="h-[10px]   w-[10px] mx-2 rounded-full transition-all ease-in-out duration-300"></div>
                                 
                                 <div  :class="currentSlide === 2 ? 'bg-[#2873FF]': 'bg-[#E2E8F0]  dark:bg-[#64748B]'"
                                 class="h-[10px]   w-[10px] mx-2 rounded-full transition-all 
-                                ease-in-out duration-75"></div>
-                                
-        
+                                ease-in-out duration-300"></div>
                         </div>
         
         

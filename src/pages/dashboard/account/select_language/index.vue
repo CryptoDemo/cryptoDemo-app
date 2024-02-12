@@ -69,9 +69,8 @@
           </div>
 
 
-          <Modal @open="visible"  :visible="visible" btn1="cancel" btn2="restart" 
+          <Modal @open="openModal(v)"  :visible="visible" btn1="cancel" btn2="restart" 
           desc="To apply the language change, please restart the app."/>
-
 
     </div>
 
@@ -86,8 +85,8 @@ import { useDark, useToggle } from '@vueuse/core'
 const visible = ref(false);
 const isFocused = ref(false)
 
-const openModal = () => {
-  visible.value = !visible.value;
+const openModal = (v) => {
+  visible.value = v;
 };
 
  const isDark = useDark()

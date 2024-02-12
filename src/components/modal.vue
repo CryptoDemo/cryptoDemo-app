@@ -5,7 +5,8 @@
       <div v-if="visible"  class="fixed inset-0 glass z-40" @click="visible = false"></div>
   
       <!-- Modal content -->
-      <div class="bg-[#F1F5F9] dark:bg-[#1B2537] rounded-lg px-5  py-6 w-96 fade z-50">
+      <div  class="bg-[#F1F5F9] dark:bg-[#1B2537] rounded-lg px-5  py-6 w-96 zoom-in z-50"
+      :class="visible?'zoom-in':'zoom-out'">
         <!-- Your modal content goes here -->
         <div>
           <h2 class="text-xl font-bold mb-4 text-[#10192D] dark:text-[#F8FAFC] text-center">Confirm changes</h2>
@@ -47,15 +48,15 @@
   const show_successful = ref(false)
   const emit = defineEmits('close','toggle_successful');
 
-
   
   const open_success = () => {
     emit('toggle_successful',show_successful);
   };
+
   const closeModal = () => {
     emit('close',visible);
   };
-  </script>
+</script>
 
   <style scoped>
 
@@ -69,19 +70,34 @@ backdrop-filter: blur(1.9px);
 
 
   }
-  .fade{
-    animation: fadeIn 0.5s ease-in-out;
+  
+  .zoom-in{
+    animation: zoomInAnimation 0.5s ease-in-out;
+  }
+  .zoom-out{
+    animation: zoomOutAnimation 0.5s ease-in-out;
   }
 
-  @keyframes fadeIn {
-  from {
-    opacity: 0;
+  
+@keyframes zoomInAnimation {
+  0% {
+    transform: scale(0);
+    opacity:0,
   }
-  to {
-    opacity: 1;
+  100% {
+    transform: scale(1);
+    opacity:1,
   }
 }
 
+@keyframes zoomOutAnimation {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
 </style>
   
   
