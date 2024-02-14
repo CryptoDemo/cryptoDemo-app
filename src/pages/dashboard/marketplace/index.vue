@@ -1,6 +1,6 @@
 <template>
 
-    <div class="h-screen pb-52 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full px-6">
+    <div class="h-screen overflow-y-auto bg-[#ffff]   dark:bg-[#10192D]  w-full px-6">
 
         <HomeBar  title="Market" :search="false"/>
 
@@ -160,41 +160,41 @@
 
         <div class="">
 
-            <FilterModal @close="openModal(v)"   :isOpenedBottom="visible"  btn1="cancel" btn2="confirm" 
-            desc="By clicking the confirm button you will be sending worth of"  amount="200USDT" to="true"
-            walletAddress="1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"/>
-
             <MazDrawer variant="bottom" v-model="isOpenedBottom" color="#10192D">
                 <template #title                     style="box-shadow: 0px 0px 0px !important">
                     <div class="fixed top-0 left-0 w-full px-6 pt-6 pb-2 bg-[#fff] dark:bg-[#10192D] z-50">
                        <h3 class="text-[#10192D] mb-[16px] text-[18px] font-[700]">Filter selection</h3>
                    </div >
                 </template>
-                <div class="bg-[#fff] dark:bg-[#10192D] h-screen overflow-y-auto px-6 pb-[52px] pt-3 w-full
-                 z-40">
-      
-                 <FilterModal @close="openModal(v)"   :isOpenedBottom="visible"  btn1="cancel" btn2="confirm" 
-                    desc="By clicking the confirm button you will be sending worth of"  amount="200USDT" to="true"
-                    walletAddress="1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"/>
+                <template #default="{ close }">
 
-                     <!-- Close button -->
-                    <div class="fixed bottom-5 left-0 w-full px-6">
-                        <div class="grid grid-cols-2 gap-4 w-full">
+                    <div class="bg-[#fff] dark:bg-[#10192D] h-screen overflow-y-auto px-6 pb-[52px] pt-3 w-full
+                    z-40">
+        
+                    <FilterModal @close="openModal(v)"   :isOpenedBottom="visible"  btn1="cancel" btn2="confirm" 
+                        desc="By clicking the confirm button you will be sending worth of"  amount="200USDT" to="true"
+                        walletAddress="1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"/>
 
-                            <button @click="isOpenedBottom = false" class="btn-border">
-                                Discard filter
-                            </button>
-                            <button @click="emit('toggle_successful',show_successful = !show_successful)" 
-                            class="btn-primary">
-                                Apply filter
-                            </button>
+                        <!-- Close button -->
+                        <div class="fixed bottom-5 left-0 w-full px-6">
+                            <div class="grid grid-cols-2 gap-4 w-full">
 
+                                <button @click="isOpenedBottom = false" class="btn-border">
+                                    Discard filter
+                                </button>
+                                <button @click="emit('toggle_successful',show_successful = !show_successful)" 
+                                class="btn-primary">
+                                    Apply filter
+                                </button>
+
+                            </div>
                         </div>
+                    
                     </div>
-                   
-                </div>
+                    
+                 </template>
              </MazDrawer>
-            </div>
+        </div>
 
     </div>
 </template>
