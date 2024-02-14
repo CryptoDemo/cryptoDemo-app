@@ -8,17 +8,16 @@
 
             <div  class="dark:bg-[#1B2537] bg-[#F8FAFC] rounded-[20px] p-[4px] ">
 
-                <button @click=" selectedbtn = true"  class="font-[600] text-sm capitalize  transition ease-linear duration-300" 
+                <button @click=" selectedbtn = true"  class="font-[600] text-sm capitalize  transition ease-linear duration-75" 
                    :class="selectedbtn?'bg-[#2873FF] text-white rounded-[20px] py-[6px] px-[22px]':'pr-[8px] pl-[17px] text-[#B9D1FF]'">
                    buy</button>
-                <button @click=" selectedbtn = false"   class="font-[600] text-sm capitalize  transition ease-linear duration-300" 
+                <button @click=" selectedbtn = false"   class="font-[600] text-sm capitalize  transition ease-linear duration-75" 
                    :class="!selectedbtn?'bg-[#2873FF] text-white rounded-[20px] py-[6px] px-[22px]':'pl-[8px] pr-[17px] text-[#B9D1FF]'">
                    sell</button>
 
             </div>
 
-
-            <div @click.prevent="toggle_wallet_list1" class=" relative
+            <div @click.prevent="toggle_wallet_list1" class="
                         rounded-[20px] bg-[#F5F9FF] px-[14px]
                         dark:bg-[#131D35] inline-flex justify-center items-center ">
 
@@ -33,20 +32,22 @@
                     
             </div>
 
-            <div v-show="show_wallet_list1" class="absolute  top-full right-0 flex w-full z-50 flex-col bg-[#fff]
-                        dark:bg-[#10192D]  
-                        px-4 max-h-[auto] overflow-y-auto  rounded-[20px]">
-                            <div @click.prevent="selected_wallet_for_swap = i.img; show_wallet_list1 = false; 
-                            selected_market_coin = i.title"
-                            v-for="i in coin_lists" :key="i.id" class="flex py-3">
-                                <div class="w-[24px] h-[24px] mr-[8px]">
-                                    <img class="max-w-[24px]" :src="i.img"/>
-                                </div>
-                                <span class="font-[700] text-[16px] dark:text-[#F8FAFC]  ">{{ i.title }}</span>
-                            </div>
+            <div v-show="show_wallet_list1" class="absolute  top-full right-0 flex w-full z-30 flex-col bg-[#fff]
+                        dark:bg-[#10192D]  at-container  ">
+                           <div class="relative  bg-[#fff]  dark:bg-[#10192D]  at-item w-full px-4 pb-1  rounded-[20px]">
+
+                               <div @click.prevent="selected_wallet_for_swap = i.img; show_wallet_list1 = false; 
+                               selected_market_coin = i.title"
+                               v-for="i in coin_lists" :key="i.id" class="flex py-[14px]">
+                                   <div class="w-[24px] h-[24px] mr-[8px]">
+                                       <img class="max-w-[24px]" :src="i.img"/>
+                                   </div>
+                                   <span class="font-[700] text-[16px] dark:text-[#F8FAFC]  ">{{ i.title }}</span>
+                               </div>
+                           </div>
             </div>
 
-            <button  @click.prevent="openModal"  class="dark:bg-[#1B2537] bg-[#F8FAFC] rounded-[20px] px-[20px] flex justify-center items-center">
+            <button  @click="isOpenedBottom = !isOpenedBottom"  class="dark:bg-[#1B2537] bg-[#F8FAFC] rounded-[20px] px-[20px] flex justify-center items-center">
                 <span class="text-sm font-[600] dark:text-white text-[#10192D] mr-[8px]">Filter</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                     <path d="M3.59993 1.90039H12.3999C13.1333 1.90039 13.7333 2.50039 13.7333 3.23372V4.70039C13.7333 5.23372 13.3999 5.90039 13.0666 6.23372L10.1999 8.76706C9.79993 9.10039 9.53327 9.76706 9.53327 10.3004V13.1671C9.53327 13.5671 9.2666 14.1004 8.93327 14.3004L7.99994 14.9004C7.13327 15.4337 5.93327 14.8337 5.93327 13.7671V10.2337C5.93327 9.76706 5.6666 9.16706 5.39994 8.83372L2.8666 6.16706C2.53327 5.83372 2.2666 5.23372 2.2666 4.83372V3.30039C2.2666 2.50039 2.8666 1.90039 3.59993 1.90039Z" fill="white" stroke="#1B2537" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -159,23 +160,55 @@
 
         <div class="">
 
-            <FilterModal @close="openModal(v)"  :visible="visible" btn1="cancel" btn2="confirm" 
+            <FilterModal @close="openModal(v)"   :isOpenedBottom="visible"  btn1="cancel" btn2="confirm" 
             desc="By clicking the confirm button you will be sending worth of"  amount="200USDT" to="true"
             walletAddress="1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"/>
-        </div>
+
+            <MazDrawer variant="bottom" v-model="isOpenedBottom" color="#10192D">
+                <template #title                     style="box-shadow: 0px 0px 0px !important">
+                    <div class="fixed top-0 left-0 w-full px-6 pt-6 pb-2 bg-[#fff] dark:bg-[#10192D] z-50">
+                       <h3 class="text-[#10192D] mb-[16px] text-[18px] font-[700]">Filter selection</h3>
+                   </div >
+                </template>
+                <div class="bg-[#fff] dark:bg-[#10192D] h-screen overflow-y-auto px-6 pb-[52px] pt-3 w-full
+                 z-40">
+      
+                 <FilterModal @close="openModal(v)"   :isOpenedBottom="visible"  btn1="cancel" btn2="confirm" 
+                    desc="By clicking the confirm button you will be sending worth of"  amount="200USDT" to="true"
+                    walletAddress="1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"/>
+
+                     <!-- Close button -->
+                    <div class="fixed bottom-5 left-0 w-full px-6">
+                        <div class="grid grid-cols-2 gap-4 w-full">
+
+                            <button @click="isOpenedBottom = false" class="btn-border">
+                                Discard filter
+                            </button>
+                            <button @click="emit('toggle_successful',show_successful = !show_successful)" 
+                            class="btn-primary">
+                                Apply filter
+                            </button>
+
+                        </div>
+                    </div>
+                   
+                </div>
+             </MazDrawer>
+            </div>
 
     </div>
 </template>
 
 <script setup>
   
+  const isOpenedBottom = ref(false)
 const selectedbtn = ref(false)
 const selected_wallet_for_swap = ref('/home/btc2.png')
 const show_wallet_list1 = ref(false)
 const selected_market_coin = ref('BTC')
 const filtered_marketplace = ref([])
 
-const visible = ref(false);
+const visible = ref(true);
 
 const isFocused = ref(false)
 
@@ -264,5 +297,36 @@ watch(()=> selected_market_coin.value,(newv)=>{
 .background2{
     background: rgba(14, 165, 233, 0.25);
 }
+
+
+div.at-container {
+		height: 100%;
+	}
+	.at-item {
+		/* width: 100%; height: 100%; */
+		
+		animation-name: slide-in-bck-top;
+		animation-duration: 0.3s;
+		animation-timing-function: linear;
+		animation-delay: 0s;
+		animation-iteration-count: 1;
+		animation-direction: normal;
+		animation-fill-mode: none;
+			
+		/* shorthand
+		animation: slide-in-bck-top 1s linear 0s 1 normal none;*/
+	}
+	@keyframes slide-in-bck-top {
+			
+		0% {
+			transform:translateZ(700px) translateY(-27px);
+			opacity:0;
+		}
+		100% {
+			transform:translateZ(0) translateY(0);
+			opacity:1;
+		}
+	}
+
 
 </style>

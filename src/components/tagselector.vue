@@ -34,12 +34,12 @@
 
             </div>
 
-            <div class=" absolute top-full left-0 dark:border-[#1B2537]  w-full  
-            dark:text-[#8E9BAE] bg-[#ffff]   dark:bg-[#10192D] z-40
+            <div class=" absolute bg-[#ffff]   dark:bg-[#10192D] top-full left-0 dark:border-[#1B2537]  w-full  
+            dark:text-[#8E9BAE]  z-20 at-container
             rounded-2xl pb-2 mt-1 z transition-all ease-out duration-300"  v-show="show_tag" >
                 
 
-                <div class=" relative overflow-y-auto">
+                <div class=" relative overflow-y-auto bg-[#ffff]    dark:bg-[#10192D]  at-item">
 
                     <div
                         v-for="i in tag_lists" :key='i'
@@ -122,6 +122,35 @@ const tag_lists = [
 .rotate-up {
   transform: rotate(180deg);
 }
+
+div.at-container {
+		height: 100%;
+	}
+	.at-item {
+		/* width: 100%; height: 100%; */
+		
+		animation-name: slide-in-bck-top;
+		animation-duration: 0.3s;
+		animation-timing-function: linear;
+		animation-delay: 0s;
+		animation-iteration-count: 1;
+		animation-direction: normal;
+		animation-fill-mode: none;
+			
+		/* shorthand
+		animation: slide-in-bck-top 1s linear 0s 1 normal none;*/
+	}
+	@keyframes slide-in-bck-top {
+			
+		0% {
+			transform:translateZ(700px) translateY(-27px);
+			opacity:0;
+		}
+		100% {
+			transform:translateZ(0) translateY(0);
+			opacity:1;
+		}
+	}
  
 </style>
 

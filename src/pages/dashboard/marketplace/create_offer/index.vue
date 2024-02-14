@@ -1,6 +1,6 @@
 <template>
 
-    <div class=" h-screen pb-52 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full  px-6">
+    <div class=" h-screen pb-60 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full  px-6">
 
         <Appbar link="/dashboard" title="Create offer"/>
 
@@ -36,10 +36,10 @@
 
             <div class=" absolute top-full left-0 dark:border-[#1B2537]  w-full  
             dark:text-[#8E9BAE] bg-[#ffff]   dark:bg-[#10192D] z-40
-            rounded-2xl pb-2 mt-1 z transition-all ease-out duration-300"  v-show="show_offer" >
+            rounded-2xl pb-2 mt-1 z transition-all ease-out duration-300 at-container"  v-show="show_offer" >
                 
             
-                <div class=" relative overflow-y-auto">
+                <div class=" relative overflow-y-auto at-item bg-[#ffff]   dark:bg-[#10192D]">
 
                     <div
                         v-for="i in offer_lists"  @click="toggle_show_offer();  
@@ -74,17 +74,22 @@
                         </button>
 
 
-                        <div v-show="show_wallet_list1" class="absolute right-0 flex w-full z-50 flex-col bg-[#fff]
-                        dark:bg-[#10192D]  
-                        px-4 max-h-[auto] overflow-y-auto  rounded-[20px]">
-                            <div @click.prevent="selected_wallet_for_swap = i.img;selected_wallet_for_send = i.name
-                            ;show_wallet_list1 = false"
-                            v-for="i in coin_lists" :key="i.id" class="flex py-4">
-                                <div class="w-[24px] h-[24px] mr-[8px]">
-                                    <img class="max-w-[24px]" :src="i.img"/>
-                                </div>
-                                <span class="font-[700] text-[16px] dark:text-[#F8FAFC]  ">{{i.name}} ({{ i.title }})</span>
-                            </div>
+                        <div v-show="show_wallet_list1" class="absolute right-0 flex w-full z-50 flex-col bg-[#fff] dark:bg-[#10192D]  
+                        max-h-[auto]  at-container">
+                         
+
+                             <div class="relative at-item bg-[#fff] dark:bg-[#10192D] rounded-[20px] px-4">
+                                
+                                 <div @click.prevent="selected_wallet_for_swap = i.img;selected_wallet_for_send = i.name
+                                 ;show_wallet_list1 = false"
+                                 v-for="i in coin_lists" :key="i.id" class="flex py-4">
+                                     <div class="w-[24px] h-[24px] mr-[8px]">
+                                         <img class="max-w-[24px]" :src="i.img"/>
+                                     </div>
+                                     <span class="font-[700] text-[16px] dark:text-[#F8FAFC]  ">{{i.name}} ({{ i.title }})</span>
+                                 </div>
+
+                             </div>
                         </div>
 
 
@@ -108,14 +113,18 @@
 
                         <div v-show="show_bank_method" class="absolute right-0 flex w-full z-50 flex-col bg-[#fff]
                         dark:bg-[#10192D]  
-                        px-4 max-h-[auto] overflow-y-auto  rounded-[20px]">
-                            <div @click.prevent="selected_bank_icon = i.img;selected_bank_name = i.name
-                            ;show_bank_method = false"
-                            v-for="i in transfer_mathods" :key="i.id" class="flex py-3">
-                                <div class="w-[24px] h-[24px] mr-[8px]">
-                                    <img class="max-w-[24px]" :src="i.img"/>
+                         max-h-[auto]">
+
+                            <div class="relative at-item rounded-[20px] bg-[#fff]  dark:bg-[#10192D]  px-4">
+
+                                <div @click.prevent="selected_bank_icon = i.img;selected_bank_name = i.name
+                                ;show_bank_method = false"
+                                v-for="i in transfer_mathods" :key="i.id" class="flex py-3 pb-4">
+                                    <div class="w-[24px] h-[24px] mr-[8px]">
+                                        <img class="max-w-[24px]" :src="i.img"/>
+                                    </div>
+                                    <span class="font-[700] text-[16px] dark:text-[#F8FAFC]  ">{{i.name}}</span>
                                 </div>
-                                <span class="font-[700] text-[16px] dark:text-[#F8FAFC]  ">{{i.name}}</span>
                             </div>
                         </div>
 
@@ -127,38 +136,7 @@
 
         <div class=" mt-[8px] relative">
     
-            <button
-                    @click="toggle_show_currency"
-                    class="btn-border-primary dark:bg-transparent text-[#8E9BAE] font-[400] w-full flex text-sm
-                    justify-between items-center  border-[#E2E8F0] border dark:border-[#1B2537]"
-                >
-                    <span>{{ selected_currency || 'Currency' }}</span>
-                    <Icon  :class="{'rotate-up':show_currency}"  
-                    name="solar:alt-arrow-down-bold" size="16" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
-                    dark:text-[#FFFFFF]"/>
-
-            </button>
-
-            <div class="absolute right-0 flex   dark:border-[#1B2537]  w-full  
-            dark:text-[#8E9BAE]  bg-[#F5F9FF] dark:bg-[#10192D]
-            rounded-2xl pb-2 mt-1 z transition-all ease-out duration-300"  v-show="show_currency" >
-                
-            
-                <div class=" relative overflow-y-auto">
-
-                    <div
-                        v-for="i in currency_lists"  @click="toggle_show_currency();  
-                        selected_currency = i" :key='i'
-                        class="px-[20px] py-[16px] w-full leading-tight"
-                    >
-                        <ul class="flex items-center w-full rounded-xl  ">
-                            <li class="font-[700] text-[16px] text-[#10192D] dark:text-[#F8FAFC]">
-                                {{ i }}
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <CurrencyDropdown/>
 
         </div>
 
@@ -174,57 +152,7 @@
 
         <div class="mt-[8px]">
     
-            <button
-                    @click="toggle_show_country"
-                    class="btn-border-primary dark:bg-transparent text-[#8E9BAE] font-[400]  w-full flex text-sm
-                    justify-between items-center  border-[#E2E8F0] border dark:border-[#1B2537] "
-                >
-                    <span>{{ selected_country|| 'Country' }}</span>
-                    <Icon :class="{'rotate-up': show_country }" 
-                    name="solar:alt-arrow-down-bold" size="16" class="transition-all ease-in-out duration-300  text-[#8E9BAE]
-                    dark:text-[#FFFFFF]"/>
-
-            </button>
-
-            <div class=" dark:bg-transparent dark:text-[#8E9BAE]  overflow-y-auto
-            rounded-xl  pb-2 transition ease-in-out duration-300 w-full"  v-show="show_country">
-
-                        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only
-                        dark:text-[#E2E8F0]">Search</label>
-                            
-                            <div class="relative" >
-                                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                    <svg class="w-4 h-4 text-gray-500 dark:text-[#FFFFFF]" aria-hidden="true" 
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
-                                        stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                                    </svg>
-                                </div>
-                                
-                                <input @focusin="isFocused=true" @focusout="isFocused=false"
-                                v-model.trim="searchInput" type="search" id="default-search" class="block w-full my-3 
-                                p-4 ps-10 
-                                    input dark:text-[#E2E8F0] focus:ring-1 focus:ring-gray-200 dark:focus:ring-[#1B2537]" 
-                                    placeholder="Search countries..." required>
-                            </div>
-                            
-                <div class="max-h-[215px] relative overflow-y-auto px-4">
-
-                    <div
-                        v-for="i in filteredItem.length? filteredItem : countries"  @click="toggle_show_country(); 
-                        selected_country = i.name; show_country = false; searchInput = ''"
-                        class="mt-4 w-full   pb-3"
-                    >
-                        <a href="#" class="flex items-center w-full rounded-xl ">
-                            
-                                <div class="country-flag inline-flex justify-center items-center">
-                                        <country-flag :country='i.icon' size='big' class=" rounded-full"/>
-                                </div>
-                        <span class="px-4 font-[700] text-[16px] text-[#10192D] dark:text-[#F8FAFC]">{{ i.name }}</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+          <CountryDropdown/>
 
         </div>
 
@@ -402,5 +330,36 @@ to {
   opacity: 1;
 }
 }
+
+
+
+div.at-container {
+		height: 100%;
+	}
+	.at-item {
+		/* width: 100%; height: 100%; */
+		
+		animation-name: slide-in-bck-top;
+		animation-duration: 0.3s;
+		animation-timing-function: linear;
+		animation-delay: 0s;
+		animation-iteration-count: 1;
+		animation-direction: normal;
+		animation-fill-mode: none;
+			
+		/* shorthand
+		animation: slide-in-bck-top 1s linear 0s 1 normal none;*/
+	}
+	@keyframes slide-in-bck-top {
+			
+		0% {
+			transform:translateZ(700px) translateY(-27px);
+			opacity:0;
+		}
+		100% {
+			transform:translateZ(0) translateY(0);
+			opacity:1;
+		}
+	}
 
 </style>

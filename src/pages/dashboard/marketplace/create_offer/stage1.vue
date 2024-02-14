@@ -51,10 +51,10 @@
 
                 <div  class="dark:bg-[#1B2537] bg-[#F8FAFC] rounded-[20px] p-[4px] ">
 
-                    <button @click=" offer_trade_limit = true"  class="font-[600] text-sm capitalize  transition ease-in-out duration-200" 
+                    <button @click=" offer_trade_limit = true"  class="font-[600] text-sm capitalize  transition ease-in-out duration-75" 
                     :class="offer_trade_limit?'bg-[#2873FF] text-white rounded-[20px] py-[5px] px-[16px]':'mr-[15px] pl-[16px] text-[#B9D1FF]'">
                     Fixed</button>
-                    <button @click=" offer_trade_limit = false"   class="font-[600] text-sm capitalize  transition ease-in-out duration-200" 
+                    <button @click=" offer_trade_limit = false"   class="font-[600] text-sm capitalize  transition ease-in-out duration-75" 
                     :class="!offer_trade_limit?'bg-[#2873FF] text-white rounded-[20px] py-[5px] px-[16px]':'ml-[15px] pr-[16px] text-[#B9D1FF]'">
                     Range</button>
 
@@ -162,10 +162,10 @@
 
                 <div  class="dark:bg-[#1B2537] bg-[#F8FAFC] rounded-[20px] p-[4px] ">
 
-                    <button @click=" offer_margin = true"  class="font-[600] text-sm capitalize  transition ease-in-out duration-200" 
+                    <button @click=" offer_margin = true"  class="font-[600] text-sm capitalize  transition ease-in-out duration-75" 
                     :class="offer_margin?'bg-[#2873FF] text-white rounded-[20px] py-[5px] px-[16px]':'mr-[15px] pl-[16px] text-[#B9D1FF]'">
                     Basic</button>
-                    <button @click=" offer_margin = false"   class="font-[600] text-sm capitalize  transition ease-in-out duration-200" 
+                    <button @click=" offer_margin = false"   class="font-[600] text-sm capitalize  transition ease-in-out duration-75" 
                     :class="!offer_margin?'bg-[#2873FF] text-white rounded-[20px] py-[5px] px-[16px]':'ml-[15px] pr-[16px] text-[#B9D1FF]'">
                     Complex</button>
 

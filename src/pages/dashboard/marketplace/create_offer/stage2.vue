@@ -277,10 +277,10 @@
 
                     <div class=" absolute top-full left-0 dark:border-[#1B2537]  w-full  
                     dark:text-[#8E9BAE] bg-[#ffff]   dark:bg-[#10192D] z-40
-                    rounded-2xl pb-2 mt-1 z transition-all ease-out duration-300"  v-show="show_days" >
+                    rounded-2xl pb-2 mt-1 z transition-all ease-out duration-300 at-container"  v-show="show_days" >
                         
 
-                        <div class=" relative overflow-y-auto">
+                        <div class=" relative overflow-y-auto at-item bg-[#ffff]   dark:bg-[#10192D] max-h-[150px]">
 
                             <div
                                 v-for="i in days_lists" :key='i'
@@ -313,39 +313,53 @@
                     <div>
                           <p>Start time</p>
                           <!-- <input type="time" class="input mt-[8px]" value="12:00 AM"/> -->
-                        <div class="flex justify-between items-center input mt-[8px]">
-                            <div>
-                                <span>12</span>
-                                <span>:</span>
-                                <span>00</span>
-                                <span>AM</span>
-                            </div>
+                          <div class="time-picker relative">
 
-                            <Icon @click="toggle_show_start_time"  :class="{'rotate-up':show_start_time}"  
-                            name="solar:alt-arrow-down-bold" size="16" class="
-                            transition-all  ease-in-out duration-300   text-[#8E9BAE]
-                            dark:text-[#FFFFFF]"/>
-                               
-                        </div>
+                              <MazPicker
+                              @click.prevent="show_time = !show_time"
+                                    v-model="dateTimeValue"
+                                    format="YYYY-MM-DD HH:mm"
+                                    label="Select time"
+                                    color="primary"
+                                    size="lg"
+                                    style="color: #2873FF !important; margin-top:8px"
+                                    only-time
+                                   
+                                   
+                                />
+                                <div class="absolute right-4 bottom-[16.7px] z-30">
+                                    <Icon   :class="{'rotate-up': show_time}"  
+                                    name="solar:alt-arrow-down-bold" size="16" class=" 
+                                    transition-all  ease-in-out duration-300   text-[#8E9BAE]
+                                    dark:text-[#FFFFFF]"/>
+                                </div>
+                          </div>
                     </div>
 
-                    <div>
+                    <div class="">
                           <p>End time</p>
                           <!-- <input type="time" class="input mt-[8px]" value="12:00 AM"/> -->
-                        <div class="flex justify-between items-center input mt-[8px]">
-                            <div>
-                                <span>12</span>
-                                <span>:</span>
-                                <span>00</span>
-                                <span>AM</span>
-                            </div>
+                          <div class="time-picker relative">
 
-                            <Icon @click="toggle_show_end_time"  :class="{'rotate-up':show_end_time}"  
-                            name="solar:alt-arrow-down-bold" size="16" class="
-                            transition-all  ease-in-out duration-300   text-[#8E9BAE]
-                            dark:text-[#FFFFFF]"/>
-                               
-                        </div>
+                              <MazPicker
+                              @click.prevent="show_time2 = !show_time2"
+                                    v-model="dateTimeValue2"
+                                    format="YYYY-MM-DD HH:mm"
+                                    label="Select time"
+                                    color="primary"
+                                     size="lg"
+                                    style="color: #2873FF !important; margin-top:8px"
+                                    only-time
+                                /> 
+
+                                <div class="absolute right-4 bottom-[16.7px] z-30">
+                                    <Icon   :class="{'rotate-up': show_time2}"  
+                                    name="solar:alt-arrow-down-bold" size="16" class=" 
+                                    transition-all  ease-in-out duration-300   text-[#8E9BAE]
+                                    dark:text-[#FFFFFF]"/>
+                                </div>
+                          </div>
+                                 
                     </div>
                    
 
@@ -360,7 +374,7 @@
 
 
 
-        <div class="fixed bottom-5 left-0 w-full px-6 ">
+        <div class="fixed bottom-5 left-0 w-full px-6 z-50">
             <div class="flex w-full gap-[21px]">
                 <button  @click.prevent="navigateTo('/dashboard/marketplace/create_offer')" class="btn-border w-full">Back</button>
                 <button  @click.prevent="navigateTo('/dashboard/marketplace/create_offer/success')" 
@@ -379,14 +393,20 @@
 
 
 <script setup>
-
+import './assets//css/maz-ui-variables.css'
 import CountryFlag from 'vue-country-flag-next'
+import MazPicker from 'maz-ui/components/MazPicker'
+
 
 defineComponent ({
         CountryFlag
  })
 
-
+ 
+const dateTimeValue = ref('2022-02-03 16:30')
+const dateTimeValue2 = ref('2022-02-03 16:30')
+const show_time = ref(false)
+const show_time2 = ref(false)
 const show_country = ref(false)
 const selected_country = ref('')
 const filteredItem  = ref([])
@@ -443,7 +463,12 @@ const tag_lists = [
 ]
 const days_lists = [
     'Mon',
-    'Tues'
+    'Tues',
+    'Wed',
+    'Thurs',
+    'Fri',
+    'Sat',
+    'Sun'
 ]
 const source_lists = [
     'demo',
@@ -513,6 +538,8 @@ watch(()=>searchInput.value,(newv)=>{
 </script>
 
 <style scoped>
+
+
 .rotate-up {
 transform: rotate(180deg);
 }
@@ -529,6 +556,53 @@ transform: rotate(180deg);
     -moz-animation: progressBar 3s ease-in-out;
     -moz-animation-fill-mode:both; 
 }
+
+.time-picker >>> .m-input-wrapper-right {
+    display: none !important;
+}
+.time-picker >>> .m-input-label{
+    display: none !important;
+}
+.time-picker >>> input{
+    padding-top: 0px !important;
+    padding: 0px 17px !important;
+}
+.time-picker >>> .m-picker-container{
+    width: 100% !important;
+}
+
+.time-picker >>> .m-picker-time{
+    width: 100% !important;
+    justify-content: center !important;
+}
+div.at-container {
+		height: 100%;
+	}
+	.at-item {
+		/* width: 100%; height: 100%; */
+		
+		animation-name: slide-in-bck-top;
+		animation-duration: 0.3s;
+		animation-timing-function: linear;
+		animation-delay: 0s;
+		animation-iteration-count: 1;
+		animation-direction: normal;
+		animation-fill-mode: none;
+			
+		/* shorthand
+		animation: slide-in-bck-top 1s linear 0s 1 normal none;*/
+	}
+	@keyframes slide-in-bck-top {
+			
+		0% {
+			transform:translateZ(700px) translateY(-27px);
+			opacity:0;
+		}
+		100% {
+			transform:translateZ(0) translateY(0);
+			opacity:1;
+		}
+	}
 
 @keyframes progressBar {
   0% { width: 0; }

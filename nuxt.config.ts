@@ -9,8 +9,21 @@ export default defineNuxtConfig({
     '@pinia-plugin-persistedstate/nuxt',
     '@vueuse/nuxt',
     'nuxt-icon',
+    'maz-ui/nuxt'
 
   ],
+  mazUi: {
+    injectComponents: true,
+    injectCss: true,
+    injectAos: {
+      injectCss: true,
+    },
+    injectUseToast: true,
+    injectUseThemeHandler: true,
+    devtools: true,
+  },
+
+ 
 
   css: ['~/assets/css/main.css'],
   srcDir: "src",
