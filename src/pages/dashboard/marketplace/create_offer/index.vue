@@ -1,11 +1,11 @@
 <template>
 
-    <div class=" h-screen pb-60 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full  px-6">
+    <div class=" min-h-screen pb-60  bg-[#ffff]   dark:bg-[#10192D]  w-full  px-6">
 
         <Appbar link="/dashboard" title="Create offer"/>
 
 
-        <div class="mt-[80px] flex justify-between items-center">
+        <div class="pt-[80px] flex justify-between items-center">
 
             <div v-for="(i,index) in 3" class="flex justify-between items-center">
                 <div class="w-6 h-6 bg-[#E2E8F0] dark:bg-[#ffffff1a] rounded-full  text-sm inline-flex justify-center items-center 

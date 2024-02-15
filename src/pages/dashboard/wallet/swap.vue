@@ -1,11 +1,11 @@
 <template>
         <Successful v-if="show_successful" title="sucessful" subtitle="Your coin has been successfully swapped!"/>
 
-    <div v-else class=" h-screen pb-44 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full px-6 ">
+    <div v-else class=" min-h-screen pb-44 bg-[#ffff]   dark:bg-[#10192D]  w-full px-6 ">
 
         <Appbar link="/dashboard" title="Swap Coin"/>
 
-        <p class="mt-[80px]">Swap coins seamlessly. Review the details below before confirming the transaction.</p>
+        <p class="pt-[80px]">Swap coins seamlessly. Review the details below before confirming the transaction.</p>
 
         <h3 class="mt-[16px] text-[16px] font-[700] dark:text-[#F8FAFC]">Market price</h3>
         

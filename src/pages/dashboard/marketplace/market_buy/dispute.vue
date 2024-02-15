@@ -2,7 +2,7 @@
 
    <Successful v-if="show_successful" title="sucessful" subtitle="You have successfully completed this trade with trader Bitcoinlord124 and 0.0000056BTC credited to your wallet. "/>
 
-    <div v-else class=" h-screen pb-52 overflow-y-auto bg-[#ffff]   dark:bg-[#10192D]  w-full  px-6">
+    <div v-else class=" min-h-screen pb-52 bg-[#ffff]   dark:bg-[#10192D]  w-full  px-6">
 
         <Appbar link="/dashboard" title="Review"/>
 

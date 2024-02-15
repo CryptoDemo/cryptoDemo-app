@@ -3,11 +3,11 @@
 <Successful v-if="show_successful" title="sucessful" subtitle="Your concern has been recorded and we will get in touch as soon as possible."/>
 
 
-    <div v-else class=" h-screen pb-52 overflow-y-auto bg-[#ffff]   dark:bg-[#10192D]  w-full  px-6">
+    <div v-else class=" min-h-screen pb-52  bg-[#ffff]   dark:bg-[#10192D]  w-full  px-6">
 
         <Appbar link="/dashboard" title="Report  offer"/>
 
-        <div class="mt-[80px]">
+        <div class="pt-[80px]">
 
             <CardsProfileStatus />
 

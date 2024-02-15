@@ -6,7 +6,7 @@
     <div v-else class="px-6  bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
 
        
-        <Appbar link="/dashboard/account" title="Update username" />
+        <Appbar link="/dashboard" title="Update username" />
         
 
         <div class=" pt-[72px]">

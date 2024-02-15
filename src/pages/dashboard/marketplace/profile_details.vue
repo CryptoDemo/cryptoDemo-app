@@ -1,10 +1,10 @@
 <template>
 
-    <div  class=" h-screen pb-52 overflow-y-auto bg-[#ffff]   dark:bg-[#10192D]  w-full  px-6">
+    <div  class=" min-h-screen pb-52  bg-[#ffff]   dark:bg-[#10192D]  w-full  px-6">
 
         <Appbar link="/dashboard" title="Partner’s profile"/>
 
-        <div class="mt-[80px]">
+        <div class="pt-[80px]">
             <CardsProfileStatus />
         </div>
 

@@ -1,6 +1,8 @@
 <template>
 
-    <div class="h-screen overflow-y-auto bg-[#ffff]   dark:bg-[#10192D]  w-full px-6">
+    <div class="min-h-screen bg-[#ffff] pb-52   dark:bg-[#10192D]  w-full px-6">
+
+
 
         <HomeBar  title="Market" :search="false"/>
 
@@ -55,8 +57,6 @@
                 </svg>
 
             </button>
-                                
-    
 
         </div>
 
@@ -64,7 +64,8 @@
 
 
         <div @click.prevent="navigateTo(`/dashboard/marketplace/${i.id}`)"
-        v-for="i in filtered_marketplace" class="mt-[25px]">
+        v-for="i in filtered_marketplace" class="mt-[25px] z-20">
+
 
             <div class="dark:bg-[#1B2537] bg-[#F5F9FF] p-[12px] rounded-[20px] transition ease-in-out duration-300">
 

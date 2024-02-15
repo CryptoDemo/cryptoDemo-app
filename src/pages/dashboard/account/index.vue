@@ -1,6 +1,6 @@
 <template>
 
-    <div class="h-screen overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full px-6">
+    <div class="min-h-screen  bg-[#ffff]   dark:bg-[#10192D]  w-full px-6">
 
         <div class="fixed top-0 left-0 w-full bg-[#ffff]   dark:bg-[#10192D] px-6 py-[20px] z-50">
             <h2 class=" text-[20px] dark:text-text-dark text-text-light font-[800]">Account</h2>

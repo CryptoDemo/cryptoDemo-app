@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen overflow-y-auto  dark:bg-[#10192D] transition ease-linear duration-300">
+    <div class="min-h-screen   dark:bg-[#10192D] transition ease-linear duration-300">
 
 
         <div class=" py-[6px] px-6 ">

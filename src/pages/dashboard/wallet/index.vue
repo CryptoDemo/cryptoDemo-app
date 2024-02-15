@@ -1,6 +1,6 @@
 <template>
 
-    <div class="h-screen pb-52 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full">
+    <div class="min-h-screen pb-52  bg-[#ffff]   dark:bg-[#10192D]  w-full">
 
         <HomeBar  title="Wallet"/>
 

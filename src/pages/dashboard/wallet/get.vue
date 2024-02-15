@@ -1,9 +1,9 @@
 <template>
-    <div class=" h-screen pb-52 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]  w-full  px-6">
+    <div class=" min-h-screen pb-52  bg-[#ffff]   dark:bg-[#10192D]  w-full  px-6">
         <Appbar link="/dashboard" title="Get Coin"/>
 
-        <p v-show="reveal === 1"  class="mt-[80px] mb-[16px]">Select the cryptocurrency you would like to get and click continue</p>
-        <p v-show="reveal === 2"  class="mt-[80px] mb-[16px]">
+        <p v-show="reveal === 1"  class="pt-[80px] mb-[16px]">Select the cryptocurrency you would like to get and click continue</p>
+        <p v-show="reveal === 2"  class="pt-[80px] mb-[16px]">
             Send only BTC tokens through the Bitcoin network to avoid potential fund loss when using different currencies or networks.
         </p>
 
