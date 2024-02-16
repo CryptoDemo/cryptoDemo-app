@@ -129,12 +129,12 @@
                     <span class="text-[#8E9BAE] text-[12px] font-[400]">First Bank only</span>
                 </div>
 
-                <div class="grid grid-cols-3 items-center gap-x-[4px] mt-[8px]">
-                    <span class="px-[2px] py-[2.5px] background2 rounded-[20px] text-[#0EA5E9] text-[12px] font-[400] 
+                <div class="flex items-center gap-x-[10px] gap-y-[8px] mt-[8px] flex-wrap">
+                    <span class="px-[8px] py-[2.5px] background2 rounded-[20px] text-[#0EA5E9] text-[12px] font-[400] 
                     inline-flex justify-center items-center">Guided trade</span>
-                    <span class="px-[2px] py-[2.5px]  background2 rounded-[20px] text-[#0EA5E9] text-[12px] font-[400] 
+                    <span class="px-[8px] py-[2.5px]  background2 rounded-[20px] text-[#0EA5E9] text-[12px] font-[400] 
                     inline-flex justify-center items-center">Receipt required</span>
-                    <span class="px-[2px] py-[2.5px]  background2 rounded-[20px] text-[#0EA5E9] text-[12px] font-[400]
+                    <span class="px-[8px] py-[2.5px]  background2 rounded-[20px] text-[#0EA5E9] text-[12px] font-[400]
                      inline-flex justify-center items-center">no third parties</span>
 
                 </div>
