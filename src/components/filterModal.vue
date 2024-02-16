@@ -19,7 +19,7 @@
 
             <div class="absolute top-full left-0 bg-[#fff] dark:bg-[#10192D]   dark:border-[#1B2537]  w-full  
             dark:text-[#8E9BAE] transition ease-in-out duration-500 at-container
-            rounded-2xl pb-2 mt-1 z-30"  v-show="show_payment" 
+            rounded-2xl pb-2 mt-1 z-40"  v-show="show_payment" 
             :class="show_payment?'max-h-[500px] slidein transition ease-in-out duration-500':'max-h-0  overflow-hidden'">
                 
                 <div class=" relative overflow-y-auto at-item bg-[#fff] dark:bg-[#10192D]">
@@ -55,7 +55,7 @@
             </button>
 
             <div class="absolute top-full left-0 bg-[#fff] dark:bg-[#10192D]  dark:text-[#8E9BAE]   at-container
-            rounded-xl  pb-2 z-30   w-full"  v-show="show_country"
+            rounded-xl  pb-2 z-[38]   w-full"  v-show="show_country"
             :class="show_country?'max-h-[500px] slidein transition ease-in-out duration-500':'max-h-0  overflow-hidden'">
 
                 <div class="relative overflow-y-auto at-item bg-[#fff] dark:bg-[#10192D]">
@@ -118,7 +118,7 @@
 
             <div class="absolute top-full left-0  dark:border-[#1B2537]  w-full  bg-[#fff] dark:bg-[#10192D] 
             dark:text-[#8E9BAE] at-container
-            rounded-2xl pb-2 mt-1 z-30 transition-all ease-out duration-300"  v-show="show_currency" 
+            rounded-2xl pb-2 mt-1 z-[36] transition-all ease-out duration-300"  v-show="show_currency" 
             :class="show_currency?'max-h-[500px] slidein transition ease-in-out duration-500':'max-h-0  overflow-hidden'">
                 
             
@@ -156,7 +156,7 @@
 
             <div class=" absolute top-full left-0 dark:border-[#1B2537]  w-full   bg-[#fff] dark:bg-[#10192D] 
             dark:text-[#8E9BAE] at-container
-            rounded-2xl pb-3 mt-1 z-30 transition-all ease-out duration-300"  v-show="show_verification" >
+            rounded-2xl pb-3 mt-1 z-[33] transition-all ease-out duration-300"  v-show="show_verification" >
                 
             
                 <div class=" relative overflow-y-auto  bg-[#fff] dark:bg-[#10192D] at-item ">
