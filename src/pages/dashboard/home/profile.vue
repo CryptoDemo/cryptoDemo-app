@@ -4,7 +4,7 @@
 
         <Appbar link="/dashboard" title="Profile"/>
 
-        <div class="mt-[80px]">
+        <div class="pt-[80px]">
 
             <div class="flex justify-center items-center mx-6">
                 <div class="relative h-[102px] w-[102px] border border-[#F1F5F9] dark:border-[#1B2537]  p-[7px] rounded-full">

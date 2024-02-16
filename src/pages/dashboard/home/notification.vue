@@ -4,7 +4,7 @@
 
         <Appbar link="/dashboard" title="Notification"/>
 
-        <div class="mt-[70px]">
+        <div class="pt-[70px]">
 
             <div v-for="i in 4">
                 <div class=" text-[14px] border-b border-[#F1F5F9] dark:border-[#1B2537] py-[12px]">

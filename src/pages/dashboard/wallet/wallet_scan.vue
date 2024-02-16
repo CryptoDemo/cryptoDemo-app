@@ -4,7 +4,7 @@
 
         <Appbar link="/dashboard" title="Send Coin"/>
 
-        <p   class="mt-[80px] mb-[16px]">
+        <p   class="pt-[80px] mb-[16px]">
             Scan receiver’s wallet barcode, their bitcoin wallet address will appear below after the scan is complete
         </p>
 
