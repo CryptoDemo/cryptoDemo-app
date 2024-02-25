@@ -3,9 +3,12 @@ import { App } from "@capacitor/app";
 import {PushNotifications} from "@capacitor/push-notifications";
 import { Device } from "@capacitor/device";
 import { FCM } from "@capacitor-community/fcm";
+import {authStore} from "@/stores/auth"
+
 
 
 export const app = App;
+
 
 export const deviceInfo = async () => {
   const info = await Device.getInfo();
@@ -30,11 +33,13 @@ export  const showKeyboard = async () => {
   };
 
 
-  const getDeviceToken = (context)=>{
-    alert("howdy3...")
+  export const getDeviceToken = (context)=>{
+    const auth =  useStore()
+    // alert("howdy3...")
     FCM.getToken()
     .then((r) => {
-      alert(r.token)
+      auth.setToken(r.token)
+      // alert(r.token)
       console.log("ONCALL_DECIVE_TOKEN...............",r.token)
       // setPushNotifications(context, r.token);
     })

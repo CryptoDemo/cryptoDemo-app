@@ -27,6 +27,11 @@ export const validEmail = (email) => {
   return re.test(email);
 };
 
+export const verifyPasswordPattern = (input) =>{
+    const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+}{:;'?/>,.<>\|]).{6,}$/;
+    return pattern.test(input);
+}
+
 
 export const copyToClipboard = async (string) => {
     // copyToClipBoard(string);

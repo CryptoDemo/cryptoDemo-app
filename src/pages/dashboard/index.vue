@@ -1,14 +1,12 @@
 <template>
-    <div class="h-screen pb-52 overflow-y-scroll bg-[#ffff]   dark:bg-[#10192D]">
+    <div class="h-screen  overflow-y-auto bg-[#ffff]   dark:bg-[#10192D]">
 
 
-        <KeepAlive>
             <home v-if="useCurrentNavMenu.currentNavMenu === 'home'" />
             <wallet v-else-if ="useCurrentNavMenu.currentNavMenu === 'wallet' " />
             <marketplace v-else-if="useCurrentNavMenu.currentNavMenu === 'marketplace'" />
             <exchange v-else-if ="useCurrentNavMenu.currentNavMenu === 'trade'" />
             <account v-else />
-        </KeepAlive>
 
 
         <div class="px-[30px] min-h-[56px] nav-shadow  z-40 text-gray-400 fixed bottom-0 left-0 w-full

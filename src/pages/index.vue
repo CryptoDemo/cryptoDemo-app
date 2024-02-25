@@ -89,10 +89,11 @@
 </template>
 
 
-
+<!-- 
 <script setup>
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+
 
 defineComponent({
     Carousel,
@@ -101,6 +102,8 @@ defineComponent({
     Navigation,
 
 })
+
+const platform = ref('');
 const currentSlide = ref(0)
 const showSplashScreen = ref(true)
 
@@ -111,13 +114,72 @@ onMounted(()=>{
 
 })
 
+// onMounted(async () => {
+//   const context = await deviceInfo();
+//   platform.value = context.platform;
+//   initPushNotification(this, context.platform);
+// });
 
 const next = () =>{
 
     currentSlide.value ++
 
-    }
+}
+
+</script> -->
 
 
 
+<script>
+import 'vue3-carousel/dist/carousel.css';
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+
+export default {
+  components: {
+    Carousel,
+    Slide,
+    Pagination,
+    Navigation,
+  },
+  data() {
+    return {
+      platform: '',
+      currentSlide: 0,
+      showSplashScreen: true,
+      token:'',
+    };
+  },
+
+  methods: {
+        next() {
+        this.currentSlide++;
+        },
+
+        // async initData() {
+        // const context = await this.deviceInfo();
+        // this.platform = context.platform;
+        // this.token = await initPushNotification(this.platform);
+        // alert(this.token)
+        // }
+  },
+
+
+  async mounted() { 
+        // const context = await deviceInfo()
+        // // console.log(context.platform)
+        // this.platform = context.platform
+        // // initPushNotification(this,context.platform)
+        // // initPushNotification(this,context.platform)
+        // this.token = await initPushNotification(this,context.platform)
+        // alert(this.token)
+        getDeviceToken(this)
+        
+    setTimeout(() => {
+      this.showSplashScreen = false;
+    }, 4000);
+       
+  },
+  
+ 
+};
 </script>

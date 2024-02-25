@@ -1,10 +1,10 @@
 <template>
 
-    <div class="max-w-full h-screen overflow-y-auto mx-auto dark:bg-[#10192D] transition ease-linear duration-300">
-        <div class="px-6 ">
+    <div class="w-full min-h-screen   bg-[#fff] dark:bg-[#10192D] transition ease-linear duration-300">
+
+        <div class="px-6 pb-[400px]">
 
             <LoginAppBar link="/login"/>
-
 
                 <div class="pt-[72px]  relative">
 
@@ -31,9 +31,6 @@
 
             </div>
     
-    
-    
-           
 
             <div class="fixed w-full left-0 bottom-5 px-6">
 
@@ -41,6 +38,7 @@
                 class="w-full btn-primary scaling-animation">Continue</button>
             </div>
         </div>
+
 
     </div>
 

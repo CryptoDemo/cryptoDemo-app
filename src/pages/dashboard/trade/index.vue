@@ -3,19 +3,19 @@
 
         <HomeBar image="true"/>
 
-
         <div class="mt-[76px] px-6">
 
             <div class="flex justify-between items-center">
+
                 <h3 class="text-[16px]  font-[600] dark:text-[#F8FAFC] text-[#10192D]">Offer Trade Limit</h3>
 
                 <div  class="dark:bg-[#1B2537] bg-[#F8FAFC] rounded-[20px] p-[4px] ">
 
                     <button @click=" offer_trade_limit = true"  class="font-[600] text-sm capitalize  transition ease-in-out duration-75" 
-                    :class="offer_trade_limit?'bg-[#2873FF] text-white rounded-[20px] py-[5px] px-[16px]':'mr-[15px] pl-[16px] text-[#B9D1FF]'">
+                    :class="offer_trade_limit?'btn-bg text-white rounded-[20px] py-[5px] px-[16px]':'mr-[15px] pl-[16px] text-[#B9D1FF]'">
                     Trade</button>
                     <button @click=" offer_trade_limit = false"   class="font-[600] text-sm capitalize  transition ease-in-out duration-75" 
-                    :class="!offer_trade_limit?'bg-[#2873FF] text-white rounded-[20px] py-[5px] px-[16px]':'ml-[15px] pr-[16px] text-[#B9D1FF]'">
+                    :class="!offer_trade_limit?'btn-bg text-white rounded-[20px] py-[5px] px-[16px]':'ml-[15px] pr-[16px] text-[#B9D1FF]'">
                     Offer</button>
 
                 </div>
@@ -35,7 +35,7 @@
             <span @click.prevent="trade_active = false"
             class="inline-flex justify-center items-center p-[10px] border-b-2 text-[16px] font-[700]
             transition ease-in-out duration-300" 
-            :class="!trade_active?'text-[#2873FF] border-[#2873FF]':'text-[#8E9BAE] border-[#E2E8F0] dark:border-[#1B2537]'">Close</span>
+            :class="!trade_active?'text-[#2873FF] border-[#2873FF]':'text-[#8E9BAE] border-[#E2E8F0] dark:border-[#1B2537]'">Closed</span>
 
         </div>
 
@@ -202,6 +202,7 @@
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
+ 
 defineComponent({
     Carousel,
     Slide,
@@ -209,6 +210,8 @@ defineComponent({
     Navigation,
 
 })
+
+
 
 const currentSlide = ref(0)
 
@@ -236,6 +239,9 @@ const trade_lists = [
     
 ]
 
+
+
+
 </script>
 
 
@@ -251,6 +257,7 @@ export default{
 
         }
     },
+    
     async mounted(){
         const context = await deviceInfo()
         // console.log(context.platform)
@@ -263,4 +270,11 @@ export default{
 }
 </script> -->
 
+
+
+<style scoped>
+.btn-bg{
+    background:  linear-gradient(180deg, #2873FF 0%, #0B6B96 100%), #2873FF;
+}
+</style>
 

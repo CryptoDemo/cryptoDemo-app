@@ -4,7 +4,7 @@
 
         <Appbar link="/dashboard" title="Buy coin"/>
 
-        <div class="mt-[80px]">
+        <div class="pt-[80px]">
 
             <CardsProfileStatus />
 

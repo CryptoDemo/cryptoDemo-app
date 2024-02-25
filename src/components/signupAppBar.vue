@@ -8,8 +8,10 @@
             <Icon name="mdi:arrow-left" size="24"/>
         </button>
 
-        <span @click.prevent="navigateTo(`${props.referral_link}`)" class="text-[#2873FF] text-sm font-semibold leading-4">
-           {{ props.referral }}</span>
+        <span @click.prevent="toggle_referral" class="text-[#2873FF] text-sm font-semibold leading-4">
+          <span v-if="!show_referral_input">Apply referral code</span>   
+          <span v-else>Hide referral code</span>   
+        </span>
     </div>
 
 </div>
@@ -18,6 +20,7 @@
 
 <script setup>
 
+const show_referral_input = ref(false)
 
 const props = defineProps(
     {
@@ -32,5 +35,17 @@ const props = defineProps(
         }
     }
 )
+
+
+const emitprops = defineEmits('toggle_referral');
+
+const toggle_referral =()=>{
+    show_referral_input.value = !show_referral_input.value
+    emitprops('toggle_referral', show_referral_input.value)
+}
+
+// watch(()=> show_referral_input.value ,(newVal)=>{
+//   emitprops('toggle_referral',newVal)
+// })
 
 </script>

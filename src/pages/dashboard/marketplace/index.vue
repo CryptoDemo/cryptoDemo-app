@@ -11,10 +11,10 @@
             <div  class="dark:bg-[#1B2537] bg-[#F8FAFC] rounded-[20px] p-[4px] ">
 
                 <button @click=" selectedbtn = true"  class="font-[600] text-sm capitalize  transition ease-linear duration-75" 
-                   :class="selectedbtn?'bg-[#2873FF] text-white rounded-[20px] py-[6px] px-[22px]':'pr-[8px] pl-[17px] text-[#B9D1FF]'">
+                   :class="selectedbtn?'btn-bg text-white rounded-[20px] py-[6px] px-[22px]':'pr-[8px] pl-[17px] text-[#B9D1FF]'">
                    buy</button>
                 <button @click=" selectedbtn = false"   class="font-[600] text-sm capitalize  transition ease-linear duration-75" 
-                   :class="!selectedbtn?'bg-[#2873FF] text-white rounded-[20px] py-[6px] px-[22px]':'pl-[8px] pr-[17px] text-[#B9D1FF]'">
+                   :class="!selectedbtn?'btn-bg text-white rounded-[20px] py-[6px] px-[22px]':'pl-[8px] pr-[17px] text-[#B9D1FF]'">
                    sell</button>
 
             </div>
@@ -129,7 +129,7 @@
                     <span class="text-[#8E9BAE] text-[12px] font-[400]">First Bank only</span>
                 </div>
 
-                <div class="flex items-center gap-x-[10px] gap-y-[8px] mt-[8px] flex-wrap">
+                <div class="flex items-center gap-x-[5px] gap-y-[8px] mt-[8px] flex-wrap">
                     <span class="px-[8px] py-[2.5px] background2 rounded-[20px] text-[#0EA5E9] text-[12px] font-[400] 
                     inline-flex justify-center items-center">Guided trade</span>
                     <span class="px-[8px] py-[2.5px]  background2 rounded-[20px] text-[#0EA5E9] text-[12px] font-[400] 
@@ -297,6 +297,11 @@ watch(()=> selected_market_coin.value,(newv)=>{
 }
 .background2{
     background: rgba(14, 165, 233, 0.25);
+}
+
+
+.btn-bg{
+    background:  linear-gradient(180deg, #2873FF 0%, #0B6B96 100%), #2873FF;
 }
 
 

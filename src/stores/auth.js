@@ -1,14 +1,7 @@
 import { defineStore } from 'pinia'
 
 
-
-
-export const useStore = defineStore('app',()=> {
-    const currentNavMenu = ref("home")
-    const  currentAccMenu = ref("spot")
-    const BankName = ref("")
-    const accountName = ref("")
-    const accountNumber = ref("")
+export const authStore = defineStore('auth_store',()=> {
 
     const state = reactive({
       user: null,
@@ -16,8 +9,6 @@ export const useStore = defineStore('app',()=> {
       token:null,
       pin: null,
       isPinSet: false,
-      loading: false,
-      email:null,
     });
   
   
@@ -25,13 +16,8 @@ export const useStore = defineStore('app',()=> {
       state.user = payload;
       state.isAuthenticated = true;
   };
-
   const setToken = (payload) => {
       state.token = payload;
-      
-  };
-  const setEmail = (payload) => {
-      state.email = payload;
       
   };
 
@@ -49,19 +35,15 @@ export const useStore = defineStore('app',()=> {
   const clearUser = () => {
       state.user = null;
       state.isAuthenticated = false;
-  }
+    }
 
     return {
-      currentNavMenu,
-      currentAccMenu,
-      BankName,
-      accountName,
-      accountNumber,
       state,
-      setEmail,
       setUser,
+      clearUser,
       setToken,
-      clearUser
+      setPin,
+      verifyPin
     }
 },
   {persist: {

@@ -222,7 +222,6 @@
         <input type="number" class="input  mb-4" placeholder="Maximum amount"/>
     </div>
 
-
    
     
 </template>

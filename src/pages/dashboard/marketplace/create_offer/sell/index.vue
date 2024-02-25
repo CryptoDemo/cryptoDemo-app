@@ -7,7 +7,7 @@
 
         <div v-if="reveal ===1">
 
-            <div class="mt-[80px]">
+            <div class="pt-[80px]">
     
                 <p>Bank account type</p>
     

@@ -28,7 +28,7 @@
         },
       },
       tooltip: {
-        enabled: true,
+        enabled: false,
         x: {
           show: false,
         },

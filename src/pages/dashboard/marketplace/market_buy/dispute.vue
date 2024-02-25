@@ -6,7 +6,7 @@
 
         <Appbar link="/dashboard" title="Review"/>
 
-        <div class="mt-[80px]">
+        <div class="pt-[80px]">
 
             <CardsProfileStatus />
 
