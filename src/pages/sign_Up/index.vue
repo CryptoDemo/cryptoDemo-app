@@ -3,12 +3,14 @@
             
            <SignupAppBar link="/dashboard" referral_link="/sign_Up/referralCode" referral=" Apply referral code"
            @toggle_referral=" v => show_referral_input = v"/>
+        
 
-            <div>
-
+            <div class="">
+            
              <Subappbar  heading="Create account" desc="It only takes a minute to create your account"/>
 
-                <form class=" mt-[32px]">
+                <form class="mt-[32px]">
+
                     <div class="mb-4">
 
                         <input type="text"  v-model.trim="name"  :class="name_message.length && !name.length ? 'border-[#E33E38]':''"
@@ -22,6 +24,7 @@
                             <span v-if="name_message.length && !name.length" class="text-[#E33E38] mt-[8px] 
                             ml-2 at-item font-[600]" >{{ name_message }}</span>
                         </Transition>
+
                     </div>
 
                     <div class="mb-4">
@@ -47,15 +50,9 @@
 
                     </div>
 
-                   
-
                     <div class="mb-4 ">
-
                         <CountryDropdown @selected_country="v => country  = v "/>
-
                     </div>
-
-
 
                     <div v-show="show_referral_input" 
                    
@@ -96,6 +93,7 @@
 
             </div>
     </div>
+
 </template>
 
 
@@ -148,6 +146,7 @@ const togglepassword = (v) => {
 //     // if(!verifyPassword.value) return password_message.value = "Enter your password "
 //     await signUp(name.value,email.value,password.value,country.value,referral_code.value)
 // } 
+
 
 
 const device =  await deviceInfo()

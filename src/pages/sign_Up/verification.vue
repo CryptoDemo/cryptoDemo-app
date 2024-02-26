@@ -121,8 +121,8 @@ const verifyAccount = async () => {
       },
       body: JSON.stringify(requestValue)
     })
-    // .then(res=>res.json());
-    // console.log(data.message)
+    .then(res=>res.json());
+    console.log(data.message)
 
     // if (response.success) {
     //   if (response.message === 'success') {

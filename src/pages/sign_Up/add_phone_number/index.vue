@@ -12,7 +12,7 @@
                 <Subappbar  heading="Add phone number" desc=" It only takes a minute to do this for an extra layer of security to your account."/>
             </div>
     
-            <InputCountrySelector  :selectedNumber.sync="selectedNumber" :selectedIcon.sync="selectedIcon" :isdisabled="false" />
+            <InputCountrySelector  :selectedCountryCode="selectedCountryCode" :selectedIcon="selectedIcon" :isdisabled="true" />
     
            
              <div class="fixed bottom-5 left-0 w-full px-6 flex gap-5 transition ease-in-out duration-500">
@@ -43,8 +43,8 @@ import { showKeyboard } from '@/composables/capacitor_plugins'
 
 
 
-const  selectedNumber = ref('+1')
-const selectedIcon = ref('us')
+const  selectedCountryCode = ref('+234')
+const selectedIcon = ref('ng')
 
 // const keyboard = await showKeyboard()
 

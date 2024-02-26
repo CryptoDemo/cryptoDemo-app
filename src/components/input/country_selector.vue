@@ -8,8 +8,8 @@
             border-r-[1px] border-gray-300 dark:text-white dark:border-gray-700"
           type="button"   :disabled="props.isdisabled"
         >
-          <country-flag :country="selectedIcon" size="small" class="pr-2" />
-          {{ selectedNumber }}
+          <country-flag :country="props.selectedIcon || selectedIcon" size="small" class="pr-2" />
+          {{ props.selectedCountryCode || selectedNumber }}
 
           <svg :class="{'rotate-up': usersToggle }" class="transition ease-in-out duration-300" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M11.9467 5.45312H7.79341H4.05341C3.41341 5.45312 3.09341 6.22646 3.54674 6.67979L7.00008
@@ -77,7 +77,6 @@
           </label>
           <div class="relative w-full z-20">
             <input
-            :disabled="props.isdisabled"
               type="phone"
               id="phone-input"
               class="input  pl-[120px] w-full z-20"
@@ -100,7 +99,14 @@
     isdisabled:{
         type: Boolean,
         default: false,
-    }
+    },
+    selectedCountryCode:{
+      type:String,
+    },
+
+    selectedIcon:{
+      type:String,
+    },
   })
 
    const isDark = useDark()
