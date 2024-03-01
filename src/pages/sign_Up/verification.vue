@@ -2,6 +2,7 @@
 
     <div class="max-w-full h-screen overflow-y-auto transition ease-linear duration-300 dark:bg-[#10192D]">
         <div class="px-6 pt-[15px] h-screen ">
+
             <div class="flex justify-between items-center mb-3">
     
                 <button @click.prevent="$router.go(-1)" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
@@ -15,7 +16,7 @@
            
                   <h3 class="text-2xl font-bold text-[#10192D]">Enter Verification Code</h3>
                   <p class="text-sm text-[400] pt-4 text-[#8E9BAE]">Enter the 4-digit code  we just send to your email 
-                    <span class="text-[#10192D]">juliajames@gmail.com.</span></p>
+                    <span class="text-[#10192D]">{{ pinia.state.user?.email }}</span></p>
             </div>
     
     
@@ -97,15 +98,37 @@ const handleOtpEntered = (otp) => {
   otpValue.value = otp;
 };
 
-const resendCode = () => {
+const resendCode = async() => {
   // Send the verification code to the user's email again
-  countdownSeconds.value = 60; // Reset the countdown timer
+   // Reset the countdown timer
+try{
+    const data = await fetch(`${baseURL}auth/resend-email-code`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: pinia.state.email
+      })
+    })
+    .then(res=>res.json());
+    countdownSeconds.value = 60;
+    console.log(data.message)
+
+  }catch(error){
+    console.error('Error during resending of otp code:', error);
+    toast.message(error, {
+        position: 'top',
+        timeout: 2000,
+      })
+
+  }
 };
 
 
 const verifyAccount = async () => {
   const requestValue = {
-    email: pinia.state.email,
+    email:  pinia.state.email,
     code: otpValue.value, 
   }
 
@@ -114,7 +137,7 @@ const verifyAccount = async () => {
   loading.value = true
 
   try {
-    const data = await fetch(`${baseURL}/verify-account`, {
+    const data = await fetch(`${baseURL}auth/verify-account`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -122,36 +145,35 @@ const verifyAccount = async () => {
       body: JSON.stringify(requestValue)
     })
     .then(res=>res.json());
-    console.log(data.message)
+   
+    if (data.success) {
+      if (data.message === 'success') {
+        console.log('Verification successful. Proceed with account verification.');
+        // Handle successful verification, e.g., navigate to the next page
+        loading.value = false
+        const user = data.data
+        pinia.setUser(user)
+        navigateTo('/sign_Up/successful')
 
-    // if (response.success) {
-    //   if (response.message === 'success') {
-    //     console.log('Verification successful. Proceed with account verification.');
-    //     // Handle successful verification, e.g., navigate to the next page
-    //     loading.value = false
-    //     const data = response.data
-    //     pinia.setUser(data)
-    //     navigateTo('/sign_Up/successful')
+      } else {
+        console.error('Invalid OTP. Please enter the correct verification code.');
+        // Handle invalid OTP, e.g., display an error message to the user
+        toast.message('Invalid OTP. Please enter the correct verification code.', {
+        position: 'top',
+        timeout: 2000,
+        })
 
-    //   } else {
-    //     console.error('Invalid OTP. Please enter the correct verification code.');
-    //     // Handle invalid OTP, e.g., display an error message to the user
-    //     toast.message('Invalid OTP. Please enter the correct verification code.', {
-    //     position: 'top',
-    //     timeout: 2000,
-    //     })
-
-    // }
-    //   loading.value = false
-    // } else {
-    //   console.error('Failed to verify OTP:', response.message);
-    //   // Handle failed request, e.g., display a generic error message to the user
-    //   toast.message('Failed to verify OTP', {
-    //     position: 'top',
-    //     timeout: 2000,
-    //    })
-    //    loading.value = false
-    // }
+    }
+      loading.value = false
+    } else {
+      console.error('Failed to verify OTP:', data.message);
+      // Handle failed request, e.g., display a generic error message to the user
+      toast.message('Failed to verify OTP', {
+        position: 'top',
+        timeout: 2000,
+       })
+       loading.value = false
+    }
 
     loading.value = false
   } catch (error) {

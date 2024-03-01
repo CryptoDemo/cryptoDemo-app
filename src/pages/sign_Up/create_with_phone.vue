@@ -18,8 +18,6 @@
 
                     </div>
 
-
-
                 
                     <div class="flex items-center">
                         <div class="flex items-center min-h-5">

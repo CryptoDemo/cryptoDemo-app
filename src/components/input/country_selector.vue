@@ -82,7 +82,7 @@
               class="input  pl-[120px] w-full z-20"
               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               placeholder="123-456-7890"
-              required
+              v-model="number"
             />
           </div>
       </div>
@@ -107,9 +107,10 @@
     selectedIcon:{
       type:String,
     },
+   
   })
 
-   const isDark = useDark()
+  const isDark = useDark()
   
   const selectedNumber = ref('+1');
   const selectedIcon = ref('us');
@@ -117,6 +118,13 @@
   const filteredPhoneNumbers = ref([]);
   const searchInput = ref('');
 
+  const number = ref('')
+
+  
+  const emitProp = defineEmits('number')
+  watch(()=> number.value,(newval)=>{
+    emitProp('number', number.value)
+  })
 
   // const phoneNumbers = [
   //   { name: 'United States', code: '+234', icon: 'us' },

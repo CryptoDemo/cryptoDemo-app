@@ -13,11 +13,12 @@ export const useStore = defineStore('app',()=> {
     const state = reactive({
       user: null,
       isAuthenticated: false,
-      token:null,
-      pin: null,
+      token:'',
+      code: false,
       isPinSet: false,
       loading: false,
       email:null,
+      country:null,
     });
   
   
@@ -35,9 +36,14 @@ export const useStore = defineStore('app',()=> {
       
   };
 
-  const setPin = (payload) => {
-      state.pin = payload;
-      state.isPinSet = true;
+  const setCountry = (payload) => {
+      state.country = payload;
+      
+  };
+
+  const setCode = (payload) => {
+      state.code = payload;
+      // state.isPinSet = true;
   };
 
 
@@ -61,7 +67,9 @@ export const useStore = defineStore('app',()=> {
       setEmail,
       setUser,
       setToken,
-      clearUser
+      clearUser,
+      setCountry,
+      setCode
     }
 },
   {persist: {

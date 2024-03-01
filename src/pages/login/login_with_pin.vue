@@ -37,7 +37,7 @@
            </div>
 
 
-            <button @click.prevent="navigateTo('/dashboard')"  class=" btn-primary mt-[32px] w-full scaling-animation">
+            <button @click.prevent="login"  class=" btn-primary mt-[32px] w-full scaling-animation">
                         login
             </button>
 
@@ -65,12 +65,40 @@
 
 <script setup>
 import { ref } from "vue";
+import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
 
+const toast = useToast()
+const pinia = useStore()
 const visible = ref(false);
 const otpvalue = ref(false); //collecting th otp pin values
 
 const openModal = () => {
   visible.value = !visible.value;
+};
+
+const login = async () => {
+  try {
+    // Retrieve the stored PIN from secure storage
+    const storedPin = await SecureStoragePlugin.get({ key: 'pin' });
+    const storedUserData = await SecureStoragePlugin.get({ key: 'userData' });
+    console.log(storedPin.value)
+    console.log(JSON.parse(storedUserData.value))
+    // Compare the entered PIN with the stored PIN
+    if (otpvalue.value === storedPin.value) {
+      // PIN matches, allow the user to log in
+      pinia.setUser(JSON.parse(storedUserData.value))
+      navigateTo('/dashboard'); // Navigate to the dashboard or any desired page
+    } else {
+      // PIN doesn't match, display an error message
+      toast.message('Incorrect PIN. Please try again.', {
+        position: 'top',
+        timeout: 2000,
+      })
+    }
+  } catch (error) {
+    console.error('Error retrieving PIN:', error);
+    // Handle error: display a message to the user or perform other actions
+  }
 };
 
 </script>

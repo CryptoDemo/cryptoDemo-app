@@ -34,6 +34,7 @@
     "@growthbunker/vueflags": "^0.1.14",
     "@pinia/nuxt": "^0.5.1",
     "apexcharts": "^3.45.2",
+    "capacitor-secure-storage-plugin": "^0.9.0",
     "dayjs": "^1.11.10",
     "flowbite": "^2.2.1",
     "maz-ui": "^3.31.6",

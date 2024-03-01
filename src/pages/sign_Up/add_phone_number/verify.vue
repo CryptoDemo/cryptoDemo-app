@@ -108,7 +108,7 @@ try{
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        phone: pinia.state.email
+        phone: pinia.state.user.phone
       })
     })
     .then(res=>res.json());
@@ -128,7 +128,7 @@ try{
 
 const verifyAccount = async () => {
   const requestValue = {
-    email:  pinia.state.email,
+    phone:  pinia.state.user.phone,
     code: otpValue.value, 
   }
 
@@ -137,7 +137,7 @@ const verifyAccount = async () => {
   loading.value = true
 
   try {
-    const data = await fetch(`${baseURL}auth/verify-account`, {
+    const data = await fetch(`${baseURL}auth/verify-phone`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -153,9 +153,8 @@ const verifyAccount = async () => {
         // Handle successful verification, e.g., navigate to the next page
         loading.value = false
         // const data = data.data
-        pinia.setCode(otpValue.value)
-
-        navigateTo('/login/create_new_password')
+        // pinia.setUser(data)
+        navigateTo('/sign_Up/successful')
 
       } else {
         console.error('Invalid OTP. Please enter the correct verification code.');

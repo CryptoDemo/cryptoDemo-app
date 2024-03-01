@@ -85,6 +85,7 @@
         v-model="otpArray[i - 1]"
         type="text"
         maxlength="1"
+        required
       />
     </div>
   </template>
@@ -118,7 +119,7 @@
       if (i > 0) {
         container.value.children[i - 1].focus();
       }
-    } else if (keypressed && keypressed.match(/^[0-9]$/)) {
+    } else if(keypressed && keypressed.match(/^[0-9]$/)) {
       // Handle valid numeric input
       otpArray.value[i] = keypressed;
       if (i < otpProps.length - 1) {
@@ -140,8 +141,12 @@
         children[i].classList.remove('border-red-500');
       }
     }
-    if (flag) emitOtp('entered', otpArray.value.join(''));
+    if (flag) return emitOtp('entered', otpArray.value.join(''));
   }
+
+  watch(()=> otpArray.value ,(newVal)=>{
+    emitOtp('entered',newVal.join(''))
+  })
   </script>
   
   

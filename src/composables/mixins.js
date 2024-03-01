@@ -32,6 +32,20 @@ export const verifyPasswordPattern = (input) =>{
     return pattern.test(input);
 }
 
+// export const checkPassword = (password) => {
+//   containsUppercase.value = /[A-Z]/.test(password);
+//   containsLowercase.value = /[a-z]/.test(password);
+//   containsSpecialCharacter.value = /[!@#$%^&*()_+}{:;'?/>,.<>\|]/.test(password);
+//   containsNumeral.value = /\d/.test(password);
+  
+//   passwordIsValid.value =
+//     containsUppercase.value &&
+//     containsLowercase.value &&
+//     containsSpecialCharacter.value &&
+//     containsNumeral.value &&
+//     password.value.length >= 8;
+// };
+
 
 export const copyToClipboard = async (string) => {
     // copyToClipBoard(string);

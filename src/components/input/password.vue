@@ -10,6 +10,7 @@
             @focusin="hint = true"
             @focusout="hint = false"
             @input="checkPassword"
+            :class="props.errorlog?.length? props.errorlog : ''"
           />
     
           <div @click="togglePasswordVisibility" class="absolute end-2.5 bottom-4 dark:text-[#F8FAFC]">
@@ -165,6 +166,9 @@
     },
     password_message:{
       type:String,
+    },
+    errorlog:{
+        type:String,
     }
   })
 

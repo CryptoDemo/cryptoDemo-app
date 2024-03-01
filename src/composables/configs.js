@@ -1,1 +1,1 @@
-export const baseURL = 'https://cryptodemoapi-production.up.railway.app//v1/auth'
+export const baseURL = 'https://cryptodemoapi-production.up.railway.app/v1/'

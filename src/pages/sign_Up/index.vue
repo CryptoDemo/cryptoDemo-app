@@ -9,21 +9,21 @@
             
              <Subappbar  heading="Create account" desc="It only takes a minute to create your account"/>
 
-                <form class="mt-[32px]">
+                <form class="mt-[32px]" @submit.prevent="null">
 
                     <div class="mb-4">
 
                         <input type="text"  v-model.trim="name"  :class="name_message.length && !name.length ? 'border-[#E33E38]':''"
                         id="name" class=" input " placeholder="Enter full name">
 
-                        <Transition
+                        <!-- <Transition
                             leave-active-class="transition-all duration-200 ease-in"
                             leave-from-class="translate-y-0 opacity-100"
                             leave-to-class="-translate-y-5 opacity-0"
                         >
                             <span v-if="name_message.length && !name.length" class="text-[#E33E38] mt-[8px] 
                             ml-2 at-item font-[600]" >{{ name_message }}</span>
-                        </Transition>
+                        </Transition> -->
 
                     </div>
 
@@ -44,9 +44,7 @@
 
                     <div class="mb-4">
                        
-                        <InputPassword    @password="v => password = v"  placeholder="Enter your password"/>
-
-                            
+                        <InputPassword    @password="v => password = v"  placeholder="Enter your password" :errorlog="password_message"/>
 
                     </div>
 
@@ -54,18 +52,25 @@
                         <CountryDropdown @selected_country="v => country  = v "/>
                     </div>
 
+                    <Transition
+                        leave-active-class="transition-all duration-200 ease-in"
+                        leave-from-class="translate-y-0 opacity-100"
+                        leave-to-class="-translate-y-5 opacity-0"
+                    >
+
                     <div v-show="show_referral_input" 
                    
-                    class="mb-4 transition ease-linear duration-300 fadeIn">
+                    class="mb-4 transition ease-linear duration-300  at-item">
                         <input type="text" id="referral" class="input" 
                         placeholder="Referal Code"   v-model.trim="referral_code" >
                     </div>
+                    </Transition>
 
                 
                     <div class="flex items-center">
                         <div class="flex items-center min-h-5">
                         <input id="terms" type="checkbox" value="" class="w-6 h-6 border border-gray-200 rounded-lg bg-transparent
-                        focus:ring-1 focus:ring-blue-300 " required>
+                        focus:ring-1 focus:ring-blue-300 ">
                         </div>
                         <label for="terms" class="ms-2 mt-3 text-sm font-[400] text-[#8E9BAE] dark:text-[#E2E8F0]">
                             I agree with the 
@@ -88,7 +93,8 @@
 
 
                <div class="text-center mt-[80px] p-[20px] font-[400]  text-sm text-[#8E9BAE]">
-                   <span class="dark:text-[#8E9BAE] font-[400]">Already registered? <a  @click.prevent="navigateTo('/login')"  class="text-[#2873FF] font-bold"> Login</a></span>
+                   <span class="dark:text-[#8E9BAE] font-[400]">Already registered? <a  @click.prevent="navigateTo('/login')"  
+                    class="text-[#2873FF] font-bold cursor-pointer"> Login</a></span>
                </div>
 
             </div>
@@ -113,7 +119,7 @@ const name = ref('')
 const email = ref('')
 const password = ref('')
 const country = ref('')
-const referral_code = ref('')
+const referral_code = ref(null)
 const name_message = ref('')
 const email_message = ref('')
 const password_message = ref('')
@@ -154,57 +160,61 @@ const device =  await deviceInfo()
 const toast = useToast()
 
 
- const signUp = async() => {
+const signUp = async() => {
      
     // alert(pinia.state.token)
     
     validmail.value = validEmail(email.value)
     verifyPassword.value = verifyPasswordPattern(password.value)
-    // if(!name.value) return name_message.value = "Enter your name"
+    if(!name.value) return name_message.value = "Enter your name"
     if(!validmail.value) return email_message.value = "Enter valid email "
-    // if(!verifyPassword.value) return password_message.value = "Enter your password "
+    if(!verifyPassword.value) return password_message.value = `border-[#E33E38]`
     
     const signup_info = {
         name: name.value,
         email:email.value,
         password: password.value,
-        referrer_code: referral_code.value,
         country: country.value,
-        device_token: pinia.state.token,
-        device_info: JSON.stringify(device),
+        device_token: pinia.state.token ,
+        device_info: device.operatingSystem,
+        referrer_code: referral_code.value,
     }
     
     loading.value = true
     console.log(signup_info)
 
   try {
-    const response = await fetch('https://cryptodemoapi-production.up.railway.app//v1/auth/sign-up', {
+    const data = await fetch( "https://cryptodemoapi-production.up.railway.app/v1/auth/sign-up", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
 
       body: JSON.stringify(signup_info),
-    })
+    }).then(res=>res.json());
 
-    const data = await response.json()
+    // const data = await response.json()
+
+    console.log(data.message)
 
 
     if (data.success) {
       // Redirect or perform any action after successful sign-up
       console.log('Sign-up successful!');
       loading.value = false
-      pinia.setEmail(email)
+      const userInfo = data.data
+      pinia.setUser(userInfo)
+      pinia.setEmail(email.value)
       navigateTo('/sign_Up/verification')
 
     } else {
       // Handle error, maybe show an error message to the user
       console.error('Sign-up failed:', data.message);
-      toast.message('Sign-up failed', {
+      toast.message(`Sign-up failed: ${data.message}`, {
         position: 'top',
         timeout: 2000,
       })
-            loading.value = false
+       loading.value = false
     }
 
   } catch (error) {
