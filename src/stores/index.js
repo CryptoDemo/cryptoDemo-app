@@ -13,9 +13,10 @@ export const useStore = defineStore('app',()=> {
     const state = reactive({
       user: null,
       isAuthenticated: false,
-      token:'',
+      token:null,
       code: false,
       isPinSet: false,
+      isFingerprintSet: false,
       loading: false,
       email:null,
       country:null,

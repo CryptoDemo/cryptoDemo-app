@@ -110,7 +110,7 @@
             </div>
 
             
-            <div v-if="show_create_account" class="box-shadow2 mx-6  mt-[53px] py-[12px] px-[8px]  dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] flex justify-between
+            <div v-if="pinia.state.isAuthenticated" class="box-shadow2 mx-6  mt-[53px] py-[12px] px-[8px]  dark:bg-[#1B2537] bg-[#F5F9FF] rounded-[12px] flex justify-between
              items-center">
                   
                 <div>
@@ -469,6 +469,8 @@
 import { useDark, useToggle } from '@vueuse/core'
 
 const isDark = useDark()
+const toast = useToast()
+const pinia = useStore()
 
 const show_create_account = ref(false)
 const isvisible = ref(false)

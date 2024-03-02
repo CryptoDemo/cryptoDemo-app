@@ -31,6 +31,7 @@
     "@capacitor/ios": "^5.6.0",
     "@capacitor/keyboard": "^5.0.7",
     "@capacitor/push-notifications": "^5.1.1",
+    "@capgo/capacitor-native-biometric": "^5.1.0",
     "@growthbunker/vueflags": "^0.1.14",
     "@pinia/nuxt": "^0.5.1",
     "apexcharts": "^3.45.2",

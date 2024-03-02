@@ -1,22 +1,6 @@
 <template>
     <div class="px-[24px]  h-screen overflow-y-auto bg-white dark:bg-[#10192D] transition ease-linear duration-300">
-        <!-- <div class="dark:bg-[#10192D] bg-white fixed w-full top-0 left-0 px-6 py-[10px]">
-
-            <div class="flex justify-between items-center dark:bg-[#10192D]">
-                <button @click.prevent="$router.go(-1)" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
-                items-center me-2 text-black dark:bg-[#1B2537] dark:text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M8.90039 7.56023C9.21039 3.96023 11.0604 2.49023 15.1104 2.49023H15.2404C19.7104 2.49023 21.5004 4.28023 21.5004 8.75023V15.2702C21.5004 19.7402 19.7104 21.5302 15.2404 21.5302H15.1104C11.0904 21.5302 9.24039 20.0802 8.91039 16.5402" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M15.0001 12H3.62012" stroke="#10192D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M5.85 8.6499L2.5 11.9999L5.85 15.3499" stroke="#10192D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                </button>
-
-                <span @click.prevent="navigateTo(`/login`)" class="text-[#2873FF] text-sm font-semibold leading-4 pr-2">
-                   </span>
-            </div>
-
-        </div> -->
+       
         <SignupAppBar link="/login" referral_link="/login" referral="  Login with email"/>
 
 
@@ -31,7 +15,7 @@
 
          <div class="mt-[42px] px-5 flex flex-col justify-center items-center">
                    
-                   <InputOtp :length="4" @entered=" v => otpvalue = v"/>  
+              <InputOtp :length="4" @entered=" v => otpvalue = v"/>  
                        
    
            </div>
@@ -49,8 +33,8 @@
             </div>
 
 
-             <div class="flex items-center justify-center pt-[6px]">
-                  <iconsFingerprint @click.prevent="navigateTo('/login/login_with_fingerprint')"/>    
+             <div v-if="pinia.state.isFingerprintSet" class="flex items-center justify-center pt-[6px]">
+                  <iconsFingerprint @click.prevent="performBiometricVerification"/>    
              </div>
 
 
@@ -66,39 +50,164 @@
 <script setup>
 import { ref } from "vue";
 import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
+import { NativeBiometric } from "@capgo/capacitor-native-biometric";
+
 
 const toast = useToast()
 const pinia = useStore()
 const visible = ref(false);
 const otpvalue = ref(false); //collecting th otp pin values
 
+const loading = ref(false)
+
 const openModal = () => {
   visible.value = !visible.value;
 };
 
 const login = async () => {
+
+  loading.value = true
+
   try {
     // Retrieve the stored PIN from secure storage
     const storedPin = await SecureStoragePlugin.get({ key: 'pin' });
     const storedUserData = await SecureStoragePlugin.get({ key: 'userData' });
+
     console.log(storedPin.value)
-    console.log(JSON.parse(storedUserData.value))
+
+    const login_info ={
+      email: storedUserData.value.email,
+      password: storedUserData.value.password
+    }
+
+    console.log(login_info)
+
     // Compare the entered PIN with the stored PIN
     if (otpvalue.value === storedPin.value) {
       // PIN matches, allow the user to log in
-      pinia.setUser(JSON.parse(storedUserData.value))
-      navigateTo('/dashboard'); // Navigate to the dashboard or any desired page
+      const data = await fetch(`${baseURL}auth/sign-in`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // 'x-access-token' : `${pinia.state.user?.token}`
+      },
+
+      body: JSON.stringify(login_info)
+
+      })
+        .then(res=>res.json());
+
+        console.log(data.message)
+        loading.value = false
+
+        if(data.success){
+
+          const user = data.data
+          pinia.setUser(user)
+      
+          navigateTo('/dashboard')
+        }else{
+          toast.message(`${data.message}`, {
+            position: 'top',
+            timeout: 2000
+        })
+        loading.value = true
+      }
     } else {
       // PIN doesn't match, display an error message
       toast.message('Incorrect PIN. Please try again.', {
         position: 'top',
         timeout: 2000,
       })
+      loading.value = true
     }
+    loading.value = true
   } catch (error) {
     console.error('Error retrieving PIN:', error);
     // Handle error: display a message to the user or perform other actions
+    loading.value = true
   }
 };
+
+
+const performBiometricVerification = async () => {
+  try {
+    const result = await NativeBiometric.isAvailable();
+
+    if (!result.isAvailable){
+      const info =  toast.message('Biometric authentication is not available on this device.', {
+        position: 'top',
+        timeout: 2000,
+      })
+
+      return info
+    };
+
+    const isFaceID = result.biometryType == BiometryType.FACE_ID;
+
+    isFaceID
+
+    const verified = await NativeBiometric.verifyIdentity({
+      reason: "To access user data",
+      title: "Biometric Authentication",
+      subtitle: "Please authenticate to access your data.",
+    });
+
+    if (!verified) return;
+
+    const credentials = await NativeBiometric.getCredentials({
+      email:pinia.state.user?.email,
+      password:pinia.state.user?.password,
+      server: "http://localhost:3000",
+    });
+
+    const login_info = {
+      email:  credentials.email,
+      password : credentials.password
+    }
+
+    console.log(login_info)
+
+    const data = await fetch(`${baseURL}auth/sign-in`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // 'x-access-token' : `${pinia.state.user?.token}`
+      },
+
+      body: JSON.stringify(login_info)
+
+      })
+        .then(res=>res.json());
+
+        console.log(data.message)
+        loading.value = false
+
+        if(data.success){
+
+          const user = data.data
+          pinia.setUser(user)
+      
+          navigateTo('/dashboard')
+        }else{
+          toast.message(`${data.message}`, {
+            position: 'top',
+            timeout: 2000
+        })
+        loading.value = true
+      }
+
+    // alert('Successful');
+
+  } catch (error) {
+    alert(error);
+    toast.message(error, {
+            position: 'top',
+            timeout: 2000
+        })
+    loading.value = true
+  }
+};
+
 
 </script>

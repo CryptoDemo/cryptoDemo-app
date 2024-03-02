@@ -17,7 +17,7 @@
                     </div>
 
                        
-                      <InputPassword @password="v => password = v"  placeholder="Enter your password"/>
+                    <InputPassword @password="v => password = v"  placeholder="Enter your password"/>
 
                 
                     <div class="flex justify-end w-full  mt-6">
@@ -27,7 +27,7 @@
                     
                     </div>
 
-                    <button @click.prevent="login"  class=" btn-primary mt-[40px] mb-5 w-full scaling-animation">
+                    <button  @click.prevent="recaptchaValid ? login() : null"  class=" btn-primary mt-[40px] mb-5 w-full scaling-animation" :disabled="!recaptchaValid">
                         
                         <Loader v-if="loading"/>
                         <span v-else>
@@ -38,11 +38,9 @@
                </form>
 
 
-
-
                <div class="text-center mt-[80px] p-[20px] font-[400]  text-sm text-[#8E9BAE]">
                    <span class="dark:text-[#8E9BAE] font-[400]">Don’t have an account? 
-                    <a   @click.prevent="navigateTo('/sign_Up/')"  class="text-[#2873FF] font-bold"> Create account</a></span>
+                    <a  @click.prevent="navigateTo('/sign_Up/')"  class="text-[#2873FF] font-bold"> Create account</a></span>
                </div>
 
             </div>
@@ -53,14 +51,23 @@
 
 <script setup>
      
-     const loading = ref(false)
-    const  password= ref('')
-    const email = ref('')
-    const  showPassword= ref(false)
+const loading = ref(false)
+const  password= ref('')
+const email = ref('')
+
+const recaptchaValid = ref(false)
+
+const  showPassword= ref(false)
+const pinia = useStore()
+
   
   const  togglePasswordVisibility =()=>{
       showPassword.value = !showPassword.value;
   }
+
+
+const device =  await deviceInfo()
+const toast = useToast()
 
 const login = async() =>{
 
@@ -69,6 +76,7 @@ const login = async() =>{
     const login_info = {
       email:email.value,
       password: password.value,
+      device_info: JSON.stringify(device),
     }
 
     console.log(login_info)
@@ -79,7 +87,7 @@ const login = async() =>{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-access-token' : `${pinia.state.user?.token}`
+        // 'x-access-token' : `${pinia.state.user?.token}`
       },
 
       body: JSON.stringify(login_info)
@@ -89,10 +97,18 @@ const login = async() =>{
     console.log(data.message)
     loading.value = false
 
-    const user = data.data
-    pinia.setUser(user)
+    if(data.success){
 
-    navigateTo('/')
+      const user = data.data
+      pinia.setUser(user)
+  
+      navigateTo('/login/verify')
+    }else{
+      toast.message(`${data.message}`, {
+        position: 'top',
+        timeout: 2000
+    })
+  }
      
     }catch(error){
       console.error('Error during resending of otp code:', error);
@@ -105,4 +121,21 @@ const login = async() =>{
     }
   }
   
+  
+
+  watchEffect(()=>{
+
+    if(password.value !== '' && validEmail(email.value)){
+      recaptchaValid.value = true
+
+     }else{
+
+      recaptchaValid.value = false
+
+     }
+
+  })
+  
+
+ 
 </script>

@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-  </template>
+</template>
   
 
   <script setup>
@@ -61,7 +61,7 @@
     try {
       // Set PIN value in secure storage
       await SecureStoragePlugin.set({ key:'pin', value: pin.value});
-      await SecureStoragePlugin.set({ key:'userData', value: JSON.stringify(pinia.state?.user)});
+      await SecureStoragePlugin.set({ key:'userData', value: JSON.stringify({email:pinia.state.user?.email, password:pinia.state.user?.password})});
     //   alert('PIN set successfully');
         pinia.state.isPinSet = true
       // Redirect or perform other actions

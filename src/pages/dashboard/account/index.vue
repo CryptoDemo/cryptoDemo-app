@@ -1,6 +1,5 @@
 <template>
 
-     <KeepAlive>
         
          <div class="min-h-screen pb-52  bg-[#ffff]   dark:bg-[#10192D]  w-full px-6">
      
@@ -16,7 +15,7 @@
                              <p class=" font-[700]">General</p>
                              
                              <div @click.prevent="navigateTo('/dashboard/account/verification')" class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
-                                 <div class=" flex justify-between items-center">
+                                <div class=" flex justify-between items-center">
                                      <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center rounded-full">
          
                                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -25,7 +24,7 @@
                                      </span>
                                          
                                      <span class="text-[#10192D]   dark:text-[#F8FAFC] ml-[22px] text-sm font-semibold capitalize">Verification status</span>
-                                 </div>
+                                </div>
                                  <Icon  class="text-[#8E9BAE]" name="solar:alt-arrow-right-linear" size="20"/>
                              </div>
      
@@ -151,7 +150,7 @@
                    <!--start of security settings section -->
                      <div class="mt-[32px] w-full">
                              <p class=" font-[700]">Security</p>
-                             <div   @click.prevent="navigateTo('/dashboard/account/change_pin')" class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
+                             <div   @click.prevent="change_pin()" class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
                                  <div class=" flex justify-between items-center">
                                      <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center rounded-full">
                                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -186,8 +185,9 @@
                                      <span class="text-[#10192D]   dark:text-[#F8FAFC] ml-[22px] text-sm font-semibold capitalize">Enable fingerprint login</span>
                                  </div>
          
-                                 <InputRadio :toggleValue="showFingerprint" @toggleChanged="toggleShowFingerprint"/>
+                                 <InputRadio :toggleValue="showFingerprint" @toggleChanged="v => toggleShowFingerprint(v)"/>
                              </div>
+
                              <div @click.prevent="navigateTo('/dashboard/account/2FA_login')" class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
                                  <div class=" flex justify-between items-center">
                                      <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537]  inline-flex justify-center items-center rounded-full">
@@ -320,33 +320,66 @@
      
          </div>
 
-     </KeepAlive>
 
 </template>
 
 
 <script setup>
 
+import { NativeBiometric } from "@capgo/capacitor-native-biometric";
 
 import { useDark, useToggle } from '@vueuse/core'
-let showFingerprint = ref(false);
+
+let showFingerprint = ref(true);
 // let showdarkMode = ref(false);
 // let showNotification = ref(true);
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
+const toast = useToast()
+const pinia = useStore()
 
-const toggleShowFingerprint =()=>{
-    showFingerprint.value = !showFingerprint.value;
+const toggleShowFingerprint =(v)=>{
+
+    showFingerprint.value = v
+
+    console.log(showFingerprint.value)
+
+    if(showFingerprint.value){
+        NativeBiometric.setCredentials({
+            email:pinia.state.user?.email,
+            password:pinia.state.user?.password,
+            server: "http://localhost:3000",
+        }).then();
+
+        pinia.state.isFingerprintSet = true
+
+    }else{
+
+        NativeBiometric.deleteCredentials({
+            server: "http://localhost:3000",
+         }).then();
+
+         pinia.state.isFingerprintSet = false
+
+    }
+
 }
 
 
+const change_pin = ()=>{
+    if(pinia.state.isPinSet){
+        navigateTo('/dashboard/account/change_pin')
+    }else{
+        navigateTo('/sign_Up/setup_pin')
+    }
+}
 
 
 // const toggleShowNotification =(v)=>{
 //     showNotification.value= v;
 //     console.log(showNotification.value);
-// }
+//}
 
 </script>
 

@@ -70,7 +70,7 @@
                                         </button>
 
 
-                                        <button @click.prevent="navigateTo('/login') " 
+                                        <button @click.prevent="login" 
                                         :class="currentSlide === 3 ? 'flex': 'hidden'"  
                                         type="button" class="  scaling-animation btn-border">
                                                 Login
@@ -133,6 +133,8 @@ const next = () =>{
 <script>
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+import { mapState } from 'pinia';
+import { useStore } from '@/stores/index'; 
 
 export default {
   components: {
@@ -147,13 +149,27 @@ export default {
       currentSlide: 0,
       showSplashScreen: true,
       token:'',
+      pinValue: '' 
     };
   },
+  created() {
+    // Access the pin value from the Pinia store and assign it to the local data property
+    this.pinValue = useStore().state.isPinSet;
+  },
+  
 
   methods: {
         next() {
         this.currentSlide++;
         },
+
+        login(){
+                if(this.pinValue){
+                      navigateTo('/login/login_with_pin')  
+                }else{
+                        navigateTo('/login')
+                }
+        }
 
         // async initData() {
         // const context = await this.deviceInfo();

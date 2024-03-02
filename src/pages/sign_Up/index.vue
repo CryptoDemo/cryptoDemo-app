@@ -175,8 +175,8 @@ const signUp = async() => {
         email:email.value,
         password: password.value,
         country: country.value,
-        device_token: pinia.state.token ,
-        device_info: device.operatingSystem,
+        device_token: pinia.state.token || null,
+        device_info: JSON.stringify(device),
         referrer_code: referral_code.value,
     }
     
@@ -184,13 +184,14 @@ const signUp = async() => {
     console.log(signup_info)
 
   try {
-    const data = await fetch( "https://cryptodemoapi-production.up.railway.app/v1/auth/sign-up", {
+    const data = await fetch( `${baseURL}auth/sign-up`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
 
       body: JSON.stringify(signup_info),
+
     }).then(res=>res.json());
 
     // const data = await response.json()

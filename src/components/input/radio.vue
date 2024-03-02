@@ -41,7 +41,7 @@ export default{
         toggleRadio(){
             this.isToggled = !this.isToggled;
             this.$emit("toggleChanged",this.isToggled);
-            console.log(this.toggleValue)
+            // console.log(this.toggleValue)
         }
     }
 }
