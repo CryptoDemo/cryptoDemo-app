@@ -23,7 +23,10 @@
              py-2 px-4 rounded-md">
               {{ btn1 }}
             </button>
-            <button @click="emit('toggle_successful',show_successful = !show_successful)" class="mt-4 font-bold bg-transparent capitalize text-[#2873FF] py-2 px-4 rounded-md">
+            <button v-if="btn2 === 'Sign out'" @click="" class="mt-4 font-bold bg-transparent capitalize text-[#2873FF] py-2 px-4 rounded-md">
+                {{ btn2 }}
+            </button>
+            <button v-else @click="emit('toggle_successful',show_successful = !show_successful)" class="mt-4 font-bold bg-transparent capitalize text-[#2873FF] py-2 px-4 rounded-md">
                 {{ btn2 }}
             </button>
 
@@ -34,6 +37,7 @@
   
 <script setup>
   import { defineProps, defineEmits } from 'vue';
+  import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
   
   const { visible,btn1,btn2,amount,walletAddress,to } = defineProps({
     visible: Boolean,
@@ -56,6 +60,23 @@
   const closeModal = () => {
     emit('close',visible);
   };
+
+  const signOut = async()=>{
+    try {
+
+    // Call the remove method to delete the data associated with the specified key
+    await SecureStoragePlugin.remove({ key: 'pin' });
+    await SecureStoragePlugin.remove({ key: 'userData' });
+    await SecureStoragePlugin.set({ key:'user_account_created', value: 'false'});
+
+    console.log('Data deleted successfully from Secure Storage');
+     navigateTo('/login')
+     
+    } catch (error) {
+    console.error('Error deleting data from Secure Storage:', error);
+    // Handle error: display a message to the user or perform other actions
+    }
+  }
 </script>
 
   <style scoped>

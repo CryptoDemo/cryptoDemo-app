@@ -38,7 +38,7 @@
              </div>
 
 
-             <Modal @open="visible"  :visible="visible" btn1="sign out" btn2="cancel"
+             <Modal @open="visible"  :visible="visible" btn1="Sign out" btn2="Cancel"
              desc="To reset your pin; Sign out, login  and set up a new pin"/>
 
     </div>
@@ -128,6 +128,27 @@ const login = async () => {
     loading.value = true
   }
 };
+
+
+const Forgot_pin = async()=>{
+
+  try {
+
+    // Call the remove method to delete the data associated with the specified key
+    await SecureStoragePlugin.remove({ key: 'pin' });
+    await SecureStoragePlugin.remove({ key: 'userData' });
+    await SecureStoragePlugin.set({ key:'user_account_created', value: 'false'});
+
+    console.log('Data deleted successfully from Secure Storage');
+
+    navigateTo('/login')
+
+  } catch (error) {
+    console.error('Error deleting data from Secure Storage:', error);
+    // Handle error: display a message to the user or perform other actions
+  }
+
+}
 
 
 const performBiometricVerification = async () => {

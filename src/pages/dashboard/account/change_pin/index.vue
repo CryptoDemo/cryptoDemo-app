@@ -77,6 +77,7 @@ const loading = ref(false)
     })
         
         return;
+        
       }
   
       // Save the new PIN to secure storage

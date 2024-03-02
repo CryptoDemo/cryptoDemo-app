@@ -61,6 +61,7 @@
     try {
       // Set PIN value in secure storage
       await SecureStoragePlugin.set({ key:'pin', value: pin.value});
+      await SecureStoragePlugin.set({ key:'user_account_created', value: 'true'});
       await SecureStoragePlugin.set({ key:'userData', value: JSON.stringify({email:pinia.state.user?.email, password:pinia.state.user?.password})});
     //   alert('PIN set successfully');
         pinia.state.isPinSet = true
