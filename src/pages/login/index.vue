@@ -50,7 +50,8 @@
 
 
 <script setup>
-     
+ import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
+ 
 const loading = ref(false)
 const  password= ref('')
 const email = ref('')
@@ -91,6 +92,7 @@ const login = async() =>{
       },
 
       body: JSON.stringify(login_info)
+
     })
     .then(res=>res.json());
 
@@ -98,11 +100,24 @@ const login = async() =>{
     loading.value = false
 
     if(data.success){
+      
+      await SecureStoragePlugin.set({ key:'password', value: password.value});
 
-      const user = data.data
-      pinia.setUser(user)
-  
-      navigateTo('/login/verify')
+
+      pinia.setEmail(email.value)
+     
+
+      if(data.data === null){
+
+        navigateTo('/login/verify')
+
+      }else{
+        const user = data.data
+        pinia.setUser(user)
+
+        navigateTo('/dashboard')
+      }
+      
     }else{
       toast.message(`${data.message}`, {
         position: 'top',

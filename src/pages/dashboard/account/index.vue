@@ -185,7 +185,7 @@
                                      <span class="text-[#10192D]   dark:text-[#F8FAFC] ml-[22px] text-sm font-semibold capitalize">Enable fingerprint login</span>
                                  </div>
          
-                                 <InputRadio :toggleValue="showFingerprint" @toggleChanged="v => toggleShowFingerprint(v)"/>
+                                 <InputRadio :toggleValue="pinia.state.isFingerprintSet" @toggleChanged="v => toggleShowFingerprint(v)"/>
                              </div>
 
                              <div @click.prevent="navigateTo('/dashboard/account/2FA_login')" class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
@@ -198,11 +198,12 @@
                                          </svg>
      
                                      </span>
-                                     <span class="text-[#10192D]   dark:text-[#F8FAFC] ml-[22px] text-sm font-semibold capitalize">Two-factor login</span>
+                                     <span class="text-[#10192D]   dark:text-[#F8FAFC] ml-[22px] text-sm font-semibold capitalize">Two-factor Authentication</span>
                                  </div>
                                  <Icon class="text-[#8E9BAE]" name="solar:alt-arrow-right-linear" size="20"/>
                              </div>
-                             <div  class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
+                             
+                             <!-- <div  class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
                                  <div class=" flex justify-between items-center">
                                      <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537]  inline-flex justify-center items-center rounded-full">
                                          <svg class="text-[#2873FF] dark:text-[#ffff]" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -233,7 +234,7 @@
                                      <span class="text-[#10192D]   dark:text-[#F8FAFC] ml-[22px] text-sm font-semibold capitalize">Two-factor crypto currency release</span>
                                  </div>
                                  <Icon class="text-[#8E9BAE]" name="solar:alt-arrow-right-linear" size="20"/>
-                             </div>
+                             </div> -->
          
                              <div @click.prevent="navigateTo('/dashboard/account/security_questions')" class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
                                  <div class=" flex justify-between items-center">
@@ -298,7 +299,7 @@
                                  <Icon class="text-[#8E9BAE]" name="solar:alt-arrow-right-linear" size="20"/>
                              </div>
      
-                             <div  @click.prevent="navigateTo('/login')" class="flex justify-between items-center py-4 
+                             <div  @click.prevent="openModal" class="flex justify-between items-center py-4 
                               dark:border-[#2A3340]">
                                  <div class=" flex justify-between items-center">
                                      <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center rounded-full">
@@ -312,6 +313,9 @@
                                  </div>
                                  <Icon class="text-[#8E9BAE]" name="solar:alt-arrow-right-linear" size="20"/>
                              </div>
+
+                             <Modal @open="openModal(v)"  :visible="visible" btn1="Not now" btn2="Log out" 
+                             desc="Do you wish to continue with the process,click the confirm button or cancel to stop the Signing out. "/>
                            
          
                      </div>
@@ -326,11 +330,13 @@
 
 <script setup>
 
-import { NativeBiometric } from "@capgo/capacitor-native-biometric";
+import { NativeBiometric, BiometryType } from "@capgo/capacitor-native-biometric";
+
+import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
 
 import { useDark, useToggle } from '@vueuse/core'
 
-let showFingerprint = ref(true);
+let showFingerprint = ref(false);
 // let showdarkMode = ref(false);
 // let showNotification = ref(true);
 
@@ -339,30 +345,49 @@ const toggleDark = useToggle(isDark)
 const toast = useToast()
 const pinia = useStore()
 
-const toggleShowFingerprint =(v)=>{
+const visible = ref(false);
+const isFocused = ref(false)
 
-    showFingerprint.value = v
+const openModal = (v) => {
+  visible.value = v;
+};
+
+const toggleShowFingerprint = async(v)=>{
+
+    pinia.state.isFingerprintSet = v
 
     console.log(showFingerprint.value)
 
-    if(showFingerprint.value){
-        NativeBiometric.setCredentials({
-            email:pinia.state.user?.email,
-            password:pinia.state.user?.password,
-            server: "http://localhost:3000",
-        }).then();
+    try{
+        const storedUserPassword = await SecureStoragePlugin.get({ key: 'password' });
 
-        pinia.state.isFingerprintSet = true
+        if(pinia.state.isFingerprintSet ){
+            NativeBiometric.setCredentials({
+                username:pinia.state.user?.email,
+                password:storedUserPassword.value,
+                server: "http://localhost:3000",
+            }).then();
+    
+            // pinia.state.isFingerprintSet = true
+    
+        }else{
+    
+            NativeBiometric.deleteCredentials({
+                server: "http://localhost:3000",
+             }).then();
+    
+             pinia.state.isFingerprintSet = false
+    
+        }
 
-    }else{
-
-        NativeBiometric.deleteCredentials({
-            server: "http://localhost:3000",
-         }).then();
-
-         pinia.state.isFingerprintSet = false
-
+    }catch(e){
+        console.log(e)
+        toast.message(e, {
+            position: 'top',
+            timeout: 2000
+        })
     }
+
 
 }
 
@@ -374,6 +399,10 @@ const change_pin = ()=>{
         navigateTo('/sign_Up/setup_pin')
     }
 }
+
+
+
+
 
 
 // const toggleShowNotification =(v)=>{

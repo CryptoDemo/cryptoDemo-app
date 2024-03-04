@@ -32,6 +32,7 @@ export default{
     },
     
     
+    
     mounted(){
         this.isToggled = this.toggleValue;
        
@@ -41,6 +42,7 @@ export default{
         toggleRadio(){
             this.isToggled = !this.isToggled;
             this.$emit("toggleChanged",this.isToggled);
+
             // console.log(this.toggleValue)
         }
     }

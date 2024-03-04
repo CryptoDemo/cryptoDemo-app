@@ -21,10 +21,12 @@
     
     
     
-            <div class="mt-[42px] px-5 flex flex-col justify-center items-center ">
+            <div class="mt-[42px] px-5 flex flex-col justify-center items-center otp">
                    
-                    <InputOtp @focusin="isFocused=true" @focusout="isFocused=false"
-                    :length="4" @entered=" v => otpValue = v"/>  
+                    <!-- <InputOtp @focusin="isFocused=true" @focusout="isFocused=false"
+                    :length="4" @entered=" v => otpValue = v"/>  -->
+                    <MazInputCode @focusin="isFocused=true" @focusout="isFocused=false"  v-model="otpValue"  outline=""  class="text-black dark:text-white"/>
+ 
                         
                     <p v-if="countdownSeconds === 0" class="mt-[38px] text-center">
                         <button @click.prevent="resendCode" class="text-[#2873FF] font-[600]">Resend code</button>  in 
@@ -68,8 +70,16 @@ const loading = ref(false)
 
 const otpValue = ref('');
 const isFocused = ref(false)
+
+
+
+
+
 const countdownSeconds = ref(60); // 30 minutes in seconds
 const userEmail = ref('juliajames@gmail.com');
+
+
+
 
 const countdownDisplay = computed(() => {
   const minutes = Math.floor(countdownSeconds.value / 60);
@@ -83,7 +93,7 @@ const countdownTimer = setInterval(() => {
   }
 }, 1000);
 
-watch(countdownSeconds, (newValue) => {
+watch(countdownSeconds.value, (newValue) => {
   if (newValue === 0) {
     clearInterval(countdownTimer);
     // Enable Resend Code button or perform any other action
@@ -101,6 +111,7 @@ const handleOtpEntered = (otp) => {
 const resendCode = async() => {
   // Send the verification code to the user's email again
    // Reset the countdown timer
+     
 try{
     const data = await fetch(`${baseURL}auth/resend-email-code`, {
       method: 'POST',
@@ -112,8 +123,10 @@ try{
       })
     })
     .then(res=>res.json());
-    countdownSeconds.value = 60;
+    
     console.log(data.message)
+
+    countdownSeconds.value = 60;
 
   }catch(error){
     console.error('Error during resending of otp code:', error);
@@ -124,6 +137,8 @@ try{
 
   }
 };
+
+
 
 
 const verifyAccount = async () => {
@@ -189,5 +204,39 @@ const verifyAccount = async () => {
 };
 
 </script>
+
+<style scoped>
+
+
+.otp >>> fieldset{
+   width: 100% !important;
+   display: flex;
+   justify-content: space-between;
+   margin: 0 16px !important;
+}
+.otp >>> .input-wrapper{
+   height: 56px !important;
+   width: 56px !important;
+   border-radius: 16px !important;
+   /* border: 1px solid  var(--light-border-color); */
+}
+
+.otp >>> input{
+  border: none;
+
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  
+  .otp >>> .input-wrapper {
+    background-color: transparent !important; /* Dark mode background color */
+    /* border: 1px solid var(--dark-border-color) ;  */
+  }
+}
+
+
+
+</style>
 
 

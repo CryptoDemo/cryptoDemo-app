@@ -23,6 +23,8 @@ export default defineNuxtConfig({
     devtools: true,
   },
 
+  
+
  
 
   css: ['~/assets/css/main.css'],

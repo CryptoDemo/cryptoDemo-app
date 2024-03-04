@@ -19,14 +19,20 @@
         <!-- Close button -->
         <div class="flex justify-end ">
 
-            <button @click="visible = false" class="mt-4 font-bold  capitalize bg-transparent text-[#64748B] dark:text-[#64748B]
+            <button v-if="btn1 === 'Sign out'" @click.prevent="signOut" class="mt-4 font-bold  capitalize bg-transparent text-[#64748B] dark:text-[#64748B]
              py-2 px-4 rounded-md">
               {{ btn1 }}
             </button>
-            <button v-if="btn2 === 'Sign out'" @click="" class="mt-4 font-bold bg-transparent capitalize text-[#2873FF] py-2 px-4 rounded-md">
+
+            <button v-else @click.prevent="visible = false" class="mt-4 font-bold  capitalize bg-transparent text-[#64748B] dark:text-[#64748B]
+             py-2 px-4 rounded-md">
+              {{ btn1 }}
+            </button>
+           
+            <button v-if="btn2 === 'Log out'"  @click="pinia.clearUser" class="mt-4 font-bold bg-transparent capitalize text-[#E33E38] py-2 px-4 rounded-md">
                 {{ btn2 }}
             </button>
-            <button v-else @click="emit('toggle_successful',show_successful = !show_successful)" class="mt-4 font-bold bg-transparent capitalize text-[#2873FF] py-2 px-4 rounded-md">
+            <button v-else  @click="open_success" class="mt-4 font-bold bg-transparent capitalize text-[#2873FF] py-2 px-4 rounded-md">
                 {{ btn2 }}
             </button>
 
@@ -49,11 +55,14 @@
     to:Boolean,
     });
   
+    const toast = useToast()
+const pinia = useStore()
   const show_successful = ref(false)
   const emit = defineEmits('close','toggle_successful');
 
   
   const open_success = () => {
+    show_successful.value = !show_successful.value
     emit('toggle_successful',show_successful);
   };
 
@@ -62,16 +71,22 @@
   };
 
   const signOut = async()=>{
+    pinia.state.isPinSet = false
+    
     try {
 
     // Call the remove method to delete the data associated with the specified key
     await SecureStoragePlugin.remove({ key: 'pin' });
-    await SecureStoragePlugin.remove({ key: 'userData' });
-    await SecureStoragePlugin.set({ key:'user_account_created', value: 'false'});
+    await SecureStoragePlugin.remove({ key: 'email' });
+    await SecureStoragePlugin.remove({ key: 'password' });
+    await SecureStoragePlugin.remove({ key:'user_account_created'});
 
     console.log('Data deleted successfully from Secure Storage');
+
+    pinia.state.isPinSet = false
+    
      navigateTo('/login')
-     
+
     } catch (error) {
     console.error('Error deleting data from Secure Storage:', error);
     // Handle error: display a message to the user or perform other actions

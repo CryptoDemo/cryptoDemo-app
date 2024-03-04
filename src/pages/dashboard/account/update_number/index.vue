@@ -1,151 +1,145 @@
 <template>
-
-    <div class="px-6 pb-24  bg-[#fff]   dark:bg-[#10192D] h-screen overflow-y-auto">
-
+       <Successful v-if="show_successful" title="sucessful" subtitle="You have successfully changed your  phone number "/>
+   
+       <div v-else class="max-w-full h-screen overflow-y-auto  bg-white dark:bg-[#10192D] transition ease-linear duration-300">
+           <div class="px-6 pb-24">
+              
+               <LoginAppBar link="/dashboard"/>
+               
+              
+               <Subappbar class="mb-4"  heading="Add phone number" desc=" Add your phone number to complete this process"/>
+   
        
-        <Appbar link="/dashboard/" title="Phone number" />
+               <InputCountrySelector  @number="v => phone = v"
+               :isdisabled="false" />
+       
+              
+               <div class="fixed bottom-5 left-0 w-full px-6">
 
-        <div class=" pt-[72px]">
-           
-           <p class="text-sm font-[400]  text-[#8E9BAE] ">To update your phone number, kindly reach out to our support team.</p>
-        </div>
+                     <button :disabled="!recaptchaValid"  @click.prevent="recaptchaValid ? updatePhone() : null" 
+                     class="btn-primary mt-[40px] w-full">
 
-
-       <div class="my-4">
-    
-                     <button
-                            @click="showQuestion_1Toggle"
-                            class="btn-border-primary dark:bg-transparent text-[#8E9BAE] font-[400]  w-full flex text-sm
-                            justify-between items-center  border-[#E2E8F0] border dark:border-[#1B2537]"
-                            >
-                            <span>{{ selectedQuestion1 || 'Question 1' }}</span>
-                            <Icon  :class="{'rotate-up':question_1Toggle}"  
-                            name="solar:alt-arrow-down-bold" size="16" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
-                            dark:text-[#FFFFFF]"/>
-
+                     <Loader v-if="loading"/>
+                            <span v-else>
+                               Save
+                            </span>
                      </button>
-
-
-                     <div class="  dark:border-[#1B2537]  w-full  dark:bg-transparent
-                     dark:text-[#8E9BAE] 
-                     rounded-2xl pb-2 mt-1 z transition-all ease-out duration-300"  v-show="question_1Toggle" >
-                            
-                            
-                            <div class=" relative overflow-y-auto">
-
-                            <div
-                                   v-for="i in questions_1"  @click="showQuestion_1Toggle();  
-                                   selectedQuestion1 = i.text" :key='i.id'
-                                   class="px-[20px] py-[16px] w-full leading-tight"
-                            >
-                                   <ul class="flex items-center w-full rounded-xl  ">
-                                   <li class="font-[700] text-[16px] text-[#10192D] dark:text-[#F8FAFC]">
-                                          {{ i.text }}
-                                   </li>
-                                   </ul>
-                            </div>
-                            </div>
-                     </div>
-
-
-
-       </div>
-
-         <div class="mb-4">
-                <input  @focusin="isFocused=true" @focusout="isFocused=false"
-                type="text" id="answer 1" class="input"  placeholder="Enter your answer here">
-         </div>
-        
-
-       <div class="mb-4">
-    
-              <button
-                     @click="showQuestion_2Toggle"
-                     class="btn-border-primary dark:bg-transparent text-[#8E9BAE] font-[400]  w-full flex text-sm
-                     justify-between items-center  border-[#E2E8F0] border dark:border-[#1B2537]"
-                     >
-                     <span>{{ selectedQuestion2 || 'Question 2' }}</span>
-                     <Icon  :class="{'rotate-up':question_2Toggle}"  
-                     name="solar:alt-arrow-down-bold" size="16" class="transition-all ease-in-out duration-300   text-[#8E9BAE]
-                     dark:text-[#FFFFFF]"/>
-
-              </button>
-
-
-              <div class="  dark:border-[#1B2537]  w-full  dark:bg-transparent
-              dark:text-[#8E9BAE] transition-all ease-out duration-300
-              rounded-2xl pb-2 mt-1 z "  v-show="question_2Toggle" >
-                     
-                     
-                     <div class=" relative overflow-y-auto">
-
-                     <div
-                            v-for="i in questions_1"  @click="showQuestion_2Toggle();  
-                            selectedQuestion2 = i.text" :key='i.id'
-                            class=" px-[20px] py-[16px] w-full leading-tight"
-                     >
-                            <ul class="flex items-center w-full rounded-xl  ">
-                            <li class=" text-[16px] font-[700] text-[#10192D] dark:text-[#F8FAFC]">
-                                   {{ i.text }}
-                            </li>
-                            </ul>
-                     </div>
-                     </div>
               </div>
-
-
-
+           </div>
+   
+   
+   
        </div>
+   
+           
+   
+   
+   </template>
+   
+   
+   
+   
+   
+   
+   <script setup>
+     
+   import { initFlowbite} from 'flowbite'
+   const show_successful = ref(false)
+   const toast = useToast()
+   
+   const toggle_show_successful = ()=>{
+       show_successful.value = true
+       setTimeout(() => {
+           navigateTo('/dashboard')
+       }, 1000);
+   }
 
-         <div class="mb-4">
-                <input  @focusin="isFocused=true" @focusout="isFocused=false" 
-                type="text" id="answer 2" class="input"  placeholder="Enter your answer here">
-         </div>
 
-      
+   const pinia = useStore()
 
-         <div v-show="!isFocused" class="fixed bottom-5 left-0 w-full px-6">
-                <button  @click.prevent="navigateTo('/dashboard/account/update_number/update')" 
-                class="btn-primary mt-[57px] w-full">Submit</button>
-         </div>
-    </div>
+const phone = ref('')
+const recaptchaValid = ref(false)
 
-</template>
-<script setup>
-const isFocused = ref(false)
-const  selectedQuestion1 = ref('')
-const  selectedQuestion2 = ref('')
-const question_1Toggle = ref(false);
-const question_2Toggle = ref(false);
 
-const showQuestion_1Toggle = () => {
-    question_1Toggle.value = !question_1Toggle.value;
-};
-const showQuestion_2Toggle = () => {
-    question_2Toggle.value = !question_2Toggle.value;
-};
+const loading = ref(false)
 
-const questions_1 = [
-    {
-        text: 'What was your childhood nickname? ', 
-        id:1,
-    },
-    {
-        id:2,
-        text:'what is your surname',
+
+watchEffect(()=>{
+
+    if(phone.value.length){
+        recaptchaValid.value = true
+    
+    }else{
+        recaptchaValid.value = false
+    }
+
+})
+
+
+
+const updatePhone = async()=>{
+
+    loading.value = true
+    const phoneinfo = {phone: phone.value,}
+    const info = {...pinia.state.user,...phoneinfo}
+
+    console.log(info)
+    try{
         
-    } , 
-    {
-        id:3,
-        text:'what is your mothers name',
-        
-    },
-        
-]
-</script>
+        const data = await fetch(`${baseURL}user`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token' : `${pinia.state.user?.token}`
 
-<style scoped>
-.rotate-up {
-  transform: rotate(180deg);
+      },
+      body: JSON.stringify(info)
+    })
+    .then(res=>res.json());
+
+    console.log(data.message)
+
+    if(data.success){
+        loading.value = false
+
+        if(data.data === null){
+            // navigateTo('/account/update_username/verify')
+          
+           return 
+
+
+        }else{
+
+            const user = (data.data)
+    
+            pinia.setUser(user)
+    
+            toggle_show_successful()
+        }
+
+
+    }else{
+        toast.message(`${data.message}`, {
+        position: 'top',
+        timeout: 2000,
+      })
+      loading.value = false
+    }
+
+
+    }catch(error){
+        toast.message(error, {
+        position: 'top',
+        timeout: 2000,
+      })
+    }
 }
-</style>
+   
+   
+   onMounted(()=>{
+       initFlowbite();
+   })
+   
+   
+   
+   </script>

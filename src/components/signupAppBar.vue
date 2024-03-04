@@ -3,14 +3,17 @@
 <div class="dark:bg-[#10192D] bg-white fixed w-full top-0 left-0 px-6 py-[10px]">
 
     <div class="flex justify-between items-center dark:bg-[#10192D]">
-        <button @click.prevent="navigateTo(`${props.link}`)" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
+        <button @click.prevent="navigateTo('/dashboard')" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
         items-center me-2 text-black dark:bg-[#1B2537] dark:text-white">
             <Icon name="mdi:arrow-left" size="24"/>
         </button>
 
-        <span @click.prevent="toggle_referral" class="text-[#2873FF] text-sm font-semibold leading-4">
+        <span v-if="!props.referral.length" @click.prevent="toggle_referral" class="text-[#2873FF] text-sm font-semibold leading-4">
           <span v-if="!show_referral_input">Apply referral code</span>   
           <span v-else>Hide referral code</span>   
+        </span>
+        <span v-else @click.prevent="navigateTo(`${props.referral_link}`)" class="text-[#2873FF] text-sm font-semibold leading-4">
+          <span>{{ props.referral }}</span>   
         </span>
     </div>
 
@@ -28,7 +31,7 @@ const props = defineProps(
         default:'',
         },
         referral:{
-            default:'',
+            type:String,
         },
         referral_link:{
             default:'',

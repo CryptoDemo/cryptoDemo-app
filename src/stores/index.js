@@ -17,9 +17,11 @@ export const useStore = defineStore('app',()=> {
       code: false,
       isPinSet: false,
       isFingerprintSet: false,
+      isTwoFactorSet: false,
       loading: false,
       email:null,
       country:null,
+      twoFactor:null
     });
   
   
@@ -34,6 +36,10 @@ export const useStore = defineStore('app',()=> {
   };
   const setEmail = (payload) => {
       state.email = payload;
+      
+  };
+  const setTwoFactor = (payload) => {
+      state.twoFactor = payload;
       
   };
 
@@ -56,6 +62,10 @@ export const useStore = defineStore('app',()=> {
   const clearUser = () => {
       state.user = null;
       state.isAuthenticated = false;
+      state.isPinSet = false;
+      state.isFingerprintSet = false;
+      state.twoFactor = []
+      navigateTo('/login')
   }
 
     return {
@@ -70,7 +80,8 @@ export const useStore = defineStore('app',()=> {
       setToken,
       clearUser,
       setCountry,
-      setCode
+      setCode,
+      setTwoFactor
     }
 },
   {persist: {

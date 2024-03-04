@@ -16,14 +16,20 @@
             <Subappbar heading="Re-enter new PIN" desc="Re-enter the new PIN to secure your wallet" />
           </div>
   
-          <div v-if="reveal === 0" class="mt-[42px] px-5 flex flex-col justify-center items-center">
-            <InputOtp @focusin="isFocused=true" @focusout="isFocused=false" :length="4" @entered=" v => my_pin = v" />
+          <div v-if="reveal === 0" class="mt-[42px] px-5 flex flex-col justify-center items-center otp">
+            <!-- <InputOtp @focusin="isFocused=true" @focusout="isFocused=false" :length="4" @entered=" v => my_pin = v" /> -->
+              <MazInputCode @focusin="isFocused=true" @focusout="isFocused=false"  v-model="my_pin"  outline=""  class="text-black dark:text-white"/>
+
           </div>
-          <div v-if="reveal === 1" class="mt-[42px] px-5 flex flex-col justify-center items-center">
-            <InputOtp @focusin="isFocused=true" @focusout="isFocused=false" :length="4" @entered=" v => new_pin = v" />
+          <div v-if="reveal === 1" class="mt-[42px] px-5 flex flex-col justify-center items-center otp">
+            <!-- <InputOtp @focusin="isFocused=true" @focusout="isFocused=false" :length="4" @entered=" v => new_pin = v" /> -->
+              <MazInputCode @focusin="isFocused=true" @focusout="isFocused=false"  v-model="new_pin"  outline=""  class="text-black dark:text-white"/>
+
           </div>
-          <div v-if="reveal === 2" class="mt-[42px] px-5 flex flex-col justify-center items-center">
-            <InputOtp @focusin="isFocused=true" @focusout="isFocused=false" :length="4" @entered=" v => reentered_new_pin = v" />
+          <div v-if="reveal === 2" class="mt-[42px] px-5 flex flex-col justify-center items-center otp">
+            <!-- <InputOtp @focusin="isFocused=true" @focusout="isFocused=false" :length="4" @entered=" v => reentered_new_pin = v" /> -->
+              <MazInputCode @focusin="isFocused=true" @focusout="isFocused=false"  v-model="reentered_new_pin"  outline=""  class="text-black dark:text-white"/>
+
           </div>
   
           <div v-show="!isFocused" class="fixed bottom-5 left-0 w-full px-6">
@@ -40,6 +46,8 @@
   
   <script setup>
   import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
+  import './assets//css/maz-ui-variables.css'
+  import MazInputCode from 'maz-ui/components/MazInputCode'
   
 const loading = ref(false)
   const isFocused = ref(false);
@@ -62,6 +70,7 @@ const loading = ref(false)
         position: 'top',
         timeout: 2000
     })
+    loading.value = false
         return;
       }
       reveal.value++;
@@ -75,9 +84,9 @@ const loading = ref(false)
         position: 'top',
         timeout: 2000
     })
-        
+    loading.value = false
         return;
-        
+
       }
   
       // Save the new PIN to secure storage
@@ -90,6 +99,7 @@ const loading = ref(false)
         navigateTo('/dashboard');
       }, 1000);
     }
+    loading.value = false
   };
   
   const resetInputs = () => {
@@ -98,4 +108,38 @@ const loading = ref(false)
     reentered_new_pin.value = null;
   };
   </script>
+
+<style scoped>
+
+
+.otp >>> fieldset{
+   width: 100% !important;
+   display: flex;
+   justify-content: space-between;
+   margin: 0 16px !important;
+}
+.otp >>> .input-wrapper{
+   height: 56px !important;
+   width: 56px !important;
+   border-radius: 16px !important;
+   /* border: 1px solid  var(--light-border-color); */
+}
+
+.otp >>> input{
+  border: none;
+
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  
+  .otp >>> .input-wrapper {
+    background-color: transparent !important; /* Dark mode background color */
+    /* border: 1px solid var(--dark-border-color) ;  */
+  }
+}
+
+
+
+</style>
   

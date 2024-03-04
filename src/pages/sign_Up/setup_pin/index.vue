@@ -11,8 +11,10 @@
           <Subappbar heading="Create New Pin" desc="This adds an extra layer of security to your account. Use pin to unlock app!"/>
         </div>
         <!-- Pin input section -->
-        <div class="mt-[42px] px-5 flex flex-col justify-center items-center">
-          <InputOtp @focusin="isFocused=true" @focusout="isFocused=false" :length="4" @entered="v => pin = v"/>  
+        <div class="mt-[42px] px-5 flex flex-col justify-center items-center otp">
+          <!-- <InputOtp @focusin="isFocused=true" @focusout="isFocused=false" :length="4" @entered="v => pin = v"/>   -->
+            <MazInputCode @focusin="isFocused=true" @focusout="isFocused=false"  v-model="pin"  outline=""  class="text-black dark:text-white"/>
+
         </div>
         <!-- Continue button section -->
         <div v-show="!isFocused" class="fixed bottom-5 left-0 w-full px-6">
@@ -36,6 +38,8 @@
   import { ref } from "vue";
   import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
   import { useStore } from '@/stores/index'
+  import './assets//css/maz-ui-variables.css'
+import MazInputCode from 'maz-ui/components/MazInputCode'
   
   const toast = useToast()
   const pinia = useStore()
@@ -62,7 +66,8 @@
       // Set PIN value in secure storage
       await SecureStoragePlugin.set({ key:'pin', value: pin.value});
       await SecureStoragePlugin.set({ key:'user_account_created', value: 'true'});
-      await SecureStoragePlugin.set({ key:'userData', value: JSON.stringify({email:pinia.state.user?.email, password:pinia.state.user?.password})});
+      await SecureStoragePlugin.set({ key:'email', value: pinia.state.user?.email});
+      // await SecureStoragePlugin.set({ key:'password', value: pinia.state.user?.password});
     //   alert('PIN set successfully');
         pinia.state.isPinSet = true
       // Redirect or perform other actions
@@ -75,5 +80,39 @@
     }
   };
 </script>
+
+<style scoped>
+
+
+.otp >>> fieldset{
+   width: 100% !important;
+   display: flex;
+   justify-content: space-between;
+   margin: 0 16px !important;
+}
+.otp >>> .input-wrapper{
+   height: 56px !important;
+   width: 56px !important;
+   border-radius: 16px !important;
+   /* border: 1px solid  var(--light-border-color); */
+}
+
+.otp >>> input{
+  border: none;
+
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  
+  .otp >>> .input-wrapper {
+    background-color: transparent !important; /* Dark mode background color */
+    /* border: 1px solid var(--dark-border-color) ;  */
+  }
+}
+
+
+
+</style>
   
   

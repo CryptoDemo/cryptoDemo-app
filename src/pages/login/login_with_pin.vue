@@ -1,11 +1,11 @@
 <template>
     <div class="px-[24px]  h-screen overflow-y-auto bg-white dark:bg-[#10192D] transition ease-linear duration-300">
        
-        <SignupAppBar link="/login" referral_link="/login" referral="  Login with email"/>
+        <SignupAppBar link="/login" referral_link="/login" referral="Login with email"/>
 
 
 
-        <div class="text-center px-4">
+        <div class="text-left px-4">
 
             <Subappbar  heading="Login" 
             desc="Enter your pin to open app or touch the fingerprint sensor "
@@ -13,16 +13,20 @@
 
          </div>
 
-         <div class="mt-[42px] px-5 flex flex-col justify-center items-center">
+         <div class="mt-[42px] px-5 flex flex-col justify-center items-center otp">
                    
-              <InputOtp :length="4" @entered=" v => otpvalue = v"/>  
+              <!-- <InputOtp :length="4" @entered=" v => otpvalue = v"/>   -->
+                <MazInputCode @focusin="isFocused=true" @focusout="isFocused=false"  v-model="code"  outline=""  class="text-black dark:text-white"/>
                        
    
            </div>
 
 
             <button @click.prevent="login"  class=" btn-primary mt-[32px] w-full scaling-animation">
-                        login
+                        <Loader v-if="loading"/>
+                        <span v-else>
+                          Login
+                        </span>
             </button>
 
             <div class="flex justify-end w-full  mt-6">
@@ -38,7 +42,7 @@
              </div>
 
 
-             <Modal @open="visible"  :visible="visible" btn1="Sign out" btn2="Cancel"
+             <Modal @open="visible"  :visible="visible"  btn1="Sign out" btn2="Cancel"
              desc="To reset your pin; Sign out, login  and set up a new pin"/>
 
     </div>
@@ -49,14 +53,16 @@
 
 <script setup>
 import { ref } from "vue";
+import './assets//css/maz-ui-variables.css'
+import MazInputCode from 'maz-ui/components/MazInputCode'
 import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
-import { NativeBiometric } from "@capgo/capacitor-native-biometric";
+import { NativeBiometric, BiometryType } from "@capgo/capacitor-native-biometric";
 
 
 const toast = useToast()
 const pinia = useStore()
 const visible = ref(false);
-const otpvalue = ref(false); //collecting th otp pin values
+const code = ref(''); //collecting th otp pin values
 
 const loading = ref(false)
 
@@ -64,26 +70,31 @@ const openModal = () => {
   visible.value = !visible.value;
 };
 
+const device =  await deviceInfo()
+
 const login = async () => {
 
   loading.value = true
 
   try {
     // Retrieve the stored PIN from secure storage
-    const storedPin = await SecureStoragePlugin.get({ key: 'pin' });
-    const storedUserData = await SecureStoragePlugin.get({ key: 'userData' });
+    const storedPin = await SecureStoragePlugin.get({ key:'pin' });
+    const storedUserEmail = await SecureStoragePlugin.get({ key: 'email' });
+    const storedUserPassword = await SecureStoragePlugin.get({ key: 'password' });
 
-    console.log(storedPin.value)
+   console.log(storedPin.value)
 
     const login_info ={
-      email: storedUserData.value.email,
-      password: storedUserData.value.password
+      email:  storedUserEmail.value,
+      password: storedUserPassword.value,
+      device_info: JSON.stringify(device),
+
     }
 
     console.log(login_info)
 
     // Compare the entered PIN with the stored PIN
-    if (otpvalue.value === storedPin.value) {
+    if (code.value === storedPin.value) {
       // PIN matches, allow the user to log in
       const data = await fetch(`${baseURL}auth/sign-in`, {
       method: 'POST',
@@ -111,7 +122,7 @@ const login = async () => {
             position: 'top',
             timeout: 2000
         })
-        loading.value = true
+        loading.value = false
       }
     } else {
       // PIN doesn't match, display an error message
@@ -119,13 +130,13 @@ const login = async () => {
         position: 'top',
         timeout: 2000,
       })
-      loading.value = true
+      loading.value = false
     }
-    loading.value = true
+    loading.value = false
   } catch (error) {
     console.error('Error retrieving PIN:', error);
     // Handle error: display a message to the user or perform other actions
-    loading.value = true
+    loading.value = false
   }
 };
 
@@ -177,14 +188,13 @@ const performBiometricVerification = async () => {
     if (!verified) return;
 
     const credentials = await NativeBiometric.getCredentials({
-      email:pinia.state.user?.email,
-      password:pinia.state.user?.password,
       server: "http://localhost:3000",
     });
 
     const login_info = {
-      email:  credentials.email,
-      password : credentials.password
+      email:  credentials.username,
+      password : credentials.password,
+      device_info: JSON.stringify(device),
     }
 
     console.log(login_info)
@@ -202,7 +212,7 @@ const performBiometricVerification = async () => {
         .then(res=>res.json());
 
         console.log(data.message)
-        loading.value = false
+        // loading.value = false
 
         if(data.success){
 
@@ -215,20 +225,52 @@ const performBiometricVerification = async () => {
             position: 'top',
             timeout: 2000
         })
-        loading.value = true
       }
 
     // alert('Successful');
 
   } catch (error) {
-    alert(error);
     toast.message(error, {
             position: 'top',
             timeout: 2000
         })
-    loading.value = true
   }
 };
 
 
 </script>
+
+
+<style scoped>
+
+
+.otp >>> fieldset{
+   width: 100% !important;
+   display: flex;
+   justify-content: space-between;
+   margin: 0 16px !important;
+}
+.otp >>> .input-wrapper{
+   height: 56px !important;
+   width: 56px !important;
+   border-radius: 16px !important;
+   /* border: 1px solid  var(--light-border-color); */
+}
+
+.otp >>> input{
+  border: none;
+
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  
+  .otp >>> .input-wrapper {
+    background-color: transparent !important; /* Dark mode background color */
+    /* border: 1px solid var(--dark-border-color) ;  */
+  }
+}
+
+
+
+</style>

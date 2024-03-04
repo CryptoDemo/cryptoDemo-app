@@ -1,7 +1,7 @@
 <template>
     <div class="px-[24px] pb-14  h-screen overflow-y-auto bg-white dark:bg-[#10192D] transition ease-linear duration-300">
             
-           <SignupAppBar link="/dashboard" referral_link="/sign_Up/referralCode" referral=" Apply referral code"
+           <SignupAppBar link="/dashboard" referral_link="/sign_Up/referralCode" referral=""
            @toggle_referral=" v => show_referral_input = v"/>
         
 
@@ -110,6 +110,8 @@ import { ref } from 'vue'
 import { initFlowbite } from 'flowbite'
 // import {signUp} from '@/composables/auth'
 import {useStore} from "@/stores/index"
+import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
+
 
 const pinia = useStore()
 
@@ -184,6 +186,7 @@ const signUp = async() => {
     console.log(signup_info)
 
   try {
+    await SecureStoragePlugin.set({ key:'password', value: password.value});
     const data = await fetch( `${baseURL}auth/sign-up`, {
       method: 'POST',
       headers: {

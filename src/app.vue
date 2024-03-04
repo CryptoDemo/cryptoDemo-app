@@ -27,6 +27,44 @@ const { $gsap: gsap, $Draggable: Draggable } = useNuxtApp();
 
 
 
+
+/* for otp input styling */
+.otp >>> fieldset{
+   width: 100% !important;
+   display: flex;
+   justify-content: space-between;
+   margin: 0 16px !important;
+   background: transparent !important;
+}
+.otp >>> .input-wrapper{
+   height: 56px !important;
+   width: 56px !important;
+   border-radius: 16px !important;
+   border: 1px solid #E2E8F0 !important;
+}
+
+.otp >>>  .input-wrapper{
+   height: 56px !important;
+   width: 56px !important;
+   border-radius: 16px !important;
+   background-color: transparent !important;
+}
+
+
+.otp >>> input{
+  border: none;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .otp >>> .input-wrapper {
+    background-color: transparent !important; /* Dark mode background color */
+    border: 1px solid #1B2537; /* Dark mode border color */
+  }
+}
+
+
+
 .shutter-from-top{
     animation: shutter 0.5s ease-in-out ;
 }

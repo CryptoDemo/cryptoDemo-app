@@ -34,7 +34,7 @@
 
         </div>
 
-        <div @click.prevent="navigateTo('/dashboard/account/2FA_login/get_code_by_email')" class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
+        <!-- <div @click.prevent="navigateTo('/dashboard/account/2FA_login/get_code_by_email')" class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
             <div class=" flex justify-between items-center">
                 <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center rounded-full">
 
@@ -53,8 +53,10 @@
                                font-bold ">recommended</span>
                  <Icon class="text-[#8E9BAE]" name="solar:alt-arrow-right-linear" size="20"/>
             </div>
-        </div>
-        <div @click.prevent="navigateTo('/dashboard/account/2FA_login/get_code_by_app')" class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
+        </div> -->
+
+
+        <div @click.prevent=" navigateTo('/dashboard/account/2FA_login/get_code_by_app')" class="flex justify-between items-center py-4 border-b border-[#F1F5F9] dark:border-[#2A3340]">
             <div class=" flex justify-between items-center">
                 <span class=" h-[32px] w-[32px] bg-[#F5F9FF] dark:bg-[#1B2537] inline-flex justify-center items-center rounded-full">
 

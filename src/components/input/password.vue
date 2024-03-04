@@ -4,7 +4,6 @@
           <input
             v-model="password"
             :type="showPassword ? 'text' : 'password'"
-            id="password"
             class="input"
             :placeholder="props.placeholder"
             @focusin="hint = true"

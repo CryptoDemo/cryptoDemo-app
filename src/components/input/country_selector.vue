@@ -47,7 +47,7 @@
       
               <div class="max-h-[284px] border dark:border-[#1B2537] rounded-2xl overflow-y-scroll">
                 <ul  class="pb-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-phone-button">
-                  <li v-for="country in filteredPhoneNumbers.length ? filteredPhoneNumbers :  phoneNumbers" :key="country.code">
+                  <li v-for="country in filteredPhoneNumbers.length ? filteredPhoneNumbers :  phoneNumbers" :key="country.name">
                     
                     <button @click="selectCountry(country)" type="button" class="inline-flex px-4 w-full py-2 text-sm hover:rounded-2xl text-gray-700
                       hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-gray-200 dark:hover:text-white" role="menuitem">
@@ -126,13 +126,6 @@
     emitProp('number', number.value)
   })
 
-  // const phoneNumbers = [
-  //   { name: 'United States', code: '+234', icon: 'us' },
-  //   { name: 'Australia', code: '+44', icon: 'au' },
-  //   { name: 'Austria', code: '+61', icon: 'at' },
-  //   { name: 'Dominica', code: '+61', icon: 'dm' },
-  //   { name: 'Denmark', code: '+641', icon: 'br' },
-  // ];
 
   const phoneNumbers = [
     { name: 'Afghanistan', alpha2: 'af', alpha3: 'afg', code: '+93' },
@@ -399,9 +392,6 @@
   const filterV =(n)=>{
     filteredPhoneNumbers.value = phoneNumbers.filter((i)=>{
             return  i.name.toLowerCase().includes(n.toLowerCase())
-            
-           
-
         }) 
 
     }

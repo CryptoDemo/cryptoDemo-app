@@ -25,7 +25,7 @@
              items-center">
                   
                 <div class="w-full">
-                    <span class="font-[600] text-sm text-[#64748B] capitalize">Userglory12345</span>
+                    <span class="font-[600] text-sm text-[#64748B] capitalize">{{ pinia.state.user?.username }}</span>
                     <div class="flex items-center mt-[12px] pl-1">
                         <div class="flex justify-between items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -70,13 +70,13 @@
 
                         <h3 class="text-sm text-[#10192D] font-[700] mb-[4px]">Email</h3>
     
-                        <p>wonderfulwonder99@gmail.com</p>
+                        <p>{{ pinia.state.user?.email || 'Add your email ' }}</p>
                     </div>
                     <div class=" pt-[8px]">
 
                         <h3 class="text-sm text-[#10192D] font-[700] mb-[4px]">Phone number</h3>
     
-                        <p>+234 768 7688 899</p>
+                        <p>{{ pinia.state.user?.phone || 'Add your phone number'}}</p>
                     </div>
 
 
@@ -149,3 +149,9 @@
     </div>
 
 </template>
+
+<script setup>
+ 
+ const toast = useToast()
+const pinia = useStore()
+</script>

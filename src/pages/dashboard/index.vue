@@ -94,6 +94,14 @@ definePageMeta({
 
     const toggleCurrentNavMenu =(v)=>{
         useCurrentNavMenu.currentNavMenu = v
+        if( useCurrentNavMenu.currentNavMenu === 'account'){
+            if(useCurrentNavMenu.state.isAuthenticated){
+                useCurrentNavMenu.currentNavMenu = 'account'
+            }else{
+                navigateTo('/login')
+
+            }
+        }
     }
 
     
