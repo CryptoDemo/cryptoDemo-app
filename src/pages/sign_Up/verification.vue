@@ -40,14 +40,15 @@
             
         </div>
 
-        <div   v-show="!isFocused"  class="fixed bottom-5 left-0 w-full px-6" >
+        <div class="fixed bottom-5 left-0 w-full px-6">
 
-            <button @click.prevent="verifyAccount"  class="w-full btn-primary mt-[75px] scaling-animation">
-                <Loader v-if="loading"/>
-                    <span v-else>
-                        Verify
-                    </span>
-                
+            <button :disabled="!recaptchaValid"  @click.prevent="recaptchaValid ? verifyAccount() : null" 
+            class="btn-primary mt-[40px] w-full" :class="!recaptchaValid? 'bg-[#8E9299] text-[#6D7179] hover:bg-[#8E9299] dark:text-[#6D7179]':''">
+
+            <Loader v-if="loading"/>
+                  <span v-else>
+                    Verify
+                  </span>
             </button>
         </div>
         
@@ -70,6 +71,20 @@ const loading = ref(false)
 
 const otpValue = ref('');
 const isFocused = ref(false)
+
+const recaptchaValid = ref(false)
+
+
+watchEffect(()=>{
+
+    if(otpValue.value.length === 4){
+        recaptchaValid.value = true
+    
+    }else{
+        recaptchaValid.value = false
+    }
+
+})
 
 
 
@@ -194,7 +209,7 @@ const verifyAccount = async () => {
   } catch (error) {
     console.error('An error occurred while verifying OTP:', error);
     // Handle error, e.g., display a generic error message to the user
-    toast.message(error, {
+    toast.message(`${error}`, {
         position: 'top',
         timeout: 2000,
        })
@@ -202,6 +217,13 @@ const verifyAccount = async () => {
   }
 
 };
+
+
+watch(()=> otpValue.value, (newVal)=>{
+  if(newVal.length === 4){
+    return verifyAccount()
+  }
+})
 
 </script>
 

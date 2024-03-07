@@ -39,7 +39,7 @@
                         <path d="M14.8302 20.01C14.4102 21.17 13.3002 22 12.0002 22C11.2102 22 10.4302 21.68 9.88018 21.11C9.56018 20.81 9.32018 20.41 9.18018 20C9.31018 20.02 9.44018 20.03 9.58018 20.05C9.81018 20.08 10.0502 20.11 10.2902 20.13C10.8602 20.18 11.4402 20.21 12.0202 20.21C12.5902 20.21 13.1602 20.18 13.7202 20.13C13.9302 20.11 14.1402 20.1 14.3402 20.07C14.5002 20.05 14.6602 20.03 14.8302 20.01Z" :fill="!isDark ?'#10192D':'white'"/>
                         </svg>
                     </span>
-                    <span @click.prevent="pinia.state.isAuthenticated ?  navigateTo('/dashboard/home/profile') : navigateTo('/login')" class=" h-[40px] w-[40px]  dark:bg-[#1B2537] bg-[#F5F9FF] inline-flex justify-center items-center rounded-full">
+                    <span @click.prevent="checkAuthAvaliabilty" class=" h-[40px] w-[40px]  dark:bg-[#1B2537] bg-[#F5F9FF] inline-flex justify-center items-center rounded-full">
     
                         <img src="/home/icon22.png"/>
                     </span>
@@ -81,6 +81,21 @@ const props= defineProps({
     },
 
 })
+
+const checkAuthAvaliabilty =()=>{
+
+    if(pinia.state?.isAuthenticated){
+        navigateTo('/dashboard/home/profile')
+    }else{
+        if(pinia.state.isPinSet){
+            navigateTo('/login/login_with_pin')
+        }else{
+            navigateTo('/login')
+
+        }
+    }
+
+}
 
 
 </script>

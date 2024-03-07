@@ -330,68 +330,86 @@
 
 <script setup>
 
+// Import necessary libraries and modules
 import { NativeBiometric, BiometryType } from "@capgo/capacitor-native-biometric";
-
 import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
-
 import { useDark, useToggle } from '@vueuse/core'
 
+// Define reactive variables and hooks
 let showFingerprint = ref(false);
-// let showdarkMode = ref(false);
-// let showNotification = ref(true);
-
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
 const toast = useToast()
 const pinia = useStore()
-
 const visible = ref(false);
 const isFocused = ref(false)
 
+// Function to open modal
 const openModal = (v) => {
   visible.value = v;
 };
 
-const toggleShowFingerprint = async(v)=>{
+// Function to toggle fingerprint visibility and set credentials
+const toggleShowFingerprint = async (v) => {
+    pinia.state.isFingerprintSet = v;
 
-    pinia.state.isFingerprintSet = v
-
-    console.log(showFingerprint.value)
-
-    try{
+    try {
         const storedUserPassword = await SecureStoragePlugin.get({ key: 'password' });
 
-        if(pinia.state.isFingerprintSet ){
-            NativeBiometric.setCredentials({
-                username:pinia.state.user?.email,
-                password:storedUserPassword.value,
-                server: "http://localhost:3000",
+        if (pinia.state.isFingerprintSet) {
+            const result = await NativeBiometric.isAvailable();
+
+            if (!result.isAvailable) {
+                return toast.message('Biometric authentication is not available on this device.', {
+                    position: 'top',
+                    timeout: 2000,
+                });
+            }
+
+            const isFaceID = result.biometryType == BiometryType.FACE_ID;
+
+            const verified = await NativeBiometric.verifyIdentity({
+                reason: "To access user data",
+                title: "Biometric Authentication",
+                subtitle: "Please authenticate to access your data.",
+            })  .then(() => true)
+               .catch(() => false);
+
+            if (verified) {
+                await NativeBiometric.setCredentials({
+                    username: pinia.state.user?.email,
+                    password: storedUserPassword.value,
+                    server:  `${baseURL}`,
+                }).then();
+                toast.message('Biometric authentication enabled.', {
+                    position: 'top',
+                    timeout: 2000,
+                });
+            } else {
+                toast.message('Biometric authentication activation failed.', {
+                    position: 'top',
+                    timeout: 2000,
+                });
+            }
+        } else {
+            await NativeBiometric.deleteCredentials({
+                server: `${baseURL}`,
             }).then();
-    
-            // pinia.state.isFingerprintSet = true
-    
-        }else{
-    
-            NativeBiometric.deleteCredentials({
-                server: "http://localhost:3000",
-             }).then();
-    
-             pinia.state.isFingerprintSet = false
-    
+            toast.message('Biometric authentication disabled.', {
+                position: 'top',
+                timeout: 2000,
+            });
         }
-
-    }catch(e){
-        console.log(e)
-        toast.message(e, {
+    } catch (e) {
+        console.error('Error during biometric authentication:', e);
+        toast.message('Error during biometric authentication.', {
             position: 'top',
-            timeout: 2000
-        })
+            timeout: 2000,
+        });
     }
-
-
 }
 
-
+// Function to navigate to change pin page
 const change_pin = ()=>{
     if(pinia.state.isPinSet){
         navigateTo('/dashboard/account/change_pin')
@@ -400,17 +418,8 @@ const change_pin = ()=>{
     }
 }
 
-
-
-
-
-
-// const toggleShowNotification =(v)=>{
-//     showNotification.value= v;
-//     console.log(showNotification.value);
-//}
-
 </script>
+
 
 
 

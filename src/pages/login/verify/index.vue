@@ -11,17 +11,28 @@
                 </button>
     
             </div>
+
             
-            <div class=" my-4 p-4">
-           
-                  <h3 class="text-2xl font-bold text-[#10192D]">Enter Verification Code</h3>
-                  <p class="text-sm text-[400] pt-4 text-[#8E9BAE]">Enter the 4-digit code  we just send to your email 
-                    <span class="text-[#10192D]">{{ pinia.state.user?.email }}</span></p>
+            
+            <div  class=" my-4 p-4">
+              
+              <h3 class="text-2xl font-bold text-[#10192D]">Enter Verification Code</h3>
+
+              <p  v-if="!pinia.state.isTwoFactorSet" class="text-sm text-[400] pt-4 text-[#8E9BAE]">Enter the 4-digit code  we just send to your email 
+                <span class="text-[#10192D]">{{ pinia.state.user?.email }}</span></p>
+
+              <p  v-if="pinia.state.isTwoFactorSet"  class=" text-[#8E9BAE] ">Enter the code from your 2FA app</p>
+            </div>
+
+
+             <!-- MazInputCode component for code entry -->
+            <div v-if="pinia.state?.isTwoFactorSet" class="mt-[40px] px-5 flex flex-col justify-center items-center otp2">
+              <MazInputCode v-model="my_pin" outline="" class="text-black dark:text-white" :code-length="6"/>
             </div>
     
     
     
-            <div class="mt-[42px] px-5 flex flex-col justify-center items-center otp">
+            <div v-if="!pinia.state?.isTwoFactorSet" class="mt-[42px] px-5 flex flex-col justify-center items-center otp">
                    
                     <!-- <InputOtp @focusin="isFocused=true" @focusout="isFocused=false"
                     :length="4" @entered=" v => otpValue = v"/>   -->
@@ -40,7 +51,19 @@
 
         <div   v-show="!isFocused"  class="fixed bottom-5 left-0 w-full px-6" >
 
-            <button @click.prevent="verifyAccount"  class="w-full btn-primary mt-[75px] scaling-animation">
+            <button v-if="pinia.state.isTwoFactorSet"
+            :disabled="!recaptchaValid"  @click.prevent="recaptchaValid ? verify2FA() : null"  class="w-full btn-primary mt-[75px] scaling-animation"
+            :class="!recaptchaValid? 'bg-[#8E9299] text-[#6D7179] hover:bg-[#8E9299] dark:text-[#6D7179]':''">
+                <Loader v-if="loading"/>
+                    <span v-else>
+                        Verify
+                    </span>
+                
+            </button>
+
+            <button v-if="!pinia.state.isTwoFactorSet" 
+            :disabled="!recaptchaValid"  @click.prevent="recaptchaValid ? verifyAccount() : null"  class="w-full btn-primary mt-[75px] scaling-animation"
+            :class="!recaptchaValid? 'bg-[#8E9299] text-[#6D7179] hover:bg-[#8E9299] dark:text-[#6D7179]':''">
                 <Loader v-if="loading"/>
                     <span v-else>
                         Verify
@@ -69,10 +92,31 @@ const pinia = useStore()
 const loading = ref(false)
 
 const otpValue = ref('');
+const my_pin = ref('');
 const isFocused = ref(false)
 const countdownSeconds = ref(60); // 30 minutes in seconds
 const userEmail = ref('juliajames@gmail.com');
 
+
+const recaptchaValid = ref(false)
+
+watchEffect(()=>{
+
+    if(otpValue.value.length === 4){
+        recaptchaValid.value = true
+    
+    }else{
+        recaptchaValid.value = false
+    }
+
+    if(my_pin.value.length === 6){
+        recaptchaValid.value = true
+    
+    }else{
+        recaptchaValid.value = false
+    }
+
+})
 
 
 
@@ -120,6 +164,7 @@ try{
     .then(res=>res.json());
     
     console.log(data.message)
+    if(!data.success)return
     countdownSeconds.value = 60;
 
   }catch(error){
@@ -133,6 +178,58 @@ try{
 
   
 };
+
+
+const verify2FA =async()=>{
+
+  const requestValue = {
+        email:  pinia.state.email,
+        code: my_pin.value, 
+    }
+
+    console.log(requestValue)
+
+    loading.value = true
+
+    try {
+    const data = await fetch(`${baseURL}user/verify-2fa`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestValue)
+    })
+    .then(res=>res.json());
+   
+    if (data.success) {
+      
+       loading.value = false
+        const user = data.data
+        pinia.setUser(user)
+
+       
+        navigateTo('/dashboard')
+    } else {
+      console.error('Failed to verify OTP:', data.message);
+      // Handle failed request, e.g., display a generic error message to the user
+      toast.message('Failed to verify OTP', {
+        position: 'top',
+        timeout: 2000,
+       })
+       loading.value = false
+    }
+
+    loading.value = false
+  } catch (error) {
+    console.error('An error occurred while verifying OTP:', error);
+    // Handle error, e.g., display a generic error message to the user
+    toast.message(`${error}`, {
+        position: 'top',
+        timeout: 2000,
+       })
+       loading.value = false
+  }
+}
 
 
 const verifyAccount = async () => {
@@ -188,7 +285,7 @@ const verifyAccount = async () => {
   } catch (error) {
     console.error('An error occurred while verifying OTP:', error);
     // Handle error, e.g., display a generic error message to the user
-    toast.message(error, {
+    toast.message(`${error}`, {
         position: 'top',
         timeout: 2000,
        })
@@ -196,6 +293,20 @@ const verifyAccount = async () => {
   }
 
 };
+
+
+
+watch(()=> otpValue.value, (newVal)=>{
+  if(newVal.length === 4){
+    return verifyAccount()
+  }
+})
+
+watch(()=> my_pin.value, (newVal)=>{
+  if(newVal.length === 6){
+    return verify2FA()
+  }
+})
 
 </script>
 
@@ -221,10 +332,35 @@ const verifyAccount = async () => {
 
 }
 
+.otp2 >>> fieldset{
+   width: 100% !important;
+   display: flex;
+   justify-content: space-between;
+   margin: 0 16px !important;
+}
+.otp2 >>> .input-wrapper{
+   height: 48px !important;
+   width: 48px !important;
+   border-radius: 16px !important;
+   /* border: 1px solid  var(--light-border-color); */
+}
+
+.otp2 >>> input{
+  border: none;
+
+}
+
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
   
   .otp >>> .input-wrapper {
+    background-color: transparent !important; /* Dark mode background color */
+    /* border: 1px solid var(--dark-border-color) ;  */
+  }
+}
+@media (prefers-color-scheme: dark) {
+  
+  .otp2 >>> .input-wrapper {
     background-color: transparent !important; /* Dark mode background color */
     /* border: 1px solid var(--dark-border-color) ;  */
   }

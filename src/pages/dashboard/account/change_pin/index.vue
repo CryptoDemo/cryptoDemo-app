@@ -32,19 +32,26 @@
 
           </div>
   
-          <div v-show="!isFocused" class="fixed bottom-5 left-0 w-full px-6">
-            <button @click.prevent="changePin" class="w-full btn-primary mt-[75px] scaling-animation">
-              <span v-if="reveal === 0">Change PIN</span>
-              <span v-if="reveal === 1">Continue</span>
-              <span v-if="reveal === 2">Save</span>
+          <div  class="fixed bottom-5 left-0 w-full px-6">
+            <button v-if="reveal === 0"  :disabled="!recaptchaValid" @click.prevent="recaptchaValid ? changePin() : null"  class="w-full btn-primary mt-[75px] scaling-animation"
+            :class="!recaptchaValid? 'bg-[#8E9299] text-[#6D7179] hover:bg-[#8E9299] dark:text-[#6D7179]':''">
+              <span >Change PIN</span>
+            </button>
+            <button v-if="reveal === 1"  :disabled="!recaptchaValid2" @click.prevent="recaptchaValid2 ? changePin() : null"  class="w-full btn-primary mt-[75px] scaling-animation"
+            :class="!recaptchaValid? 'bg-[#8E9299] text-[#6D7179] hover:bg-[#8E9299] dark:text-[#6D7179]':''">
+              <span >Continue</span>
+            </button>
+            <button v-if="reveal === 2" :disabled="!recaptchaValid3" @click.prevent="recaptchaValid3 ? changePin() : null"  class="w-full btn-primary mt-[75px] scaling-animation"
+            :class="!recaptchaValid? 'bg-[#8E9299] text-[#6D7179] hover:bg-[#8E9299] dark:text-[#6D7179]':''">
+              <span >Save</span>
             </button>
           </div>
         </div>
       </div>
     </div>
-  </template>
+</template>
   
-  <script setup>
+<script setup>
   import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
   import './assets//css/maz-ui-variables.css'
   import MazInputCode from 'maz-ui/components/MazInputCode'
@@ -53,18 +60,49 @@ const loading = ref(false)
   const isFocused = ref(false);
   const reveal = ref(0);
   const show_successful = ref(false);
-  const my_pin = ref(null);
-  const new_pin = ref(null);
-  const reentered_new_pin = ref(null);
-
+  const my_pin = ref('');
+  const new_pin = ref('');
+  const reentered_new_pin = ref('');
+  const recaptchaValid = ref(false);
+  const recaptchaValid2 = ref(false);
+  const recaptchaValid3 = ref(false);
   const toast = useToast()
+
+  // Watch for changes in the pin inputs
+  watchEffect(() => {
+    if (my_pin.value.length === 4) {
+      recaptchaValid.value = true;
+    } else {
+      recaptchaValid.value = false;
+    }
+   
+  });
+
+  watchEffect(() => {
+
+    if (new_pin.value.length  === 4) {
+      recaptchaValid2.value = true;
+    } else {
+      recaptchaValid2.value = false;
+    }
+   
+  });
+  
+  watchEffect(() => {
+
+    if (reentered_new_pin.value.length === 4) {
+      recaptchaValid3.value = true;
+    } else {
+      recaptchaValid3.value = false;
+    }
+  });
   
   const changePin = async () => {
     loading.value = true
     if (reveal.value === 0) {
       // Check if the entered PIN matches the stored PIN
       const storedPin = await SecureStoragePlugin.get({ key: 'pin' });
-      if (storedPin.value !== my_pin.value) {
+      if (storedPin?.value !== my_pin?.value) {
 
         toast.message('Incorrect current PIN. Please try again.', {
         position: 'top',
@@ -78,7 +116,7 @@ const loading = ref(false)
       reveal.value++;
     } else if (reveal.value === 2) {
       // Check if the new PIN and re-entered new PIN match
-      if (new_pin.value !== reentered_new_pin.value) {
+      if (new_pin?.value !== reentered_new_pin?.value) {
 
         toast.message('New PIN and re-entered PIN do not match. Please try again.', {
         position: 'top',

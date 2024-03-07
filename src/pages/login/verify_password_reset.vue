@@ -21,10 +21,12 @@
     
     
     
-            <div class="mt-[42px] px-5 flex flex-col justify-center items-center ">
+            <div class="mt-[42px] px-5 flex flex-col justify-center items-center otp">
                    
-                    <InputOtp @focusin="isFocused=true" @focusout="isFocused=false"
-                    :length="4" @entered=" v => otpValue = v"/>  
+                    <!-- <InputOtp @focusin="isFocused=true" @focusout="isFocused=false"
+                    :length="4" @entered=" v => otpValue = v"/>   -->
+                    <MazInputCode @focusin="isFocused=true" @focusout="isFocused=false"  v-model="otpValue"  outline=""  class="text-black dark:text-white"/>
+
                         
                     <p v-if="countdownSeconds === 0" class="mt-[38px] text-center">
                         <button @click.prevent="resendCode" class="text-[#2873FF] font-[600]">Resend code</button>  in 
@@ -38,15 +40,17 @@
             
         </div>
 
-        <div   v-show="!isFocused"  class="fixed bottom-5 left-0 w-full px-6" >
 
-            <button @click.prevent="verifyAccount"  class="w-full btn-primary mt-[75px] scaling-animation">
-                <Loader v-if="loading"/>
-                    <span v-else>
-                        Verify
-                    </span>
-                
-            </button>
+        <div class="fixed bottom-5 left-0 w-full px-6">
+
+          <button :disabled="!recaptchaValid"  @click.prevent="recaptchaValid ? verifyAccount() : null" 
+          class="btn-primary mt-[40px] w-full" :class="!recaptchaValid? 'bg-[#8E9299] text-[#6D7179] hover:bg-[#8E9299] dark:text-[#6D7179]':''">
+
+          <Loader v-if="loading"/>
+                <span v-else>
+                  Verify
+                </span>
+          </button>
         </div>
         
     </div>
@@ -60,6 +64,9 @@
 import { ref, watch, computed } from "vue";
 import {baseURL} from "@/composables/configs"
 import {useStore} from "@/stores/index"
+import './assets//css/maz-ui-variables.css'
+import MazInputCode from 'maz-ui/components/MazInputCode'
+
 const toast = useToast()
 
 const pinia = useStore()
@@ -70,6 +77,19 @@ const otpValue = ref('');
 const isFocused = ref(false)
 const countdownSeconds = ref(60); // 30 minutes in seconds
 const userEmail = ref('juliajames@gmail.com');
+
+const recaptchaValid = ref(false)
+
+watchEffect(()=>{
+
+    if(otpValue.value.length === 4){
+        recaptchaValid.value = true
+    
+    }else{
+        recaptchaValid.value = false
+    }
+
+})
 
 const countdownDisplay = computed(() => {
   const minutes = Math.floor(countdownSeconds.value / 60);
@@ -181,7 +201,7 @@ const verifyAccount = async () => {
   } catch (error) {
     console.error('An error occurred while verifying OTP:', error);
     // Handle error, e.g., display a generic error message to the user
-    toast.message(error, {
+    toast.message('Invalid OTP', {
         position: 'top',
         timeout: 2000,
        })
@@ -190,4 +210,72 @@ const verifyAccount = async () => {
 
 };
 
+
+
+watch(()=> otpValue.value, (newVal)=>{
+  if(newVal.length === 4){
+    return verifyAccount()
+  }
+})
+
 </script>
+
+
+<style scoped>
+
+
+.otp >>> fieldset{
+   width: 100% !important;
+   display: flex;
+   justify-content: space-between;
+   margin: 0 16px !important;
+}
+.otp >>> .input-wrapper{
+   height: 56px !important;
+   width: 56px !important;
+   border-radius: 16px !important;
+   /* border: 1px solid  var(--light-border-color); */
+}
+
+.otp >>> input{
+  border: none;
+
+}
+
+.otp2 >>> fieldset{
+   width: 100% !important;
+   display: flex;
+   justify-content: space-between;
+   margin: 0 16px !important;
+}
+.otp2 >>> .input-wrapper{
+   height: 48px !important;
+   width: 48px !important;
+   border-radius: 16px !important;
+   /* border: 1px solid  var(--light-border-color); */
+}
+
+.otp2 >>> input{
+  border: none;
+
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  
+  .otp >>> .input-wrapper {
+    background-color: transparent !important; /* Dark mode background color */
+    /* border: 1px solid var(--dark-border-color) ;  */
+  }
+}
+@media (prefers-color-scheme: dark) {
+  
+  .otp2 >>> .input-wrapper {
+    background-color: transparent !important; /* Dark mode background color */
+    /* border: 1px solid var(--dark-border-color) ;  */
+  }
+}
+
+
+
+</style>

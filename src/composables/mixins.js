@@ -20,6 +20,10 @@ export const filterV =(n,filteredItem)=>{
 
 }
 
+export const filterByKey = (key,arr) =>{
+  return arr.filter((arr,index,self)=>index===self.findIndex((t)=> (t[key]===arr[key])))
+}
+
 
 
 export const validEmail = (email) => {

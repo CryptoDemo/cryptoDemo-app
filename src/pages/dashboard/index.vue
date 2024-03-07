@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen  overflow-y-auto bg-[#ffff]   dark:bg-[#10192D]">
+    <div ref="headerSection" class="h-screen  overflow-y-auto bg-[#ffff]   dark:bg-[#10192D]">
 
 
             <home v-if="useCurrentNavMenu.currentNavMenu === 'home'" />
@@ -42,6 +42,7 @@ import account from "@/pages/dashboard/account/index.vue";
 
 import { useStore } from "@/stores/index"
 
+const headerSection = ref(null)
 const useCurrentNavMenu = useStore()
 
 defineComponent({
@@ -60,7 +61,8 @@ definePageMeta({
 
 //   const currentNavMenu = ref("home")
    
-  
+const pinia = useStore()
+
 
 
    const navItems = [
@@ -103,6 +105,33 @@ definePageMeta({
             }
         }
     }
+
+    onBeforeMount(()=>{
+
+        watch(()=>  useCurrentNavMenu.currentNavMenu,(newval)=>{
+    
+            if( newval === 'account'){
+    
+                if(useCurrentNavMenu.state.isAuthenticated){
+                    useCurrentNavMenu.currentNavMenu = 'account'
+                }else{
+                    useCurrentNavMenu.currentNavMenu = 'home'
+                    if(pinia.state.isPinSet){
+
+                        navigateTo('/login/login_with_pin')
+                    }else{
+
+                        navigateTo('/login')
+                    }
+    
+                }
+    
+            }
+        } )
+    })
+
+
+    const router = useRouter()
 
     
 </script>

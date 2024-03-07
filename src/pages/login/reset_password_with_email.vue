@@ -29,10 +29,22 @@
 
             </div>
     
-
+<!-- 
             <div v-show="!isFocused"  class="fixed w-full left-0 bottom-5 px-6">
                 <button @click.prevent="reset_password"  class="w-full btn-primary scaling-animation
-               mt-[24px] ">Continue</button>
+               mt-[24px] "></button>
+            </div> -->
+
+            <div class="fixed bottom-5 left-0 w-full px-6">
+
+              <button :disabled="!recaptchaValid"  @click.prevent="recaptchaValid ? reset_password() : null" 
+              class="btn-primary mt-[40px] w-full" :class="!recaptchaValid? 'bg-[#8E9299] text-[#6D7179] hover:bg-[#8E9299] dark:text-[#6D7179]':''">
+
+              <Loader v-if="loading"/>
+                    <span v-else>
+                      Continue
+                    </span>
+              </button>
             </div>
         </div>
 
@@ -54,6 +66,26 @@ const pinia = useStore()
 
 const email = ref('')
 const loading = ref(false)
+
+
+const recaptchaValid = ref(false)
+
+
+
+
+watchEffect(()=>{
+
+    if(email.value.length){
+        recaptchaValid.value = true
+    
+    }else{
+        recaptchaValid.value = false
+    }
+
+})
+
+
+
 
 const reset_password = async() => {
    loading.value = true

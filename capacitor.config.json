@@ -11,5 +11,49 @@
       "android"
     ]
   
-  }
+  },
+  "plugins":{
+    "BiometricAuth": {
+      "android": {
+        "promptTitle": "Authenticate with fingerprint"
+      },
+      "ios": {
+        "promptTitle": "Authenticate with Face ID"
+      }
+    },
+  
+    "PushNotifications": {
+      "presentationOptions": {
+        "badge":{},
+        "sound":{
+          "name": "my-custom-sound.mp3",
+          "fileName": "my-custom-sound.mp3",
+          "volume": "1"
+        },
+        "alert":{}
+        }
+    },
+    "GoogleAuth": {
+      "scopes": ["profile", "email"],
+      "serverClientId": "YOUR_WEB_OAUTH_CLIENT_ID",
+      "forceCodeForRefreshToken": true
+    },
+    "share": {
+      "android": {
+        "fileProvider": "com.inhouse.codes.oncall.fileprovider"
+      }
+    },
+    "Keyboard": {
+      "resize": "body",
+      "style": "DARK",
+      "resizeOnFullScreen": true
+    },
+    "PrivacyScreen": {
+      "enable": true,
+      "imageName": "Splashscreen"
+    },
+      
+    "@danyalwe/capacitor-sensors": {},
+    "@capacitor/screen-orientation": {}
+    }
 }

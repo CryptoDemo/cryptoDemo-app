@@ -27,8 +27,8 @@
 
                 <div class="mb-4">
                        
-                      <InputPassword  @password="v => password = v"   @focusin="isFocused=true" @focusout="isFocused=false" 
-                      placeholder="Enter new password"/>
+                      <InputPasswordValidation  @password="v => password = v"   @focusin="isFocused=true" @focusout="isFocused=false" 
+                      placeholder="Enter new password" :errorlog="checkValidPassword"/>
                 </div>
 
                 <div class="">
@@ -38,28 +38,32 @@
                          password !== newPassword ? error_message = true : error_message = false;" 
                        placeholder="Retype  password" :errorlog="errorlog"/>
 
-                       <!-- <Transition
+                       <Transition
                             leave-active-class="transition-all duration-200 ease-in"
                             leave-from-class="translate-y-0 opacity-100"
                             leave-to-class="-translate-y-5 opacity-0"
                         >
-                            <span v-if="error_message" class="text-[#E33E38] mt-[8px]  text-[12px]
+                            <span v-if="errorlog.length" class="text-[#E33E38] mt-[8px]  text-[12px]
                             ml-2 at-item font-[500]" > password did not match </span>
-                        </Transition> -->
+                        </Transition>
 
                 </div>
 
               </form>
            
-             <div v-show="!isFocused"     class="fixed bottom-5 left-0 w-full px-6">
-               <button @click.prevent="change_password"  class="w-full btn-primary mt-[40px] scaling-animation">
-               
-                <Loader v-if="loading"/>
+            
+
+            <div class="fixed bottom-5 left-0 w-full px-6">
+
+              <button :disabled="!recaptchaValid"  @click.prevent="recaptchaValid ? change_password() : null" 
+              class="btn-primary mt-[40px] w-full" :class="!recaptchaValid? 'bg-[#8E9299] text-[#6D7179] hover:bg-[#8E9299] dark:text-[#6D7179]':''">
+
+              <Loader v-if="loading"/>
                     <span v-else>
                       Create new password
                     </span>
               </button>
-             </div>
+            </div>
         </div>
 
     </div>
@@ -77,6 +81,9 @@ import { useStore } from '@/stores/index'
   const showPassword2 =ref(false)
   const isFocused =ref(false)
 
+  const checkValidPassword = ref(true)
+  const checkValidPassword2 = ref(true)
+
   const error_message = ref(false)
 
   const loading = ref(false)
@@ -86,6 +93,44 @@ const toast = useToast()
 const pinia = useStore()
 
 const errorlog = ref('')
+
+
+const recaptchaValid = ref(false)
+
+
+
+
+watchEffect(()=>{
+
+    if(password.value.length && newPassword.value.length){
+        recaptchaValid.value = true
+    
+    }else{
+        recaptchaValid.value = false
+    }
+
+})
+
+
+
+// watch if the password is valid
+watch(()=> newPassword.value ,(newval)=>{
+    if(verifyPasswordPattern(newval)){
+        checkValidPassword2.value = true
+    }else{
+        checkValidPassword2.value = false
+
+    }
+})
+// watch if the password is valid
+watch(()=> password.value ,(newval)=>{
+    if(verifyPasswordPattern(newval)){
+        checkValidPassword.value = true
+    }else{
+        checkValidPassword.value = false
+
+    }
+})
    
 const togglePassword1Visibility =()  =>{
     showPassword1.value = !showPassword1.value;
@@ -106,15 +151,17 @@ const  check_password_match = () =>{
 
 const change_password = async()=>{
 
-    if(password.value !== newPassword.value) return   errorlog.value = `border-red-500`
+    if(password.value !== newPassword.value) return   errorlog.value = `border-[#E33E38] focus:border-[#E33E38]  focus:ring-[#E33E38] dark:border-[#E33E38] dark:focus:border-[#E33E38]  dark:focus:ring-[#E33E38]`
 
     loading.value = true
 
     const password_info = {
       email: pinia.state.email,
-      code: pinia.state.code,
+      code: pinia.state?.codeInput,
       password: password.value
     }
+
+    console.log(password_info)
 
     try{
     const data = await fetch(`${baseURL}auth/change-password`, {
@@ -139,6 +186,8 @@ const change_password = async()=>{
         position: 'top',
         timeout: 2000,
       })
+
+      loading.value = false
 
     }
   

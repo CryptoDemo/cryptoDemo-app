@@ -8,6 +8,9 @@
 
 <script setup>
 const { $gsap: gsap, $Draggable: Draggable } = useNuxtApp();
+
+
+
 </script>
 
 

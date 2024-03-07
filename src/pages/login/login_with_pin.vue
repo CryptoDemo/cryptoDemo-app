@@ -1,54 +1,57 @@
 <template>
-    <div class="px-[24px]  h-screen overflow-y-auto bg-white dark:bg-[#10192D] transition ease-linear duration-300">
-       
-        <SignupAppBar link="/login" referral_link="/login" referral="Login with email"/>
+  <!-- Main container with background color and transition -->
+  <div class="px-[24px]  h-screen overflow-y-auto bg-white dark:bg-[#10192D] transition ease-linear duration-300">
+     
+      <!-- Include the signup app bar component -->
+      <SignupAppBar link="" referral_link="/login" referral="Login with email"/>
 
+      <!-- Container for the login section -->
+      <div class="text-left px-4">
 
+          <!-- Sub-app bar with login heading and description -->
+          <Subappbar  heading="Login" 
+          desc="Enter your pin to open app or touch the fingerprint sensor "
+          />
 
-        <div class="text-left px-4">
+      </div>
 
-            <Subappbar  heading="Login" 
-            desc="Enter your pin to open app or touch the fingerprint sensor "
-            />
+      <!-- Container for OTP input -->
+      <div class="mt-[42px] px-5 flex flex-col justify-center items-center otp">
+                 
+          <!-- Input field for entering OTP -->
+          <!-- <InputOtp :length="4" @entered=" v => otpvalue = v"/>   -->
+          <MazInputCode @focusin="isFocused=true" @focusout="isFocused=false"  v-model="code"  outline=""  class="text-black dark:text-white"/>
+                     
+      </div>
 
-         </div>
+      <!-- Button for login -->
+      <button  :disabled="!recaptchaValid"  @click.prevent="recaptchaValid ? login() : null"  class=" btn-primary mt-[32px] w-full scaling-animation"
+      :class="!recaptchaValid? 'bg-[#8E9299] text-[#6D7179] hover:bg-[#8E9299] dark:text-[#6D7179]':''">
+          <!-- Loader icon when loading -->
+          <Loader v-if="loading"/>
+          <!-- Text to display when not loading -->
+          <span v-else>
+              Login
+          </span>
+      </button>
 
-         <div class="mt-[42px] px-5 flex flex-col justify-center items-center otp">
-                   
-              <!-- <InputOtp :length="4" @entered=" v => otpvalue = v"/>   -->
-                <MazInputCode @focusin="isFocused=true" @focusout="isFocused=false"  v-model="code"  outline=""  class="text-black dark:text-white"/>
-                       
-   
-           </div>
+      <!-- Container for forgot pin link -->
+      <div class="flex justify-end w-full  mt-6">
+          <a @click.prevent="openModal" href="#" 
+          class="text-[#2873FF] text-[14px] font-bold hover:underline dark:text-[#2873FF]">Forgot Pin?</a>
+      </div>
 
+      <!-- Container for fingerprint icon -->
+      <div v-if="pinia.state.isFingerprintSet" class="flex items-center justify-center pt-[6px]">
+          <!-- Fingerprint icon for biometric verification -->
+          <iconsFingerprint @click.prevent="performBiometricVerification"/>    
+      </div>
 
-            <button @click.prevent="login"  class=" btn-primary mt-[32px] w-full scaling-animation">
-                        <Loader v-if="loading"/>
-                        <span v-else>
-                          Login
-                        </span>
-            </button>
-
-            <div class="flex justify-end w-full  mt-6">
-                      
-                      <a @click.prevent="openModal" href="#" 
-                      class="text-[#2873FF] text-[14px] font-bold hover:underline dark:text-[#2873FF]">Forgot Pin?</a>
-                   
-            </div>
-
-
-             <div v-if="pinia.state.isFingerprintSet" class="flex items-center justify-center pt-[6px]">
-                  <iconsFingerprint @click.prevent="performBiometricVerification"/>    
-             </div>
-
-
-             <Modal @open="visible"  :visible="visible"  btn1="Sign out" btn2="Cancel"
-             desc="To reset your pin; Sign out, login  and set up a new pin"/>
-
-    </div>
-
+      <!-- Modal for resetting pin -->
+      <Modal @open="visible"  :visible="visible"  btn1="Sign out" btn2="Cancel"
+      desc="To reset your pin; Sign out, login  and set up a new pin"/>
+  </div>
 </template>
-
 
 
 <script setup>
@@ -66,6 +69,23 @@ const code = ref(''); //collecting th otp pin values
 
 const loading = ref(false)
 
+
+const recaptchaValid = ref(false)
+
+
+
+
+watchEffect(()=>{
+
+    if(code.value.length === 4){
+        recaptchaValid.value = true
+    
+    }else{
+        recaptchaValid.value = false
+    }
+
+})
+
 const openModal = () => {
   visible.value = !visible.value;
 };
@@ -73,6 +93,13 @@ const openModal = () => {
 const device =  await deviceInfo()
 
 const login = async () => {
+
+  delete device.memUsed
+    delete device?.diskFree
+    delete device?.diskTotal
+    delete  device.realDiskFree
+    delete device.realDiskTotal
+  delete device.webViewVersion
 
   loading.value = true
 
@@ -113,10 +140,14 @@ const login = async () => {
 
         if(data.success){
 
-          const user = data.data
-          pinia.setUser(user)
-      
-          navigateTo('/dashboard')
+          if(data.data === null){
+             navigateTo('/login/verify')
+          }else{
+            const user = data.data
+            pinia.setUser(user)
+            navigateTo('/dashboard')
+          }
+
         }else{
           toast.message(`${data.message}`, {
             position: 'top',
@@ -162,6 +193,35 @@ const Forgot_pin = async()=>{
 }
 
 
+onMounted(async()=>{
+
+  try{
+    const result = await NativeBiometric.isAvailable();
+
+if (!result.isAvailable){
+  const info =  toast.message('Biometric authentication is not available on this device.', {
+    position: 'top',
+    timeout: 2000,
+  })
+  
+  pinia.state.isFingerprintSet = false
+  
+  return  
+   
+};
+
+
+  }catch(error){
+    console.log(error)
+   
+
+        pinia.state.isFingerprintSet = false
+
+  }
+
+})
+
+
 const performBiometricVerification = async () => {
   try {
     const result = await NativeBiometric.isAvailable();
@@ -177,55 +237,74 @@ const performBiometricVerification = async () => {
 
     const isFaceID = result.biometryType == BiometryType.FACE_ID;
 
-    isFaceID
+    // isFaceID
 
     const verified = await NativeBiometric.verifyIdentity({
       reason: "To access user data",
       title: "Biometric Authentication",
       subtitle: "Please authenticate to access your data.",
-    });
+    })  .then(() => true)
+    .catch(() => false);
 
-    if (!verified) return;
+    if (verified){
 
-    const credentials = await NativeBiometric.getCredentials({
-      server: "http://localhost:3000",
-    });
 
-    const login_info = {
-      email:  credentials.username,
-      password : credentials.password,
-      device_info: JSON.stringify(device),
+      const credentials = await NativeBiometric.getCredentials({
+        server: `${baseURL}`,
+      });
+
+      delete device.memUsed
+        delete device?.diskFree
+        delete device?.diskTotal
+        delete  device.realDiskFree
+        delete device.realDiskTotal
+      delete device.webViewVersion
+      
+      const login_info = {
+        email:  credentials.username,
+        password : credentials.password,
+        device_info: JSON.stringify(device),
+      }
+  
+  
+      const data = await fetch(`${baseURL}auth/sign-in`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // 'x-access-token' : `${pinia.state.user?.token}`
+        },
+  
+        body: JSON.stringify(login_info)
+  
+        })
+          .then(res=>res.json());
+  
+          console.log(data.message)
+          // loading.value = false
+  
+          if(data.success){
+  
+            if(data.data === null){
+             navigateTo('/login/verify')
+            }else{
+              const user = data.data
+              pinia.setUser(user)
+              navigateTo('/dashboard')
+            }
+          }else{
+            toast.message(`${data.message}`, {
+              position: 'top',
+              timeout: 2000
+          })
+        }
+    }else{
+      toast.message('Authentication failed', {
+              position: 'top',
+              timeout: 2000
+          })
+
     }
 
-    console.log(login_info)
-
-    const data = await fetch(`${baseURL}auth/sign-in`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // 'x-access-token' : `${pinia.state.user?.token}`
-      },
-
-      body: JSON.stringify(login_info)
-
-      })
-        .then(res=>res.json());
-
-        console.log(data.message)
-        // loading.value = false
-
-        if(data.success){
-
-          const user = data.data
-          pinia.setUser(user)
-      
-          navigateTo('/dashboard')
-        }else{
-          toast.message(`${data.message}`, {
-            position: 'top',
-            timeout: 2000
-        })
-      }
 
     // alert('Successful');
 

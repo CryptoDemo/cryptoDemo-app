@@ -193,8 +193,18 @@ export default {
     setTimeout(() => {
       this.showSplashScreen = false;
     }, 4000);
+    
+    if( useStore().state.user){
+        if(this.pinValue){
+                      navigateTo('/login/login_with_pin')  
+                }else{
+                        navigateTo('/login')
+                }
+    }
+    
+
        
-  },
+  }
   
  
 };

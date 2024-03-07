@@ -23,8 +23,8 @@
 
                 <div class="">
                     
-                    <InputPassword  placeholder="New password"  @password="v => new_password = v"
-                    @focusin="isFocused=true" @focusout="isFocused=false"/>
+                    <InputPasswordValidation  placeholder="New password"  @password="v => new_password = v"
+                    @focusin="isFocused=true" @focusout="isFocused=false" :errorlog="checkValidPassword"/>
 
                 </div>
 
@@ -33,7 +33,8 @@
 
                 <div v-show="!isFocused" class="fixed bottom-5 left-0 w-full px-6">
 
-                    <button :disabled="!recaptchaValid"  @click.prevent="recaptchaValid ? updatePassword() : null"   class="w-full btn-primary  scaling-animation">
+                    <button :disabled="!recaptchaValid"  @click.prevent="recaptchaValid ? updatePassword() : null"   class="w-full btn-primary  scaling-animation"
+                    :class="!recaptchaValid? 'bg-blue-400  hover:bg-blue-400':''">
                        
                         <Loader v-if="loading"/>
                             <span v-else>
@@ -61,6 +62,9 @@ const recaptchaValid = ref(false)
 const old_password = ref('')
 const new_password = ref('')
 
+const checkValidPassword = ref(true)
+
+
 
 const loading = ref(false)
 
@@ -70,6 +74,18 @@ const toggle_show_successful = ()=>{
         navigateTo('/dashboard')
     }, 1000);
 }
+
+
+// watch if the password is valid
+watch(()=> new_password.value ,(newval)=>{
+    if(verifyPasswordPattern(newval)){
+        checkValidPassword.value = true
+    }else{
+        checkValidPassword.value = false
+
+    }
+})
+
 
 
 
@@ -117,20 +133,7 @@ if(data.success){
 
     loading.value = false
 
-    if(data.data === null){
-
-        // navigateTo('/account/update_username/verify')
-      
-       return  toggle_show_successful()
-
-    }else{
-
-        const user = (data.data)
-
-        pinia.setUser(user)
-
         toggle_show_successful()
-    }
 
 
 }else{

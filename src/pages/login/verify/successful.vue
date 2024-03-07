@@ -9,7 +9,7 @@
             </div>
             <div class=" h-[25vh] text-center">
                 <h2 class="text-2xl text-[#10192D] font-extrabold">You’re verified!</h2>
-                <p class="text-[#8E9BAE] font-[400] mt-2">You have been succes fully verified</p>
+                <p class="text-[#8E9BAE] font-[400] mt-2">You have been succesfully verified</p>
             </div>
             <div class="fixed bottom-5 left-0 w-full px-6">
                 <button  @click.prevent="navigateTo('/dashboard')" class="btn-border w-full scaling-animation">Proceed</button>

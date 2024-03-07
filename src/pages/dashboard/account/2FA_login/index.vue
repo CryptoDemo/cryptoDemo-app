@@ -19,7 +19,7 @@
                 <span class="text-[#10192D]   dark:text-[#F8FAFC] ml-[22px] text-sm font-semibold capitalize">none</span>
             </div>
 
-            <svg v-if="show_checked"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <svg v-if="!pinia.state.isTwoFactorSet"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path
                         d="M5 12L10 17L20 7"
                         stroke="#2873FF"
@@ -80,7 +80,7 @@
             </div>
         </div>
 
-        <Modal @open="visible"  :visible="visible"  btn1="cancel" btn2="confirm" 
+        <Modal @open="v => visible = v"  :visible="visible"  btn1="cancel" btn2="confirm"  value="2FA"
         desc="By selecting this method, your current two factor authentication method will be disabled "/>
 
 
@@ -90,13 +90,17 @@
 <script setup>
 import { useDark, useToggle } from '@vueuse/core'
 
+const pinia = useStore()
+
 const isDark = useDark()
 const show_checked = ref(false)
 const visible = ref(false)
 
 const openModal = () => {
-  visible.value = !visible.value;
-  show_checked.value = !show_checked.value
+    if(pinia.state.isTwoFactorSet){
+        visible.value = !visible.value;
+    }
+    return
 };
     
 const toggle_show_checked = ()=>{

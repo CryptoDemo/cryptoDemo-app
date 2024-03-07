@@ -3,7 +3,7 @@
 <div class="dark:bg-[#10192D] bg-white fixed w-full top-0 left-0 px-6 py-[10px]">
 
     <div class="flex justify-between items-center dark:bg-[#10192D]">
-        <button @click.prevent="navigateTo('/dashboard')" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
+        <button @click.prevent="!(props.link.length) ? navigate() : navigateTo(`${props.link}`)" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
         items-center me-2 text-black dark:bg-[#1B2537] dark:text-white">
             <Icon name="mdi:arrow-left" size="24"/>
         </button>
@@ -22,6 +22,8 @@
 </template>
 
 <script setup>
+
+const pinia = useStore()
 
 const show_referral_input = ref(false)
 
@@ -50,5 +52,15 @@ const toggle_referral =()=>{
 // watch(()=> show_referral_input.value ,(newVal)=>{
 //   emitprops('toggle_referral',newVal)
 // })
+
+
+const navigate = ()=>{
+
+if(pinia.state.user){
+    pinia.clearUser()
+}
+navigateTo('/dashboard')
+
+}
 
 </script>

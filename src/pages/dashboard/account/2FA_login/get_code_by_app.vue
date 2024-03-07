@@ -49,7 +49,8 @@
       <!-- QR Code display -->
       <div v-if="reveal === 1" class="mt-[32px] flex items-center justify-center">
         <div class="w-[192px] h-[191px] flex justify-center items-center text-center">
-          <MazLazyImg class="w-full dark:text-[#8E9BAE] dark:bg-[#1B2537]" :src="qrcode" />
+          <!-- <MazLazyImg class="w-full dark:text-[#8E9BAE] dark:bg-[#1B2537]" :src="qrcode" /> -->
+          <div v-html="two_factor_val.auth_url_img"></div>
         </div>
       </div>
   
@@ -60,7 +61,7 @@
   
       <!-- Continue button -->
       <div class="fixed bottom-5 left-0 w-full px-6">
-        <button @click.prevent="authenticate" class="btn-primary mt-[57px] w-full">
+        <button @click.prevent="authenticate()" class="btn-primary mt-[57px] w-full">
             
             <span v-show="reveal === 1">Continue</span>
             <span v-show="reveal === 2">
@@ -89,9 +90,12 @@
   const pinia = useStore()
   const toast = useToast()
 
-  const qrcode = useQRCode(pinia.state.twoFactor?.auth_url_img[0])
-  const code_input = ref(pinia.state.twoFactor?.code)
-  const selected_code = ref(pinia.state.twoFactor?.code)
+  const  two_factor_val = ref([])
+  
+  const code_input = ref('')
+ 
+  console.log(code_input.value)
+  const selected_code = ref(null)
   const { text, copy, copied } = useClipboard({ selected_code })
   
   const my_pin = ref('')
@@ -99,29 +103,13 @@
   const isFocused = ref(false)
   const loading = ref(false)
   const countdownSeconds = ref(60)
-  
-  // Computed property for countdown display
-//   const countdownDisplay = computed(() => {
-//     const minutes = Math.floor(countdownSeconds.value / 60);
-//     const seconds = countdownSeconds.value % 60;
-//     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-//   });
-  
-//   // Countdown timer
-//   const countdownTimer = setInterval(() => {
-//     if (countdownSeconds.value > 0) {
-//       countdownSeconds.value--;
-//     }
-//   }, 1000);
-  
-//   // Watcher for countdownSeconds
-//   watch(countdownSeconds.value, (newValue) => {
-//     if (newValue === 0) {
-//       clearInterval(countdownTimer);
-//     }
-//   });
+
+
+
   
   // Method to handle show successful
+  
+  
   const toggle_show_successful = ()=>{
        show_successful.value = true
        setTimeout(() => {
@@ -132,96 +120,146 @@
   // Method to handle authentication process
   const authenticate = async() => {
     if (reveal.value === 1) {
-      if (pinia.state.twoFactor.length) return;
+      if (!pinia.state.twoFactor.length) return;
       return reveal.value++;
     } else if (reveal.value === 2) {
         const requestValue = {
-        email:  pinia.state.user.email,
-        phone: pinia.state.user.phone,
+        email:  pinia.state.user?.email,
+        phone: pinia.state.user?.phone,
         code: my_pin.value, 
-    }
+        }
 
        console.log(requestValue)
 
-    loading.value = true
+       loading.value = true
 
-    try {
-    const data = await fetch(`${baseURL}user/verify-2fa`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(requestValue)
-    })
-    .then(res=>res.json());
-   
-    if (data.success) {
-      if (data.message === 'success') {
-        console.log('Verification successful. Proceed with account verification.');
-        // Handle successful verification, e.g., navigate to the next page
-        loading.value = false
-        pinia.state.isTwoFactorSet = true
-       
-        toggle_show_successful()
+        try {
+            const data = await fetch(`${baseURL}user/verify-2fa`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestValue)
+            })
+            .then(res=>res.json());
+        
+            if (data.success) {
+            if (data.message === 'success') {
+                console.log('Verification successful. Proceed with account verification.');
+                // Handle successful verification, e.g., navigate to the next page
+                loading.value = false
+                pinia.state.isTwoFactorSet = true
+            
+                toggle_show_successful()
 
 
-      } else {
-        console.error('Invalid OTP. Please enter the correct verification code.');
-        // Handle invalid OTP, e.g., display an error message to the user
-        toast.message('Invalid OTP. Please enter the correct verification code.', {
-        position: 'top',
-        timeout: 2000,
-        })
+            } else {
+                console.error('Invalid OTP. Please enter the correct verification code.');
+                // Handle invalid OTP, e.g., display an error message to the user
+                toast.message('Invalid OTP. Please enter the correct verification code.', {
+                position: 'top',
+                timeout: 2000,
+                })
 
-    }
-      loading.value = false
-    } else {
-      console.error('Failed to verify OTP:', data.message);
-      // Handle failed request, e.g., display a generic error message to the user
-      toast.message('Failed to verify OTP', {
-        position: 'top',
-        timeout: 2000,
-       })
-       loading.value = false
-    }
+            }
+            loading.value = false
+            } else {
+            console.error('Failed to verify OTP:', data.message);
+            // Handle failed request, e.g., display a generic error message to the user
+            toast.message('Failed to verify OTP', {
+                position: 'top',
+                timeout: 2000,
+            })
+            loading.value = false
+            }
 
-    loading.value = false
-  } catch (error) {
-    console.error('An error occurred while verifying OTP:', error);
-    // Handle error, e.g., display a generic error message to the user
-    toast.message(error, {
-        position: 'top',
-        timeout: 2000,
-       })
-       loading.value = false
-  }
+            loading.value = false
+        } catch (error) {
+            console.error('An error occurred while verifying OTP:', error);
+            // Handle error, e.g., display a generic error message to the user
+            toast.message(error, {
+                position: 'top',
+                timeout: 2000,
+            })
+            loading.value = false
+        }
     } else {
       navigateTo('/dashboard');
     }
   }
+
+
+
+  onBeforeMount(async()=>{
+
+    if(pinia.state.twoFactor !== null){
+ 
+       two_factor_val.value = pinia.state.twoFactor[0]
+
+       code_input.value = two_factor_val.value.code
+       selected_code.value = two_factor_val.value.code
+       pinia.state.isTwoFactorSet = true
+ 
+    }else{
+ 
+      try{
+      const data = await fetch(`${baseURL}user/init-2fa`, {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json',
+          'x-access-token' : `${pinia.state.user?.token}`
   
-  // Method to resend code
-  const resendCode = async () => {
-    try {
-      const data = await fetch(`${baseURL}auth/resend-email-code`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email: pinia.state.email
-        })
-      }).then(res => res.json());
+      }
+      })
+      .then(res=>res.json());
   
-      countdownSeconds.value = 60;
-    } catch (error) {
-      console.error('Error during resending of OTP code:', error);
-      toast.message(error, {
-        position: 'top',
-        timeout: 2000,
-      });
+  
+      if(data.success){
+
+        pinia.state.isTwoFactorSet = true
+  
+          loading.value = false
+          const two_factor = [...data.data]
+  
+           two_factor.map((item,index)=>{
+                 if(item.code==two_factor_val.value.code){
+                   two_factor[index] = two_factor_val.value;
+                 }
+             });
+ 
+            
+ 
+ 
+           pinia.setTwoFactor(two_factor)
+  
+  
+      }else{
+          toast.message(`${data.message}`, {
+          position: 'top',
+          timeout: 2000,
+          })
+      }
+  
+       }catch(error){
+           toast.message(error, {
+               position: 'top',
+               timeout: 2000,
+           })
+       }
     }
-  };
+
+  
+  })
+
+  
+  
+
+
+
+
+
+
+
   </script>
   
 
