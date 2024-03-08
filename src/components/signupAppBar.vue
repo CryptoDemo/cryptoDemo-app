@@ -1,6 +1,6 @@
 <template>
 
-<div class="dark:bg-[#10192D] bg-white fixed w-full top-0 left-0 px-6 py-[10px]">
+<div class="dark:bg-[#10192D] bg-white fixed w-full top-0 left-0 px-6 py-[10px] z-50">
 
     <div class="flex justify-between items-center dark:bg-[#10192D]">
         <button @click.prevent="!(props.link.length) ? navigate() : navigateTo(`${props.link}`)" type="button" class=" bg-[#F8FAFC]  font-medium rounded-2xl text-sm p-[12px] text-center inline-flex 
@@ -57,6 +57,7 @@ const toggle_referral =()=>{
 const navigate = ()=>{
 
 if(pinia.state.user){
+    pinia.currentNavMenu = 'home'
     pinia.clearUser()
 }
 navigateTo('/dashboard')

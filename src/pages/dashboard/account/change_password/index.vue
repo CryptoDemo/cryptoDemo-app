@@ -34,7 +34,7 @@
                 <div v-show="!isFocused" class="fixed bottom-5 left-0 w-full px-6">
 
                     <button :disabled="!recaptchaValid"  @click.prevent="recaptchaValid ? updatePassword() : null"   class="w-full btn-primary  scaling-animation"
-                    :class="!recaptchaValid? 'bg-blue-400  hover:bg-blue-400':''">
+                    :class="!recaptchaValid? 'bg-[#8E9299] text-[#6D7179] hover:bg-[#8E9299] dark:text-[#6D7179]':''">
                        
                         <Loader v-if="loading"/>
                             <span v-else>

@@ -18,13 +18,14 @@ export const useStore = defineStore('app',()=> {
       codeInput:'',
       isPinSet: false,
       isFingerprintSet: false,
-      isTwoFactorSet: true,
+      isTwoFactorSet: false,
       loading: false,
       email:null,
       phone:null,
       country:null,
       twoFactor:null,
-      activityLogs:null,
+      activityLogs:[],
+      notificationLogs:null,
     });
   
   
@@ -51,6 +52,12 @@ export const useStore = defineStore('app',()=> {
   };
   const setActivityLogs = (payload) => {
       state.activityLogs = payload;
+      state.activityLogs.reverse(state.activityLogs);
+      
+  };
+  const setNotificationLogs = (payload) => {
+      state.notificationLogs = payload;
+      state.notificationLogs.reverse(state.notificationLogs)
       
   };
 
@@ -73,7 +80,10 @@ export const useStore = defineStore('app',()=> {
   const clearUser = () => {
       state.user = null;
       state.isAuthenticated = false;
-      state.activityLogs = null
+      state.email = null,
+      state.phone = null,
+      state.activityLogs = [],
+      state.notificationLogs = [],
       navigateTo('/login')
   }
 
@@ -92,7 +102,8 @@ export const useStore = defineStore('app',()=> {
       setCode,
       setTwoFactor,
       setPhone,
-      setActivityLogs
+      setActivityLogs,
+      setNotificationLogs
     }
 },
   {persist: {

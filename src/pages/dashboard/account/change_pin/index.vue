@@ -66,7 +66,8 @@ const loading = ref(false)
   const recaptchaValid = ref(false);
   const recaptchaValid2 = ref(false);
   const recaptchaValid3 = ref(false);
-  const toast = useToast()
+  const pinia = useStore();
+  const toast = useToast();
 
   // Watch for changes in the pin inputs
   watchEffect(() => {
@@ -87,7 +88,7 @@ const loading = ref(false)
     }
    
   });
-  
+
   watchEffect(() => {
 
     if (reentered_new_pin.value.length === 4) {

@@ -315,7 +315,7 @@
                              </div>
 
                              <Modal @open="openModal(v)"  :visible="visible" btn1="Not now" btn2="Log out" 
-                             desc="Do you wish to continue with the process,click the confirm button or cancel to stop the Signing out. "/>
+                             desc="Do you wish to continue with the process,click the 'Log out' button to log out or click 'Not now' button to stop the Signing out. "/>
                            
          
                      </div>

@@ -57,8 +57,6 @@ const orderList = ref([]);
 
 
 
-
-
 const fetchActivityLogsFromDB = async ()=>{
     try{
         const data = await fetch(`${baseURL}activity-log/${pageNumber.value}`, {
@@ -70,6 +68,7 @@ const fetchActivityLogsFromDB = async ()=>{
         }).then(res=>res.json());
         
         if(data.success){
+
             const myactivity_logs = filterByKey("id",[...data.data.result, ...activityLogs.value]);
             activityLogs.value = myactivity_logs;
             pinia.setActivityLogs(myactivity_logs);
@@ -80,7 +79,9 @@ const fetchActivityLogsFromDB = async ()=>{
             //         tokens_list[index] = updatedActivityLog;
             //     }
             // });
+
             // pinia.setActivityLogs(tokens_list);
+
         }else{
             toast.message(`${data.message}`, {
                 position: 'top',
@@ -122,11 +123,11 @@ const fetchActivityLogsFromDB = async ()=>{
 //   {distance: 100}
 // )
 
-onBeforeMount(async()=>{
-    if(pinia.state.activityLogs){
+watchEffect(async()=>{
+    if(pinia.state.activityLogs.length){
         activityLogs.value = pinia.state.activityLogs;
     }else{
-        fetchActivityLogsFromDB();
+        await fetchActivityLogsFromDB();
     }
 })
 </script>

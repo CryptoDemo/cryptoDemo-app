@@ -58,14 +58,18 @@ export const copyToClipboard = async (string) => {
 
 
 export const getFormattedTime = (date) => {
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    const ampm = hours >= 12 ? "PM" : "AM";
-    hours = hours % 12;
-    hours = hours ? hours : 12; // the hour '0' should be '12'
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    const strTime = hours + ":" + minutes + " " + ampm;
-    return strTime;
+  const timestamp = date;
+  const dateObject = new Date(timestamp);
+  
+  // Extracting time components
+  const hours = dateObject.getUTCHours(); // 20
+  const minutes = dateObject.getUTCMinutes(); // 46
+  const seconds = dateObject.getUTCSeconds(); // 44
+  
+  // Format the time as needed
+  const formattedTime = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+
+  return formattedTime
 };
 
 
@@ -85,22 +89,17 @@ export const monthNames = {
 };
 
 export const getFormattedDate = (dt) => {
-  const date = dt.getDate();
-  const month = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ][dt.getMonth()];
-  return `${date}${nth(date)} ${month}, ${dt.getFullYear()}`;
+  const timestamp = dt;
+const dateObject = new Date(timestamp);
+
+// Extracting date components
+const year = dateObject.getFullYear(); // 2024
+const month = dateObject.getMonth() + 1; // 2 (January is 0-based)
+const day = dateObject.getDate(); // 2
+
+// Format the date as needed
+const formattedDate = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
+ return formattedDate
 };
 
 
