@@ -51,6 +51,8 @@ const fetchNotificationLogsFromDB = async ()=>{
                 'x-access-token' : `${pinia.state.user?.token}`
             }
         }).then(res=>res.json());
+
+        console.log(data.success)
         
         if(data.success){
             const mynotification_logs = filterByKey("id",[...data.data?.result, ...notificationLogs.value]);
@@ -82,33 +84,9 @@ const fetchNotificationLogsFromDB = async ()=>{
     }
 }
 
-// const getNotificationlogsOnScroll = async ()=>{
-//     pageNumber.value += 1;
-//     fetchingData.value = true; 
-//      await new Promise ((res)=> setTimeout(res,2000))
-//     const newuser = fetchNotificationLogsFromDB();
-//   //  const newOrderList = await getOrders(
-//   //   numberOfOrdersToShow,
-//   //   numberOfOrdersToShow.valueOf.length
-//   //  )
-// //   const orders = ref([1,3,5,3,5,3,8,8,0,89,9999,3,4,5,2,3,2,3,2,3,2,1,1,2,3,3,4,4,4])
 
-//    fetchingData.value= false
+onMounted(()=>{
 
-// //    orderList.value.push(...orders.value)
-// }
-
-// useInfiniteScroll(
-//   listEl,
-
-//   async ()=>{
-//     await getNotificationlogsOnScroll()
-//   },
-
-//   {distance: 100}
-// )
-
-onBeforeMount(async()=>{
     if(pinia.state.notificationLogs.length != []){
         notificationLogs.value = pinia.state.notificationLogs;
         console.log(pinia.state.notificationLogs)

@@ -26,6 +26,9 @@ export const useStore = defineStore('app',()=> {
       twoFactor:null,
       activityLogs:[],
       notificationLogs:null,
+      tokenNetworks:[],
+      tokenLists:[],
+      tokenPrices:[],
     });
   
   
@@ -48,6 +51,18 @@ export const useStore = defineStore('app',()=> {
   };
   const setTwoFactor = (payload) => {
       state.twoFactor = payload;
+      
+  };
+  const setTokenNetworks = (payload) => {
+      state.tokenNetworks = payload;
+      
+  };
+  const setTokenLists = (payload) => {
+      state.tokenLists = payload;
+      
+  };
+  const setTokenPrices = (payload) => {
+      state.tokenPrices = payload;
       
   };
   const setActivityLogs = (payload) => {
@@ -84,6 +99,8 @@ export const useStore = defineStore('app',()=> {
       state.phone = null,
       state.activityLogs = [],
       state.notificationLogs = [],
+      state.tokenNetworks = [],
+      state.tokenLists = [],
       navigateTo('/login')
   }
 
@@ -103,7 +120,9 @@ export const useStore = defineStore('app',()=> {
       setTwoFactor,
       setPhone,
       setActivityLogs,
-      setNotificationLogs
+      setNotificationLogs,
+      setTokenNetworks,
+      setTokenLists
     }
 },
   {persist: {

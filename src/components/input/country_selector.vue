@@ -409,7 +409,24 @@ watch(()=>searchInput.value,(newv)=>{
 }
   .country-flag > .flag{
     width: 40px !important;
-    height: 40px !important
+    height: 40px !important;
+    display: inline-flex !important;
+    justify-content: center !important ;
+    align-items: center !important;
+
+}
+
+  .country-flag > .f-af{
+    background-position: -10px -125px !important;
+}
+  .country-flag > .f-ng{
+    background-position: -5px -7011px !important;
+}
+  .country-flag > .f-us{
+    background-position: -5px -9881px !important;
+}
+  .country-flag > .big-flag{
+    background-position-x: -5px !important;
 }
 
 .at-item {

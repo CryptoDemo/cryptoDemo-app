@@ -1,7 +1,7 @@
 <template>
     <div class="min-h-screen pb-52  bg-[#ffff]   dark:bg-[#10192D]  w-full ">
 
-        <HomeBar image="true"/>
+        <HomeBar v-bind:image="true"/>
 
         <div class="mt-[76px] px-6">
 

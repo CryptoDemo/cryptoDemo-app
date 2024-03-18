@@ -94,7 +94,6 @@ const name = ref('')
 const email = ref('')
 const password = ref('')
 const country = ref('')
-const referral_code = ref(null)
 const name_message = ref('')
 const email_message = ref('')
 const password_message = ref('')
@@ -135,6 +134,16 @@ watch(()=> password.value ,(newval)=>{
 const togglePasswordVisibility = () => {
 showPassword.value = !showPassword.value;
 }
+
+
+
+const urlParams = new URLSearchParams(window.location.search);
+
+// Get the value of the "ref" query parameter
+const refValue = urlParams.get('ref');
+
+const referral_code = ref(refValue || null)
+
 
 // Function to sign up the user
 const signUp = async () => {

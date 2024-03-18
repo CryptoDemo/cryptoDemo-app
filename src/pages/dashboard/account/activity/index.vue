@@ -122,8 +122,7 @@ const fetchActivityLogsFromDB = async ()=>{
 
 //   {distance: 100}
 // )
-
-watchEffect(async()=>{
+onMounted(async()=>{
     if(pinia.state.activityLogs.length){
         activityLogs.value = pinia.state.activityLogs;
     }else{

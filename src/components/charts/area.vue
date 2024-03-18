@@ -1,9 +1,7 @@
 
 <template>
       
-      <clientsOnly>
           <div id="area-chart" ref="areaChart"></div>
-      </clientsOnly>
      
   </template>
   

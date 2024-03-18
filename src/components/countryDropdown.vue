@@ -1670,7 +1670,9 @@ watch(()=> selected_country.value ,(newVal)=>{
     width: 40px !important;
     height: 40px !important
 }
-
+.country-flag > .big-flag{
+    background-position-x: -5px !important;
+}
 
 div.at-container {
 		height: 100%;

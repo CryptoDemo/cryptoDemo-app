@@ -2,7 +2,7 @@
 
     <div class="min-h-screen pb-52  bg-[#ffff]   dark:bg-[#10192D]  w-full ">
 
-        <HomeBar image="true"/>
+        <HomeBar :image="true"/>
      
 
         <div class="pt-[88px] ">
@@ -161,19 +161,25 @@
 
                 <h3 class="text-[#10192D] mb-[28px] font-[700] text-[16px] capitalize">Trending</h3>
 
-                <div v-for="i in 3">
+                <div v-for="i in pinia.state.tokenLists.slice(0,3)">
                     <div class="flex justify-between items-center mb-[27px]">
 
                         <div class="flex items-center">
     
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
                                 <circle cx="20.1668" cy="19.8333" r="17.8333" fill="white"/>
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M0 20C0 8.95431 8.95427 0 19.9999 0H20.1161C25.405 0.0153897 30.4712 2.13118 34.2001 5.88191C37.929 9.63264 40.0153 14.7111 39.9998 20C39.9998 31.0457 31.0456 40 19.9999 40C8.95427 40 0 31.0457 0 20ZM18.2566 27.6997L20.3389 20.6779L23.5834 19.7578L24.2614 17.4334L21.0653 18.4019L24.4551 6.87648V6.69246C24.45 6.54345 24.386 6.40256 24.277 6.30082C24.168 6.19909 24.023 6.14486 23.874 6.15009H19.5641C19.2283 6.13974 18.9287 6.35945 18.8377 6.68278L14.8183 20.339L11.6222 21.3075L10.8958 23.5351L14.0919 22.5666L11.2348 32.3002H28.2807C28.6176 32.3141 28.9192 32.093 29.0071 31.7675L29.9757 28.4261V28.2421C29.9706 28.0931 29.9065 27.9522 29.7975 27.8505C29.6885 27.7487 29.5436 27.6945 29.3945 27.6997H18.2566Z" fill="#345D9D"/>
-                            </svg>
+                            </svg> -->
+
+                            <div class="w-[40px] h-[40px] rounded-full">
+
+                                <MazLazyImg :src="i.icon"/>
+
+                            </div>
     
                             <div class="flex flex-col ml-[16px]">
-                                <h2 class="text-[14px] text-[#10192D] font-[700]">Litecoin</h2>
-                                <span class="text-[#8E9BAE] text-[12px] mt-[2px] font-[400]">LTC</span>
+                                <h2 class="text-[14px] text-[#10192D] font-[700]">{{ i.name }}</h2>
+                                <span class="text-[#8E9BAE] text-[12px] mt-[2px] font-[400]">{{ i.symbol }}</span>
                             </div>
                         </div>
 
@@ -186,7 +192,7 @@
                             </div>
 
                             <div >
-                                <h2 class="text-sm text-[#10192D] font-[700]">$18,788</h2>
+                                <h2 class="text-sm text-[#10192D] font-[700]">$44,366</h2>
                                 <span class="text-[#F65556] font-[500] text-[12px]">-0.15%</span>
                             </div>
 
@@ -484,6 +490,37 @@ const toggle_account_types =()=>{
 const toggle_visibility = ()=>{
     isvisible.value = !isvisible.value
 }
+
+const bitcoinPrice = ref(null)
+
+
+const updatePrices = async()=> {
+    try {
+        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd');
+        const data = await response.json();
+
+        // Extract prices for Bitcoin and Ethereum
+        bitcoinPrice.value = data.bitcoin.usd;
+        const ethereumPrice = data.ethereum.usd;
+
+        // Update your application with the new prices
+        // For example, you can update the UI or perform any other action
+        console.log('Bitcoin price:', bitcoinPrice);
+        console.log('Ethereum price:', ethereumPrice);
+
+        // Here, you can update your application's UI with the new prices
+    } catch (error) {
+        console.error('Error fetching cryptocurrency data:', error);
+    }
+}
+
+
+
+    
+    // Call the updatePrices function initially
+    // updatePrices();
+    
+    // Set up an interval to update prices every second
 
 </script>
 

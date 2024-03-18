@@ -21,6 +21,7 @@
                     class="flex flex-col justify-center items-center  w-full rounded-lg transition ease-in-out delay-75">
                         <Icon :name= "item.icon" size="28" />
                     </button>
+
                 </div>
                
 
@@ -45,6 +46,7 @@ import { useStore } from "@/stores/index"
 const headerSection = ref(null)
 const useCurrentNavMenu = useStore()
 
+
 defineComponent({
     home,
     marketplace,
@@ -62,6 +64,9 @@ definePageMeta({
 //   const currentNavMenu = ref("home")
    
 const pinia = useStore()
+const toast = useToast()
+const token_networks = ref(pinia.state?.tokenNetworks)
+const pageNumber = ref(1)
 
 
 
@@ -106,6 +111,7 @@ const pinia = useStore()
         }
     }
 
+
     onBeforeMount(()=>{
 
         watch(()=>  useCurrentNavMenu.currentNavMenu,(newval)=>{
@@ -131,7 +137,121 @@ const pinia = useStore()
     })
 
 
-    const router = useRouter()
+const router = useRouter()
+
+
+
+
+onMounted(async () => {
+    try {
+        const data = await fetch(`${baseURL}blockchain/all`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token': `${pinia.state.user?.token}`
+            }
+        }).then(res => res.json());
+
+        console.log(data.success);
+
+        if (data.success) {
+            const fetchedData = data.data;
+
+            const storedDataIds = pinia.state.tokenNetworks.map(item => item.id);
+
+            console.log('storedDataIds',storedDataIds)
+
+            // Check if there are any new items in the fetched data
+            const newItems = fetchedData.filter(item => !storedDataIds.includes(item.id));
+
+            console.log('newItems',newItems)
+
+            if (newItems.length > 0) {
+                console.log('fetching')
+                pinia.setTokenNetworks(fetchedData);
+            }
+        } else {
+            toast.message(`${data.message}`, {
+                position: 'top',
+                timeout: 2000,
+            });
+        }
+    } catch (error) {
+        console.log(error);
+        toast.message(`${error}`, {
+            position: 'top',
+            timeout: 2000,
+        });
+    }
+
+
+// fetching token lists
+    try {
+        const data = await fetch(`${baseURL}token/all/${pageNumber.value}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token': `${pinia.state.user?.token}`
+            }
+        }).then(res => res.json());
+    
+        console.log(data.success);
+    
+        if (data.success) {
+            const fetchedTokens = data.data.result;
+    
+            const storedTokenIds = pinia.state.tokenLists.map(item => item.id);
+    
+            console.log('storedTokenIds',storedTokenIds)
+    
+            // Check if there are any new items in the fetched data
+            const newItems = fetchedTokens.filter(item => !storedTokenIds.includes(item.id));
+    
+            console.log('newItems',newItems)
+    
+            if (newItems.length > 0) {
+                console.log('fetching')
+                pinia.setTokenLists(fetchedTokens);
+            }
+        } else {
+            toast.message(`${data.message}`, {
+                position: 'top',
+                timeout: 2000,
+            });
+        }
+    } catch (error) {
+        console.log(error);
+        toast.message(`${error}`, {
+            position: 'top',
+            timeout: 2000,
+        });
+    }
+
+    const symbol = pinia.state.tokenLists.map(coin => coin.symbol+'USDT');
+
+console.log(symbol)
+
+    // try {
+    //     const data = await fetch(`https://api.binance.com/api/v3/ticker/price?symbols=[${symbol}]`, {
+    //         method: 'GET',
+           
+    //     }).then(res => res.json());
+    
+    //     console.log('success');
+    
+       
+    // } catch (error) {
+    //     console.log(error);
+    //     toast.message(`${error}`, {
+    //         position: 'top',
+    //         timeout: 2000,
+    //     });
+    // }
+    
+});
+
+
+
 
     
 </script>

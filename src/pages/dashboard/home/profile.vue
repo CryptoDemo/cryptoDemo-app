@@ -8,8 +8,10 @@
 
             <div class="flex justify-center items-center mx-6">
                 <div class="relative h-[102px] w-[102px] border border-[#F1F5F9] dark:border-[#1B2537]  p-[7px] rounded-full">
-                    <img class=" rounded-full" src="/home/profile.png" alt="">
-                    <span class="bottom-1 right-0 absolute  w-[28px] h-[28px] bg-[#2873FF] border-2
+                    <input @input="handleImgChange($event)"  type="file" class="w-full " 
+                        ref="profileImage" accept="image/jpeg,.webp,.png,.jpg,.gif,.svg,.jfif,.pjpeg,.pjp" hidden/>
+                    <img  ref="profileImg" class="min-w-full rounded-full" :src="pinia.state.user.profile_image? pinia.state.user.profile_image : '/home/profile.png'" alt="">
+                    <span @click="handleImageClick()" class="bottom-1 right-0 absolute  w-[28px] h-[28px] bg-[#2873FF] border-2
                      border-white dark:border-gray-800 rounded-full inline-flex justify-center items-center p-[6px]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                           <path d="M11.9999 4.00065C11.5933 4.00065 11.2199 3.76732 11.0333 3.40732L10.5533 2.44065C10.2466 1.83398 9.44662 1.33398 8.76662 1.33398H7.23995C6.55328 1.33398 5.75328 1.83398 5.44662 2.44065L4.96662 3.40732C4.77995 3.76732 4.40662 4.00065 3.99995 4.00065C2.55328 4.00065 1.40662 5.22065 1.49995 6.66065L1.84662 12.1673C1.92662 13.5407 2.66662 14.6673 4.50662 14.6673H11.4933C13.3333 14.6673 14.0666 13.5407 14.1533 12.1673L14.4999 6.66065C14.5933 5.22065 13.4466 4.00065 11.9999 4.00065ZM6.99995 4.83398H8.99995C9.27328 4.83398 9.49995 5.06065 9.49995 5.33398C9.49995 5.60732 9.27328 5.83398 8.99995 5.83398H6.99995C6.72662 5.83398 6.49995 5.60732 6.49995 5.33398C6.49995 5.06065 6.72662 4.83398 6.99995 4.83398ZM7.99995 12.0807C6.75995 12.0807 5.74662 11.074 5.74662 9.82732C5.74662 8.58065 6.75328 7.57398 7.99995 7.57398C9.24662 7.57398 10.2533 8.58065 10.2533 9.82732C10.2533 11.074 9.23995 12.0807 7.99995 12.0807Z" fill="white"/>
@@ -154,4 +156,63 @@
  
  const toast = useToast()
 const pinia = useStore()
+const profileImage = ref(null)
+const profileImg = ref(null)
+const selectedImage = ref(null)
+
+const handleImageClick = ()=>{
+    profileImage.value.click()
+}
+
+
+const handleImgChange = async(event)=> await handleFileChange(event,selectedImage,profileImg.value);
+
+watch(()=> selectedImage.value,async(newval)=>{
+    const {secure_url} = await uploadToCloudinary(newval);
+    console.log('newval is ',secure_url)
+
+    const profile_image = {profile_image: secure_url}
+    const userToken = `${pinia.state.user.token}`;
+    const info = { ...pinia.state.user, ...profile_image };
+    delete info.token;
+
+       try {
+         
+      const data = await fetch(`${baseURL}user`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-access-token' : `${pinia.state.user?.token}`
+        },
+        body: JSON.stringify(info)
+      }).then(res => res.json());
+      
+      if (data.success) {
+
+        const user = { ...info, token: userToken };
+        pinia.setUser(user);
+        
+      } else {
+        // Display error message
+        toast.message(`${data.message}`, {
+          position: 'top',
+          timeout: 2000
+        });
+
+      }
+    } catch (error) {
+      // Display error message
+      toast.message(error, {
+        position: 'top',
+        timeout: 2000
+      });
+    }
+
+
+})
+
+
+
+  
+
 </script>

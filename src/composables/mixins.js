@@ -1,3 +1,4 @@
+import {cloudinaryAPIKey,cloudinaryURL} from '@/composables/configs'
 
 let debounce_timeout;
 export const debounce = (fn,value)=>{
@@ -113,4 +114,75 @@ export const getUserId = ()=>{
   const urlParams = new URLSearchParams(window.location.search);
   const userId = urlParams.get('userId');
   return userId
+}
+
+
+
+
+
+//uploading to cloudinary
+export const asyncRequest = async (url, options, json = true) => {
+  return fetch(url, options)
+    .then((response) => (json ? response.json() : response.text()))
+    .then((data) => {
+      return data;
+    })
+
+
+    .catch((error) => {
+      return error;
+    });
+};
+
+
+export const uploadToCloudinary = async ( file) => {
+  const data = new FormData();
+  data.append("file", file);
+  data.append("upload_preset", "laioclwf");
+  data.append("resource_type", "auto");
+  data.append("api_key", cloudinaryAPIKey);
+  data.append("folder", `/Gallery`);
+
+  return await asyncRequest(cloudinaryURL, {
+    method: "POST",
+    body: data,
+  });
+};
+
+
+
+// export const uploadFile = async (file,imgUrl)=>{
+  
+
+//     const data = await fetch(`${baseURL}file/upload`, {
+//       method: 'PATCH',
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'x-access-token' : `${pinia.state.user?.token}`
+//       },
+
+//       body: JSON.stringify(file)
+
+//     }).then(res => res.json());
+
+//     if(data.success){
+//         imgUrl.value = data.data
+//     } 
+
+// }
+
+export const handleFileChange = async (event, selectedFile ,profileImg=null)=>{
+  const file = event.target.files[0];
+  if(!file) return;
+  selectedFile.value = file
+
+  if(file?.type=="image/jpeg" || file?.type=="image/png" || file?.type=="image/jpg"  &&  profileImg){
+      const reader = new FileReader();
+      reader.onload = (event) => {
+          profileImg.src = event.target.result;
+      };
+
+      reader.readAsDataURL(file);
+  }
+
 }
