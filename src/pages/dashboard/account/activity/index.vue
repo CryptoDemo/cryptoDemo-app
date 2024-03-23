@@ -63,7 +63,7 @@ const fetchActivityLogsFromDB = async ()=>{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'x-access-token' : `${pinia.state.user?.token}`
+                'x-access-token' : `${pinia.state.user.token}`
             }
         }).then(res=>res.json());
         

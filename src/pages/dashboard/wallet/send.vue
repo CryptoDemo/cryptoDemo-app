@@ -156,7 +156,7 @@
         <div class="mx-6">
 
             <Modal @close="openModal(v)" @toggle_successful="toggle_show_successful()"  :visible="visible" btn1="cancel" btn2="confirm" 
-              desc="By clicking the confirm button you will be sending worth of"  amount="200USDT" to="true"
+              desc="By clicking the confirm button you will be sending worth of"  amount="200USDT" :to="true"
                walletAddress="1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"/>
         </div>
 

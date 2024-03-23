@@ -10,8 +10,54 @@
   import ApexCharts from 'apexcharts';
   
   const areaChart = ref(null);
+
+  const { symbol,pricepercent } = defineProps({
+      symbol: String,
+      pricepercent:String,
+  });
+
+  const marketPriceRange = ref([])
+  const pData = ref([])
+
+  const getUklinesChartValue = async(symbol)=>{
+
+  }
   
-  onMounted(() => {
+  onMounted(async() => {
+
+    const symbolWithoutQuotes = symbol.replace(/^"(.*)"$/, '$1');
+  
+  
+    if(!(symbolWithoutQuotes === 'USDTUSDT')){
+
+      try {
+          const response = await fetch(`https://api.binance.com/api/v3/uiKlines?symbol=${symbolWithoutQuotes}&interval=1h&limit=1`, {
+            headers: { 'Accept': 'application/json' }
+          });
+          
+          if (!response.ok) {
+            throw new Error('Failed to fetch symbol price');
+          }
+          
+          const data = await response.json();
+          marketPriceRange.value = data
+
+          
+          pData.value = marketPriceRange.value[0].slice(1,6)
+          
+          console.log('p',pData.value.map(parseFloat).map(Math.floor))
+          
+        } catch (error) {
+          console.error('Error fetching symbol price:', error);
+        }
+
+    }else{
+        // Default data for USDTUSDT symbol
+        pData.value = [6456, 6543, 60809,5677,69];
+      }
+
+
+    
     const options = {
       chart: {
         height: "100",
@@ -25,6 +71,7 @@
           show: false,
         },
       },
+
       tooltip: {
         enabled: false,
         x: {
@@ -59,10 +106,11 @@
       series: [
         {
           name: "New users",
-          data: [6500, 6418, 6456, 6526, 6356, 6456],
-          color: "#F65556",
+          data: pData.value.map(parseFloat).map(Math.floor),
+          color: pricepercent > 0 || symbol === 'USDTUSDT' ? '#22C36B' :  pricepercent < 0 ? "#F65556" :  'gray' ,
         },
       ],
+
       xaxis: {
         categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
         labels: {

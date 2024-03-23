@@ -25,10 +25,7 @@
 
                 <div class="flex items-center">
 
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-                        <circle cx="20.1668" cy="19.8333" r="17.8333" fill="white"/>
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0 20C0 8.95431 8.95427 0 19.9999 0H20.1161C25.405 0.0153897 30.4712 2.13118 34.2001 5.88191C37.929 9.63264 40.0153 14.7111 39.9998 20C39.9998 31.0457 31.0456 40 19.9999 40C8.95427 40 0 31.0457 0 20ZM18.2566 27.6997L20.3389 20.6779L23.5834 19.7578L24.2614 17.4334L21.0653 18.4019L24.4551 6.87648V6.69246C24.45 6.54345 24.386 6.40256 24.277 6.30082C24.168 6.19909 24.023 6.14486 23.874 6.15009H19.5641C19.2283 6.13974 18.9287 6.35945 18.8377 6.68278L14.8183 20.339L11.6222 21.3075L10.8958 23.5351L14.0919 22.5666L11.2348 32.3002H28.2807C28.6176 32.3141 28.9192 32.093 29.0071 31.7675L29.9757 28.4261V28.2421C29.9706 28.0931 29.9065 27.9522 29.7975 27.8505C29.6885 27.7487 29.5436 27.6945 29.3945 27.6997H18.2566Z" fill="#345D9D"/>
-                    </svg> -->
+                  
                     <div class="w-[40px] h-[40px] rounded-full">
 
                       <MazLazyImg :src="i.icon"/>
@@ -41,20 +38,41 @@
                     </div>
                 </div>
 
+
+
                 <div class="flex relative">
-                    <div class="absolute -top-6 right-20">
-                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="72" height="34" viewBox="0 0 72 34" fill="none">
-                            <path d="M1 32.5C7.90141 28.0818 14.8028 9.30345 18.7465 9.30345C24.2676 9.30345 24.662 22.5587 28.6056 21.4539C33.0375 19.7991 33.5352 11.5127 35.507 10.4081C37.4789 9.30345 39.4507 12.6171 41.4225 12.6171C43.9103 12.6171 47.338 0.466588 50.2958 1.571C53.7309 2.85364 58.1831 24.7677 62.1268 24.7677C66.0704 24.7677 67.0563 12.6172 71 12.6171" stroke="#F65556" stroke-width="2" stroke-linecap="round"/>
-                        </svg> -->
-                        <chartsArea/>
+                  <div class="absolute -top-6 right-20">
+                               
+                        <div v-for="p in pinia.state.tokenPrices" :key="p.id">
+                            <div v-if="p.symbol === i.symbol+ 'USDT'">
+                                <chartsArea :symbol="i.symbol+ 'USDT'" :pricepercent="p.priceChangePercent"/>
+                            </div>
+                        </div>
+
+                        <div v-show="i.symbol === 'USDT'">
+                            <chartsArea :symbol="i.symbol+ 'USDT'" />
+                        </div>
+                     </div>
+
+                    <div v-for="price in pinia.state.tokenPrices" :key="price.symbol">
+                                <div v-if="price.symbol === i.symbol+ 'USDT'">
+
+                                    <h2 class="text-sm text-[#10192D] font-[700]">{{ price.weightedAvgPrice.slice(0,7) }}</h2>
+                                    <span v-if="price.priceChangePercent < 0" class="text-[#F65556] font-[500] text-[12px]">{{price.priceChangePercent}}%</span>
+                                    <span v-else-if="price.priceChangePercent > 0" class="text-[#22C36B] font-[500] text-[12px]">{{price.priceChangePercent}}%</span>
+                                    <span v-else ="price.priceChangePercent === 0" class="text-[#888787] font-[500] text-[12px]">{{price.priceChangePercent}}</span>
+                                </div>
                     </div>
 
-                    <div >
-                        <h2 class="text-sm text-[#10192D] font-[700]">$18,788</h2>
-                        <span class="text-[#F65556] font-[500] text-[12px]">-0.15%</span>
-                    </div>
+                    <div v-show="i.symbol === 'USDT'">
 
-                </div>
+                      <h2 class="text-sm text-[#10192D] font-[700]">$0.9999</h2>
+                      <!-- <span v-if="price.priceChangePercent < 0" class="text-[#F65556] font-[500] text-[12px]">%</span> -->
+                      <span  class="text-[#22C36B] font-[500] text-[12px]">0.2%</span>
+                      <!-- <span v-else ="price.priceChangePercent === 0" class="text-[#888787] font-[500] text-[12px]"></span> -->
+                      </div>
+
+                    </div>
             </div>
         </div>
 
@@ -67,6 +85,7 @@
 import { ref, watch } from 'vue';
 import {debounce} from '@/composables/mixins';
 import { useDark, useToggle } from '@vueuse/core'
+
 
 
 
@@ -109,7 +128,6 @@ const filterV =(n)=>{
 watch(()=>searchInput.value,(newv)=>{
   debounce(filterV,newv)
 })
-
 
 
 

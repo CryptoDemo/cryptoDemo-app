@@ -38,7 +38,7 @@
                   </span>
               </button>
               <!-- Button for Other Actions -->
-              <button v-else @click="open_success" class="mt-4 font-bold bg-transparent capitalize text-[#2873FF] py-2 px-4 rounded-md">
+              <button v-else @click="open_success(); emit('open', visible = false)" class="mt-4 font-bold bg-transparent capitalize text-[#2873FF] py-2 px-4 rounded-md">
                   {{ btn2 }}
               </button>
           </div>
@@ -56,7 +56,7 @@
       btn1: String,
       btn2: String,
       desc: String,
-      amount: Number,
+      amount: String,
       walletAddress: String,
       to: Boolean,
       value: String
@@ -74,7 +74,7 @@
   // Open Success Modal
   const open_success = () => {
       show_successful.value = !show_successful.value;
-      emit('toggle_successful', show_successful);
+    //   emit('toggle_successful', show_successful);
   };
 
   // Close Modal

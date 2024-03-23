@@ -122,7 +122,8 @@ export const useStore = defineStore('app',()=> {
       setActivityLogs,
       setNotificationLogs,
       setTokenNetworks,
-      setTokenLists
+      setTokenLists,
+      setTokenPrices
     }
 },
   {persist: {

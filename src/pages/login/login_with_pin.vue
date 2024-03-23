@@ -48,7 +48,7 @@
       </div>
 
       <!-- Modal for resetting pin -->
-      <Modal @open="visible"  :visible="visible"  btn1="Sign out" btn2="Cancel"
+      <Modal @open="v => visible = v"  :visible="visible"  btn1="Sign out" btn2="Cancel"
       desc="To reset your pin; Sign out, login  and set up a new pin"/>
   </div>
 </template>

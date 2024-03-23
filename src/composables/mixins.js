@@ -186,3 +186,60 @@ export const handleFileChange = async (event, selectedFile ,profileImg=null)=>{
   }
 
 }
+
+
+
+
+
+// Function to fetch the price ticker for a given symbol
+export const getSymbolPrice = async(symbol) => {
+
+  try {
+      const response = await fetch(`https://api.binance.com/api/v3/ticker/24hr?symbols=${symbol}`,{headers: {'Accept': 'application/json'}});
+      if (!response.ok) {
+          throw new Error('Failed to fetch symbol price');
+      }
+      const data = await response.json();
+      return data;
+  } catch (error) {
+      console.error('Error fetching symbol price:', error);
+      throw error;
+  }
+
+}
+
+
+// to create minutes
+export const createMinutes = (mnts = 5) => {
+  let now = new Date();
+  now.setMinutes(now.getMinutes() + mnts);
+  return now.toISOString();
+};
+
+
+
+// date are formatted in this form (24th Nov 2023)
+export const formatDate = (dat) => {
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const date = new Date(dat);
+  // Extract the date components
+  const year = date.getFullYear();
+  const monthIndex = date.getMonth(); // Months are zero-indexed
+  const day = date.getDate();
+
+  // Format the date components into a desired format
+  let formattedDate = `${day}`;
+  if (day % 10 === 1 && day !== 11) {
+    formattedDate += "st ";
+  } else if (day % 10 === 2 && day !== 12) {
+    formattedDate += "nd ";
+  } else if (day % 10 === 3 && day !== 13) {
+    formattedDate += "rd ";
+  } else {
+    formattedDate += "th ";
+  }
+
+  formattedDate += `${months[monthIndex]}. ${year}`;
+
+  return formattedDate;
+};

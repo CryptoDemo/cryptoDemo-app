@@ -62,6 +62,15 @@ export default defineNuxtConfig({
     },
   },
 
+  build: {
+    extend(config, ctx) {
+      config.module.rules.push({
+        test: /\/index\.js$/,
+        use: { loader: 'worker-loader' }
+      })
+    }
+  },
+
 
 
 })

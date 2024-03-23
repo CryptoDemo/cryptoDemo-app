@@ -1,7 +1,6 @@
 <template>
     <div ref="headerSection" class="h-screen  overflow-y-auto bg-[#ffff]   dark:bg-[#10192D]">
 
-
             <home v-if="useCurrentNavMenu.currentNavMenu === 'home'" />
             <wallet v-else-if ="useCurrentNavMenu.currentNavMenu === 'wallet' " />
             <marketplace v-else-if="useCurrentNavMenu.currentNavMenu === 'marketplace'" />
@@ -24,7 +23,6 @@
 
                 </div>
                
-
             </div>
         </div>
            
@@ -40,6 +38,10 @@ import marketplace from "@/pages/dashboard/marketplace/index.vue";
 import wallet from "@/pages/dashboard/wallet/index.vue";
 import exchange from "@/pages/dashboard/trade/index.vue";
 import account from "@/pages/dashboard/account/index.vue";
+
+
+
+import {addToken,db} from '@/composables/utils/dexieDB/index'
 
 import { useStore } from "@/stores/index"
 
@@ -67,6 +69,11 @@ const pinia = useStore()
 const toast = useToast()
 const token_networks = ref(pinia.state?.tokenNetworks)
 const pageNumber = ref(1)
+
+const storedTokenData = ref([]);
+
+const symbolPrice = ref()
+const error = ref()
 
 
 
@@ -142,6 +149,33 @@ const router = useRouter()
 
 
 
+
+const fetchSymbolPrice = async(symbol) =>{
+
+    try{
+        error.value = null;
+        
+        const worker = new Worker('/worker/index.js');
+        worker.postMessage({ symbol}); // Replace 'BTCUSDT' with your desired symbol
+        
+        worker.onmessage = (event) => {
+          if (event.data.error) {
+            error.value = event.data.error;
+    
+          } else {
+            symbolPrice.value = event.data;
+            pinia.setTokenPrices(symbolPrice.value)
+          }
+    
+          worker.terminate();
+        };
+    }catch(e){
+        console.log(e)
+    
+    }
+}
+
+
 onMounted(async () => {
     try {
         const data = await fetch(`${baseURL}blockchain/all`, {
@@ -159,12 +193,10 @@ onMounted(async () => {
 
             const storedDataIds = pinia.state.tokenNetworks.map(item => item.id);
 
-            console.log('storedDataIds',storedDataIds)
 
             // Check if there are any new items in the fetched data
             const newItems = fetchedData.filter(item => !storedDataIds.includes(item.id));
 
-            console.log('newItems',newItems)
 
             if (newItems.length > 0) {
                 console.log('fetching')
@@ -202,12 +234,11 @@ onMounted(async () => {
     
             const storedTokenIds = pinia.state.tokenLists.map(item => item.id);
     
-            console.log('storedTokenIds',storedTokenIds)
     
             // Check if there are any new items in the fetched data
             const newItems = fetchedTokens.filter(item => !storedTokenIds.includes(item.id));
     
-            console.log('newItems',newItems)
+
     
             if (newItems.length > 0) {
                 console.log('fetching')
@@ -227,32 +258,93 @@ onMounted(async () => {
         });
     }
 
-    const symbol = pinia.state.tokenLists.map(coin => coin.symbol+'USDT');
 
-console.log(symbol)
 
-    // try {
-    //     const data = await fetch(`https://api.binance.com/api/v3/ticker/price?symbols=[${symbol}]`, {
-    //         method: 'GET',
-           
-    //     }).then(res => res.json());
-    
-    //     console.log('success');
-    
-       
-    // } catch (error) {
-    //     console.log(error);
-    //     toast.message(`${error}`, {
-    //         position: 'top',
-    //         timeout: 2000,
-    //     });
-    // }
-    
+let symbol = pinia.state.tokenLists.map(coin => coin.symbol+'USDT');
+symbol = symbol.filter(s=>s!='USDTUSDT');
+
+
+// getSymbolPrice(JSON.stringify(symbol))
+
+//     .then(prices => {
+//         console.log('PRICES: ',prices);
+//     })
+//     .catch(error => {
+//         console.error('Error:', error);
+// });
+
+fetchSymbolPrice(JSON.stringify(symbol))
+
+
 });
 
 
 
 
+
+
+// Data property to track the number of route navigations
+const routeNavigations = ref(0);
+
+// Function to refresh the user using the API
+const refreshUser = async () => {
+  try {
+    // Make a request to the refresh endpoint
+    const response = await fetch('https://cryptodemoapi-production.up.railway.app/v1/user/refresh', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': `${pinia.state.user?.token}`
+      },
+      // Add any necessary request body if required
+    });
+
+    // Check if the request was successful
+    if (!response.ok) {
+      throw new Error('Failed to refresh user');
+    }
+
+    
+    // Parse the response JSON
+    const data = await response.json();
+
+        if (data.success) {
+                console.log(data.data)
+                const refreshedUserData = data.data;
+                const newuserinfo = {...pinia.state.user, ...refreshedUserData}
+                pinia.setUser(newuserinfo)
+                
+        } else {
+                toast.message(`${data.message}`, {
+                    position: 'top',
+                    timeout: 2000,
+                });
+        }
+
+    // Handle the response data according to your application logic
+    console.log('User refreshed:', data);
+  } catch (error) {
+    // Handle any errors that occur during the request
+    console.error('Error refreshing user:', error);
+  }
+};
+
+
+
+// Hook to listen to route changes
+    watchEffect(() => {
+    // Hook to listen to route changes
+    router.afterEach(() => {
+    // Increment the route navigation count
+    routeNavigations.value++;
+
+    // Check if the user has navigated more than 4 times
+    if (routeNavigations.value > 4) {
+        // Make a request to refresh the user
+        refreshUser().then(() => console.log('User refreshed'));
+    }
+    });
+});
     
 </script>
 
