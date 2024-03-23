@@ -10,7 +10,8 @@
                 <div class="relative h-[102px] w-[102px] border border-[#F1F5F9] dark:border-[#1B2537]  p-[7px] rounded-full">
                     <input @input="handleImgChange($event)"  type="file" class="w-full " 
                         ref="profileImage" accept="image/jpeg,.webp,.png,.jpg,.gif,.svg,.jfif,.pjpeg,.pjp" hidden/>
-                    <img  ref="profileImg" class="min-w-full rounded-full" :src="pinia.state.user.profile_image? pinia.state.user.profile_image : '/home/profile.png'" alt="">
+                    <img  ref="profileImg" class="w-full h-full relative
+                     rounded-full" :src="pinia.state.user.profile_image? pinia.state.user.profile_image : '/home/profile.png'" alt="">
                     <span @click="handleImageClick()" class="bottom-1 right-0 absolute  w-[28px] h-[28px] bg-[#2873FF] border-2
                      border-white dark:border-gray-800 rounded-full inline-flex justify-center items-center p-[6px]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -191,7 +192,7 @@ watch(()=> selectedImage.value,async(newval)=>{
 
         const user = { ...info, token: userToken };
         pinia.setUser(user);
-        
+
       } else {
         // Display error message
         toast.message(`${data.message}`, {
