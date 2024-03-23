@@ -181,7 +181,7 @@
                         </div>
 
                         <div class="flex relative">
-                            <div class="absolute -top-6 right-20">
+                            <div class="absolute -top-7 right-20">
                               
                                     <div v-if="!(i.symbol === 'USDT')">
                                         <chartsArea :symbol="i.symbol" :pricepercent="i.priceChangePercent"/>

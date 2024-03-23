@@ -41,7 +41,7 @@
 
 
                 <div class="flex relative">
-                  <div class="absolute -top-6 right-20">
+                  <div class="absolute -top-7 right-20">
                                
                         <div v-for="p in pinia.state.tokenPrices" :key="p.id">
                             <div v-if="p.symbol === i.symbol+ 'USDT'">

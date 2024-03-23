@@ -41,7 +41,7 @@
                     </span>
                     <span @click.prevent="checkAuthAvaliabilty" class=" h-[40px] w-[40px] overflow-hidden  dark:bg-[#1B2537] bg-[#F5F9FF] inline-flex justify-center items-center rounded-full">
     
-                        <img class="w-full"  :src="pinia.state.user.profile_image ? pinia.state.user.profile_image : '/home/icon22.png'"/>
+                        <img class="w-full"  :src="pinia.state?.user?.profile_image ? pinia.state?.user?.profile_image : '/home/icon22.png'"/>
                     </span>
     
                 </div>
@@ -87,7 +87,7 @@ const checkAuthAvaliabilty =()=>{
     if(pinia.state?.isAuthenticated){
         navigateTo('/dashboard/home/profile')
     }else{
-        if(pinia.state.isPinSet){
+        if(pinia.state?.isPinSet){
             navigateTo('/login/login_with_pin')
         }else{
             navigateTo('/login')

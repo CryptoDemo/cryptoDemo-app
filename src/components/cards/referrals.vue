@@ -47,7 +47,7 @@
 </div>
 
 <p class="text-center"> Referral code</p>
-<h3 class="text-[#1B2537] text-center text-[18px] mt-[4px] font-[600]">{{ pinia.state.user.referrer_code}}</h3>
+<h3 class="text-[#1B2537] text-center text-[18px] mt-[4px] font-[600]">{{ pinia.state.user?.referrer_code ? pinia.state.user?.referrer_code : ''}}</h3>
 
 <div class="flex justify-center items-center w-full mt-[24px]">
 
@@ -68,6 +68,6 @@ const isDark = useDark()
 const toast = useToast()
 const pinia = useStore()
 
-const referrallink = ref(`${baseURL}sign_Up?ref=${pinia.state.user.referrer_code}`)
+const referrallink = ref(`${baseURL}sign_Up?ref=${pinia.state.user?.referrer_code}`)
 const { text, copy, copied } = useClipboard({ referrallink })
 </script>
