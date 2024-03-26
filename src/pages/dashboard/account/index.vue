@@ -1,7 +1,7 @@
 <template>
 
         
-         <div class="min-h-screen pb-52  bg-[#ffff]   dark:bg-[#10192D]  w-full px-6">
+         <div v-if="pinia.state.isAuthenticated" class="min-h-screen pb-52  bg-[#ffff]   dark:bg-[#10192D]  w-full px-6">
      
              <div class="fixed top-0 left-0 w-full bg-[#ffff]   dark:bg-[#10192D] px-6 py-[20px] z-50">
                  <h2 class=" text-[20px] dark:text-text-dark text-text-light font-[800]">Account</h2>
@@ -418,6 +418,12 @@ const change_pin = ()=>{
     }
 }
 
+
+watchEffect(()=>{
+    if(!pinia.state.isAuthenticated){
+        pinia.currentNavMenu = 'home'
+    }
+})
 </script>
 
 

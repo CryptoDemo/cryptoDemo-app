@@ -40,7 +40,6 @@ import exchange from "@/pages/dashboard/trade/index.vue";
 import account from "@/pages/dashboard/account/index.vue";
 
 
-
 import {addToken,db} from '@/composables/utils/dexieDB/index'
 
 import { useStore } from "@/stores/index"
@@ -283,68 +282,68 @@ fetchSymbolPrice(JSON.stringify(symbol))
 
 
 
-// Data property to track the number of route navigations
-const routeNavigations = ref(0);
+// // Data property to track the number of route navigations
+// const routeNavigations = ref(0);
 
-// Function to refresh the user using the API
-const refreshUser = async () => {
-  try {
-    // Make a request to the refresh endpoint
-    const response = await fetch('https://cryptodemoapi-production.up.railway.app/v1/user/refresh', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-access-token': `${pinia.state.user?.token}`
-      },
-      // Add any necessary request body if required
-    });
+// // Function to refresh the user using the API
+// const refreshUser = async () => {
+//   try {
+//     // Make a request to the refresh endpoint
+//     const response = await fetch('https://cryptodemoapi-production.up.railway.app/v1/user/refresh', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'x-access-token': `${pinia.state.user?.token}`
+//       },
+//       // Add any necessary request body if required
+//     });
 
-    // Check if the request was successful
-    if (!response.ok) {
-      throw new Error('Failed to refresh user');
-    }
+//     // Check if the request was successful
+//     if (!response.ok) {
+//       throw new Error('Failed to refresh user');
+//     }
 
     
-    // Parse the response JSON
-    const data = await response.json();
+//     // Parse the response JSON
+//     const data = await response.json();
 
-        if (data.success) {
-                console.log(data.data)
-                const refreshedUserData = data.data;
-                const newuserinfo = {...pinia.state.user, ...refreshedUserData}
-                pinia.setUser(newuserinfo)
+//         if (data.success) {
+//                 console.log(data.data)
+//                 const refreshedUserData = data.data;
+//                 const newuserinfo = {...pinia.state.user, ...refreshedUserData}
+//                 pinia.setUser(newuserinfo)
                 
-        } else {
-                toast.message(`${data.message}`, {
-                    position: 'top',
-                    timeout: 2000,
-                });
-        }
+//         } else {
+//                 toast.message(`${data.message}`, {
+//                     position: 'top',
+//                     timeout: 2000,
+//                 });
+//         }
 
-    // Handle the response data according to your application logic
-    console.log('User refreshed:', data);
-  } catch (error) {
-    // Handle any errors that occur during the request
-    console.error('Error refreshing user:', error);
-  }
-};
+//     // Handle the response data according to your application logic
+//     console.log('User refreshed:', data);
+//   } catch (error) {
+//     // Handle any errors that occur during the request
+//     console.error('Error refreshing user:', error);
+//   }
+// };
 
 
 
-// Hook to listen to route changes
-    watchEffect(() => {
-    // Hook to listen to route changes
-    router.afterEach(() => {
-    // Increment the route navigation count
-    routeNavigations.value++;
+// // Hook to listen to route changes
+//     watchEffect(() => {
+//     // Hook to listen to route changes
+//     router.afterEach(() => {
+//     // Increment the route navigation count
+//     routeNavigations.value++;
 
-    // Check if the user has navigated more than 4 times
-    if (routeNavigations.value > 4) {
-        // Make a request to refresh the user
-        refreshUser().then(() => console.log('User refreshed'));
-    }
-    });
-});
+//     // Check if the user has navigated more than 4 times
+//     if (routeNavigations.value > 4) {
+//         // Make a request to refresh the user
+//         refreshUser().then(() => console.log('User refreshed'));
+//     }
+//     });
+// });
     
 </script>
 

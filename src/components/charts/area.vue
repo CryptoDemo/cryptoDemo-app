@@ -43,7 +43,7 @@
           marketPriceRange.value = data
 
           
-          pData.value = marketPriceRange.value[0].slice(1,6)
+          pData.value = marketPriceRange.value[0]
           
           console.log('p',pData.value.map(parseFloat).map(Math.floor))
           
@@ -106,7 +106,7 @@
       series: [
         {
           name: "New users",
-          data: pData.value.map(parseFloat).map(Math.floor),
+          data: pData.value.map(parseFloat).map(Math.floor) ,
           color: pricepercent > 0 || symbol === 'USDTUSDT' ? '#22C36B' :  pricepercent < 0 ? "#F65556" :  'gray' ,
         },
       ],
